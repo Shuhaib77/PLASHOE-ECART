@@ -3,6 +3,7 @@ import { Button } from "@material-tailwind/react";
 import Navbar from "../Components/Navbar";
 import Homebanner from "../Components/Home/Homebanner";
 import Homecard from "../Components/Home/Homecard";
+import Footer from "../Components/Footer";
 
 function Home() {
   return (
@@ -15,7 +16,10 @@ function Home() {
           <Homebanner />
         </div>
         <div>
-            <Homecard/>
+          <Homecard />
+        </div>
+        <div>
+          <Footer />
         </div>
       </div>
     </div>

@@ -6,7 +6,7 @@ function Homebanner() {
   return (
     <div>
       <div>
-        <div className="bg-home-bg bg-no-repeat h-[100vh] ml-6 mr-6 mt-7 flex  items-center">
+        <div className="bg-home-bg bg-no-repeat h-[100vh] ml-8 mr-8 mt-7 flex  items-center">
           {/* <div className='   '> */}
 
           <div className="text-white font-medium   ml-20">
@@ -61,7 +61,7 @@ function Homebanner() {
           </div>
         </div>
         <hr />
-        <div className="flex justify-center ">
+        <div className="flex justify-center mt-10 mb-10 ">
           <div className="mr-10 mt-20">
             <img
               src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-home-about-image.jpg"

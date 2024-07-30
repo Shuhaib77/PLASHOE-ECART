@@ -1,12 +1,14 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
+import { useNavigate } from "react-router-dom";
 
 function Footer() {
+  const navigate=useNavigate()
   return (
-    <div>
-      <div>
+    <div className="bg-white">
+     
         <div className=" mt-10 ">
-          <div className="bg-home-bg4 bg-no-repeat ml-5  w-100% mr-5 flex justify-center items-center  h-[70vh]">
+          <div className="bg-home-bg4 bg-no-repeat ml-5   w-100% mr-5 flex justify-center items-center  h-[70vh]">
             <div className="text-center">
               <h1 className="text-white text-5xl font-semibold">
                 Better for People & the Planet
@@ -15,10 +17,15 @@ function Footer() {
                 Ut eget at et aliquam sit quis nisl, pharetra et ac pharetra est
                 dictum in vulputate
               </h6>
-              <Button className="text-black bg-white border-black border-2 mr-4 mt-4">
+              <Button onClick={()=>{
+                navigate('/women')
+              }} className="text-black bg-white border-black border-2 mr-4 mt-4">
+                 {" "}
                 Shop women
               </Button>
-              <Button className="text-black bg-white border-black border-2 ml-4 mt-4">
+              <Button className="text-black bg-white border-black border-2 ml-4 mt-4" onClick={()=>{
+                navigate('/men')
+              }}>
                 Shop bymen
               </Button>
             </div>
@@ -118,7 +125,7 @@ function Footer() {
             </div>
           </div>
         </div>
-      </div>
+     
     </div>
   );
 }

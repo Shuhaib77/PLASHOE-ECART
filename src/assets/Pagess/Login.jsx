@@ -1,20 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Input, Button } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { logionschema } from "../Components/validation/Loginvalidation";
 import axios from "axios";
 import { toast } from "sonner";
+import { contexts } from "../../App";
 
 function Login() {
   const navigtate = useNavigate();
-  const [datas, setdatass] = useState([]);
+  
+  const{user,setuser,udatass, setudatass}=useContext(contexts)
   useEffect(() => {
     const fetchmailandpass = async () => {
       const response = await axios.get("http://localhost:4000/user");
       try {
         // console.log(response.data);
-        setdatass(response.data);
+        setudatass(response.data);
+        
       } catch (error) {
         toast.warning("fetching failed");
       }
@@ -23,6 +26,7 @@ function Login() {
     fetchmailandpass();
   }, []);
   // console.log(datas);
+  console.log(udatass);
 
   const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: {
@@ -31,20 +35,22 @@ function Login() {
     },
     validationSchema: logionschema,
     onSubmit: async (values) => {
-      const findpassnadmail = datas.find(
-        (user) => user.email == values.email && user.password == values.password
-      );
-      console.log(findpassnadmail);
-      if (findpassnadmail) {
-        toast.success("Login success full");
-        navigtate("/");
-      } else {
-        toast.warning("user not find");
-      }
-
       const response = await axios.get("http://localhost:4000/user");
-      console.log(response.data);
-      console.log(values);
+      const user = response.data.find(
+        (user) => user.email === values.email && user.password === values.password
+      );
+
+      if (user) {
+        setuser(user);
+        navigtate("/"); 
+        console.log(user); 
+
+        
+        toast.success("Login successful");
+       
+      } else {
+        toast.error("Invalid email or password");
+      }
     },
   });
 

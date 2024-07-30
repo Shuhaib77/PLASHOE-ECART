@@ -1,8 +1,9 @@
 import React from "react";
 import { Button } from "@material-tailwind/react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Homebanner() {
+  const navigate=useNavigate()
   return (
     <div>
       <div>
@@ -17,8 +18,18 @@ function Homebanner() {
               tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.
             </p>
             <div className="mt-5 ">
-              <Button className="bg-white text-black  border-black border-2"> shop Men</Button>
-              <Button className="ml-4 text-black bg-white  border-black border-2"> shop woMen</Button>
+              <Button className="bg-white text-black  border-black border-2" onClick={()=>{
+                navigate('/men')
+              }}>
+                {" "}
+                shop Men
+              </Button>
+              <Button className="ml-4 text-black bg-white  border-black border-2" onClick={()=>{
+                navigate('/women')
+              }}>
+                {" "}
+                shop woMen
+              </Button>
             </div>
           </div>
 
@@ -136,12 +147,13 @@ function Homebanner() {
           </div>
         </div>
         <div className="flex justify-between mb-5">
-            <h1 className="ml-5 text-2xl text-red-800">Our best seller</h1>
-            <h1 className="border-b-2 border-blue-800 text-2xl text-red-800 mr-5"> View all best seller</h1>
+          <h1 className="ml-5 text-2xl text-red-800">Our best seller</h1>
+          <h1 className="border-b-2 border-blue-800 text-2xl text-red-800 mr-5">
+            {" "}
+            View all best seller
+          </h1>
         </div>
-        <div>
-            
-        </div>
+        <div></div>
       </div>
     </div>
   );

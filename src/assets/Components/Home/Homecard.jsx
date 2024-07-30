@@ -10,9 +10,13 @@ import {
 import axios from "axios";
 import { contexts } from "../../../App";
 import { data } from "autoprefixer";
+import { Link, useNavigate } from "react-router-dom";
+import User from "../../Pagess/User";
+
 
 function Homecard() {
-  const { datas, setdata,searchval,setsearchval } = useContext(contexts);
+  const navigate=useNavigate()
+  const { datas, setdata, searchval, setsearchval,User } = useContext(contexts);
 
   // const [datas, setdata] = useState([]);
   useEffect(() => {
@@ -47,8 +51,13 @@ function Homecard() {
                     </Typography>
                     <Typography>{data.title}</Typography>
                   </CardBody>
-                  <CardFooter className="pt-0">
-                    <Button>Read More</Button>
+                  <CardFooter className="pt-0 flex justify-between">
+                  <Button onClick={()=>{
+                    navigate(`/showcomponent/${data.id}`)
+                  }} > Read More </Button> 
+                   <Button onClick={()=>{
+                    navigate(`/cart/${data.id}`)
+                  }} >Add to cart</Button>
                   </CardFooter>
                 </Card>
               </div>
@@ -59,7 +68,9 @@ function Homecard() {
           <div className="bg-home-bg2 bg-no-repeat ml-5 mr-2 w-full h-[70vh] ">
             <div className=" flex justify-center h-[70vh]  items-center">
               {/* <h1 className="text-white block">Men</h1> <br /> */}
-              <Button className="text-black bg-white border-black border-2">
+              <Button className="text-black bg-white border-black border-2" onClick={()=>{
+                navigate('/collection')
+              }}>
                 {" "}
                 Shop now
               </Button>
@@ -68,7 +79,9 @@ function Homecard() {
           <div className="bg-home-bg3 bg-no-repeat w-full mr-5 ml-2">
             <div className=" flex justify-center  h-[70vh]  items-center">
               {/* <h1 className="text-white block">Men</h1> */}
-              <Button className="text-black bg-white  border-black border-2">
+              <Button className="text-black bg-white  border-black border-2" onClick={()=>{
+                navigate('/collection')
+              }}>
                 {" "}
                 Shop now
               </Button>
@@ -89,8 +102,13 @@ function Homecard() {
                     </Typography>
                     <Typography>{data.title}</Typography>
                   </CardBody>
-                  <CardFooter className="pt-0">
-                    <Button>Read More</Button>
+                  <CardFooter className="pt-0 flex justify-between" >
+                    <Button onClick={()=>{
+                    navigate(`/showcomponent/${data.id}`)
+                  }} >Read More</Button>
+                  <Button onClick={()=>{
+                    navigate(`/cart/${data.id}`)
+                  }} >Add to cart</Button>
                   </CardFooter>
                 </Card>
               </>
@@ -134,8 +152,6 @@ function Homecard() {
         </div>
         {/* tosearch */}
 
-
-
         {/* <div className="flex flex-wrap justify-center gap-10">
 
           {
@@ -176,11 +192,6 @@ function Homecard() {
               
          
         </div> */}
-
-
-
-
-
       </div>
     </div>
   );

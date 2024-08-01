@@ -8,7 +8,7 @@ import { BrowserRouter } from 'react-router-dom'
 import Routesval from './assets/Components/Routees/Routesval.jsx';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <ThemeProvider>
     <BrowserRouter>
     
@@ -18,5 +18,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
     </ThemeProvider>
 
-  </React.StrictMode>,
+  // </React.StrictMode>,
 )

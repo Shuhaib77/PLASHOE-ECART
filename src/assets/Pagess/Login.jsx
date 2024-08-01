@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Input, Button } from "@material-tailwind/react";
-import { Link, useNavigate } from "react-router-dom";
+import { json, Link, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import { logionschema } from "../Components/validation/Loginvalidation";
 import axios from "axios";
@@ -17,6 +17,7 @@ function Login() {
       try {
         // console.log(response.data);
         setudatass(response.data);
+        console.log(response.data);
         
       } catch (error) {
         toast.warning("fetching failed");
@@ -36,17 +37,19 @@ function Login() {
     validationSchema: logionschema,
     onSubmit: async (values) => {
       const response = await axios.get("http://localhost:4000/user");
-      const user = response.data.find(
-        (user) => user.email === values.email && user.password === values.password
-      );
+      const user = response.data.find((user) => user.email === values.email && user.password === values.password);
 
       if (user) {
         setuser(user);
-        navigtate("/"); 
-        console.log(user); 
 
-        
-        toast.success("Login successful");
+        navigtate("/"); 
+        if(navigtate('/')){
+          
+        }
+        console.log(user);
+        localStorage.setItem('user',JSON.stringify(user)) 
+       
+       toast.success("Login successful");
        
       } else {
         toast.error("Invalid email or password");

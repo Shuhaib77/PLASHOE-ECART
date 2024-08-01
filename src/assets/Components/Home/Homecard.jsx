@@ -16,7 +16,7 @@ import User from "../../Pagess/User";
 
 function Homecard() {
   const navigate=useNavigate()
-  const { datas, setdata, searchval, setsearchval,User } = useContext(contexts);
+  const { datas, setdata, searchval, setsearchval,User,shoeid,setshoeid,fn } = useContext(contexts);
 
   // const [datas, setdata] = useState([]);
   useEffect(() => {
@@ -55,8 +55,12 @@ function Homecard() {
                   <Button onClick={()=>{
                     navigate(`/showcomponent/${data.id}`)
                   }} > Read More </Button> 
-                   <Button onClick={()=>{
-                    navigate(`/cart/${data.id}`)
+                   <Button  onClick={()=>{
+                    
+                    setshoeid(data.id)
+                    
+                    
+                 
                   }} >Add to cart</Button>
                   </CardFooter>
                 </Card>
@@ -107,13 +111,18 @@ function Homecard() {
                     navigate(`/showcomponent/${data.id}`)
                   }} >Read More</Button>
                   <Button onClick={()=>{
-                    navigate(`/cart/${data.id}`)
+                    
+                    setshoeid(data.id)
+                 
                   }} >Add to cart</Button>
                   </CardFooter>
                 </Card>
+                
               </>
+            
             );
           })}
+         
         </div>
 
         <div className="w-100% h-[60vh] bg-blue-gray-100 flex justify-around items-center mt-10 ml-5 mr-5 ">

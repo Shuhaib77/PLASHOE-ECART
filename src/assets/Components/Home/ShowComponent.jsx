@@ -32,8 +32,7 @@ function ShowComponent() {
 
     },[datas])
    
-    
-    
+
   return (
     <>
         <div>
@@ -56,12 +55,10 @@ function ShowComponent() {
                     <Typography>{data.title}</Typography>
                   </CardBody>
                   <CardFooter className="pt-0 flex justify-between">
-                  <Button  > Read More </Button> <Button onClick={()=>{
+                <Button onClick={()=>{
                     navigate(`/showcomponent/${data.id}`)
                   }}>Read More</Button>
-                   <Button onClick={()=>{
-                    navigate(`/cart/${data.id}`)
-                  }} >Add to cart</Button> 
+                   <Button >Add to cart</Button> 
                   </CardFooter>
                 </Card>
               </div>

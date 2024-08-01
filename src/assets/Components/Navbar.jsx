@@ -11,7 +11,8 @@ function Navbar() {
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
-  const { search, setsearh } = useContext(contexts);
+  const { search, setsearh, user } = useContext(contexts);
+  const [menu, setmenu] = useState(false);
   useEffect(() => {
     const fdatass = async () => {
       const response = await axios.get("http://localhost:4000/datass");
@@ -30,8 +31,9 @@ function Navbar() {
     );
     setsearh(inputWord);
     // console.log(inputWord);
-    if (inputWord) {
+    if (inputWord.length >= 0) {
       toast.success("finded");
+
       navigate("/all");
     } else {
       toast.warning("not find");
@@ -42,73 +44,129 @@ function Navbar() {
     <div className="bg-white ">
       <div>
         <div className="h-[4vh]  bg-gray-300"></div>
-        <div className="mt-3 bg-red  flex justify-between ">
-          <div className="flex ">
-            <div className="text-2xl mt-5 ml-6 font-semibold ">PLASHOE</div>
-            <div className="text-l mt-6 ml-8 text-gray-700 font-medium ">
-              <Link to={"/"} className="hover:border-b-2 border-pink-500  hover:text-black ">PLASHOE</Link>
+        <div className="mt-2 bg-red  flex justify-around ">
+          <div className="flex items-center  ">
+          <div className="text-2xl  font-semibold md:block hidden ">PLASHOE</div>
+           
+            <div className="text-l  ml-8 text-gray-700 font-medium md:block hidden ">
+              <Link
+                to={"/"}
+                className="hover:border-b-2 border-pink-500  hover:text-black "
+              >
+                PLASHOE
+              </Link>
             </div>
-            <div className="text-l mt-6 ml-5  text-gray-700  font-medium  ">
-              <Link to={"/men"} className="hover:border-b-2 border-pink-500  hover:text-black" >MEN</Link>
+            <div className="text-l  ml-5  text-gray-700  font-medium md:block hidden   ">
+              <Link
+                to={"/men"}
+                className="hover:border-b-2 border-pink-500  hover:text-black"
+              >
+                MEN
+              </Link>
             </div>
-            <div className="text-l mt-6 ml-5 text-gray-700 font-medium ">
-              <Link to={"/women"} className="hover:border-b-2 border-pink-500  hover:text-black">WOMEN</Link>
+            <div className="text-l ml-5 text-gray-700 font-medium  md:block hidden ">
+              <Link
+                to={"/women"}
+                className="hover:border-b-2 border-pink-500  hover:text-black"
+              >
+                WOMEN
+              </Link>
             </div>
-            <div className="text-l mt-6 ml-5 text-gray-700 font-medium ">
-              <Link to={"/collection"} className="hover:border-b-2 border-pink-500  hover:text-black">COLLECTION</Link>
+            <div className="text-l  ml-5 text-gray-700 font-medium md:block hidden  ">
+              <Link
+                to={"/collection"}
+                className="hover:border-b-2 border-pink-500  hover:text-black"
+              >
+                COLLECTION
+              </Link>
             </div>
-            <div className="text-l mt-6 ml-5 text-gray-700 font-medium ">
-            <Link to={"/lookbook"} className="hover:border-b-2 border-pink-500  hover:text-black">LOOKBOOK</Link>
+            <div className="text-l  ml-5 text-gray-700 font-medium md:block hidden  ">
+              <Link
+                to={"/lookbook"}
+                className="hover:border-b-2 border-pink-500  hover:text-black"
+              >
+                LOOKBOOK
+              </Link>
             </div>
-            <div className="text-l mt-6 ml-5 text-gray-700 font-medium ">
+            <div className="text-l  ml-5 text-gray-700 font-medium md:block hidden  ">
               SALE
             </div>
-          </div>
-          <div>
-            <div className="flex ">
-              <div className="mt-3">
-                <Input
-                  label="type here..."
-                  onChange={(e) => {
-                    setsearchval(e.target.value);
-                  }}
-                  value={searchval}
-                ></Input>
-              </div>
-              <div className="relative right-20 left-1 top-3">
-                <Button className="" onClick={handleSearch}>
-                  {" "}
-                  Search
-                </Button>
-              </div>
-              <div className="text-l mt-6 ml-8  text-gray-700 font-medium ">
-              <Link to={"/ourstory"} className="hover:border-b-2 border-pink-500 hover:text-black">OURSTORY</Link>
-              </div>
-              <div className="text-l mt-6 ml-8  text-gray-700  font-medium ">
-                CONTACT
-              </div>
-              <div className="text-l mt-6 ml-8 text-gray-700 font-medium hover:border-b-2 border-pink-500  ">
-                <i
-                  class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-light-green-900"
-                  // style={{ color: "#000000" }}
-                  
-                ></i>
-              </div>
-              <div
-                className="text-l mt-6 ml-8 mr-8 text-gray-700 font-medium hover:border-b-2 border-pink-500  "
-                onClick={() => {
-                  navigate("/login");
+            <div className=" ml-2 ">
+              <Input
+                label="type here..."
+                onChange={(e) => {
+                  setsearchval(e.target.value);
                 }}
+                value={searchval}
+                className=""
+              ></Input>
+            </div>
+            <div className=" ">
+              <Button className="" onClick={handleSearch}>
+                {" "}
+                Search
+              </Button>
+            </div>
+          </div>
+
+          <div className="flex items-center ">
+            <div className="text-l  ml-4  text-gray-700 font-medium md:block hidden  ">
+              <Link
+                to={"/ourstory"}
+                className="hover:border-b-2 border-pink-500 hover:text-black"
               >
-                <i 
-                  class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
-                  // style={{ color: "#000000"  }}
-                ></i>
-              </div>
+                OURSTORY
+              </Link>
+            </div>
+            <div className="text-l ml-4 text-gray-700  font-medium md:block hidden    ">
+              CONTACT
+            </div>
+            <div
+              className="text-l  ml-4 text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              <i
+                class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-light-green-900"
+                // style={{ color: "#000000" }}
+              ></i>
+            </div>
+            <div
+              className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
+              onClick={() => {
+                if (user.id) {
+                  // navigate('/register')
+                  toast.warning("loged in");
+                } else {
+                  navigate("/login");
+                }
+              }}
+            >
+              <i
+                class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
+
+                // style={{ color: "#000000"  }}
+              ></i>
+            </div>
+            <div className="sm:hidden">
+              <i
+                class="fa-regular fa-bars fa-2xl  "
+                onClick={() => {
+                  if (menu) {
+                    setmenu(false);
+                  } else {
+                    setmenu(true);
+                  }
+                }}
+                //  style={{color: "#000000"}}
+              ></i>
             </div>
           </div>
         </div>
       </div>
+
+      {menu}
     </div>
   );
 }

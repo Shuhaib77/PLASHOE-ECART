@@ -60,9 +60,7 @@ function Collection() {
                       <Button onClick={()=>{
                     navigate(`/showcomponent/${data.id}`)
                   }} > Read More </Button> 
-                   <Button onClick={()=>{
-                    navigate(`/cart/${data.id}`)
-                  }} >Add to cart</Button>
+                   <Button >Add to cart</Button>
                       </CardFooter>
                     </Card>
                   </div>

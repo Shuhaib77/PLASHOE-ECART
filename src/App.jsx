@@ -27,11 +27,15 @@ function App() {
   const [user,setuser]=useState([]);
   const [udatass, setudatass] = useState([]);
 
+  const [shoeid,setshoeid]=useState([])
+  const [cartitem, setcartitem] = useState([])
+  
+
 
   return (
     <>
-    <Toaster richColors position="top-center-" />
-      <contexts.Provider value={{ datas, setdata,search,setsearh,user,setuser,udatass, setudatass}}>
+    <Toaster richColors position="bottom-right" />
+      <contexts.Provider value={{ datas, setdata,search,setsearh,user,setuser,udatass, setudatass,shoeid,setshoeid,cartitem, setcartitem}}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/user" element={<User />}></Route>
@@ -45,7 +49,7 @@ function App() {
           <Route path="/lookbook" element={<Lookbook />}></Route>
           <Route path="/showcomponent/:dataid" element={<ShowComponent />}></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
-          <Route path="/cart/:productid" element={<Cart />}></Route>
+          <Route path="/cart" element={<Cart />}></Route>
         </Routes>
       </contexts.Provider>
     </>

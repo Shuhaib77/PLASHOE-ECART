@@ -12,11 +12,19 @@ import { contexts } from "../../../App";
 import { data } from "autoprefixer";
 import { Link, useNavigate } from "react-router-dom";
 import User from "../../Pagess/User";
+import Cart from "../Cart";
+import card from "@material-tailwind/react/theme/components/card";
+import { toast } from "sonner";
+// import { Setshoeide } from "./Addcart";
+// import { Setshoeide } from "./Addcart";
 
+// import Addtocart from "./Addtocart";
 
 function Homecard() {
-  const navigate=useNavigate()
-  const { datas, setdata, searchval, setsearchval,User,shoeid,setshoeid,fn } = useContext(contexts);
+  const navigate = useNavigate();
+  const { datas, setdata, setshoeid, shoeid, cartitem, setcartitem ,addtocarts} =
+    useContext(contexts);
+  // console.log(sho/eid.id);
 
   // const [datas, setdata] = useState([]);
   useEffect(() => {
@@ -33,7 +41,44 @@ function Homecard() {
     console.log(datas);
   }, []);
 
-  // console.log(datas,"data")
+  // const addtocart = async (data) => {
+    
+
+  //     const usersid = localStorage.getItem("id");
+  //     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+
+  //   try {
+  //     const cartss = res.data.cart;
+
+  //     const check=cartss.find((itemid)=>itemid.id===data.id)
+  //     console.log(check,"check");
+  //     if(check){
+  //       toast.warning("product alredy exist")
+  //     }else{
+  //       const update = [...cartss, data];
+  //     const reso = await axios.patch(`http://localhost:4000/user/${usersid}`, {
+  //       cart: update,
+  //     });
+  //     console.log(reso.data, "ll");
+  //     setcartitem(reso.data);
+  //     toast.success("product added tocart")
+
+  //     }
+
+      
+
+  //     // toast.warning("productin cart")
+
+  //     // setcartitem()
+  //     // console.log(cartitem);
+
+  //     // console.log("adding " ,update);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // console.log(cartitem);
+  // console.log(datas, "data");
   return (
     <div>
       <div>
@@ -51,17 +96,27 @@ function Homecard() {
                     </Typography>
                     <Typography>{data.title}</Typography>
                   </CardBody>
+                
                   <CardFooter className="pt-0 flex justify-between">
-                  <Button onClick={()=>{
-                    navigate(`/showcomponent/${data.id}`)
-                  }} > Read More </Button> 
-                   <Button  onClick={()=>{
-                    
-                    setshoeid(data.id)
-                    
-                    
-                 
-                  }} >Add to cart</Button>
+                    <Button
+                      onClick={() => {
+                        navigate(`/showcomponent/${data.id}`);
+                      }}
+                    >
+                      {" "}
+                      Read More{" "}
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        // Setshoeide(data)
+                      addtocarts(data);
+
+                        // Setshoeide(data)
+                        // console.log(cartitem);
+                      }}
+                    >
+                      Add to cart
+                    </Button>
                   </CardFooter>
                 </Card>
               </div>
@@ -72,9 +127,12 @@ function Homecard() {
           <div className="bg-home-bg2 bg-no-repeat ml-5 mr-2 w-full h-[70vh] ">
             <div className=" flex justify-center h-[70vh]  items-center">
               {/* <h1 className="text-white block">Men</h1> <br /> */}
-              <Button className="text-black bg-white border-black border-2" onClick={()=>{
-                navigate('/collection')
-              }}>
+              <Button
+                className="text-black bg-white border-black border-2"
+                onClick={() => {
+                  navigate("/collection");
+                }}
+              >
                 {" "}
                 Shop now
               </Button>
@@ -83,9 +141,12 @@ function Homecard() {
           <div className="bg-home-bg3 bg-no-repeat w-full mr-5 ml-2">
             <div className=" flex justify-center  h-[70vh]  items-center">
               {/* <h1 className="text-white block">Men</h1> */}
-              <Button className="text-black bg-white  border-black border-2" onClick={()=>{
-                navigate('/collection')
-              }}>
+              <Button
+                className="text-black bg-white  border-black border-2"
+                onClick={() => {
+                  navigate("/collection");
+                }}
+              >
                 {" "}
                 Shop now
               </Button>
@@ -105,24 +166,34 @@ function Homecard() {
                       {data.brand}
                     </Typography>
                     <Typography>{data.title}</Typography>
+                   
+                    <Typography>{data.catogery}</Typography>
                   </CardBody>
-                  <CardFooter className="pt-0 flex justify-between" >
-                    <Button onClick={()=>{
-                    navigate(`/showcomponent/${data.id}`)
-                  }} >Read More</Button>
-                  <Button onClick={()=>{
-                    
-                    setshoeid(data.id)
-                 
-                  }} >Add to cart</Button>
+                  <h1>{data.price}</h1>
+                  <CardFooter className="pt-0 flex justify-between">
+                    <Button
+                      onClick={() => {
+                        navigate(`/showcomponent/${data.id}`);
+                      }}
+                    >
+                      Read More
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        console.log(cartitem);
+                        // Setshoeide(data)
+
+                        addtocarts(data);
+                      }}
+                    >
+                      Add to cart
+                    </Button>
                   </CardFooter>
                 </Card>
-                
+
               </>
-            
             );
           })}
-         
         </div>
 
         <div className="w-100% h-[60vh] bg-blue-gray-100 flex justify-around items-center mt-10 ml-5 mr-5 ">
@@ -202,6 +273,7 @@ function Homecard() {
          
         </div> */}
       </div>
+      knk
     </div>
   );
 }

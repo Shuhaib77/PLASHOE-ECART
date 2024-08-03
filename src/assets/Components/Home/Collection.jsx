@@ -11,10 +11,57 @@ import {
 } from "@material-tailwind/react";
 import { contexts } from "../../../App";
 import { useNavigate } from "react-router-dom";
+// import { toast } from "sonner";
+// import axios from "axios";
+// import Addtocart from "./Addtocart";
+// import Addtocart from "./Addtocart";
 
 function Collection() {
-  const { datas } = useContext(contexts);
+  const { datas,cartitem, setcartitem,addtocarts } = useContext(contexts);
   const navigate=useNavigate()
+
+
+  // addtocart
+  // const addtocart = async (data) => {
+    
+
+  //   try {
+  //     const usersid = localStorage.getItem("id");
+  //     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+  //     const cartss = res.data.cart;
+
+  //     const check=cartss.find((itemid)=>itemid.id===data.id)
+  //     console.log(check,"check");
+  //     if(check){
+  //       toast.warning("product alredy exist")
+  //     }else{
+  //       const update = [...cartss, data];
+  //     const reso = await axios.patch(`http://localhost:4000/user/${usersid}`, {
+  //       cart: update,
+  //     });
+  //     console.log(reso.data, "ll");
+  //     setcartitem(reso.data);
+  //     toast.success("product added tocart")
+
+  //     }
+
+      
+
+  //     // toast.warning("productin cart")
+
+  //     // setcartitem()
+  //     // console.log(cartitem);
+
+  //     // console.log("adding " ,update);
+  //   } catch (err) {
+  //     console.log(err);
+  //   }
+  // };
+  // console.log(cartitem);
+  // // console.log(datas, "data");
+  //   // addtocart
+
+ 
 
   return (
     <div>
@@ -52,6 +99,7 @@ function Collection() {
                           color="blue-gray"
                           className="mb-2"
                         >
+                         
                           {data.brand}
                         </Typography>
                         <Typography>{data.title}</Typography>
@@ -60,9 +108,13 @@ function Collection() {
                       <Button onClick={()=>{
                     navigate(`/showcomponent/${data.id}`)
                   }} > Read More </Button> 
-                   <Button >Add to cart</Button>
+                   <Button onClick={()=>{
+                    addtocarts(data)
+                   
+                   }} >Add to cart</Button>
                       </CardFooter>
                     </Card>
+
                   </div>
                 );
               })}

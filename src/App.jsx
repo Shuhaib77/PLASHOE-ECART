@@ -18,6 +18,8 @@ import Lookbook from "./assets/Components/Home/Lookbook";
 import ShowComponent from "./assets/Components/Home/ShowComponent";
 import Ourstory from "./assets/Components/Home/Ourstory";
 import Cart from "./assets/Components/Cart";
+import { toast } from "sonner";
+import axios from "axios";
 
 export const contexts = createContext();
 
@@ -29,13 +31,58 @@ function App() {
 
   const [shoeid,setshoeid]=useState([])
   const [cartitem, setcartitem] = useState([])
+
+
+
+  const addtocarts = async (data) => {
+    
+
+    const usersid = localStorage.getItem("id");
+    const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+
+  try {
+    const cartss = res.data.cart;
+
+    const check=cartss.find((itemid)=>itemid.id===data.id)
+    console.log(check,"check");
+    if(check){
+      toast.warning("product alredy exist")
+    }else{
+      const update = [...cartss, data];
+    const reso = await axios.patch(`http://localhost:4000/user/${usersid}`, {
+      cart: update,
+    });
+    console.log(reso.data, "ll");
+    setcartitem(reso.data);
+    toast.success("product added tocart")
+
+    }
+
+    
+
+    // toast.warning("productin cart")
+
+    // setcartitem()
+    // console.log(cartitem);
+
+    // console.log("adding " ,update);
+  } catch (err) {
+    console.log(err);
+  }
+};
+console.log(cartitem);
+console.log(datas, "data");
+        
+
+
+
   
 
 
   return (
     <>
     <Toaster richColors position="bottom-right" />
-      <contexts.Provider value={{ datas, setdata,search,setsearh,user,setuser,udatass, setudatass,shoeid,setshoeid,cartitem, setcartitem}}>
+      <contexts.Provider value={{ datas, setdata,search,setsearh,user,setuser,udatass, setudatass,shoeid,setshoeid,cartitem, setcartitem,addtocarts}}>
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/user" element={<User />}></Route>

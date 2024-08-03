@@ -12,9 +12,13 @@ import {
   } from "@material-tailwind/react";
 import Navbar from '../Navbar';
 import Footer from '../Footer';
+// import { Setshoeide } from './Addtocart';
+
+
+
 
 function ShowComponent() {
-    const{ datas } = useContext( contexts);
+    const{ datas,addtocarts } = useContext( contexts);
     const [dedata,setdedata]=useState([]);
     
   
@@ -58,7 +62,9 @@ function ShowComponent() {
                 <Button onClick={()=>{
                     navigate(`/showcomponent/${data.id}`)
                   }}>Read More</Button>
-                   <Button >Add to cart</Button> 
+                   <Button onClick={()=>{
+                    addtocarts(data)
+                   }}  >Add to cart</Button> 
                   </CardFooter>
                 </Card>
               </div>

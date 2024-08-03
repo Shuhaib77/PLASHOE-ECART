@@ -37,11 +37,13 @@ function Login() {
     validationSchema: logionschema,
     onSubmit: async (values) => {
       const response = await axios.get("http://localhost:4000/user");
+      // idss=localStorage.getItem("id")
       const user = response.data.find((user) => user.email === values.email && user.password === values.password);
 
       if (user) {
+        
         setuser(user);
-
+        localStorage.setItem("id",user.id)
         navigtate("/"); 
         if(navigtate('/')){
           

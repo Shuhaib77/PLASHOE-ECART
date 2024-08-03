@@ -2,6 +2,7 @@ import React from "react";
 import { Button } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 function Homebanner() {
   const navigate=useNavigate()
   return (

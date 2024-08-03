@@ -13,6 +13,7 @@ function Navbar() {
   const [searchval, setsearchval] = useState("");
   const { search, setsearh, user } = useContext(contexts);
   const [menu, setmenu] = useState(false);
+  const usersss =localStorage.getItem("id")
   useEffect(() => {
     const fdatass = async () => {
       const response = await axios.get("http://localhost:4000/datass");
@@ -134,21 +135,47 @@ function Navbar() {
             </div>
             <div
               className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
-              onClick={() => {
-                if (user.id) {
-                  // navigate('/register')
-                  toast.warning("loged in");
-                } else {
-                  navigate("/login");
-                }
-              }}
+              
             >
               <i
                 class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
+                onClick={() => {
+                  if (usersss) {
+                    // navigate('/register')
+                    localStorage.removeItem("id")
+                 
+                    toast.warning("loged Out");
+                  
+                       navigate('/')
+                    // toast.warning("loged in");
+                  } else {
+                    navigate("/login");
+                    // toast.warning("logedddd")
+                  }
+                }}
 
                 // style={{ color: "#000000"  }}
               ></i>
+            
             </div>
+            {/* <div
+              className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
+              
+            >
+              <i
+                class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
+                onClick={() => {
+                  if (usersss) {
+                    
+                  } else {
+                    // navigate("/login");
+                 
+                  }
+                }}
+
+                // style={{ color: "#000000"  }}
+              ></i>
+            </div> */}
             <div className="sm:hidden">
               <i
                 class="fa-regular fa-bars fa-2xl  "

@@ -29,6 +29,7 @@ const AllProducts = () => {
         {search?.map((data) => {
           return (
             <div className="  ">
+            
               <Card className="h-[50vh] w-[50vh] mt-20 gap-1 ">
                 <CardHeader color="blue-gray" className="relative h-56">
                   <img src={data.image} alt="card-image" />

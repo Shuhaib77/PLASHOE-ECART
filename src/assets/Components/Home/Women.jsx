@@ -16,60 +16,14 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 function Women() {
-  const { datas,cartitem, setcartitem,addtocarts } = useContext(contexts);
-  const [womendata, setwomendata ] = useState([]);
-  const navigate=useNavigate()
+  const { datas, cartitem, setcartitem, addtocarts } = useContext(contexts);
+  const [womendata, setwomendata] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const res = datas.filter((wdata) => wdata.catogery == "women");
     setwomendata(res);
   }, [datas]);
-
-
-  // addtocart
-  // const addtocart = async (data) => {
-    
-
-  //   try {
-  //     const usersid = localStorage.getItem("id");
-  //     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
-  //     const cartss = res.data.cart;
-
-  //     const check=cartss.find((itemid)=>itemid.id===data.id)
-  //     console.log(check,"check");
-  //     if(check){
-  //       toast.warning("product alredy exist")
-  //     }else{
-  //       const update = [...cartss, data];
-  //     const reso = await axios.patch(`http://localhost:4000/user/${usersid}`, {
-  //       cart: update,
-  //     });
-  //     console.log(reso.data, "ll");
-  //     setcartitem(reso.data);
-  //     toast.success("product added tocart")
-
-  //     }
-
-      
-
-  //     // toast.warning("productin cart")
-
-  //     // setcartitem()
-  //     console.log(cartitem);
-
-  //     // console.log("adding " ,update);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  
-
-
-
-    // addtocart
-
-
-  // console.log(datas);
 
   return (
     <div>
@@ -88,9 +42,14 @@ function Women() {
               </div>
               <div className="mr-5">
                 <span className="mr-5">Default sorting</span>
-                <Button className="bg-light-green-800" onClick={()=>{
-                navigate('/collection')
-              }} >Show all</Button>
+                <Button
+                  className="bg-light-green-800"
+                  onClick={() => {
+                    navigate("/collection");
+                  }}
+                >
+                  Show all
+                </Button>
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
@@ -112,12 +71,20 @@ function Women() {
                         <Typography>{data.title}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
-                        <Button onClick={()=>{
-                    navigate(`/showcomponent/${data.id}`)
-                  }}>Read More</Button>
-                   <Button onClick={()=>{
-                    addtocarts(data)
-                   }} >Add to cart</Button>
+                        <Button
+                          onClick={() => {
+                            navigate(`/showcomponent/${data.id}`);
+                          }}
+                        >
+                          Read More
+                        </Button>
+                        <Button
+                          onClick={() => {
+                            addtocarts(data);
+                          }}
+                        >
+                          Add to cart
+                        </Button>
                       </CardFooter>
                     </Card>
                   </div>

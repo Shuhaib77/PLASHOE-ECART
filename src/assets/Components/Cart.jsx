@@ -20,12 +20,18 @@ import { data } from "autoprefixer";
 const reducer = (state, action) => {
   switch (action.type) {
     case "increment":
-      return state.map((item)=>item.id==action.id?{...item,quantity:item.quantity+1}:item) ;
-      // return {count:state.count+action.value}
+      return state.map((item) =>
+        item.id == action.id ? { ...item, quantity: item.quantity + 1 } : item
+      );
+    // return {count:state.count+action.value}
 
     case "decrement":
-     return state.map((item)=> item.id==action.id&&item.quantity>1?{...item,quantity:item.quantity-1}:item);
-      
+      return state.map((item) =>
+        item.id == action.id && item.quantity > 1
+          ? { ...item, quantity: item.quantity - 1 }
+          : item
+      );
+
     default:
       return state;
   }
@@ -34,10 +40,10 @@ const reducer = (state, action) => {
 function Cart() {
   // const navigate=useNavigate()
 
-  const {cartitem } = useContext(contexts);
+  const { cartitem } = useContext(contexts);
   // console.log("sa",cartitem);
   // console.log(cartitem.cart);
-  const [state, dispatch] = useReducer(reducer,cartitem.cart )
+  const [state, dispatch] = useReducer(reducer, cartitem.cart);
 
   return (
     <>
@@ -66,7 +72,6 @@ function Cart() {
                       <Typography>{data?.title}</Typography>
                       <Typography>{data?.price}</Typography>
                       <Typography>{data?.catogery}</Typography>
-                     
                     </CardBody>
                     <CardFooter className="pt-0 flex justify-between mt-3">
                       <div>
@@ -79,14 +84,14 @@ function Cart() {
                           Read More{" "}
                         </Button>
                       </div>
-                     
+
                       <div className="flex justify-center">
                         <Button
                           className="text-black bg-white"
-                          onClick={() => 
+                          onClick={() =>
                             dispatch({
                               type: "decrement",
-                              id:data.id,
+                              id: data.id,
                             })
                           }
                         >
@@ -95,10 +100,10 @@ function Cart() {
                         <h1 className="mt-3 ml-3 mr-3">{data?.quantity} </h1>
                         <Button
                           className="text-black bg-white"
-                          onClick={() => 
+                          onClick={() =>
                             dispatch({
                               type: "increment",
-                              id:data.id,
+                              id: data.id,
                             })
                           }
                         >

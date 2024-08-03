@@ -22,8 +22,15 @@ import { toast } from "sonner";
 
 function Homecard() {
   const navigate = useNavigate();
-  const { datas, setdata, setshoeid, shoeid, cartitem, setcartitem ,addtocarts} =
-    useContext(contexts);
+  const {
+    datas,
+    setdata,
+    setshoeid,
+    shoeid,
+    cartitem,
+    setcartitem,
+    addtocarts,
+  } = useContext(contexts);
   // console.log(sho/eid.id);
 
   // const [datas, setdata] = useState([]);
@@ -41,44 +48,6 @@ function Homecard() {
     console.log(datas);
   }, []);
 
-  // const addtocart = async (data) => {
-    
-
-  //     const usersid = localStorage.getItem("id");
-  //     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
-
-  //   try {
-  //     const cartss = res.data.cart;
-
-  //     const check=cartss.find((itemid)=>itemid.id===data.id)
-  //     console.log(check,"check");
-  //     if(check){
-  //       toast.warning("product alredy exist")
-  //     }else{
-  //       const update = [...cartss, data];
-  //     const reso = await axios.patch(`http://localhost:4000/user/${usersid}`, {
-  //       cart: update,
-  //     });
-  //     console.log(reso.data, "ll");
-  //     setcartitem(reso.data);
-  //     toast.success("product added tocart")
-
-  //     }
-
-      
-
-  //     // toast.warning("productin cart")
-
-  //     // setcartitem()
-  //     // console.log(cartitem);
-
-  //     // console.log("adding " ,update);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  // console.log(cartitem);
-  // console.log(datas, "data");
   return (
     <div>
       <div>
@@ -96,7 +65,7 @@ function Homecard() {
                     </Typography>
                     <Typography>{data.title}</Typography>
                   </CardBody>
-                
+
                   <CardFooter className="pt-0 flex justify-between">
                     <Button
                       onClick={() => {
@@ -109,7 +78,7 @@ function Homecard() {
                     <Button
                       onClick={() => {
                         // Setshoeide(data)
-                      addtocarts(data);
+                        addtocarts(data);
 
                         // Setshoeide(data)
                         // console.log(cartitem);
@@ -166,7 +135,7 @@ function Homecard() {
                       {data.brand}
                     </Typography>
                     <Typography>{data.title}</Typography>
-                   
+
                     <Typography>{data.catogery}</Typography>
                   </CardBody>
                   <h1>{data.price}</h1>
@@ -190,7 +159,6 @@ function Homecard() {
                     </Button>
                   </CardFooter>
                 </Card>
-
               </>
             );
           })}

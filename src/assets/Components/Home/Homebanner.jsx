@@ -2,9 +2,8 @@ import React from "react";
 import { Button } from "@material-tailwind/react";
 import { Link, useNavigate } from "react-router-dom";
 
-
 function Homebanner() {
-  const navigate=useNavigate()
+  const navigate = useNavigate();
   return (
     <div>
       <div>
@@ -19,15 +18,21 @@ function Homebanner() {
               tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.
             </p>
             <div className="mt-5 ">
-              <Button className="bg-white text-black  border-black border-2" onClick={()=>{
-                navigate('/men')
-              }}>
+              <Button
+                className="bg-white text-black  border-black border-2"
+                onClick={() => {
+                  navigate("/men");
+                }}
+              >
                 {" "}
                 shop Men
               </Button>
-              <Button className="ml-4 text-black bg-white  border-black border-2" onClick={()=>{
-                navigate('/women')
-              }}>
+              <Button
+                className="ml-4 text-black bg-white  border-black border-2"
+                onClick={() => {
+                  navigate("/women");
+                }}
+              >
                 {" "}
                 shop woMen
               </Button>

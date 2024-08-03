@@ -38,17 +38,17 @@ function Ourstory() {
           <div>
             <h1 className="text-2xl mb-4">Eco-design</h1>
             <p>
-            Risus leo molestie a aliquam amet urna orci ,
-              <br /> nisl dignissim elementum nibh felis ultrices <br />{" "}
-              vitae consectetur.
+              Risus leo molestie a aliquam amet urna orci ,
+              <br /> nisl dignissim elementum nibh felis ultrices <br /> vitae
+              consectetur.
             </p>
           </div>
           <div>
             <h1 className="text-2xl mb-4">Wildlife Preservation</h1>
             <p>
-            Pellentesque nunc ante augue adipiscing ,
-              <br /> sed suspendisse amet sed pellentesque <br />{" "}
-              convallis erat nibh vivamus.
+              Pellentesque nunc ante augue adipiscing ,
+              <br /> sed suspendisse amet sed pellentesque <br /> convallis erat
+              nibh vivamus.
             </p>
           </div>
         </div>

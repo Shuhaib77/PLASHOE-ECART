@@ -16,64 +16,15 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 function Men() {
-  const { datas,cartitem, setcartitem ,addtocarts} = useContext(contexts);
+  const { datas, cartitem, setcartitem, addtocarts } = useContext(contexts);
   const [mendata, setmendata] = useState([]);
-  const navigate=useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const res = datas.filter((men) => men.catogery == "men");
     setmendata(res);
   }, [datas]);
   console.log(mendata);
-
-
-  // addtocart
-  // const addtocart = async (data) => {
-    
-
-  //   try {
-  //     const usersid = localStorage.getItem("id");
-  //     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
-  //     const cartss = res.data.cart;
-
-  //     const check=cartss.find((itemid)=>itemid.id===data.id)
-  //     console.log(check,"check");
-  //     if(check){
-  //       toast.warning("product alredy exist")
-  //     }else{
-  //       const update = [...cartss, data];
-  //     const reso = await axios.patch(`http://localhost:4000/user/${usersid}`, {
-  //       cart: update,
-  //     });
-  //     console.log(reso.data, "ll");
-  //     setcartitem(reso.data);
-  //     toast.success("product added tocart")
-
-  //     }
-
-      
-
-  //     // toast.warning("productin cart")
-
-  //     // setcartitem()
-  //     console.log(cartitem);
-
-  //     // console.log("adding " ,update);
-  //   } catch (err) {
-  //     console.log(err);
-  //   }
-  // };
-  
-
-
-
-    // addtocart
-
-
-
-  // const res=datas.filter((men)=>men.catogery=="men")
-  // setmendata(res)
-  // console.log(mendata)
 
   return (
     <div>
@@ -92,9 +43,14 @@ function Men() {
               </div>
               <div className="mr-5">
                 <span className="mr-5">Default sorting</span>
-                <Button className="bg-light-green-800" onClick={()=>{
-                navigate('/collection')
-              }}  >Show all</Button>
+                <Button
+                  className="bg-light-green-800"
+                  onClick={() => {
+                    navigate("/collection");
+                  }}
+                >
+                  Show all
+                </Button>
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
@@ -116,12 +72,20 @@ function Men() {
                         <Typography>{data.title}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
-                        <Button onClick={()=>{
-                    navigate(`/showcomponent/${data.id}`)
-                  }}>Read More</Button>
-                   <Button onClick={()=>{
-                   addtocarts(data)
-                   }}  >Add to cart</Button>
+                        <Button
+                          onClick={() => {
+                            navigate(`/showcomponent/${data.id}`);
+                          }}
+                        >
+                          Read More
+                        </Button>
+                        <Button
+                          onClick={() => {
+                            addtocarts(data);
+                          }}
+                        >
+                          Add to cart
+                        </Button>
                       </CardFooter>
                     </Card>
                   </div>

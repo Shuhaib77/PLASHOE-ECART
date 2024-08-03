@@ -13,7 +13,7 @@ function Navbar() {
   const [searchval, setsearchval] = useState("");
   const { search, setsearh, user } = useContext(contexts);
   const [menu, setmenu] = useState(false);
-  const usersss =localStorage.getItem("id")
+  const usersss = localStorage.getItem("id");
   useEffect(() => {
     const fdatass = async () => {
       const response = await axios.get("http://localhost:4000/datass");
@@ -47,8 +47,10 @@ function Navbar() {
         <div className="h-[4vh]  bg-gray-300"></div>
         <div className="mt-2 bg-red  flex justify-around ">
           <div className="flex items-center  ">
-          <div className="text-2xl  font-semibold md:block hidden ">PLASHOE</div>
-           
+            <div className="text-2xl  font-semibold md:block hidden ">
+              PLASHOE
+            </div>
+
             <div className="text-l  ml-8 text-gray-700 font-medium md:block hidden ">
               <Link
                 to={"/"}
@@ -133,20 +135,17 @@ function Navbar() {
                 // style={{ color: "#000000" }}
               ></i>
             </div>
-            <div
-              className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
-              
-            >
+            <div className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   ">
               <i
                 class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
                 onClick={() => {
                   if (usersss) {
                     // navigate('/register')
-                    localStorage.removeItem("id")
-                 
+                    localStorage.removeItem("id");
+
                     toast.warning("loged Out");
-                  
-                       navigate('/')
+
+                    navigate("/");
                     // toast.warning("loged in");
                   } else {
                     navigate("/login");
@@ -154,28 +153,9 @@ function Navbar() {
                   }
                 }}
 
-                // style={{ color: "#000000"  }}
               ></i>
-            
             </div>
-            {/* <div
-              className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
-              
-            >
-              <i
-                class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
-                onClick={() => {
-                  if (usersss) {
-                    
-                  } else {
-                    // navigate("/login");
-                 
-                  }
-                }}
-
-                // style={{ color: "#000000"  }}
-              ></i>
-            </div> */}
+            
             <div className="sm:hidden">
               <i
                 class="fa-regular fa-bars fa-2xl  "

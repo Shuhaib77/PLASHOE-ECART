@@ -1,50 +1,43 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom';
-import { useContext } from 'react';
-import { contexts } from '../../../App';
+import React, { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import { contexts } from "../../../App";
 import {
-    Card,
-    CardHeader,
-    CardBody,
-    CardFooter,
-    Typography,
-    Button,
-  } from "@material-tailwind/react";
-import Navbar from '../Navbar';
-import Footer from '../Footer';
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
+import Navbar from "../Navbar";
+import Footer from "../Footer";
 // import { Setshoeide } from './Addtocart';
 
-
-
-
 function ShowComponent() {
-    const{ datas,addtocarts } = useContext( contexts);
-    const [dedata,setdedata]=useState([]);
-    
-  
-    const datatodescribe=useParams();
-    
-    
-    // console.log(datatodescribe);
-   
+  const { datas, addtocarts } = useContext(contexts);
+  const [dedata, setdedata] = useState([]);
 
-    useEffect(()=>{
-        const res=datas.filter((specificdata)=>specificdata.id===datatodescribe.dataid)
-        setdedata(res)
-       
-        // console.log(datas);
+  const datatodescribe = useParams();
 
-    },[datas])
-   
+  // console.log(datatodescribe);
+
+  useEffect(() => {
+    const res = datas.filter(
+      (specificdata) => specificdata.id === datatodescribe.dataid
+    );
+    setdedata(res);
+
+    // console.log(datas);
+  }, [datas]);
 
   return (
     <>
-        <div>
-            <Navbar/>
-        </div>
-        <div>
-        
-            <div className="flex  flex-wrap justify-center gap-10 mt-10 ">
+      <div>
+        <Navbar />
+      </div>
+      <div>
+        <div className="flex  flex-wrap justify-center gap-10 mt-10 ">
           {dedata.map((data) => {
             return (
               <div className="  ">
@@ -59,23 +52,30 @@ function ShowComponent() {
                     <Typography>{data.title}</Typography>
                   </CardBody>
                   <CardFooter className="pt-0 flex justify-between">
-                <Button onClick={()=>{
-                    navigate(`/showcomponent/${data.id}`)
-                  }}>Read More</Button>
-                   <Button onClick={()=>{
-                    addtocarts(data)
-                   }}  >Add to cart</Button> 
+                    <Button
+                      onClick={() => {
+                        navigate(`/showcomponent/${data.id}`);
+                      }}
+                    >
+                      Read More
+                    </Button>
+                    <Button
+                      onClick={() => {
+                        addtocarts(data);
+                      }}
+                    >
+                      Add to cart
+                    </Button>
                   </CardFooter>
                 </Card>
               </div>
             );
           })}
         </div>
-        </div>
-        <Footer/>
+      </div>
+      <Footer />
     </>
-    
-  )
+  );
 }
 
-export default ShowComponent
+export default ShowComponent;

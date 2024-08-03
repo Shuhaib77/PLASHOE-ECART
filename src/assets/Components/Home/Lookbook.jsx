@@ -52,7 +52,6 @@ function Lookbook() {
                   <br /> vel id ipsum ultricies ut faucibus ultrices.
                 </p>
               </div>
-              
             </div>
             <div className="mt-20">
               <img
@@ -67,9 +66,7 @@ function Lookbook() {
                   <br /> vel id ipsum ultricies ut faucibus ultrices.
                 </p>
               </div>
-              
             </div>
-            
           </div>
         </div>
       </div>

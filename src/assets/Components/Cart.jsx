@@ -109,6 +109,9 @@ function Cart() {
                         >
                           +
                         </Button>
+                        <div>
+                        <i class="fa-solid fa-trash fa-lg" style={{color: "#000000"}}></i>
+                        </div>
                       </div>
                     </CardFooter>
                   </Card>

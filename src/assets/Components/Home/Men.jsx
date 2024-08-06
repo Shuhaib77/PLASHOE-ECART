@@ -70,6 +70,8 @@ function Men() {
                           {data.brand}
                         </Typography>
                         <Typography>{data.title}</Typography>
+                        <Typography>{data.catogery}</Typography>
+                        <Typography>{data.price}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
                         <Button

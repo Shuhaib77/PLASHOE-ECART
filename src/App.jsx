@@ -30,7 +30,9 @@ function App() {
 
   const [shoeid, setshoeid] = useState([]);
   const [cartitem, setcartitem] = useState([]);
+  // const [cartnew,setcartnew]=useState([])
   const usersid = localStorage.getItem("id");
+  
 
   useEffect(() => {
     const fn = async () => {
@@ -95,6 +97,7 @@ function App() {
           cartitem,
           setcartitem,
           addtocarts,
+          
         }}
       >
         <Routes>

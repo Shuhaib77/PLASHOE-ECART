@@ -4,6 +4,7 @@ import Navbar from "../Components/Navbar";
 import Homebanner from "../Components/Home/Homebanner";
 import Homecard from "../Components/Home/Homecard";
 import Footer from "../Components/Footer";
+import { Element } from "react-scroll";
 
 function Home() {
   return (
@@ -19,7 +20,9 @@ function Home() {
           <Homecard />
         </div>
         <div>
+          <Element name="contact" className="element">
           <Footer />
+          </Element>
         </div>
       </div>
     </div>

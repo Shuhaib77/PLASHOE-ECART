@@ -30,7 +30,7 @@ function Register() {
       email: "",
       password: "",
       confirmpass: "",
-      cart: []
+     
     },
     validationSchema: registerSchema,
 
@@ -41,7 +41,7 @@ function Register() {
       if (finduser) {
         toast.warning("User already exists");
       } else {
-        const newUser= {...values,cart:[]};
+        const newUser= {...values,cart:[],orders:[]};
         await axios.post("http://localhost:4000/user", newUser);
 
         toast.success("User registration successful");

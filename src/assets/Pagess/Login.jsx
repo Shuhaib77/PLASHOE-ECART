@@ -11,23 +11,23 @@ function Login() {
   const navigtate = useNavigate();
   
   const{user,setuser,udatass, setudatass}=useContext(contexts)
-  useEffect(() => {
-    const fetchmailandpass = async () => {
-      const response = await axios.get("http://localhost:4000/user");
-      try {
-        // console.log(response.data);
-        setudatass(response.data);
-        console.log(response.data);
+  // useEffect(() => {
+  //   const fetchmailandpass = async () => {
+  //     const response = await axios.get("http://localhost:4000/user");
+  //     try {
+  //       // console.log(response.data);
+  //       setudatass(response.data);
+  //       console.log(response.data);
         
-      } catch (error) {
-        toast.warning("fetching failed");
-      }
-      console.log();
-    };
-    fetchmailandpass();
-  }, []);
-  // console.log(datas);
-  console.log(udatass);
+  //     } catch (error) {
+  //       toast.warning("fetching failed");
+  //     }
+  //     console.log();
+  //   };
+  //   fetchmailandpass();
+  // }, []);
+  // // console.log(datas);
+  // console.log(udatass);
 
   const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: {

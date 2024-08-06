@@ -5,15 +5,19 @@ import { Input, Button } from "@material-tailwind/react";
 import { data } from "autoprefixer";
 import axios from "axios";
 import { toast } from "sonner";
+import { Link as ScrollLink } from "react-scroll";
 
 function Navbar() {
   const navigate = useNavigate(contexts);
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
-  const { search, setsearh, user } = useContext(contexts);
+  const { search, setsearh, user ,cartitem,cartnew} = useContext(contexts);
+  console.log(cartnew,"sss");
+
   const [menu, setmenu] = useState(false);
   const usersss = localStorage.getItem("id");
+  console.log("length");
   useEffect(() => {
     const fdatass = async () => {
       const response = await axios.get("http://localhost:4000/datass");
@@ -121,23 +125,34 @@ function Navbar() {
                 OURSTORY
               </Link>
             </div>
-            <div className="text-l ml-4 text-gray-700  font-medium md:block hidden    ">
-              CONTACT
+            <div className="text-l ml-3 text-gray-700  font-medium md:block hidden    ">
+              <ScrollLink
+                to="contact"
+                smooth={true}
+                duration={800}
+                className="cursor-pointer hover:border-b-2 border-pink-500 hover:text-black"
+              >
+                CONTACT
+              </ScrollLink>
+              {/* <Link to="contact" smooth={true} duration={500} >CONTACT</Link> */}
             </div>
+            {/* <span>{cartitem.length}</span> */}
             <div
-              className="text-l  ml-4 text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   "
+              className="text-l  ml-3 mr-2 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   "
               onClick={() => {
                 navigate("/cart");
               }}
             >
+              
               <i
-                class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-light-green-900"
+                class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-pink-700"
                 // style={{ color: "#000000" }}
               ></i>
+            {/* <span>{cartnew.length()}</span> */}
             </div>
-            <div className="text-l ml-4  text-gray-700 font-medium hover:border-b-2 border-pink-500 md:block hidden   ">
+            <div className="text-l ml-2  text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
               <i
-                class="fa-solid fa-user fa-xl text-black  hover:text-light-green-900 "
+                class="fa-solid fa-user fa-xl text-black  hover:text-pink-700 "
                 onClick={() => {
                   if (usersss) {
                     // navigate('/register')
@@ -152,10 +167,9 @@ function Navbar() {
                     // toast.warning("logedddd")
                   }
                 }}
-
               ></i>
             </div>
-            
+
             <div className="sm:hidden">
               <i
                 class="fa-regular fa-bars fa-2xl  "

@@ -11,6 +11,7 @@ import axios from "axios";
 import { contexts } from "../../../App";
 import { data } from "autoprefixer";
 import { Link, useNavigate } from "react-router-dom";
+
 import User from "../../Pagess/User";
 import Cart from "../Cart";
 import card from "@material-tailwind/react/theme/components/card";
@@ -31,6 +32,7 @@ function Homecard() {
     setcartitem,
     addtocarts,
   } = useContext(contexts);
+  const [wishlist,setWishlist]=useState("red")
   // console.log(sho/eid.id);
 
   // const [datas, setdata] = useState([]);
@@ -56,7 +58,8 @@ function Homecard() {
             return (
               <div className="  ">
                 <Card className="h-[50vh] w-[50vh] mt-20 gap-1 ">
-                  <CardHeader color="blue-gray" className="relative h-56">
+                  <CardHeader color="white" className="relative h-56">
+                  <i class="fa-regular fa-heart ml-2" ></i>
                     <img src={data.image} alt="card-image" />
                   </CardHeader>
                   <CardBody>
@@ -64,6 +67,8 @@ function Homecard() {
                       {data.brand}
                     </Typography>
                     <Typography>{data.title}</Typography>
+                    <Typography>{data.catogery}</Typography>
+                    <Typography>{data.price}</Typography>
                   </CardBody>
 
                   <CardFooter className="pt-0 flex justify-between">
@@ -126,8 +131,14 @@ function Homecard() {
           {datas.slice(6, 12).map((data) => {
             return (
               <>
-                <Card className="h-[50vh] w-[50vh] mt-20  ">
-                  <CardHeader color="blue-gray" className="relative h-56">
+                <Card className="h-[50vh] w-[50vh] mt-20">
+                  <CardHeader color="" className="relative h-56">
+                  <i class="fa-regular fa-heart ml-2   " style={{color:wishlist}} onClick={()=>{
+                    setWishlist("blue")
+                    
+                  }}></i>
+                  
+
                     <img src={data.image} alt="card-image" />
                   </CardHeader>
                   <CardBody>
@@ -135,10 +146,11 @@ function Homecard() {
                       {data.brand}
                     </Typography>
                     <Typography>{data.title}</Typography>
+                    <Typography>{data.price}</Typography>
 
                     <Typography>{data.catogery}</Typography>
                   </CardBody>
-                  <h1>{data.price}</h1>
+               
                   <CardFooter className="pt-0 flex justify-between">
                     <Button
                       onClick={() => {
@@ -198,50 +210,7 @@ function Homecard() {
             />
           </div>
         </div>
-        {/* tosearch */}
-
-        {/* <div className="flex flex-wrap justify-center gap-10">
-
-          {
-          datas.filter((sitem)=>{
-
-            if(searchval==""){
-              return sitem
-            }else if(sitem.title.toLowerCase().includes(searchval.toLowerCase())){
-              return sitem
-
-            }
-
-          }
-        ).map((itemss)=>{
-          return <>
-          <Card className="h-[50vh] w-[50vh] mt-20  ">
-            <CardHeader color="blue-gray" className="relative h-56">
-              <img src={data.image} alt="card-image" />
-            </CardHeader>
-            <CardBody>
-              <Typography variant="h5" color="blue-gray" className="mb-2">
-                {data.brand}
-              </Typography>
-              <Typography>{data.title}</Typography>
-            </CardBody>
-            <CardFooter className="pt-0">
-              <Button>Read More</Button>
-            </CardFooter>
-          </Card>
-        </>
-  
-
-        })
-          }
-          
-         
-           
-              
-         
-        </div> */}
       </div>
-      knk
     </div>
   );
 }

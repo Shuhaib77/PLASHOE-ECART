@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function Footer() {
   const navigate = useNavigate();
   return (
-    <div className="bg-white">
+    <div className="bg-white" >
       <div className=" mt-10 ">
         <div className="bg-home-bg4 bg-no-repeat ml-5   w-100% mr-5 flex justify-center items-center  h-[70vh]">
           <div className="text-center">

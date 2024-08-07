@@ -47,8 +47,11 @@ function Cart() {
   const [state, dispatch] = useReducer(reducer, cartitem.cart);
   const [dcart, setdeletedcart] = useState([]);
   const [cartnew, setcartnew] = useState([]);
+  const   navigate=useNavigate()
   const idss = localStorage.getItem("id");
   console.log(idss);
+  const Grandtotal = 0;
+  const total = 0;
 
   useEffect(() => {
     const cartupd = async () => {
@@ -68,25 +71,28 @@ function Cart() {
     });
   };
 
+  //using this the orderproducts are not go when refresh
+
+  useEffect(() => {
+    const lastorderss = async () => {
+      const response = await axios.get(`http://localhost:4000/user/${idss}`);
+      setcartnew(response.data.orders);
+    };
+    lastorderss(setcartnew);
+  }, []);
+
   const fnsummer = async (data) => {
     const response = await axios.get(`http://localhost:4000/user/${idss}`);
     try {
       const orders = response.data.orders;
       const userorder = state.find((item) => item.id == data.id);
-      if (userorder) {
-
+      if (!orders.find((order) => order?.id == userorder.id)) {
         const updatedoredrs = [...orders, userorder];
-        const dd=orders.find((item)=>item.id!=userorder.id)
-        
         const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
           orders: updatedoredrs,
         });
-        // console.log(orde.id);
-
         setcartnew(res.data.orders);
-        console.log(cartnew);
-
-        // console.log(state,"sstarar");
+        // console.log(cartnew);
       } else {
         toast.warning("product alredy in orders");
       }
@@ -97,12 +103,27 @@ function Cart() {
     // console.log(cartnew,"gggg");
   };
 
+    //updated delete orders in jsonserver
+
+
+  useEffect(() => {
+    const orderupd = async () => {
+      const response = await axios.patch(`http://localhost:4000/user/${idss}`,{ orders: cartnew});
+    };
+    orderupd();
+  }, [cartnew, idss]);
+  //orderdelete
   const orderdelete = (i) => {
-    dispatch({
-      type: "deletecart",
-      i,
-    });
+    const newcart = cartnew.filter((item, k) => k != i);
+    setcartnew(newcart);
   };
+
+  
+ 
+
+  
+
+  const grandtotal=cartnew.reduce((total,item)=>total+item.quantity*item.price,0)
 
   return (
     <>
@@ -211,9 +232,13 @@ function Cart() {
               ORDERS
             </h1>
 
-            {cartnew.map((item) => {
+            {cartnew.map((item, index) => {
+              const total = 0;
               return (
-                <div className=" w-[62vh]  h-[20vh] border-2 flex justify-center items-center mt-16  ">
+                <div
+                  key={index}
+                  className=" w-[62vh]  h-[20vh] border-2 flex justify-center items-center mt-16  "
+                >
                   <div className="w-[35vh] h-[15vh]">
                     <img src={item.image} alt="" />
                   </div>
@@ -222,13 +247,29 @@ function Cart() {
                     <h1>{item.title}</h1>
                     <h1>{item.quantity}</h1>
                     <h1 className="text-red-800">Price:{item.price}</h1>
-                    <h1 className="text-red-800"> Total:{item.price *item.quantity}</h1>
+                    <h1 className="text-red-800">
+                      {" "}
+                     <h1 className="text-red-900">Total: {item.price * item.quantity}</h1>
+                    </h1>
+                    <div>
+                      <i
+                        class="fa-solid fa-xmark hover:text-red-900 cursor-pointer"
+                        onClick={() => {
+                          orderdelete(index);
+                        }}
+                      ></i>
+                    </div>
                   </div>
                 </div>
               );
             })}
-            <div className="text-center mt-20">
-              <Button className="bg-green-800">PAY</Button>
+            <div className="text-center mt-10">
+              <h1 className="text-blue-700">Grand total: <span className="text-red-900">{grandtotal}</span> </h1>
+             
+             <Button className="bg-green-800 mt-5" onClick={()=>{
+              navigate('/payment')
+             }} >PAY</Button>
+            
             </div>
           </div>
         </div>

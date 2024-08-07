@@ -40,20 +40,33 @@ function Login() {
       // idss=localStorage.getItem("id")
       const user = response.data.find((user) => user.email === values.email && user.password === values.password);
 
-      if (user) {
-        
+      if (user&& user.admin==true) {
         setuser(user);
         localStorage.setItem("id",user.id)
-        navigtate("/"); 
-        if(navigtate('/')){
+        // localStorage.setItem("admin",user.admin)
+        navigtate("/admin"); 
+        // if(navigtate('/')){
           
-        }
+        // }
         console.log(user);
-        localStorage.setItem('user',JSON.stringify(user)) 
+        // localStorage.setItem('user',JSON.stringify(user)) 
+        toast.success("Login successful");
+        
        
-       toast.success("Login successful");
-       
-      } else {
+      } 
+      else if( user ) {
+        setuser(user);
+        localStorage.setItem("id",user.id)
+        // localStorage.setItem("admin",user.admin)
+        navigtate("/"); 
+        // if(navigtate('/')){
+          
+        // }
+        console.log(user);
+        // localStorage.setItem('user',JSON.stringify(user)) 
+        toast.success("Login successful");
+        
+      }else{
         toast.error("Invalid email or password");
       }
     },

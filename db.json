@@ -115,7 +115,44 @@
       "email": "shuhaib@1",
       "password": "12345",
       "confirmpass": "12345",
+      "admin": true,
       "cart": [
+        {
+          "id": "12",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "men",
+          "title": "Metcon 8 Training & Gym Shoes For Men  (White , 7)",
+          "price": 12499,
+          "quantity": 3
+        },
+        {
+          "id": "11",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/j/z/g/12-fb2237-401-12-nike-glcr-bl-wht-lt-armry-bl-llc-bl-original-imagzegbzxdcu8dt.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "women",
+          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
+          "price": 6499,
+          "quantity": 3
+        },
+        {
+          "id": "9",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/f/r/1/7-5-dd9304-300-7-5-nike-barely-green-cave-purple-barely-volt-original-imahfhvsmgzvg9nj.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "women",
+          "title": "Elevate 3 Basketball or running Shoes For Men",
+          "price": 9499,
+          "quantity": 1
+        },
+        {
+          "id": "10",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/k/t/u/9-dz7534-002-9-nike-phantom-blue-lightning-ice-peach-original-imahfhvsmvgyx3s5.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "women",
+          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
+          "price": 10499,
+          "quantity": 1
+        },
         {
           "id": "2",
           "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/z/o/s/9-dd9304-301-9-nike-barely-green-vapor-green-jade-ice-mtlc-red-original-imagz4hf7bun76h8.jpeg?q=70",
@@ -123,6 +160,24 @@
           "catogery": "men",
           "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
           "price": 2502,
+          "quantity": 1
+        },
+        {
+          "id": "8",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/m/2/l/-original-imahfqzkhgptbxk6.jpeg?q=70",
+          "brand": "adidas",
+          "catogery": "men",
+          "title": "HOOPS 3.0 MID Basketball Shoes For Men  (White , 4)",
+          "price": 4499,
+          "quantity": 1
+        },
+        {
+          "id": "7",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/z/n/7/7-dm0823-002-7-nike-black-volt-black-original-imagyhfpe9rxyjqb.jpeg?q=70",
+          "brand": "adidas",
+          "catogery": "women",
+          "title": "ULTRABOOST 1.0 Running Shoes For Men  (Grey , 6)",
+          "price": 8499,
           "quantity": 1
         },
         {
@@ -135,12 +190,12 @@
           "quantity": 1
         },
         {
-          "id": "6",
-          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/k/n/k/7-1041a330-asics-hot-pink-black-original-imagmv66kuh9vbg6.jpeg?q=70",
-          "brand": "adidas",
+          "id": "1",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/k/z/g/7-1041a438-800-asics-koi-blue-expanse-original-imagwyk3zyh9bhp9.jpeg?q=70",
+          "brand": "Asics",
           "catogery": "men",
-          "title": "Crihase running or Cricket Shoes For Men  (White , 7)",
-          "price": 2192,
+          "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
+          "price": 5499,
           "quantity": 1
         },
         {
@@ -151,6 +206,44 @@
           "title": "INDOOR SMOL Walking Shoes For Men  (White , 11)",
           "price": 1977,
           "quantity": 1
+        }
+      ],
+      "orders": [
+        {
+          "id": "11",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/j/z/g/12-fb2237-401-12-nike-glcr-bl-wht-lt-armry-bl-llc-bl-original-imagzegbzxdcu8dt.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "women",
+          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
+          "price": 6499,
+          "quantity": 3
+        },
+        {
+          "id": "10",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/k/t/u/9-dz7534-002-9-nike-phantom-blue-lightning-ice-peach-original-imahfhvsmvgyx3s5.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "women",
+          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
+          "price": 10499,
+          "quantity": 1
+        },
+        {
+          "id": "12",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "men",
+          "title": "Metcon 8 Training & Gym Shoes For Men  (White , 7)",
+          "price": 12499,
+          "quantity": 3
+        },
+        {
+          "id": "9",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/f/r/1/7-5-dd9304-300-7-5-nike-barely-green-cave-purple-barely-volt-original-imahfhvsmgzvg9nj.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "women",
+          "title": "Elevate 3 Basketball or running Shoes For Men",
+          "price": 9499,
+          "quantity": 1
         },
         {
           "id": "8",
@@ -160,17 +253,6 @@
           "title": "HOOPS 3.0 MID Basketball Shoes For Men  (White , 4)",
           "price": 4499,
           "quantity": 1
-        }
-      ],
-      "orders": [
-        {
-          "id": "8",
-          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/m/2/l/-original-imahfqzkhgptbxk6.jpeg?q=70",
-          "brand": "adidas",
-          "catogery": "men",
-          "title": "HOOPS 3.0 MID Basketball Shoes For Men  (White , 4)",
-          "price": 4499,
-          "quantity": 3
         },
         {
           "id": "2",
@@ -179,36 +261,17 @@
           "catogery": "men",
           "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
           "price": 2502,
-          "quantity": 1
-        },
-        {
-          "id": "4",
-          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/7/i/t/4-1012b450-404-asics-blue-expanse-champagne-original-imagxytnzejzbfbe.jpeg?q=70",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-SONOMA 7 Running Shoes For Men  (Blue , 10)",
-          "price": 3110,
-          "quantity": 1
-        },
-        {
-          "id": "4",
-          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/7/i/t/4-1012b450-404-asics-blue-expanse-champagne-original-imagxytnzejzbfbe.jpeg?q=70",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-SONOMA 7 Running Shoes For Men  (Blue , 10)",
-          "price": 3110,
-          "quantity": 1
-        },
-        {
-          "id": "8",
-          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/m/2/l/-original-imahfqzkhgptbxk6.jpeg?q=70",
-          "brand": "adidas",
-          "catogery": "men",
-          "title": "HOOPS 3.0 MID Basketball Shoes For Men  (White , 4)",
-          "price": 4499,
-          "quantity": 1
+          "quantity": 3
         }
       ]
+    },
+    {
+      "id": "f21d",
+      "email": "shuhaib@2",
+      "password": "12345",
+      "confirmpass": "12345",
+      "cart": [],
+      "orders": []
     }
   ]
 }

@@ -19,6 +19,13 @@ import Ourstory from "./assets/Components/Home/Ourstory";
 import Cart from "./assets/Components/Cart";
 import { toast } from "sonner";
 import axios from "axios";
+import Payment from "./assets/Pagess/Payment";
+import Addproduct from "./assets/Components/Admin/Addproduct";
+import Editproducts from "./assets/Components/Admin/Editproducts";
+import Alluser from "./assets/Components/Admin/Alluser";
+import Trackorder from "./assets/Components/Admin/Trackorder";
+import Dashboard from "./assets/Components/Admin/Dashboard";
+import Adbody from "./assets/Components/Admin/Adbody";
 
 export const contexts = createContext();
 
@@ -111,12 +118,20 @@ function App() {
           <Route path="/women" element={<Women />}></Route>
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/lookbook" element={<Lookbook />}></Route>
+          <Route path="/payment" element={<Payment />}></Route>
           <Route
             path="/showcomponent/:dataid"
             element={<ShowComponent />}
           ></Route>
+
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/addprdt" element={<Addproduct />}></Route>
+          <Route path="/editprdt" element={<Editproducts />}></Route>
+          <Route path="/admin/allusers" element={<Alluser/>}></Route>
+          <Route path="/trackorder" element={<Trackorder />}></Route>
+          <Route path="/dashboard" element={<Dashboard />}></Route>
+          <Route path="/adbody" element={<Adbody />}></Route>
         </Routes>
       </contexts.Provider>
     </>

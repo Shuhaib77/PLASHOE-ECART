@@ -9,7 +9,7 @@ import {
 } from "@material-tailwind/react";
 import axios from "axios";
 import { contexts } from "../../../App";
-import { data } from "autoprefixer";
+
 import { Link, useNavigate } from "react-router-dom";
 
 import User from "../../Pagess/User";

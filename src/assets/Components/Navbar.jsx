@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { contexts } from "../../App";
 import { Input, Button } from "@material-tailwind/react";
-import { data } from "autoprefixer";
+
 import axios from "axios";
 import { toast } from "sonner";
 import { Link as ScrollLink } from "react-scroll";

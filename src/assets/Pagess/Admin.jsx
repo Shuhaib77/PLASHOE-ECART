@@ -2,12 +2,17 @@ import React from "react";
 import Navbar from "../Components/Navbar";
 import { Button, Input } from "@material-tailwind/react";
 import { useNavigate, Link, useParams } from "react-router-dom";
+import Alluser from "../Components/Admin/Alluser";
+import Editproducts from "../Components/Admin/Editproducts";
+import Addproduct from "../Components/Admin/Addproduct";
+import Trackorder from "../Components/Admin/Trackorder";
+import Dashboard from "../Components/Admin/Dashboard";
 
 function Admin() {
   const navigate = useNavigate();
-  const vals=useParams()
+  const {url}=useParams()
   
-console.log(vals,"vals")
+console.log(url,"vals")
   const Data = [
     // {title:"user",icon: <i class="fa-solid fa-users fa-flip fa-xl mr-3 "></i>},
     // {title:"user",icon: <i class="fa-solid fa-users fa-flip fa-xl mr-3 "></i>},
@@ -36,10 +41,12 @@ console.log(vals,"vals")
       icon: <i class="fa-brands fa-dashcube fa-flip fa-xl mr-4"></i>,
       url:"dashboard"
     },
+    
   ];
 
   return (
-    <div>
+    <>
+   
       {/* <Navbar/> */}
       <div className="flex  p-5  justify-between  bg-blue-900 text-white  ">
         <div className="flex ">
@@ -59,7 +66,8 @@ console.log(vals,"vals")
         </div>
       </div>
 
-      <div className="mt-1   bg-blue-900 w-[25vh] h-[90vh] ">
+     <div className="flex">
+     <div className="mt-1   bg-blue-900 w-[25vh] h-[90vh] ">
         <div className=" flex flex-col justify-center h-[60vh]  text-white mb-20">
           {Data.map((item) => {
             return (
@@ -74,8 +82,17 @@ console.log(vals,"vals")
             );
           })}
         </div>
+        
       </div>
-    </div>
+      <div className="">
+        {url==='editprdt'? <Editproducts/>:url==='allusers'?<Alluser/>:url==='addprdt'?<Addproduct/>:url==='trackorder'?<Trackorder/>:<Dashboard/>}
+       
+      </div>
+     </div>
+     
+   
+ 
+    </>
   );
 }
 

@@ -36,12 +36,14 @@ function Register() {
 
     onSubmit: async (values) => {
      
-      const finduser = emails.find((user) => user.email === values.email);
+      const finduser = emails.find((user) => user.email === values.email );
 
       if (finduser) {
         toast.warning("User already exists");
-      } else {
-        const newUser= {...values,cart:[],orders:[]};
+      }
+      
+      else {
+        const newUser= {...values,cart:[],orders:[],block:true};
         await axios.post("http://localhost:4000/user", newUser);
 
         toast.success("User registration successful");

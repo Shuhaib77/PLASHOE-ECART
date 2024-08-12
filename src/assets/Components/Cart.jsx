@@ -50,8 +50,7 @@ function Cart() {
   const   navigate=useNavigate()
   const idss = localStorage.getItem("id");
   console.log(idss);
-  const Grandtotal = 0;
-  const total = 0;
+  
 
   useEffect(() => {
     const cartupd = async () => {
@@ -144,7 +143,7 @@ function Cart() {
                   return (
                     <div className="  ">
                       <Card className="h-[63vh] w-[50vh] mt-20 gap-1  ">
-                        <CardHeader color="blue-gray" className=" ">
+                        <CardHeader color="" className=" ">
                           <img src={data?.image} alt="card-image" />
                         </CardHeader>
                         <CardBody>

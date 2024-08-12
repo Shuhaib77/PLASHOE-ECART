@@ -31,8 +31,8 @@ function Collection() {
           <Navbar />
         </div>
 
-        <div className="w-full h-[290vh] bg-gray-300 flex justify-center items-center mt-5  ">
-          <div className="w-[160vh] h-[270vh] bg-white ">
+        <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
+          <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
             <h1 className="text-4xl mt-10 ml-10 text-light-green-800">
               TRENDINGS
             </h1>
@@ -50,8 +50,8 @@ function Collection() {
               {datas.map((data) => {
                 return (
                   <div className=" ">
-                    <Card className="h-[50vh] w-[50vh] mt-20 gap-x-2 gap-1   ">
-                      <CardHeader color="blue-gray" className="relative h-56">
+                    <Card className="h-[55vh] w-[50vh] mt-20 gap-x-2 gap-1   ">
+                      <CardHeader color="" className="relative h-56">
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>

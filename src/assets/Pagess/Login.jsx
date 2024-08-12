@@ -41,19 +41,24 @@ function Login() {
       const user = response.data.find((user) => user.email === values.email && user.password === values.password);
 
       if (user&& user.admin==true) {
-        setuser(user);
+        // setuser(user);
         localStorage.setItem("id",user.id)
         // localStorage.setItem("admin",user.admin)
-        navigtate("/admin"); 
+        navigtate("/admin/allusers"); 
+        console.log('gttt');
+        
         // if(navigtate('/')){
           
         // }
         console.log(user);
         // localStorage.setItem('user',JSON.stringify(user)) 
-        toast.success("Login successful");
+        toast.success(" admin Login successful");
         
        
-      } 
+      } else if(user.block==false){
+        toast.warning("User is blocked");
+
+      }
       else if( user ) {
         setuser(user);
         localStorage.setItem("id",user.id)
@@ -66,7 +71,8 @@ function Login() {
         // localStorage.setItem('user',JSON.stringify(user)) 
         toast.success("Login successful");
         
-      }else{
+      }
+      else{
         toast.error("Invalid email or password");
       }
     },

@@ -57,13 +57,13 @@ function Homecard() {
           {datas.slice(0, 6).map((data) => {
             return (
               <div className="  ">
-                <Card className="h-[50vh] w-[50vh] mt-20 gap-1 ">
+                <Card className="h-[58vh] w-[50vh] mt-20 gap-1 ">
                   <CardHeader color="white" className="relative h-56">
                   <i class="fa-regular fa-heart ml-2" ></i>
                     <img src={data.image} alt="card-image" />
                   </CardHeader>
                   <CardBody>
-                    <Typography variant="h5" color="blue-gray" className="mb-2">
+                    <Typography variant="h5" color="" className="mb-2">
                       {data.brand}
                     </Typography>
                     <Typography>{data.title}</Typography>
@@ -131,8 +131,8 @@ function Homecard() {
           {datas.slice(6, 12).map((data) => {
             return (
               <>
-                <Card className="h-[50vh] w-[50vh] mt-20">
-                  <CardHeader color="" className="relative h-56">
+                <Card className="h-[55vh] w-[50vh] mt-20">
+                  <CardHeader color="" className="h-[50vh]">
                   <i class="fa-regular fa-heart ml-2   " style={{color:wishlist}} onClick={()=>{
                     setWishlist("blue")
                     

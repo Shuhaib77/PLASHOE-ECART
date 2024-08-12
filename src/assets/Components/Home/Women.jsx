@@ -32,8 +32,8 @@ function Women() {
           <Navbar />
         </div>
 
-        <div className="w-full h-[170vh] bg-gray-300 flex justify-center items-center mt-5  ">
-          <div className="w-[160vh] h-[150vh] bg-white ">
+        <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
+          <div className="w-[160vh] h-full mt-8 mb-8 bg-white ">
             <h1 className="text-4xl mt-10 ml-10 text-light-green-800">WOMEN</h1>
 
             <div className="flex justify-between mt-5">
@@ -56,14 +56,14 @@ function Women() {
               {womendata.map((data) => {
                 return (
                   <div className=" ">
-                    <Card className="h-[50vh] w-[50vh] mt-20 gap-1   ">
-                      <CardHeader color="blue-gray" className="relative h-56">
+                    <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
+                      <CardHeader color="" className="relative h-56">
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>
                         <Typography
                           variant="h5"
-                          color="blue-gray"
+                          color=""
                           className="mb-2"
                         >
                           {data.brand}

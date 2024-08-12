@@ -98,7 +98,7 @@ function Navbar() {
             <div className="text-l  ml-5 text-gray-700 font-medium md:block hidden  ">
               SALE
             </div>
-            <div className=" ml-2 ">
+            <div className=" ml-4 ">
               <Input
                 label="type here..."
                 onChange={(e) => {
@@ -125,7 +125,7 @@ function Navbar() {
                 OURSTORY
               </Link>
             </div>
-            <div className="text-l ml-3 text-gray-700  font-medium md:block hidden    ">
+            <div className="text-l ml-5 text-gray-700  font-medium md:block hidden    ">
               <ScrollLink
                 to="contact"
                 smooth={true}
@@ -138,7 +138,7 @@ function Navbar() {
             </div>
             {/* <span>{cartitem.length}</span> */}
             <div
-              className="text-l  ml-3 mr-2 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   "
+              className="text-l  ml-5 mr-2 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   "
               onClick={() => {
                 navigate("/cart");
               }}
@@ -150,7 +150,7 @@ function Navbar() {
               ></i>
             {/* <span>{cartnew.length()}</span> */}
             </div>
-            <div className="text-l ml-2  text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
+            <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
               <i
                 class="fa-solid fa-user fa-xl text-black  hover:text-pink-700 "
                 onClick={() => {

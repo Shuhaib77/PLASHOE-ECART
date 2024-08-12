@@ -110,7 +110,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />}></Route>
           <Route path="/user" element={<User />}></Route>
-          <Route path="/admin" element={<Admin />}></Route>
+          <Route path="/admin/:url" element={<Admin />}></Route>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all" element={<AllProducts />}></Route>
@@ -119,16 +119,12 @@ function App() {
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/lookbook" element={<Lookbook />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
-          <Route
-            path="/showcomponent/:dataid"
-            element={<ShowComponent />}
-          ></Route>
-
+          <Route path="/showcomponent/:dataid"element={<ShowComponent />} ></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/addprdt" element={<Addproduct />}></Route>
           <Route path="/editprdt" element={<Editproducts />}></Route>
-          <Route path="/admin/allusers" element={<Alluser/>}></Route>
+          <Route path="/allusers" element={<Alluser/>}></Route>
           <Route path="/trackorder" element={<Trackorder />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/adbody" element={<Adbody />}></Route>

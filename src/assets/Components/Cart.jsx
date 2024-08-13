@@ -43,7 +43,7 @@ const reducer = (state, action) => {
 function Cart() {
   // const navigate=useNavigate()
 
-  const { cartitem, setcartitems } = useContext(contexts);
+  const { cartitem, setcartitems ,} = useContext(contexts);
   const [state, dispatch] = useReducer(reducer, cartitem.cart);
   const [dcart, setdeletedcart] = useState([]);
   const [cartnew, setcartnew] = useState([]);
@@ -266,7 +266,7 @@ function Cart() {
               <h1 className="text-blue-700">Grand total: <span className="text-red-900">{grandtotal}</span> </h1>
              
              <Button className="bg-green-800 mt-5" onClick={()=>{
-              navigate('/payment')
+              navigate('/payment',{state:{grandtotal}})
              }} >PAY</Button>
             
             </div>

@@ -127,7 +127,7 @@ function Alluser() {
   return (
     <>
       <Card className="h-full w-full overflow-scroll ml-5 mt-5 mr-5 ">
-        <table className="w-[140vh] min-w-max table-auto text-left">
+        <table className="w-[135vh] min-w-max table-auto text-left">
           <thead>
             <tr>
               {TABLE_HEAD.map((head) => (
@@ -214,7 +214,7 @@ function Alluser() {
                     className="font-normal"
                   >
                     <Button
-                      className="bg-blue-900 w-35 ml-5 font-medium "
+                      className="bg-blue-900  ml-5 font-medium "
                       onClick={() => {
                         handleOpen("xl");
                         vieworders(data.id);
@@ -275,18 +275,26 @@ function Alluser() {
           }
           size={size || "xl"}
           handler={handleOpen}
-          className="h-[80vh]  overflow-auto mt-5"
+          className="h-[80vh]  overflow-auto   "
+        
         >
-          <DialogHeader>ORDERS</DialogHeader>
-          <DialogBody>
+          
+          
+          
+          <DialogHeader className=" fixed top-0 text-white">ORDERS</DialogHeader>
+          <DialogBody className="mt-5">
+          <DialogHeader className=" ">ORDERS</DialogHeader>
+       
          
             {/* <div className=" flex h-[40vh] ml-20  "></div> */}
 
-            <div className="flex flex-wrap justify-around gap-4">
+            
+
+            <div className="flex flex-wrap justify-around gap-4  ">
               {
                 orderss.map((data)=>{
                   return(
-                    <Card className="w-96 h-[50vh] border-5 border-g">
+                    <Card className="w-96 h-[50vh] border-5 border-g ">
               <CardHeader className="h-[30vh] mt-5">
                 <img src={data.image} alt="profile-picture" />
               </CardHeader>

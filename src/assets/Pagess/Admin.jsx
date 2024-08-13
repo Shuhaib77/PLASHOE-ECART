@@ -18,29 +18,34 @@ console.log(url,"vals")
     // {title:"user",icon: <i class="fa-solid fa-users fa-flip fa-xl mr-3 "></i>},
     {
       title: "user",
-      icon: <i class="fa-solid fa-users fa-flip fa-xl mr-3 "></i>,
+      icon: <i class="fa-solid fa-users  fa-xl mr-3 "></i>,
        url:"allusers"
     },
     {
       title: "Add product",
-      icon: <i class="fa-solid fa-cart-plus fa-flip fa-xl  mr-2"></i>,
+      icon: <i class="fa-solid fa-cart-plus  fa-xl  mr-2"></i>,
       url:"addprdt"
     },
     {
       title: "Edit product",
-      icon: <i class="fa-brands fa-opencart fa-flip fa-xl mr-2 "></i>,
+      icon: <i class="fa-brands fa-opencart fa-xl mr-2 "></i>,
        url:"editprdt"
     },
-    {
-      title: "Track order",
-      icon: <i class="fa-solid fa-map-location-dot fa-flip fa-lg mr-4"></i>,
-       url:"trackorder"
-    },
+    // {
+    //   title: "Track order",
+    //   icon: <i class="fa-solid fa-map-location-dot  fa-lg mr-4"></i>,
+    //    url:"trackorder"
+    // },
     {
       title: "Dashboard",
-      icon: <i class="fa-brands fa-dashcube fa-flip fa-xl mr-4"></i>,
+      icon: <i class="fa-brands fa-dashcube  fa-xl mr-4"></i>,
       url:"dashboard"
     },
+    // {
+    //   title: "Dashboard",
+    //   icon: <i class="fa-brands fa-dashcube fa-flip fa-xl mr-4"></i>,
+    //   url:"dashboard"
+    // },
     
   ];
 
@@ -48,7 +53,7 @@ console.log(url,"vals")
     <>
    
       {/* <Navbar/> */}
-      <div className="flex  p-5  justify-between  bg-blue-900 text-white  ">
+      <div className="flex  p-5  justify-between w-[176vh]  bg-blue-900 text-white  ">
         <div className="flex ">
           <h1 className="mt-3  ml-6 font-semibold text-xl">PLASHOE</h1>
         </div>

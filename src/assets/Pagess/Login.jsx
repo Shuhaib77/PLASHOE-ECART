@@ -40,11 +40,11 @@ function Login() {
       // idss=localStorage.getItem("id")
       const user = response.data.find((user) => user.email === values.email && user.password === values.password);
 
-      if (user&& user.admin==true) {
+      if (user&& user.admin==true ) {
         // setuser(user);
         localStorage.setItem("id",user.id)
         // localStorage.setItem("admin",user.admin)
-        navigtate("/admin/allusers"); 
+        navigtate("/admin/dashboard"); 
         console.log('gttt');
         
         // if(navigtate('/')){

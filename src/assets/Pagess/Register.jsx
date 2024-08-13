@@ -43,7 +43,7 @@ function Register() {
       }
       
       else {
-        const newUser= {...values,cart:[],orders:[],block:true};
+        const newUser= {...values,cart:[],orders:[],block:true,detorder:[]};
         await axios.post("http://localhost:4000/user", newUser);
 
         toast.success("User registration successful");

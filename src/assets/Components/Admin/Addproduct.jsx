@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Input, Button } from "@material-tailwind/react";
 import { useFormik } from "formik";
 import axios from "axios";
@@ -9,11 +9,13 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
+import { contexts } from "../../../App";
 
 function Addproduct() {
-  const [size, setSize] = React.useState(null);
+  const { size, setSize, handleOpen } = useContext(contexts);
+  // const [size, setSize] = React.useState(null);
 
-  const handleOpen = (value) => setSize(value);
+  // const handleOpen = (value) => setSize(value);
 
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
@@ -27,18 +29,15 @@ function Addproduct() {
       // size: [],
     },
     onSubmit: async (values) => {
-      const reponse=await axios.get("http://localhost:4000/datass")
-      const datas= reponse.data.find((item)=>item.id==values.id)
-      if(datas){
-        toast.warning("the product id alredy exists")
-      }else{
-         
-      const newuser = { ...values };
-      await axios.post("http://localhost:4000/datass", newuser);
-      toast.success("added to cart");
-        
+      const reponse = await axios.get("http://localhost:4000/datass");
+      const datas = reponse.data.find((item) => item.id == values.id);
+      if (datas) {
+        toast.warning("the product id alredy exists");
+      } else {
+        const newprdt = { ...values };
+        await axios.post("http://localhost:4000/datass", newprdt);
+        toast.success("product added successfully");
       }
-     
     },
   });
   return (
@@ -46,18 +45,14 @@ function Addproduct() {
       <>
         <div className="flex justify-center w-[50vh] items-center h-[30vh]">
           <Button onClick={() => handleOpen("xl")} className="bg-blue-500">
-           Add product
+            Add product
           </Button>
         </div>
-        <Dialog
-          open={
-           size === "xl"
-          }
-          size={size || "sm"}
-          handler={handleOpen}
-        >
-         <DialogHeader className="mt-10 ml-18 border-b-4 border-green-700 ">ADD PRODUCTS</DialogHeader>
-          <DialogBody className="" >
+        <Dialog open={size === "xl"} size={size || "sm"} handler={handleOpen}>
+          <DialogHeader className="mt-10 ml-18 border-b-4 border-green-700 ">
+            ADD PRODUCTS
+          </DialogHeader>
+          <DialogBody className="">
             <div className="flex">
               <div className="  h-[35vh] ml-20 mt-10 ">
                 <form action="" className="w-[40vh]" onSubmit={handleSubmit}>
@@ -68,6 +63,7 @@ function Addproduct() {
                         onChange={handleChange}
                         value={values.image}
                         name="image"
+                        required
                       ></Input>
                     </div>
                     <div className="mt-7">
@@ -78,6 +74,7 @@ function Addproduct() {
                         value={values.id}
                         onChange={handleChange}
                         name="id"
+                        required
                       ></Input>
                     </div>
                   </div>
@@ -88,6 +85,7 @@ function Addproduct() {
                       onChange={handleChange}
                       value={values.title}
                       name="title"
+                      required
                     ></Input>
                   </div>
 
@@ -98,6 +96,7 @@ function Addproduct() {
                       onChange={handleChange}
                       value={values.brand}
                       name="brand"
+                      required
                     ></Input>
                   </div>
                   <div className="mt-7 ">
@@ -126,6 +125,7 @@ function Addproduct() {
                       onChange={handleChange}
                       value={values.price}
                       name="price"
+                      required
                     ></Input>
                   </div>
                   <div className="text-end mt-5">
@@ -134,7 +134,6 @@ function Addproduct() {
                       color="green"
                       onClick={() => handleOpen(null)}
                       type="submit"
-
                     >
                       <span className="text-center">Confirm</span>
                     </Button>
@@ -174,7 +173,6 @@ function Addproduct() {
                     <span className="text-red-900 font-medium">PRICE:</span>{" "}
                     {values.price}{" "}
                   </h1>
-                
                 </div>
               </div>
             </div>
@@ -191,7 +189,6 @@ function Addproduct() {
           </DialogFooter>
         </Dialog>
       </>
-      
     </div>
   );
 }

@@ -9,6 +9,7 @@ import Trackorder from "../Components/Admin/Trackorder";
 import Dashboard from "../Components/Admin/Dashboard";
 
 function Admin() {
+  // const {size, setSize,handleOpen }=useContext(contexts)
   const navigate = useNavigate();
   const {url}=useParams()
   
@@ -90,7 +91,7 @@ console.log(url,"vals")
         
       </div>
       <div className="">
-        {url==='editprdt'? <Editproducts/>:url==='allusers'?<Alluser/>:url==='addprdt'?<Addproduct/>:url==='trackorder'?<Trackorder/>:<Dashboard/>}
+        {url==='editprdt' ? <Editproducts/> :url==='allusers'?<Alluser/>:url==='addprdt'?  <Addproduct/>   :url==='trackorder'?<Trackorder/>:<Dashboard/>}
        
       </div>
      </div>

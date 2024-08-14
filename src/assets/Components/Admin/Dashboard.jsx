@@ -6,9 +6,9 @@ function Dashboard() {
   const [auser, setauser] = useState([]);
   const [aorders, setaorders] = useState([]);
   const [profit, setprofit] = useState([]);
-  const [atotal,setatotal]= useState([])
+  const [atotal, setatotal] = useState([]);
 
-  const sum=profit.reduce((acc,val)=>acc+  val.total,0)
+  const sum = profit.reduce((acc, val) => acc + val.total, 0);
 
   useEffect(() => {
     const fn = async () => {
@@ -21,14 +21,11 @@ function Dashboard() {
 
         const allorders = res.data.flatMap((item) => item.orders);
         setaorders(allorders);
-        const profits= res.data.flatMap((item)=>item.detorder)
-        setprofit(profits)
-        
+        const profits = res.data.flatMap((item) => item.detorder);
+        setprofit(profits);
+
         // setatotal(sum)
         // console.log(sum,"lllll");
-        
-
-
 
         // console.log(ordersArray);
       } catch (error) {
@@ -36,12 +33,10 @@ function Dashboard() {
       }
     };
     fn();
-  }, [ ]);
+  }, []);
   console.log(aorders);
-  console.log(profit,"hoh");
-  console.log(atotal)
-
-  
+  console.log(profit, "hoh");
+  console.log(atotal);
 
   // useEffect(()=>{
   //   auser.map((item) => {
@@ -67,14 +62,18 @@ function Dashboard() {
               style={{ color: "#ffffff" }}
             ></i>
             <h1 className="mt-4">PRODUCT</h1>
-            <h1>All products: <span className="text-2xl"> {aprdt.length}</span></h1>
+            <h1>
+              All products: <span className="text-2xl"> {aprdt.length}</span>
+            </h1>
           </div>
         </div>
         <div className="w-[35vh] h-[15vh] bg-pink-400 ">
           <div className="ml-3 mt-5">
             <i class="fa-solid fa-user fa-2xl" style={{ color: "#ffffff" }}></i>
             <h1 className="mt-4">USER</h1>
-            <h1 className="">All users : <span className="text-2xl">{auser.length}</span> </h1>
+            <h1 className="">
+              All users : <span className="text-2xl">{auser.length}</span>{" "}
+            </h1>
           </div>
         </div>
         <div className="w-[35vh] h-[15vh] bg-blue-500">
@@ -84,7 +83,9 @@ function Dashboard() {
               style={{ color: "#ffffff" }}
             ></i>
             <h1 className="mt-4">ORDERS</h1>
-            <h1 className="">Allorders: <span className="text-2xl">{auser.length}</span> </h1>
+            <h1 className="">
+              Allorders: <span className="text-2xl">{auser.length}</span>{" "}
+            </h1>
           </div>
         </div>
         <div className=" w-[35vh] h-[15vh] bg-pink-400 ">
@@ -94,7 +95,10 @@ function Dashboard() {
               style={{ color: "#ffffff" }}
             ></i>
             <h1 className="mt-4">PROFIT</h1>
-            <h1> All profit: <span className="text-2xl">{sum}</span> </h1>
+            <h1>
+              {" "}
+              All profit: <span className="text-2xl">{sum}</span>{" "}
+            </h1>
           </div>
         </div>
       </div>

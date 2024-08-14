@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
@@ -39,6 +39,8 @@ function App() {
   const [cartitem, setcartitem] = useState([]);
   // const [cartnew,setcartnew]=useState([])
   const usersid = localStorage.getItem("id");
+  const handleOpen = (value) => setSize(value);
+  const [size, setSize] = React.useState(null);
   
 
   useEffect(() => {
@@ -104,6 +106,8 @@ function App() {
           cartitem,
           setcartitem,
           addtocarts,
+          handleOpen,
+          size, setSize
           
         }}
       >

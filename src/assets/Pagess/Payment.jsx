@@ -3,6 +3,7 @@ import { Input, Textarea ,Button} from "@material-tailwind/react";
 import { useLocation } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
+import { toast } from "sonner";
 function Payment() {
   const location=useLocation()
   const id=localStorage.getItem("id")
@@ -21,8 +22,13 @@ function Payment() {
       const response= await axios.get(`http://localhost:4000/user/${id}`)
       const detail=response.data.detorder
       const upd=[...detail,values]
+     if(upd){
       await axios.patch(`http://localhost:4000/user/${id}`,{detorder:upd})
+      toast.success("payment successfull")
 
+     }else{
+      toast.warning("not valid payment")
+     }
     }
   })
   
@@ -38,9 +44,9 @@ function Payment() {
             <h1 className="text-white text-3xl text-center ">${grandtotal}</h1>
           </div>
          <form action="" onSubmit={handleSubmit}>
-         <Input label="name" className="mt border-3  " value={values.name} name="name" onChange={handleChange}></Input>
-          <Textarea label="address" value={values.address} name="address" onChange={handleChange}  ></Textarea>
-          <Input label="phone" type="text" onChange={handleChange} name="phone" ></Input>
+         <Input label="name" className="mt border-3  " value={values.name} name="name" onChange={handleChange} required></Input>
+          <Textarea label="address" value={values.address} name="address" onChange={handleChange} required className="mt-2" ></Textarea>
+          <Input label="phone" type="text" onChange={handleChange} name="phone" required ></Input>
           <div className="flex justify-evenly mt-4 mb-4">
             <div >
               <label className="font-normal text-blue-900  ">CARD</label>
@@ -52,8 +58,8 @@ function Payment() {
             </div>
 
             <div className="mb-3">
-              <label className="font-normal  text-blue-900 " checked={values.payment==='COD'} value='COD'  onChange={handleChange}>COD</label>
-              <input type="radio" name="payment" className="ml-2" />
+              <label className="font-normal  text-blue-900 " checked={values.payment==='COD'} value='COD'  onChange={handleChange} >COD</label>
+              <input type="radio" name="payment" className="ml-2" required />
             </div>
            
             

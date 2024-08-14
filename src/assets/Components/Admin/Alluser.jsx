@@ -8,41 +8,13 @@ import {
   DialogHeader,
   DialogBody,
   DialogFooter,
-   CardHeader,
+  CardHeader,
   CardBody,
   CardFooter,
 } from "@material-tailwind/react";
 import axios from "axios";
 import { data } from "autoprefixer";
 import { toast } from "sonner";
-
-// const TABLE_ROWS = [
-//   {
-//     name: "John Michael",
-//     job: "Manager",
-//     date: "23/04/18",
-//   },
-//   {
-//     name: "Alexa Liras",
-//     job: "Developer",
-//     date: "23/04/18",
-//   },
-//   {
-//     name: "Laurent Perrier",
-//     job: "Executive",
-//     date: "19/09/17",
-//   },
-//   {
-//     name: "Michael Levi",
-//     job: "Developer",
-//     date: "24/12/08",
-//   },
-//   {
-//     name: "Richard Gran",
-//     job: "Manager",
-//     date: "04/10/21",
-//   },
-// ];
 
 function Alluser() {
   const handleOpen = (value) => setSize(value);
@@ -99,15 +71,27 @@ function Alluser() {
 
     try {
       // const user=response.data.find((item)=>item.id==id)
-      const res =
-        blocks === true
-          ? (await axios.patch(`http://localhost:4000/user/${id}`, {
-              block: false,
-            })) && toast.success("user blocked")
-          : (await axios.patch(`http://localhost:4000/user/${id}`, {
-              block: true,
-            })) && toast.warning("user Unblocked");
-      console.log(res, "oooo");
+
+      if (blocks === true && response.data.admin == true) {
+        toast.warning("this is a pro admin");
+      } else if (blocks === true) {
+        (await axios.patch(`http://localhost:4000/user/${id}`, {
+          block: false,
+        })) && toast.success("user blocked");
+      } else {
+        (await axios.patch(`http://localhost:4000/user/${id}`, {
+          block: true,
+        })) && toast.warning("user Unblocked");
+      }
+      // const res =
+      //   blocks === true &&response.data.admin!=true
+      //     ? (await axios.patch(`http://localhost:4000/user/${id}`, {
+      //         block: false,
+      //       })) && toast.success("user blocked")
+      //     : (await axios.patch(`http://localhost:4000/user/${id}`, {
+      //         block: true,
+      //       })) && toast.warning("user Unblocked");
+      // console.log(res, "oooo");
 
       fn();
       // toast.warning("user not find");
@@ -235,20 +219,11 @@ function Alluser() {
                       handleuser(data.id);
                     }}
                   >
-                    {/* {
-                    blockusers.map((item)=>item.block==true? <i
-                          class="fa-solid fa-lock fa-lg"
-                          style={{ color: "#e32400" }}
-                        ></i>:<i
-                        class="fa-solid fa-lock fa-lg"
-                        style={{ color: "#669c35" }}
-                      ></i>  
-                        
-                    
-                    )
-                  } */}
                     {data.block === true ? (
-                     <i class="fa-solid fa-lock-open fa-lg" style={{color: "#831100"}}></i>
+                      <i
+                        class="fa-solid fa-lock-open fa-lg"
+                        style={{ color: "#831100" }}
+                      ></i>
                     ) : (
                       <i
                         class="fa-solid fa-lock fa-lg"
@@ -262,8 +237,7 @@ function Alluser() {
           </tbody>
         </table>
       </Card>
-      <div >
-    
+      <div className="">
         <Dialog
           open={
             size === "xs" ||
@@ -276,42 +250,38 @@ function Alluser() {
           size={size || "xl"}
           handler={handleOpen}
           className="h-[80vh]  overflow-auto   "
-        
         >
-          
-          
-          
-          <DialogHeader className=" fixed top-0 text-white">ORDERS</DialogHeader>
-          <DialogBody className="mt-5">
-          <DialogHeader className=" ">ORDERS</DialogHeader>
-       
-         
+          <DialogHeader className=" fixed top-0 text-white ">
+            ORDERS
+          </DialogHeader>
+          <DialogBody className="mt-2">
+            <DialogHeader className="border-b-4 border-green-900  ">
+              ORDERS
+            </DialogHeader>
+
             {/* <div className=" flex h-[40vh] ml-20  "></div> */}
 
-            
-
-            <div className="flex flex-wrap justify-around gap-4  ">
-              {
-                orderss.map((data)=>{
-                  return(
-                    <Card className="w-96 h-[50vh] border-5 border-g ">
-              <CardHeader className="h-[30vh] mt-5">
-                <img src={data.image} alt="profile-picture" />
-              </CardHeader>
-              <CardBody className="text-center">
-                <Typography color="blue-gray" className="mb-2">
-                  {data.title}
-                </Typography>
-                <Typography
-                  color="blue-gray"
-                  className="font-medium"
-                  textGradient
-                >
-                  {data.brand}
-                </Typography>
-              </CardBody>
-              <CardFooter className="flex justify-between gap-7 pt-2">
-                {/* <Button
+            <div className="flex flex-wrap justify-around gap-4 mt-3  ">
+              {orderss.map((data) => {
+                return (
+                  <Card className="w-96 h-[50vh] border-5 border-g ">
+                    <CardHeader className="h-[30vh] mt-5">
+                      <img src={data.image} alt="profile-picture" />
+                    </CardHeader>
+                    <CardBody className="text-center">
+                      <Typography color="blue-gray" className="mb-2">
+                        {data.title}
+                      </Typography>
+                      <Typography
+                        color="blue-gray"
+                        className="font-medium"
+                        textGradient
+                      >
+                        {data.brand}
+                      </Typography>
+                    </CardBody>
+                    <CardFooter className="flex justify-between gap-7 pt-2">
+                      {/* <Button
                   onClick={() => {
                     handleOpen("xl"), handleclick(data);
                   }}
@@ -327,12 +297,10 @@ function Alluser() {
                     }}
                   ></i>
                 </div> */}
-              </CardFooter>
-            </Card>
-                  )
-
-                })
-              }
+                    </CardFooter>
+                  </Card>
+                );
+              })}
             </div>
           </DialogBody>
           <DialogFooter>

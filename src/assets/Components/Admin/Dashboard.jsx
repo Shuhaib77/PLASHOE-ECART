@@ -19,11 +19,14 @@ function Dashboard() {
         const res = await axios.get("http://localhost:4000/user");
         setauser(res.data);
 
-        const allorders = res.data.flatMap((item) => item.orders);
-        setaorders(allorders);
+        const allorders = res.data.flatMap((item) => item.detorder);
+        const b =allorders.map((item)=>item.pyprdct)
+        
+        setaorders(b,"edede");
         const profits = res.data.flatMap((item) => item.detorder);
-        setprofit(profits);
-
+        // const lastprofit=profits.map((item)=>console.log(item.total,"oooooo"))
+         setprofit(profits);
+ 
         // setatotal(sum)
         // console.log(sum,"lllll");
 
@@ -55,7 +58,7 @@ function Dashboard() {
   return (
     <>
       <div className="flex justify-around w-[150vh] mt-5 ">
-        <div className=" bg-blue-500 w-[35vh] h-[15vh]">
+        <div className=" bg-gradient-to-r from-cyan-500 to-blue-500 w-[35vh] h-[15vh]">
           <div className="ml-3 mt-5">
             <i
               class="fa-brands fa-product-hunt fa-2xl"
@@ -67,7 +70,7 @@ function Dashboard() {
             </h1>
           </div>
         </div>
-        <div className="w-[35vh] h-[15vh] bg-pink-400 ">
+        <div className="w-[35vh] h-[15vh] bg-gradient-to-r from-teal-400 to-yellow-200 ">
           <div className="ml-3 mt-5">
             <i class="fa-solid fa-user fa-2xl" style={{ color: "#ffffff" }}></i>
             <h1 className="mt-4">USER</h1>
@@ -76,7 +79,7 @@ function Dashboard() {
             </h1>
           </div>
         </div>
-        <div className="w-[35vh] h-[15vh] bg-blue-500">
+        <div className="w-[35vh] h-[15vh] bg-gradient-to-r from-cyan-500 to-blue-500">
           <div className="ml-3 mt-5">
             <i
               class="fa-solid fa-cart-shopping fa-2xl"
@@ -84,11 +87,11 @@ function Dashboard() {
             ></i>
             <h1 className="mt-4">ORDERS</h1>
             <h1 className="">
-              Allorders: <span className="text-2xl">{auser.length}</span>{" "}
+              Allorders: <span className="text-2xl">{aorders.length}</span>{" "}
             </h1>
           </div>
         </div>
-        <div className=" w-[35vh] h-[15vh] bg-pink-400 ">
+        <div className=" w-[35vh] h-[15vh] bg-gradient-to-r from-teal-400 to-yellow-200 ">
           <div className="ml-3 mt-5">
             <i
               class="fa-solid fa-chart-simple fa-2xl"

@@ -8,12 +8,12 @@ import { toast } from "sonner";
 import { Link as ScrollLink } from "react-scroll";
 
 function Navbar() {
-  const navigate = useNavigate(contexts);
+  const navigate = useNavigate();
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
-  const { search, setsearh, user ,cartitem,cartnew} = useContext(contexts);
-  console.log(cartnew,"sss");
+  const { search, setsearh, user, cartitem, cartnew } = useContext(contexts);
+  console.log(cartnew, "sss");
 
   const [menu, setmenu] = useState(false);
   const usersss = localStorage.getItem("id");
@@ -116,6 +116,19 @@ function Navbar() {
             </div>
           </div>
 
+
+          <div
+              className=" ml-5 mr-2 mt-4 text-gray-700 hover:border-b-2 border-black font-medium  md:block hidden   "
+             
+            >
+              <i class="fa-solid fa-gift fa-xl text-black  cursor-pointer" onClick={() => {
+                navigate("/orderss");
+              }} ></i>
+              {/* <span>{cartnew.length()}</span> */}
+            </div>
+
+
+
           <div className="flex items-center ">
             <div className="text-l  ml-4  text-gray-700 font-medium md:block hidden  ">
               <Link
@@ -138,20 +151,43 @@ function Navbar() {
             </div>
             {/* <span>{cartitem.length}</span> */}
             <div
-              className="text-l  ml-5 mr-2 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   "
+              className="  ml-5 mr-2 font-medium hover:border-b-2 border-black md:block hidden   "
               onClick={() => {
                 navigate("/cart");
               }}
             >
-              
               <i
                 class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-pink-700"
                 // style={{ color: "#000000" }}
               ></i>
-            {/* <span>{cartnew.length()}</span> */}
+              {/* <span>{cartnew.length()}</span> */}
             </div>
             <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
-              <i
+              {usersss ? (
+                <div className="mt-2 ">
+                  <i
+                    class="fa-solid fa-user-minus fa-xl ml-2 text-black     hover:text-pink-700  "
+                    onClick={() => {
+                      localStorage.removeItem("id");
+
+                      toast.warning("loged Out");
+                      navigate("/login");
+                    }}
+                  ></i>
+                  <h1 className=" text-black     hover:text-pink-700">logout</h1>
+                </div>
+              ) : (
+                <div className="mt-2 ">
+                  {" "}
+                  <i
+                    class="fa-solid fa-user fa-xl ml-2 text-black     hover:text-pink-700 "
+                    onClick={() => {
+                      navigate("/login");
+                    }}
+                  ></i> <h1 className="text-black     hover:text-pink-700">log-in</h1>
+                </div>
+              )}
+              {/* <i
                 class="fa-solid fa-user fa-xl text-black  hover:text-pink-700 "
                 onClick={() => {
                   if (usersss) {
@@ -167,7 +203,7 @@ function Navbar() {
                     // toast.warning("logedddd")
                   }
                 }}
-              ></i>
+              ></i> */}
             </div>
 
             <div className="sm:hidden">

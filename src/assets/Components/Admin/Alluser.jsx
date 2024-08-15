@@ -22,6 +22,7 @@ function Alluser() {
   const [ausers, setausers] = useState([]);
   const [blockusers, setblockusers] = useState([]);
   const [orderss, setorders] = useState([]);
+  const [payedprdct, setpayedprdct] = useState([]);
   const TABLE_HEAD = [
     "ID",
     "EMAIL",
@@ -104,9 +105,33 @@ function Alluser() {
   //vieworders
   const vieworders = async (id) => {
     const response = await axios.get(`http://localhost:4000/user/${id}`);
-    setorders(response.data.orders);
+    setorders(response.data.detorder);
+
+    console.log(d, "kkk");
   };
-  console.log(orderss, "ygudegde");
+
+   
+      const payed = orderss.map((item) => item.pyprdct);
+      const neww=payed.map((item)=>item)
+  // const lastpayedorder=payed.map((item)=>item)
+  console.log(neww);
+  
+  // setpayedprdct(neww)
+  // 
+
+    console.log(neww);
+
+
+  
+ 
+  
+  
+  
+    
+  // const news=lastpayedorder.map((item)=>item)
+    
+    
+  // console.log(lastpayedorder,"jjjj");
 
   return (
     <>
@@ -262,7 +287,7 @@ function Alluser() {
             {/* <div className=" flex h-[40vh] ml-20  "></div> */}
 
             <div className="flex flex-wrap justify-around gap-4 mt-3  ">
-              {orderss.map((data) => {
+              {neww.length > 0&&neww[0].map((data) => {
                 return (
                   <Card className="w-96 h-[50vh] border-5 border-g ">
                     <CardHeader className="h-[30vh] mt-5">
@@ -280,24 +305,7 @@ function Alluser() {
                         {data.brand}
                       </Typography>
                     </CardBody>
-                    <CardFooter className="flex justify-between gap-7 pt-2">
-                      {/* <Button
-                  onClick={() => {
-                    handleOpen("xl"), handleclick(data);
-                  }}
-                  className="bg-blue-900"
-                >
-                  Edit
-                </Button>
-                <div className="mt-3 hover:text-xl">
-                  <i
-                    class="fa-solid fa-trash fa-xl text-black hover:text-red-900 "
-                    onClick={() => {
-                      deleteprdt(data.id);
-                    }}
-                  ></i>
-                </div> */}
-                    </CardFooter>
+                    <CardFooter className="flex justify-between gap-7 pt-2"></CardFooter>
                   </Card>
                 );
               })}

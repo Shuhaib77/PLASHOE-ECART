@@ -26,6 +26,7 @@ import Alluser from "./assets/Components/Admin/Alluser";
 import Trackorder from "./assets/Components/Admin/Trackorder";
 import Dashboard from "./assets/Components/Admin/Dashboard";
 import Adbody from "./assets/Components/Admin/Adbody";
+import Orderss from "./assets/Pagess/Orderss";
 
 export const contexts = createContext();
 
@@ -41,15 +42,22 @@ function App() {
   const usersid = localStorage.getItem("id");
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
+
+
+//adminsssss
+  const [asearchitem, asetsearchitem] = useState("");
+  const [prdt, setprdt] = useState([]);
+  const [lastasearch, setlastsearch] = useState(null);
+//------------------------
+
+  const fn = async () => {
+    const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+    setcartitem(res.data);
+  };
   
 
   useEffect(() => {
-    const fn = async () => {
-      const res = await axios.get(`http://localhost:4000/user/${usersid}`);
-      setcartitem(res.data);
-    };
-
-    fn();
+  fn();
   }, []);
 
   const addtocarts = async (data) => {
@@ -64,8 +72,7 @@ function App() {
         toast.warning("product alredy exist");
       } else {
         const update = [...cartss, data];
-        const reso = await axios.patch(
-          `http://localhost:4000/user/${usersid}`,
+        const reso = await axios.patch(`http://localhost:4000/user/${usersid}`,
           {
             cart: update,
           }
@@ -107,6 +114,9 @@ function App() {
           setcartitem,
           addtocarts,
           handleOpen,
+          asearchitem, asetsearchitem,
+          prdt, setprdt,
+          lastasearch, setlastsearch,
           size, setSize
           
         }}
@@ -126,12 +136,14 @@ function App() {
           <Route path="/showcomponent/:dataid"element={<ShowComponent />} ></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/orderss" element={<Orderss />}></Route>
           <Route path="/addprdt" element={<Addproduct />}></Route>
           <Route path="/editprdt" element={<Editproducts />}></Route>
           <Route path="/allusers" element={<Alluser/>}></Route>
           <Route path="/trackorder" element={<Trackorder />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/adbody" element={<Adbody />}></Route>
+         
         </Routes>
       </contexts.Provider>
     </>

@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import {
   Card,
   CardHeader,
@@ -18,8 +18,10 @@ import {
 import { useFormik } from "formik";
 import { data } from "autoprefixer";
 import { toast } from "sonner";
+import { contexts } from "../../../App";
 function Editproducts() {
-  const [prdt, setprdt] = useState([]);
+  const { prdt, setprdt } = useContext(contexts);
+  // const [prdt, setprdt] = useState([]);
   const [size, setSize] = React.useState(null);
   const [editprdt, seteditprdt] = useState(null);
 
@@ -39,8 +41,8 @@ function Editproducts() {
       brand: "",
       title: "",
       catogery: "",
-      price: "",
-      quantity: "",
+      price: null,
+      quantity: 1,
       // size: [],
     },
     onSubmit: async (values) => {
@@ -267,6 +269,11 @@ function Editproducts() {
           <DialogFooter></DialogFooter>
         </Dialog>
       </div>
+      {/* search */}
+
+
+
+      
     </>
   );
 }

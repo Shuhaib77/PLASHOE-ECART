@@ -8,7 +8,11 @@ function Payment() {
   const location=useLocation()
   const id=localStorage.getItem("id")
   const {grandtotal} =location.state;
+  const {state} =location.state;
+  // const {cartnew} =location.state;
   console.log(id);
+  // console.log(cartnew,"jjjj");
+  
   
   const {values,handleChange,handleBlur,handleSubmit}=useFormik({
     initialValues:{
@@ -16,7 +20,8 @@ function Payment() {
       address:"",
       phone:"",
       payment:"",
-      total:grandtotal
+      total:grandtotal,
+      pyprdct:state
     },
     onSubmit:async(values)=>{
       const response= await axios.get(`http://localhost:4000/user/${id}`)

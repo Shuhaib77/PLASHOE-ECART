@@ -3,19 +3,19 @@
     {
       "id": "1",
       "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-      "brand": "Asics",
+      "brand": "asics news",
       "catogery": "women",
       "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-      "price": 5499,
-      "quantity": "5"
+      "price": 5656,
+      "quantity": 1
     },
     {
       "id": "2",
       "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
       "brand": "nike",
       "catogery": "women",
-      "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-      "price": "373773",
+      "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
+      "price": 3773,
       "quantity": 1
     },
     {
@@ -115,7 +115,7 @@
       "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
       "catogery": "Men",
       "price": 6003,
-      "quantity": "15"
+      "quantity": 1
     },
     {
       "id": "14",
@@ -124,7 +124,7 @@
       "title": "KD Trey 5 X EP Basketball Shoes For Men  (Black , 6)",
       "catogery": "men",
       "price": 11055,
-      "quantity": "14"
+      "quantity": 1
     },
     {
       "id": "15",
@@ -132,8 +132,8 @@
       "brand": "nike",
       "title": "nikesss",
       "catogery": "women",
-      "price": "12344",
-      "quantity": "45"
+      "price": 12344,
+      "quantity": 1
     },
     {
       "id": "17",
@@ -142,7 +142,7 @@
       "title": "M992 Sneakers For Men  (Blue , 10)",
       "catogery": "men",
       "price": 11099,
-      "quantity": "13"
+      "quantity": 1
     },
     {
       "id": "18",
@@ -151,7 +151,7 @@
       "title": "M992 Sneakers For Men  (Purple , 7.5)",
       "catogery": "men",
       "price": 21000,
-      "quantity": "11"
+      "quantity": 1
     }
   ],
   "user": [
@@ -161,345 +161,73 @@
       "password": "12345",
       "confirmpass": "12345",
       "admin": true,
-      "cart": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-          "price": 373773,
-          "quantity": 1
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 1
-        },
-        {
-          "id": "11",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/t/v/t/12-1041a361-963-asics-blue-expanse-white-original-imah2z7ykaygmghz.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
-          "price": 6499,
-          "quantity": 1
-        },
-        {
-          "id": "10",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
-          "price": 10499,
-          "quantity": 2
-        },
-        {
-          "id": "1",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-          "price": 5499,
-          "quantity": "5"
-        }
-      ],
-      "orders": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-          "price": 373773,
-          "quantity": 1
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 1
-        },
-        {
-          "id": "10",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
-          "price": 10499,
-          "quantity": 4
-        },
-        {
-          "id": "11",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/t/v/t/12-1041a361-963-asics-blue-expanse-white-original-imah2z7ykaygmghz.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
-          "price": 6499,
-          "quantity": 4
-        }
-      ],
+      "cart": [],
+      "orders": [],
       "block": true,
       "detorder": [
         {
           "name": "shuhaib",
-          "address": "Kaithakkal perambra Calicut",
-          "phone": "4234567898",
+          "address": "perambra",
+          "phone": "12345432",
           "payment": "CARD",
-          "total": 425268
+          "total": 9429,
+          "pyprdct": [
+            {
+              "id": "1",
+              "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
+              "brand": "asics news",
+              "catogery": "women",
+              "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
+              "price": 5656,
+              "quantity": 1
+            },
+            {
+              "id": "2",
+              "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
+              "brand": "nike",
+              "catogery": "women",
+              "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
+              "price": 3773,
+              "quantity": 1
+            }
+          ]
         },
         {
-          "name": "shuhaib",
-          "address": "Kaithakkal ,perambra",
-          "phone": "234565432",
-          "payment": "UPID",
-          "total": 451264
+          "name": "wares",
+          "address": "dsf",
+          "phone": "ewr",
+          "payment": "CARD",
+          "total": 4499,
+          "pyprdct": [
+            {
+              "id": "8",
+              "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/4/w/2/8-1041a330-404-asics-mako-blue-safety-yellow-original-imah2nyzpeey8hsf.jpeg?q=70&crop=false",
+              "brand": "asics",
+              "catogery": "men",
+              "title": "HOOPS 3.0 MID Basketball Shoes For Men  (White , 4)",
+              "price": 4499,
+              "quantity": 1
+            }
+          ]
         }
       ]
     },
     {
-      "id": "642b",
-      "email": "muhsin@1",
-      "password": "12345",
-      "confirmpass": "12345",
-      "cart": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-          "price": 373773,
-          "quantity": 3
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 2
-        },
-        {
-          "id": "11",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/t/v/t/12-1041a361-963-asics-blue-expanse-white-original-imah2z7ykaygmghz.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
-          "price": 6499,
-          "quantity": 1
-        },
-        {
-          "id": "10",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
-          "price": 10499,
-          "quantity": 2
-        },
-        {
-          "id": "1",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-          "price": 5499,
-          "quantity": "5"
-        }
-      ],
-      "orders": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-          "price": 373773,
-          "quantity": 3
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 2
-        }
-      ],
-      "block": false,
-      "detorder": [
-        {
-          "name": "muhsin",
-          "address": "shuhaib",
-          "phone": "123123123",
-          "payment": "",
-          "total": 1140317
-        }
-      ]
+      "id": "ec7c",
+      "email": "jjj@1",
+      "password": "jjj@1",
+      "confirmpass": "jjj@1",
+      "cart": [],
+      "orders": [],
+      "block": true,
+      "detorder": []
     },
     {
-      "id": "5d02",
-      "email": "shameena@1",
-      "password": "12345",
-      "confirmpass": "12345",
-      "cart": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-          "price": 373773,
-          "quantity": 1
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 1
-        },
-        {
-          "id": "11",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/t/v/t/12-1041a361-963-asics-blue-expanse-white-original-imah2z7ykaygmghz.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
-          "price": 6499,
-          "quantity": 1
-        },
-        {
-          "id": "10",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
-          "price": 10499,
-          "quantity": 2
-        },
-        {
-          "id": "1",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-          "price": 5499,
-          "quantity": "5"
-        }
-      ],
-      "orders": [
-        {
-          "id": "3",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/r/d/6-5-dd9535-300-6-5-nike-mint-foam-cave-purple-ghost-green-white-original-imahfhvshdugeuce.jpeg?q=70&crop=false",
-          "brand": "Asics",
-          "catogery": "men",
-          "title": "GEL-FujiSetsu 3 G-TX Running Shoes For Men  (Black , 11)",
-          "price": 7649,
-          "quantity": 2
-        },
-        {
-          "id": "1",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-          "price": 5499,
-          "quantity": "5"
-        },
-        {
-          "id": "10",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
-          "price": 10499,
-          "quantity": 3
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 1
-        }
-      ],
-      "block": false,
-      "detorder": [
-        {
-          "name": "shameena",
-          "address": "perambra Calicut",
-          "phone": "960543222",
-          "payment": "UPID",
-          "total": 83789
-        }
-      ]
-    },
-    {
-      "id": "2e4e",
-      "email": "shuhaib@2",
-      "password": "12345",
-      "confirmpass": "12345",
-      "cart": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "women",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For Men  ",
-          "price": 373773,
-          "quantity": 1
-        },
-        {
-          "id": "9",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "Elevate 3 Basketball or running Shoes For Men",
-          "price": 9499,
-          "quantity": 1
-        },
-        {
-          "id": "11",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/t/v/t/12-1041a361-963-asics-blue-expanse-white-original-imah2z7ykaygmghz.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "KD Trey 5 X EP Basketball Shoes For Men  (Green , 6)",
-          "price": 6499,
-          "quantity": 1
-        },
-        {
-          "id": "10",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
-          "brand": "asics",
-          "catogery": "women",
-          "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
-          "price": 10499,
-          "quantity": 2
-        },
-        {
-          "id": "1",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-          "brand": "Asics",
-          "catogery": "women",
-          "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-          "price": 5499,
-          "quantity": "5"
-        }
-      ],
+      "id": "e9c5",
+      "email": "ddd@1",
+      "password": "ddd@1",
+      "confirmpass": "ddd@1",
+      "cart": [],
       "orders": [],
       "block": true,
       "detorder": []

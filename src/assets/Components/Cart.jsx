@@ -15,7 +15,6 @@ import {
 import { toast } from "sonner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { data } from "autoprefixer";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -23,8 +22,6 @@ const reducer = (state, action) => {
       return state.map((item) =>
         item.id == action.id ? { ...item, quantity: item.quantity + 1 } : item
       );
-    // return {count:state.count+action.value}
-
     case "decrement":
       return state.map((item) =>
         item.id == action.id && item.quantity > 1
@@ -32,41 +29,50 @@ const reducer = (state, action) => {
           : item
       );
     case "deletecart":
-      return state.filter((item, i) => i != action.i);
+      return state.filter((item, j) => item.id!= action.id) ;
+
+    case "clearcart":
+      return [];
 
     default:
       return state;
   }
 };
-// console.log(bb);
-
 function Cart() {
-  // const navigate=useNavigate()
-
-  const { cartitem, setcartitems ,} = useContext(contexts);
+  const { cartitem, setcartitems } = useContext(contexts);
+  // const initialcart=cartitem[`${idss}`]?.cart
   const [state, dispatch] = useReducer(reducer, cartitem.cart);
   const [dcart, setdeletedcart] = useState([]);
   const [cartnew, setcartnew] = useState([]);
-  const   navigate=useNavigate()
+  const [plaorder, setplaorder] = useState([]);
+  const navigate = useNavigate();
   const idss = localStorage.getItem("id");
   console.log(idss);
-  
 
-  useEffect(() => {
-    const cartupd = async () => {
-      const response = await axios.patch(`http://localhost:4000/user/${idss}`, {
-        cart: state,
-      });
-    };
-    cartupd();
-  }, [state, idss]);
+  //for updating deleted items
+  // useEffect(() => {
+  //   const cartupd = async () => {
+  //     try {
+  //       if (state) {
+  //         await axios.patch(`http://localhost:4000/user/${idss}`, {
+  //           cart: state,
+  //         });
+  //       }
+  //     } catch (error) {
+  //       console.log(error);
+  //       // toast.warning("cart Not updataed success fullyy");
+  //     }
+  //   };
+  //   cartupd();
+  // }, []);
 
-  // console.log((state, "ssss"));
+  //dispatch call for deleation
 
-  const cartdelete = (i) => {
+
+    const cartdelete = (id) => {
     dispatch({
       type: "deletecart",
-      i,
+      id,
     });
   };
 
@@ -91,6 +97,7 @@ function Cart() {
           orders: updatedoredrs,
         });
         setcartnew(res.data.orders);
+        // await axios.patch(`http://localhost:4000/user/${idss}`,{cart:null})
         // console.log(cartnew);
       } else {
         toast.warning("product alredy in orders");
@@ -102,12 +109,13 @@ function Cart() {
     // console.log(cartnew,"gggg");
   };
 
-    //updated delete orders in jsonserver
-
+  //updated delete orders in jsonserver
 
   useEffect(() => {
     const orderupd = async () => {
-      const response = await axios.patch(`http://localhost:4000/user/${idss}`,{ orders: cartnew});
+      const response = await axios.patch(`http://localhost:4000/user/${idss}`, {
+        orders: cartnew,
+      });
     };
     orderupd();
   }, [cartnew, idss]);
@@ -117,12 +125,54 @@ function Cart() {
     setcartnew(newcart);
   };
 
-  
- 
+  const grandtotal = cartnew.reduce(
+    (total, item) => total + item.quantity * item.price,
+    0
+  );
 
-  
+  const alladd = async (dat) => {
+    const response = await axios.get(`http://localhost:4000/user/${idss}`);
+    const topay = response.data.orders;
+    // if(topay.id===dat.id){
+    //   toast.warning("product alredy exist")
+    // }else{
+    const upd = state;
+    console.log(upd);
 
-  const grandtotal=cartnew.reduce((total,item)=>total+item.quantity*item.price,0)
+    const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
+      orders: upd,
+    });
+    setcartnew(res.data.orders);
+    // await axios.patch(`http://localhost:4000/user/${idss}`,{cart:null})
+
+    // }
+  };
+
+  //delete when go to payment
+
+  const fn = async () => {
+    try {
+      await axios.patch(`http://localhost:4000/user/${idss}`, { cart: [] });
+
+      dispatch({
+        type: "clearcart",
+      });
+      toast.success("cart cleard");
+    } catch (error) {
+      toast.warning("cart not cleard!!!!");
+    }
+    //for pricedetail clearing
+    try {
+      await axios.patch(`http://localhost:4000/user/${idss}`, { orders: [] });
+      dispatch({
+        type: "clearorder",
+      });
+      toast.success("pricecleard");
+    } catch (error) {
+      console.log(error);
+      toast.warning(" not pricecleard");
+    }
+  };
 
   return (
     <>
@@ -204,7 +254,7 @@ function Cart() {
                                 class="fa-solid fa-trash fa-lg"
                                 // style={{ color: "#000000" }}
                                 onClick={() => {
-                                  cartdelete(i);
+                                  cartdelete(data.id);
                                 }}
                               ></i>
                             </div>
@@ -224,11 +274,21 @@ function Cart() {
                     </div>
                   );
                 })}
+              <Button
+                onClick={() => {
+                  alladd(state);
+                }}
+              >
+                placeorder
+              </Button>
+
+              {/* {console.log(plaorder,"edwww")
+            } */}
             </div>
           </div>
           <div className="w-[150vh] ">
             <h1 className="text-center ml-10 mr-9 mt-8 text-3xl text-red-700 font-semibold border-b-2 border-blue-700 ">
-              ORDERS
+              PRICE DETAILS
             </h1>
 
             {cartnew.map((item, index) => {
@@ -248,7 +308,9 @@ function Cart() {
                     <h1 className="text-red-800">Price:{item.price}</h1>
                     <h1 className="text-red-800">
                       {" "}
-                     <h1 className="text-red-900">Total: {item.price * item.quantity}</h1>
+                      <h1 className="text-red-900">
+                        Total: {item.price * item.quantity}
+                      </h1>
                     </h1>
                     <div>
                       <i
@@ -263,12 +325,21 @@ function Cart() {
               );
             })}
             <div className="text-center mt-10">
-              <h1 className="text-blue-700">Grand total: <span className="text-red-900">{grandtotal}</span> </h1>
-             
-             <Button className="bg-green-800 mt-5" onClick={()=>{
-              navigate('/payment',{state:{grandtotal}})
-             }} >PAY</Button>
-            
+              <h1 className="text-blue-700">
+                Grand total: <span className="text-red-900">{grandtotal}</span>{" "}
+              </h1>
+
+              <Button
+                className="bg-green-800 mt-5"
+                onClick={() => {
+                  fn(),
+                    navigate("/payment", {
+                      state: { grandtotal, state},
+                    });
+                }}
+              >
+                PAY
+              </Button>
             </div>
           </div>
         </div>

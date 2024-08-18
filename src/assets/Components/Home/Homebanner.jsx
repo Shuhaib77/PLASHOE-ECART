@@ -8,8 +8,6 @@ function Homebanner() {
     <div>
       <div>
         <div className="bg-home-bg bg-no-repeat h-[100vh] ml-8 mr-8 mt-7 flex  items-center">
-          {/* <div className='   '> */}
-
           <div className="text-white font-medium   ml-20">
             <h1 className="font-semibold text-5xl mb-4 ">Love The Planet</h1>
             <h1 className="font-semibold text-5xl mb-3">We Walk On</h1>
@@ -38,10 +36,7 @@ function Homebanner() {
               </Button>
             </div>
           </div>
-
-          {/* </div> */}
         </div>
-
         <div className=" flex justify-around">
           <div>
             <h1 className="font-light mt-10"> As seen in:</h1>

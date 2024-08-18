@@ -31,40 +31,34 @@ import Orderss from "./assets/Pagess/Orderss";
 export const contexts = createContext();
 
 function App() {
-  const [datas, setdata] = useState([]);
+  // const [datas, setdata] = useState([]);
   const [search, setsearh] = useState(null);
   const [user, setuser] = useState([]);
   const [udatass, setudatass] = useState([]);
-
   const [shoeid, setshoeid] = useState([]);
   const [cartitem, setcartitem] = useState([]);
   // const [cartnew,setcartnew]=useState([])
   const usersid = localStorage.getItem("id");
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
-
-
-//adminsssss
+  //adminsssss
   const [asearchitem, asetsearchitem] = useState("");
   const [prdt, setprdt] = useState([]);
   const [lastasearch, setlastsearch] = useState(null);
-//------------------------
-
+  //------------------------
   const fn = async () => {
     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
-    setcartitem(res.data);
+    setcartitem(res.data.cart);
   };
-  
-
   useEffect(() => {
-  fn();
+    fn();
   }, []);
 
   const addtocarts = async (data) => {
     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
-
     try {
       const cartss = res.data.cart;
+      console.log(cartss);
 
       const check = cartss.find((itemid) => itemid.id === data.id);
       console.log(check, "check");
@@ -72,36 +66,29 @@ function App() {
         toast.warning("product alredy exist");
       } else {
         const update = [...cartss, data];
-        const reso = await axios.patch(`http://localhost:4000/user/${usersid}`,
+        const reso = await axios.patch(
+          `http://localhost:4000/user/${usersid}`,
           {
             cart: update,
           }
         );
-        console.log(reso.data, "ll");
         setcartitem(reso.data);
         toast.success("product added tocart");
       }
-
-      // toast.warning("productin cart")
-
-      // setcartitem()
-      // console.log(cartitem);
-
-      // console.log("adding " ,update);
     } catch (err) {
       console.log(err);
     }
   };
-  console.log(cartitem);
-  console.log(datas, "data");
-
+  // useEffect(() => {
+  //   fn();
+  // }, []);
   return (
     <>
       <Toaster richColors position="bottom-right" />
       <contexts.Provider
         value={{
-          datas,
-          setdata,
+          // datas,
+          // setdata,
           search,
           setsearh,
           user,
@@ -114,11 +101,14 @@ function App() {
           setcartitem,
           addtocarts,
           handleOpen,
-          asearchitem, asetsearchitem,
-          prdt, setprdt,
-          lastasearch, setlastsearch,
-          size, setSize
-          
+          asearchitem,
+          asetsearchitem,
+          prdt,
+          setprdt,
+          lastasearch,
+          setlastsearch,
+          size,
+          setSize,
         }}
       >
         <Routes>
@@ -133,17 +123,19 @@ function App() {
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/lookbook" element={<Lookbook />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
-          <Route path="/showcomponent/:dataid"element={<ShowComponent />} ></Route>
+          <Route
+            path="/showcomponent/:dataid"
+            element={<ShowComponent />}
+          ></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/orderss" element={<Orderss />}></Route>
           <Route path="/addprdt" element={<Addproduct />}></Route>
           <Route path="/editprdt" element={<Editproducts />}></Route>
-          <Route path="/allusers" element={<Alluser/>}></Route>
+          <Route path="/allusers" element={<Alluser />}></Route>
           <Route path="/trackorder" element={<Trackorder />}></Route>
           <Route path="/dashboard" element={<Dashboard />}></Route>
           <Route path="/adbody" element={<Adbody />}></Route>
-         
         </Routes>
       </contexts.Provider>
     </>

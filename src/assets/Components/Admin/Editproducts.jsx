@@ -13,18 +13,14 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-// import { Button } from "@material-tailwind/react";
-
 import { useFormik } from "formik";
 import { data } from "autoprefixer";
 import { toast } from "sonner";
 import { contexts } from "../../../App";
 function Editproducts() {
   const { prdt, setprdt } = useContext(contexts);
-  // const [prdt, setprdt] = useState([]);
   const [size, setSize] = React.useState(null);
   const [editprdt, seteditprdt] = useState(null);
-
   const handleOpen = (value) => setSize(value);
   const fn = async () => {
     const response = await axios.get("http://localhost:4000/datass");
@@ -33,7 +29,6 @@ function Editproducts() {
   useEffect(() => {
     fn();
   }, []);
-
   const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
     initialValues: {
       id: "",
@@ -43,7 +38,6 @@ function Editproducts() {
       catogery: "",
       price: null,
       quantity: 1,
-      // size: [],
     },
     onSubmit: async (values) => {
       try {
@@ -59,15 +53,9 @@ function Editproducts() {
       } catch (error) {}
     },
   });
-
-  // useEffect(()=>{
-  //
-  // })
   const handleclick = async (data) => {
     const res = await axios.get(`http://localhost:4000/datass/${data.id}`);
     console.log(res.data, "dededed");
-
-    // seteditprdt(res.data)
     setValues(res.data);
   };
   //delete products
@@ -81,7 +69,6 @@ function Editproducts() {
     }
     fn();
   };
-
   return (
     <>
       <div className="ml-10 mt-5 border-b-2 border-green-800 ">
@@ -269,11 +256,6 @@ function Editproducts() {
           <DialogFooter></DialogFooter>
         </Dialog>
       </div>
-      {/* search */}
-
-
-
-      
     </>
   );
 }

@@ -29,7 +29,6 @@ function Alluser() {
     "PASSWORD",
     "COFIRMPASSWORD",
     "ADMIN",
-
     "ORDERDETAILS",
     "",
   ];
@@ -45,34 +44,12 @@ function Alluser() {
   useEffect(() => {
     fn();
   }, []);
-  console.log(ausers, "sws2ed");
-
-  // useEffect(()=>{
-  //   const fn=async()=>{
-  //   const response = await axios.get(`http://localhost:4000/user/${id}`);
-  //   try {
-  //     setblockusers(response.data.block);
-
-  //   } catch (error) {
-  //     console.log(error);
-
-  //   }
-  //   fn()
-  // }
-
-  // },[])
-  // console.log(blockusers,"gggdgdq");
-
+//blocking user
   const handleuser = async (id) => {
     const response = await axios.get(`http://localhost:4000/user/${id}`);
     const blocks = response.data.block;
     setblockusers(response.data.block);
-
-    // console.log(blocks,"ggggg");
-
     try {
-      // const user=response.data.find((item)=>item.id==id)
-
       if (blocks === true && response.data.admin == true) {
         toast.warning("this is a pro admin");
       } else if (blocks === true) {
@@ -84,55 +61,21 @@ function Alluser() {
           block: true,
         })) && toast.warning("user Unblocked");
       }
-      // const res =
-      //   blocks === true &&response.data.admin!=true
-      //     ? (await axios.patch(`http://localhost:4000/user/${id}`, {
-      //         block: false,
-      //       })) && toast.success("user blocked")
-      //     : (await axios.patch(`http://localhost:4000/user/${id}`, {
-      //         block: true,
-      //       })) && toast.warning("user Unblocked");
-      // console.log(res, "oooo");
-
       fn();
-      // toast.warning("user not find");
     } catch (error) {
       console.log(error);
     }
   };
-  console.log(blockusers, "wff");
 
   //vieworders
+
   const vieworders = async (id) => {
     const response = await axios.get(`http://localhost:4000/user/${id}`);
     setorders(response.data.detorder);
-
-    console.log(d, "kkk");
   };
 
-   
-      const payed = orderss.map((item) => item.pyprdct);
-      const neww=payed.map((item)=>item)
-  // const lastpayedorder=payed.map((item)=>item)
-  console.log(neww);
-  
-  // setpayedprdct(neww)
-  // 
-
-    console.log(neww);
-
-
-  
- 
-  
-  
-  
-    
-  // const news=lastpayedorder.map((item)=>item)
-    
-    
-  // console.log(lastpayedorder,"jjjj");
-
+  const payed = orderss.map((item) => item.pyprdct);
+  const neww = payed.map((item) => item);
   return (
     <>
       <Card className="h-full w-full overflow-scroll ml-5 mt-5 mr-5 ">
@@ -283,32 +226,30 @@ function Alluser() {
             <DialogHeader className="border-b-4 border-green-900  ">
               ORDERS
             </DialogHeader>
-
-            {/* <div className=" flex h-[40vh] ml-20  "></div> */}
-
             <div className="flex flex-wrap justify-around gap-4 mt-3  ">
-              {neww.length > 0&&neww[0].map((data) => {
-                return (
-                  <Card className="w-96 h-[50vh] border-5 border-g ">
-                    <CardHeader className="h-[30vh] mt-5">
-                      <img src={data.image} alt="profile-picture" />
-                    </CardHeader>
-                    <CardBody className="text-center">
-                      <Typography color="blue-gray" className="mb-2">
-                        {data.title}
-                      </Typography>
-                      <Typography
-                        color="blue-gray"
-                        className="font-medium"
-                        textGradient
-                      >
-                        {data.brand}
-                      </Typography>
-                    </CardBody>
-                    <CardFooter className="flex justify-between gap-7 pt-2"></CardFooter>
-                  </Card>
-                );
-              })}
+              {neww.length > 0 &&
+                neww[0].map((data) => {
+                  return (
+                    <Card className="w-96 h-[50vh] border-5 border-g ">
+                      <CardHeader className="h-[30vh] mt-5">
+                        <img src={data.image} alt="profile-picture" />
+                      </CardHeader>
+                      <CardBody className="text-center">
+                        <Typography color="blue-gray" className="mb-2">
+                          {data.title}
+                        </Typography>
+                        <Typography
+                          color="blue-gray"
+                          className="font-medium"
+                          textGradient
+                        >
+                          {data.brand}
+                        </Typography>
+                      </CardBody>
+                      <CardFooter className="flex justify-between gap-7 pt-2"></CardFooter>
+                    </Card>
+                  );
+                })}
             </div>
           </DialogBody>
           <DialogFooter>

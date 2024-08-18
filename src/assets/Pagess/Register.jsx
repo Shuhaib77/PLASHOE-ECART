@@ -30,20 +30,21 @@ function Register() {
       email: "",
       password: "",
       confirmpass: "",
-     
     },
     validationSchema: registerSchema,
 
     onSubmit: async (values) => {
-     
-      const finduser = emails.find((user) => user.email === values.email );
-
+      const finduser = emails.find((user) => user.email === values.email);
       if (finduser) {
         toast.warning("User already exists");
-      }
-      
-      else {
-        const newUser= {...values,cart:[],orders:[],block:true,detorder:[]};
+      } else {
+        const newUser = {
+          ...values,
+          cart: [],
+          orders: [],
+          block: true,
+          detorder: [],
+        };
         await axios.post("http://localhost:4000/user", newUser);
 
         toast.success("User registration successful");
@@ -69,9 +70,6 @@ function Register() {
             onSubmit={handleSubmit}
           >
             <h1 className="text-4xl text-center text-white mb-6">REGISTER</h1>
-            {/* <div>
-            <Input label="name" type="text"></Input>
-          </div> */}
             <div className="mt-6">
               <Input
                 label="email"
@@ -120,7 +118,6 @@ function Register() {
               </Button>
             </div>
             <div className="mt-5">
-              {/* <Link  to={'/login'} className="border-b-2 text-blue-200 border-blue-900">Lo</Link> */}
               <Link
                 className="border-b-2 text-blue-200 border-blue-400"
                 to={"/login"}

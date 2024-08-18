@@ -12,23 +12,17 @@ import {
 } from "@material-tailwind/react";
 import Navbar from "../Navbar";
 import Footer from "../Footer";
-// import { Setshoeide } from './Addtocart';
 
 function ShowComponent() {
   const { datas, addtocarts } = useContext(contexts);
   const [dedata, setdedata] = useState([]);
-
   const datatodescribe = useParams();
-
-  // console.log(datatodescribe);
 
   useEffect(() => {
     const res = datas.filter(
       (specificdata) => specificdata.id === datatodescribe.dataid
     );
     setdedata(res);
-
-    // console.log(datas);
   }, [datas]);
 
   return (
@@ -52,7 +46,6 @@ function ShowComponent() {
                     <Typography>{data.title}</Typography>
                     <Typography>{data.catogery}</Typography>
                     <Typography>{data.price}</Typography>
-                    
                   </CardBody>
                   <CardFooter className="pt-0 flex justify-between">
                     <Button
@@ -64,8 +57,7 @@ function ShowComponent() {
                     </Button>
                     <Button
                       onClick={() => {
-                        addtocarts(data)
-                        
+                        addtocarts(data);
                       }}
                     >
                       Add to cart

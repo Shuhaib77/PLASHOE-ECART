@@ -15,45 +15,19 @@ function Dashboard() {
       try {
         const response = await axios.get("http://localhost:4000/datass");
         setaprdt(response.data);
-
         const res = await axios.get("http://localhost:4000/user");
         setauser(res.data);
-
         const allorders = res.data.flatMap((item) => item.detorder);
-        const b =allorders.map((item)=>item.pyprdct)
-        
-        setaorders(b,"edede");
+        const b = allorders.map((item) => item.pyprdct);
+        setaorders(b, "edede");
         const profits = res.data.flatMap((item) => item.detorder);
-        // const lastprofit=profits.map((item)=>console.log(item.total,"oooooo"))
-         setprofit(profits);
- 
-        // setatotal(sum)
-        // console.log(sum,"lllll");
-
-        // console.log(ordersArray);
+        setprofit(profits);
       } catch (error) {
         console.log(error);
       }
     };
     fn();
   }, []);
-  console.log(aorders);
-  console.log(profit, "hoh");
-  console.log(atotal);
-
-  // useEffect(()=>{
-  //   auser.map((item) => {
-  //     const c ={...item.orders}
-  //     setaorders(...aorders,c);
-  //   });
-
-  // },[])
-  // console.log(aorders);
-
-  // console.log(aorders);
-
-  // console.log(auser);
-  // console.log(aorders);
 
   return (
     <>

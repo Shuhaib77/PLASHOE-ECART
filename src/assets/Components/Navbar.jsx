@@ -13,11 +13,9 @@ function Navbar() {
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
   const { search, setsearh, user, cartitem, cartnew } = useContext(contexts);
-  console.log(cartnew, "sss");
-
   const [menu, setmenu] = useState(false);
   const usersss = localStorage.getItem("id");
-  console.log("length");
+
   useEffect(() => {
     const fdatass = async () => {
       const response = await axios.get("http://localhost:4000/datass");
@@ -35,16 +33,13 @@ function Navbar() {
       x.title.toLowerCase().includes(searchval.toLowerCase())
     );
     setsearh(inputWord);
-    // console.log(inputWord);
     if (inputWord.length >= 0) {
       toast.success("finded");
-
       navigate("/all");
     } else {
       toast.warning("not find");
     }
   };
-
   return (
     <div className="bg-white ">
       <div>
@@ -54,7 +49,6 @@ function Navbar() {
             <div className="text-2xl  font-semibold md:block hidden ">
               PLASHOE
             </div>
-
             <div className="text-l  ml-8 text-gray-700 font-medium md:block hidden ">
               <Link
                 to={"/"}
@@ -115,20 +109,14 @@ function Navbar() {
               </Button>
             </div>
           </div>
-
-
-          <div
-              className=" ml-5 mr-2 mt-4 text-gray-700 hover:border-b-2 border-black font-medium  md:block hidden   "
-             
-            >
-              <i class="fa-solid fa-gift fa-xl text-black  cursor-pointer" onClick={() => {
+          <div className=" ml-5 mr-2 mt-4 text-gray-700 hover:border-b-2 border-black font-medium  md:block hidden   ">
+            <i
+              class="fa-solid fa-gift fa-xl text-black  cursor-pointer"
+              onClick={() => {
                 navigate("/orderss");
-              }} ></i>
-              {/* <span>{cartnew.length()}</span> */}
-            </div>
-
-
-
+              }}
+            ></i>
+          </div>
           <div className="flex items-center ">
             <div className="text-l  ml-4  text-gray-700 font-medium md:block hidden  ">
               <Link
@@ -147,7 +135,6 @@ function Navbar() {
               >
                 CONTACT
               </ScrollLink>
-              {/* <Link to="contact" smooth={true} duration={500} >CONTACT</Link> */}
             </div>
             {/* <span>{cartitem.length}</span> */}
             <div
@@ -156,11 +143,7 @@ function Navbar() {
                 navigate("/cart");
               }}
             >
-              <i
-                class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-pink-700"
-                // style={{ color: "#000000" }}
-              ></i>
-              {/* <span>{cartnew.length()}</span> */}
+              <i class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-pink-700"></i>
             </div>
             <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
               {usersss ? (
@@ -169,12 +152,13 @@ function Navbar() {
                     class="fa-solid fa-user-minus fa-xl ml-2 text-black     hover:text-pink-700  "
                     onClick={() => {
                       localStorage.removeItem("id");
-
                       toast.warning("loged Out");
                       navigate("/login");
                     }}
                   ></i>
-                  <h1 className=" text-black     hover:text-pink-700">logout</h1>
+                  <h1 className=" text-black     hover:text-pink-700">
+                    logout
+                  </h1>
                 </div>
               ) : (
                 <div className="mt-2 ">
@@ -184,28 +168,11 @@ function Navbar() {
                     onClick={() => {
                       navigate("/login");
                     }}
-                  ></i> <h1 className="text-black     hover:text-pink-700">log-in</h1>
+                  ></i>{" "}
+                  <h1 className="text-black     hover:text-pink-700">log-in</h1>
                 </div>
               )}
-              {/* <i
-                class="fa-solid fa-user fa-xl text-black  hover:text-pink-700 "
-                onClick={() => {
-                  if (usersss) {
-                    // navigate('/register')
-                    localStorage.removeItem("id");
-
-                    toast.warning("loged Out");
-
-                    navigate("/");
-                    // toast.warning("loged in");
-                  } else {
-                    navigate("/login");
-                    // toast.warning("logedddd")
-                  }
-                }}
-              ></i> */}
             </div>
-
             <div className="sm:hidden">
               <i
                 class="fa-regular fa-bars fa-2xl  "
@@ -216,13 +183,11 @@ function Navbar() {
                     setmenu(true);
                   }
                 }}
-                //  style={{color: "#000000"}}
-              ></i>
+                ></i>
             </div>
           </div>
         </div>
       </div>
-
       {menu}
     </div>
   );

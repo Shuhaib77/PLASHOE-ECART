@@ -15,7 +15,6 @@ import { useNavigate } from "react-router-dom";
 const AllProducts = () => {
   const { search, datas } = useContext(contexts);
   const navigate = useNavigate();
-  console.log(search, "HHH");
   return (
     <div>
       <div>

@@ -13,10 +13,6 @@ import { contexts } from "../../../App";
 
 function Addproduct() {
   const { size, setSize, handleOpen } = useContext(contexts);
-  // const [size, setSize] = React.useState(null);
-
-  // const handleOpen = (value) => setSize(value);
-
   const { handleChange, handleSubmit, values, errors } = useFormik({
     initialValues: {
       id: "",
@@ -26,7 +22,6 @@ function Addproduct() {
       catogery: "",
       price: null,
       quantity: 1,
-      // size: [],
     },
     onSubmit: async (values) => {
       const reponse = await axios.get("http://localhost:4000/datass");

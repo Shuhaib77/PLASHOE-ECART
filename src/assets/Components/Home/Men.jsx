@@ -13,18 +13,33 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
 
 function Men() {
-  const { datas, cartitem, setcartitem, addtocarts } = useContext(contexts);
-  const [mendata, setmendata] = useState([]);
+  const [datas, setdata] = useState([]);
+  const { 
+    // datas, 
+    cartitem, setcartitem, addtocarts } = useContext(contexts);
+  // const [mendata, setmendata] = useState([]);
   const navigate = useNavigate();
 
+  
+
   useEffect(() => {
-    const res = datas.filter((men) => men.catogery == "men");
-    setmendata(res);
-  }, [datas]);
-  console.log(mendata);
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/datass");
+        setdata(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   const res = datas.filter((men) => men.catogery == "men");
+  //   setmendata(res);
+  // }, [datas]);
 
   return (
     <div>
@@ -32,7 +47,6 @@ function Men() {
         <div className="">
           <Navbar />
         </div>
-
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
           <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
             <h1 className="text-4xl mt-10 ml-10 text-light-green-800">MEN</h1>
@@ -54,7 +68,7 @@ function Men() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
-              {mendata.map((data) => {
+              {datas.filter((men) => men.catogery == "men").map((data) => {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">

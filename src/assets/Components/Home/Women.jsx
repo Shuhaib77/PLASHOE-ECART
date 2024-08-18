@@ -16,14 +16,26 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 function Women() {
-  const { datas, cartitem, setcartitem, addtocarts } = useContext(contexts);
-  const [womendata, setwomendata] = useState([]);
+  const { addtocarts } = useContext(contexts);
+  // const [womendata, setwomendata] = useState([]);
   const navigate = useNavigate();
+  const [datas, setdata] = useState([]);
+useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/datass");
+        setdata(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
 
-  useEffect(() => {
-    const res = datas.filter((wdata) => wdata.catogery == "women");
-    setwomendata(res);
-  }, [datas]);
+  // useEffect(() => {
+  //   const res = datas.filter((wdata) => wdata.catogery == "women");
+  //   setwomendata(res);
+  // }, [datas]);
 
   return (
     <div>
@@ -31,11 +43,9 @@ function Women() {
         <div className="">
           <Navbar />
         </div>
-
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
           <div className="w-[160vh] h-full mt-8 mb-8 bg-white ">
             <h1 className="text-4xl mt-10 ml-10 text-light-green-800">WOMEN</h1>
-
             <div className="flex justify-between mt-5">
               <div className="ml-5">
                 <Button className="">Filter shoe</Button>
@@ -53,7 +63,7 @@ function Women() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
-              {womendata.map((data) => {
+              {datas.filter((wdata) => wdata.catogery == "women").map((data) => {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
@@ -61,11 +71,7 @@ function Women() {
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>
-                        <Typography
-                          variant="h5"
-                          color=""
-                          className="mb-2"
-                        >
+                        <Typography variant="h5" color="" className="mb-2">
                           {data.brand}
                         </Typography>
                         <Typography>{data.title}</Typography>
@@ -95,7 +101,6 @@ function Women() {
             </div>
           </div>
         </div>
-
         <div>
           <Footer />
         </div>

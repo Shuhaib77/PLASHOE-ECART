@@ -9,26 +9,8 @@ import { contexts } from "../../App";
 
 function Login() {
   const navigtate = useNavigate();
-  
-  const{user,setuser,udatass, setudatass}=useContext(contexts)
-  // useEffect(() => {
-  //   const fetchmailandpass = async () => {
-  //     const response = await axios.get("http://localhost:4000/user");
-  //     try {
-  //       // console.log(response.data);
-  //       setudatass(response.data);
-  //       console.log(response.data);
-        
-  //     } catch (error) {
-  //       toast.warning("fetching failed");
-  //     }
-  //     console.log();
-  //   };
-  //   fetchmailandpass();
-  // }, []);
-  // // console.log(datas);
-  // console.log(udatass);
 
+  const { user, setuser, udatass, setudatass } = useContext(contexts);
   const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
     initialValues: {
       email: "",
@@ -37,43 +19,23 @@ function Login() {
     validationSchema: logionschema,
     onSubmit: async (values) => {
       const response = await axios.get("http://localhost:4000/user");
-      // idss=localStorage.getItem("id")
-      const user = response.data.find((user) => user.email === values.email && user.password === values.password);
-
-      if (user&& user.admin==true ) {
-        // setuser(user);
-        localStorage.setItem("id",user.id)
-        // localStorage.setItem("admin",user.admin)
-        navigtate("/admin/dashboard"); 
-        console.log('gttt');
-        
-        // if(navigtate('/')){
-          
-        // }
-        console.log(user);
-        // localStorage.setItem('user',JSON.stringify(user)) 
+      const user = response.data.find(
+        (user) =>
+          user.email === values.email && user.password === values.password
+      );
+      if (!user) {
+        toast.warning("invalid pass or mail");
+      } else if (user && user.admin == true) {
+        localStorage.setItem("id", user.id);
+        navigtate("/admin/dashboard");
         toast.success(" admin Login successful");
-        
-       
-      } else if(user.block==false){
+      } else if (user.block == false) {
         toast.warning("User is blocked");
-
-      }
-      else if( user ) {
+      } else {
         setuser(user);
-        localStorage.setItem("id",user.id)
-        // localStorage.setItem("admin",user.admin)
-        navigtate("/"); 
-        // if(navigtate('/')){
-          
-        // }
-        console.log(user);
-        // localStorage.setItem('user',JSON.stringify(user)) 
+        localStorage.setItem("id", user.id);
+        navigtate("/");
         toast.success("Login successful");
-        
-      }
-      else{
-        toast.error("Invalid email or password");
       }
     },
   });
@@ -94,9 +56,7 @@ function Login() {
           onSubmit={handleSubmit}
         >
           <h1 className="text-4xl text-center mb-6">LOGIN</h1>
-          {/* <div>
-            <Input label="name" type="text"></Input>
-          </div> */}
+
           <div className="mt-6">
             <Input
               label="email"

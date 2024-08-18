@@ -23,12 +23,7 @@ function Admin() {
   const { url } = useParams();
 
   const id = localStorage.getItem("id");
-  // const [searchitem, setsearchitem] = useState("");
-
-  console.log(url, "vals");
   const Data = [
-    // {title:"user",icon: <i class="fa-solid fa-users fa-flip fa-xl mr-3 "></i>},
-    // {title:"user",icon: <i class="fa-solid fa-users fa-flip fa-xl mr-3 "></i>},
     {
       title: "user",
       icon: <i class="fa-solid fa-users  fa-xl mr-3 "></i>,
@@ -44,21 +39,12 @@ function Admin() {
       icon: <i class="fa-brands fa-opencart fa-xl mr-2 "></i>,
       url: "editprdt",
     },
-    // {
-    //   title: "Track order",
-    //   icon: <i class="fa-solid fa-map-location-dot  fa-lg mr-4"></i>,
-    //    url:"trackorder"
-    // },
+
     {
       title: "Dashboard",
       icon: <i class="fa-brands fa-dashcube  fa-xl mr-4"></i>,
       url: "dashboard",
     },
-    // {
-    //   title: "Dashboard",
-    //   icon: <i class="fa-brands fa-dashcube fa-flip fa-xl mr-4"></i>,
-    //   url:"dashboard"
-    // },
   ];
   console.log(prdt, "dd");
 
@@ -66,11 +52,8 @@ function Admin() {
     let searchitems = prdt.filter((x) =>
       x.title.toLowerCase().includes(asearchitem.toLowerCase())
     );
-    // console.log(searchitems);
-
     setlastsearch(searchitems);
     console.log(searchitems);
-
     if (searchitems.length > 0) {
       toast.success("finded");
       navigate("/adbody");
@@ -78,12 +61,8 @@ function Admin() {
       toast.warning("not finded");
     }
   };
-  console.log(asearchitem);
-  console.log(lastasearch, "pp");
-
   return (
     <>
-      {/* <Navbar/> */}
       <div className="flex  p-5  justify-between w-[176vh]  bg-blue-900 text-white  ">
         <div className="flex ">
           <h1 className="mt-3  ml-6 font-semibold text-xl">PLASHOE</h1>

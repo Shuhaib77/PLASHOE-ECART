@@ -13,18 +13,13 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-// import { Button } from "@material-tailwind/react";
-
 import { useFormik } from "formik";
 import { data } from "autoprefixer";
 import { toast } from "sonner";
 import { contexts } from "../../../App";
 
-
 function Adbody() {
-
-  const { prdt, setprdt,lastasearch, setlastsearch } = useContext(contexts);
-  // const [prdt, setprdt] = useState([]);
+  const { prdt, setprdt, lastasearch, setlastsearch } = useContext(contexts);
   const [size, setSize] = React.useState(null);
   const [editprdt, seteditprdt] = useState(null);
 
@@ -36,7 +31,6 @@ function Adbody() {
   useEffect(() => {
     fn();
   }, []);
-
   const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
     initialValues: {
       id: "",
@@ -46,7 +40,6 @@ function Adbody() {
       catogery: "",
       price: null,
       quantity: 1,
-      // size: [],
     },
     onSubmit: async (values) => {
       try {
@@ -55,25 +48,23 @@ function Adbody() {
           `http://localhost:4000/datass/${values.id}`,
           newuser
         );
-
         fn();
         toast.success("updataed ");
         setSize(null);
-      } catch (error) {}
+      } catch (error) {
+        console.log(error);
+      }
     },
   });
 
-  // useEffect(()=>{
-  //
-  // })
   const handleclick = async (data) => {
     const res = await axios.get(`http://localhost:4000/datass/${data.id}`);
     console.log(res.data, "dededed");
-
-    // seteditprdt(res.data)
     setValues(res.data);
   };
+
   //delete products
+
   const deleteprdt = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:4000/datass/${id}`);
@@ -272,14 +263,8 @@ function Adbody() {
           <DialogFooter></DialogFooter>
         </Dialog>
       </div>
-      {/* search */}
-
-
-
-      
     </>
   );
-
 }
 
-export default Adbody
+export default Adbody;

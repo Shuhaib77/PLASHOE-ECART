@@ -11,19 +11,25 @@ import {
 } from "@material-tailwind/react";
 import { contexts } from "../../../App";
 import { useNavigate } from "react-router-dom";
-// import { toast } from "sonner";
-// import axios from "axios";
-// import Addtocart from "./Addtocart";
-// import Addtocart from "./Addtocart";
+import axios from "axios";
 
 function Collection() {
-  const { datas,cartitem, setcartitem,addtocarts } = useContext(contexts);
-  const navigate=useNavigate()
+  const {  addtocarts } = useContext(contexts);
+  const navigate = useNavigate();
+  const [datasd, setdata] = useState([]);
 
-
- 
- 
-
+ useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get("http://localhost:4000/datass");
+        setdata(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchData();
+  }, []);
+  
   return (
     <div>
       <div>
@@ -47,7 +53,7 @@ function Collection() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
-              {datas.map((data) => {
+              {datasd.map((data) => {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-x-2 gap-1   ">
@@ -60,7 +66,6 @@ function Collection() {
                           color="blue-gray"
                           className="mb-2"
                         >
-                         
                           {data.brand}
                         </Typography>
                         <Typography>{data.title}</Typography>
@@ -68,23 +73,29 @@ function Collection() {
                         <Typography>{data.price}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
-                      <Button onClick={()=>{
-                    navigate(`/showcomponent/${data.id}`)
-                  }} > Read More </Button> 
-                   <Button onClick={()=>{
-                    addtocarts(data)
-                   
-                   }} >Add to cart</Button>
+                        <Button
+                          onClick={() => {
+                            navigate(`/showcomponent/${data.id}`);
+                          }}
+                        >
+                          {" "}
+                          Read More{" "}
+                        </Button>
+                        <Button
+                          onClick={() => {
+                            addtocarts(data);
+                          }}
+                        >
+                          Add to cart
+                        </Button>
                       </CardFooter>
                     </Card>
-
                   </div>
                 );
               })}
             </div>
           </div>
         </div>
-
         <div>
           <Footer />
         </div>

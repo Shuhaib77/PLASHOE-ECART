@@ -40,7 +40,7 @@ function Collection() {
                 <Button className="bg-light-green-800">Show all</Button>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center items-center ">
+            <div className="flex flex-wrap justify-center items-center mb-10">
               {datas.map((data) => {
                 return (
                   <div className=" ">

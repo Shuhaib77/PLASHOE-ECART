@@ -89,9 +89,9 @@ function Navbar() {
                 LOOKBOOK
               </Link>
             </div>
-            <div className="text-l  ml-5 text-gray-700 font-medium md:block hidden  ">
+            <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   ">
               
-             <Link to={"/wishlist"}>Sale</Link>
+             <Link to={"/wishlist"}><i class="fa-solid fa-heart-circle-check fa-xl" style={{color: "#791a3e"}}></i></Link>
             </div>
             <div className=" ml-4 ">
               <Input
@@ -110,13 +110,11 @@ function Navbar() {
               </Button>
             </div>
           </div>
-          <div className=" ml-5 mr-2 mt-4 text-gray-700 hover:border-b-2 border-black font-medium  md:block hidden   ">
-            <i
-              class="fa-solid fa-gift fa-xl text-black  cursor-pointer"
-              onClick={() => {
+          <div className=" ml-5 mr-2 mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  md:block hidden   ">
+          <i class="fa-brands fa-opencart fa-xl cursor-pointer" style={{color: "#791a3e"}}  onClick={() => {
                 navigate("/orderss");
-              }}
-            ></i>
+              }}></i>
+           
           </div>
           <div className="flex items-center ">
             <div className="text-l  ml-4  text-gray-700 font-medium md:block hidden  ">
@@ -144,13 +142,14 @@ function Navbar() {
                 navigate("/cart");
               }}
             >
-              <i class="fa-solid fa-bag-shopping fa-xl text-black  hover:text-pink-700"></i>
+              <i class="fa-solid fa-bag-shopping fa-xl  " style={{color: "#791a3e"}}></i>
             </div>
             <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
               {usersss ? (
-                <div className="mt-2 text-black   hover:text-pink-700 ">
+                <div className="mt-2 text-black   ">
                   <i
                     class="fa-solid fa-user-minus fa-xl ml-2     "
+                    style={{color: "#791a3e"}}
                     onClick={() => {
                       localStorage.clear("id");
                       toast.warning("loged Out");
@@ -163,10 +162,11 @@ function Navbar() {
                   </h1>
                 </div>
               ) : (
-                <div className="mt-2 text-black  hover:text-pink-700">
+                <div className="mt-2 text-black  ">
                   {" "}
                   <i
-                    class="fa-solid fa-user fa-xl ml-2     hover:text-pink-700 "
+                    class="fa-solid fa-user fa-xl ml-2      "
+                    style={{color: "#791a3e"}}
                     onClick={() => {
                       navigate("/login");
                     }}

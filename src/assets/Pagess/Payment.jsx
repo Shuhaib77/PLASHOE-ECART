@@ -1,6 +1,6 @@
 import React from "react";
 import { Input, Textarea, Button } from "@material-tailwind/react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import axios from "axios";
 import { toast } from "sonner";
@@ -9,6 +9,7 @@ function Payment() {
   const id = localStorage.getItem("id");
   const { grandtotal } = location.state;
   const { cartnew } = location.state;
+  const navigate=useNavigate()
   // const {cartnew} =location.state;
   console.log(id);
   // console.log(cartnew,"jjjj");
@@ -31,6 +32,8 @@ function Payment() {
           detorder: upd,
         });
         toast.success("payment successfull");
+        navigate("/orderss")
+        
       } else {
         toast.warning("not valid payment");
       }

@@ -152,6 +152,15 @@
       "catogery": "men",
       "price": 21000,
       "quantity": 1
+    },
+    {
+      "id": "19",
+      "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/3/q/d/-original-imagzfkmwddyqphw.jpeg?q=70",
+      "brand": "new balance",
+      "title": "1500 Sneakers For Men  (Black , 6.5)",
+      "catogery": "men",
+      "price": "13000",
+      "quantity": 1
     }
   ],
   "user": [
@@ -162,35 +171,16 @@
       "confirmpass": "12345",
       "admin": true,
       "cart": [],
-      "wishlist": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "men",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
-          "price": 3773,
-          "quantity": 1
-        },
-        {
-          "id": "3",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/r/d/6-5-dd9535-300-6-5-nike-mint-foam-cave-purple-ghost-green-white-original-imahfhvshdugeuce.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "men",
-          "title": "GEL-FujiSetsu 3 G-TX Running Shoes For Men  (Black , 11)",
-          "price": 7649,
-          "quantity": 1
-        }
-      ],
+      "wishlist": [],
       "orders": [],
       "block": true,
       "detorder": [
         {
-          "name": "edewdwed",
-          "address": "dwedewdewd",
-          "phone": "edewdd",
+          "name": "2345678sdf",
+          "address": "dfgh",
+          "phone": "sdfg",
           "payment": "CARD",
-          "total": 8766,
+          "total": 5656,
           "pyprdct": [
             {
               "id": "1",
@@ -199,53 +189,17 @@
               "catogery": "women",
               "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
               "price": 5656,
-              "quantity": 1
-            },
-            {
-              "id": "4",
-              "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/k/t/u/9-dz7534-002-9-nike-phantom-blue-lightning-ice-peach-original-imahfhvsmvgyx3s5.jpeg?q=70",
-              "brand": "nike",
-              "catogery": "women",
-              "title": "GEL-SONOMA 7 Running Shoes For Men  (Blue , 10)",
-              "price": 3110,
               "quantity": 1
             }
           ]
         },
         {
-          "name": "rishal",
-          "address": "Kannur",
-          "phone": "1256454r3",
-          "payment": "CARD",
-          "total": 28741,
+          "name": "sdfgh",
+          "address": "sdfghj",
+          "phone": "234567",
+          "payment": "UPID",
+          "total": 19998,
           "pyprdct": [
-            {
-              "id": "1",
-              "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/d/t/x/10-1071a091-103-asics-white-pure-gold-original-imah2nyzzxezzhdh.jpeg?q=70&crop=false",
-              "brand": "asics news",
-              "catogery": "women",
-              "title": "GEL-33 RUN (Grey) Outdoors Running For Men  (Grey , 9)",
-              "price": 5656,
-              "quantity": 1
-            },
-            {
-              "id": "4",
-              "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/k/t/u/9-dz7534-002-9-nike-phantom-blue-lightning-ice-peach-original-imahfhvsmvgyx3s5.jpeg?q=70",
-              "brand": "nike",
-              "catogery": "women",
-              "title": "GEL-SONOMA 7 Running Shoes For Men  (Blue , 10)",
-              "price": 3110,
-              "quantity": 1
-            },
-            {
-              "id": "5",
-              "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/r/7/u/8-5-fb1362-104-8-5-nike-summit-white-deep-royal-blue-racer-blue-original-imahft9hgyvbaeey.jpeg?q=70&crop=false",
-              "brand": "nike",
-              "catogery": "women",
-              "title": "INDOOR SMOL Walking Shoes For Men  (White , 11)",
-              "price": 1977,
-              "quantity": 1
-            },
             {
               "id": "9",
               "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/m/k/c/7-1041a480-100-asics-white-blue-original-imah2nyzpdfrxu8g.jpeg?q=70&crop=false",
@@ -256,12 +210,12 @@
               "quantity": 1
             },
             {
-              "id": "7",
-              "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/a/m/9/10-1042a208-asics-soothing-sea-gris-blue-original-imagqhhxcphzvh9r.jpeg?q=70",
+              "id": "10",
+              "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/g/c/r/10-1202a411-asics-black-fresh-ice-original-imaghcv5vjxnvkbk.jpeg?q=70",
               "brand": "asics",
               "catogery": "women",
-              "title": "ULTRABOOST 1.0 Running Shoes For Men  (Grey , 6)",
-              "price": 8499,
+              "title": "GIANNIS IMMORTALITY 3 EP Basketball Shoes For Men  (Blue , 10)",
+              "price": 10499,
               "quantity": 1
             }
           ]
@@ -273,40 +227,11 @@
       "email": "shihab@1",
       "password": "shihab@1",
       "confirmpass": "shihab@1",
-      "cart": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "men",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
-          "price": 3773,
-          "quantity": 1
-        },
-        {
-          "id": "12",
-          "image": "https://rukminim2.flixcart.com/image/400/400/xif0q/shoe/o/l/f/13-1071a091-300-asics-celadon-safety-yellow-original-imah2nyzumzscfns.jpeg?q=70",
-          "brand": "asics",
-          "catogery": "men",
-          "title": "Metcon 8 Training & Gym Shoes For Men  (White , 7)",
-          "price": 12499,
-          "quantity": 1
-        },
-        {
-          "id": "8",
-          "image": "https://rukminim2.flixcart.com/image/1024/1024/xif0q/shoe/4/w/2/8-1041a330-404-asics-mako-blue-safety-yellow-original-imah2nyzpeey8hsf.jpeg?q=70&crop=false",
-          "brand": "asics",
-          "catogery": "men",
-          "title": "HOOPS 3.0 MID Basketball Shoes For Men  (White , 4)",
-          "price": 4499,
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "wishlist": [],
       "orders": [],
       "block": true,
-      "detorder": [],
-      "Wishlist": []
+      "detorder": []
     }
   ]
 }

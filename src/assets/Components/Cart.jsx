@@ -54,97 +54,7 @@ function Cart() {
   const navigate = useNavigate();
   const idss = localStorage.getItem("id");
 
-// localStorage.removeItem("user")
-  // useEffect(()=>{
-  //   const cart=async()=>{
-  //     const response=await axios.get(`http://localhost:4000/user/${idss}`)
-  //     setdeletedcart(state)
-  //   }
-  //   cart()
-  // },[state])
-  // console.log(state);
-  
-  
-  
-  
-  //updating deleted items in cart
-  // useEffect(() => {
-  //   const cartupd = async () => {
-  //     try {
-  //  await axios.patch(`http://localhost:4000/user/${idss}`, {
-  //           cart: state,
-  //         });
-  //         toast.success("Product deleted success")
-  
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   cartupd();
-  // });
-
-  //dispatch call for deleation
-  // const cartdelete = (id) => {
-  //   dispatch({
-  //     type: "deletecart",
-  //     id,
-  //   });
-  // };
-
-  // console.log();
-  
-
-  //using this the orderproducts are not go when refresh
-
-  
-  // useEffect(() => {
-  //   const lastorderss = async () => {
-  //     const response = await axios.get(`http://localhost:4000/user/${idss}`);
-  //     setcartnew(response.data.orders);
-  //   };
-  //   lastorderss(setcartnew);
-  // }, []);
-
-
-
-  // //addtopricedetailsss
-  // const fnsummer = async (data) => {
-  //   const response = await axios.get(`http://localhost:4000/user/${idss}`);
-  //   try {
-  //     const orders = response.data.orders;
-  //     const userorder = state.find((item) => item.id == data.id);
-  //     if (!orders.find((order) => order?.id == userorder.id)) {
-  //       const updatedoredrs = [...orders, userorder];
-  //       const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
-  //         orders: updatedoredrs,
-  //       });
-  //       setcartnew(res.data.orders);
-  //     } else {
-  //       toast.warning("product alredy in orders");
-  //     }
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-  // //updated delete orders in jsonserver
-  // useEffect(() => {
-  //   const orderupd = async () => {
-  //   await axios.patch(`http://localhost:4000/user/${idss}`, {
-  //       orders: cartnew ,
-  //     });
-  //   };
-  //   orderupd();
-  // }, [state]);
-  // //orderdelete
-  // const orderdelete = (i) => {
-  //   const newcart = cartnew.filter((item, k) => k != i);
-  //   setcartnew(newcart);
-  // };
-  
- 
- 
 //fetchorders
-
   const fetchorders=async()=>{
     const response=await axios.get(`http://localhost:4000/user/${idss}`)
     setcartnew(response.data.orders)
@@ -224,26 +134,21 @@ const alladd = async (data) => {
       console.log(error);
     }
   };
-//dleteinpricedetails
+ //dleteinpricedetails
   const pricedelete=async(i)=>{
    const upproductprice= cartnew.filter((item,j)=>j!=i)
    await axios.patch(`http://localhost:4000/user/${idss}`,{orders:upproductprice})
    fetchorders()
-
-  }
+ }
  //tofind grand total
   const grandtotal = cartnew.reduce(
     (total, item) => total + item.quantity * item.price,
     0
   );
-
-  //delete cart when go to payment
+ //delete cart when go to payment
   const fn = async () => {
     try {
       await axios.patch(`http://localhost:4000/user/${idss}`, { cart: [] });
-      dispatch({
-        type: "clearcart",
-      });
       toast.success("cart cleard");
     } catch (error) {
       toast.warning("cart not cleard!!!!");
@@ -251,9 +156,6 @@ const alladd = async (data) => {
     //for pricedetail clearing
     try {
       await axios.patch(`http://localhost:4000/user/${idss}`, { orders: [] });
-      dispatch({
-        type: "clearorder",
-      });
       toast.success("pricecleard");
     } catch (error) {
       console.log(error);

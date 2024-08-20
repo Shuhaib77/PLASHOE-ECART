@@ -27,6 +27,8 @@ import Trackorder from "./assets/Components/Admin/Trackorder";
 import Dashboard from "./assets/Components/Admin/Dashboard";
 import Adbody from "./assets/Components/Admin/Adbody";
 import Orderss from "./assets/Pagess/Orderss";
+import card from "@material-tailwind/react/theme/components/card";
+import Wishliste from "./assets/Components/Wishliste";
 
 export const contexts = createContext();
 
@@ -37,6 +39,8 @@ function App() {
   const [user, setuser] = useState([]);
   const [udatass, setudatass] = useState([]);
   const [shoeid, setshoeid] = useState([]);
+  
+  const [wlitem,setwlitem]=useState([])
   // const [cartitem, setcartitem] = useState([]);
 // const [cartnew,setcartnew]=useState([])
   const handleOpen = (value) => setSize(value);
@@ -98,21 +102,48 @@ const fn = async () => {
         );
         // setcartitem(reso.data.cart);
         toast.success("product added tocart");
-      
-        
         setRendder(!render)
       }
     } catch (error) {
       console.log(error);
     }
   };
-  // console.log(cartitem);
+ 
   //-----------------------
+// useEffect(()=>{
+// // addtocarts(cartitem);
+// },[])
 
 
+//fetchwishlist
+const wldata=async(id)=>{
+  const response= await axios.get(`http://localhost:4000/user/${usersid}`)
+   setwlitem(response.data.wishlist)
+}
 useEffect(()=>{
-// addtocarts(cartitem);
-},[])
+wldata()
+})
+
+//addtowishlist
+
+const wishlists=async(data)=>{
+  const response= await axios.get(`http://localhost:4000/user/${usersid}`)
+  const wlist=response.data.wishlist
+   const wlitems=wlist.find((item)=>item.id===data.id)
+   if(wlitems ){
+    const res=wlitem.filter((item)=>item.id!=wlitems.id)
+    console.log(res);
+    await axios.patch(`http://localhost:4000/user/${usersid}`,{wishlist:res})
+    wldata()
+    toast.warning("removed from wishlist")
+  }else{
+    const upd=[...wlist,data]
+   await axios.patch(`http://localhost:4000/user/${usersid}`,{wishlist:upd})
+   toast.success("product add to wishlist")
+   
+   }
+
+}
 
 
 
@@ -123,8 +154,6 @@ useEffect(()=>{
       <Toaster richColors position="bottom-right" />
       <contexts.Provider
         value={{
-          // datas,
-          // setdata,
           search,
           setsearh,
           user,
@@ -149,6 +178,11 @@ useEffect(()=>{
           setdata,
           fetchData,
           fn,
+          wishlists,
+          setwlitem,
+          wldata,
+          wlitem,
+         
          
         }}
       >
@@ -170,6 +204,7 @@ useEffect(()=>{
           ></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
+          <Route path="/wishlist" element={<Wishliste />}></Route>
           <Route path="/orderss" element={<Orderss />}></Route>
           <Route path="/addprdt" element={<Addproduct />}></Route>
           <Route path="/editprdt" element={<Editproducts />}></Route>

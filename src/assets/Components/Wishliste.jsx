@@ -1,46 +1,40 @@
-import React, { useContext, useEffect, useState } from "react";
-import Navbar from "../Navbar";
-import Footer from "../Footer";
-// import { Button } from "@material-tailwind/react";
-import { contexts } from "../../../App";
-import axios from "axios";
-import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Button,
-} from "@material-tailwind/react";
-import { useNavigate } from "react-router-dom";
-import { toast } from "sonner";
-
-function Women() {
-  const { addtocarts,datas, setdata,fetchData,wishlists,wlitem } = useContext(contexts);
-  // const [womendata, setwomendata] = useState([]);
-  const navigate = useNavigate();
+import React, { useContext, useEffect, useState } from 'react'
+import Navbar from './Navbar';
+import Footer from './Footer';
+import { Button ,Card,
+    CardHeader,
+    CardBody,
+    CardFooter,
+    Typography,} from '@material-tailwind/react';
+import axios from 'axios';
+import { contexts } from '../../App';
+import { useNavigate } from 'react-router-dom';
 
 
-  fetchData()
+function Wishliste() {
 
 
- return (
-  
+
+    const idu=localStorage.getItem("id")
+    // const [wlitem,setwlitem]=useState([])
+    const {wldata,wlitem,addtocarts,wishlists}=useContext(contexts)
+
+    const navigate=useNavigate()
+  wldata()
+return (
     <div>
-      <div>
+        <div>
         <div className="">
           <Navbar />
         </div>
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
-          <div className="w-[160vh] h-full mt-8 mb-8 bg-white ">
-            <h1 className="text-4xl mt-10 ml-10 text-light-green-800">WOMEN</h1>
-            <div className="flex justify-between mt-5">
-              <div className="ml-5">
-                <Button className="">Filter shoe</Button>
-              </div>
-              <div className="mr-5">
-                <span className="mr-5">Default sorting</span>
-                <Button
+          <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
+            <h1 className="text-4xl mt-10 ml-10 text-light-green-800 border-b-2 border-blue-600">WISHLIST</h1>
+
+            <div className="flex justify-between mt-5 pb-5  ">
+                
+              <div className="ml-10 ">
+              <Button
                   className="bg-light-green-800"
                   onClick={() => {
                     navigate("/collection");
@@ -48,10 +42,15 @@ function Women() {
                 >
                   Show all
                 </Button>
+                {/* <Button className="">Filter shoe</Button> */}
+              </div>
+              <div className="mr-5">
+                {/* <span className="mr-5">Default sorting</span> */}
+              
               </div>
             </div>
-            <div className="flex flex-wrap justify-center items-center ">
-              {datas.filter((wdata) => wdata.catogery == "women").map((data) => {
+            <div className="flex flex-wrap justify-center items-center mb-10 gap-10 ">
+              {wlitem.map((data) => {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
@@ -71,7 +70,11 @@ function Women() {
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>
-                        <Typography variant="h5" color="" className="mb-2">
+                        <Typography
+                          variant="h5"
+                          color="blue-gray"
+                          className="mb-2"
+                        >
                           {data.brand}
                         </Typography>
                         <Typography>{data.title}</Typography>
@@ -79,20 +82,25 @@ function Women() {
                         <Typography>{data.price}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
-                        <Button
-                          onClick={() => {
-                            navigate(`/showcomponent/${data.id}`);
-                          }}
-                        >
-                          Read More
-                        </Button>
-                        <Button
+                      <Button
                           onClick={() => {
                             addtocarts(data);
                           }}
                         >
                           Add to cart
                         </Button>
+                        <Button
+                          onClick={() => {
+                            navigate(`/showcomponent/${data.id}`);
+                            // deletewl(data.id)
+
+                          }}
+                        >readmore
+                          </Button>
+                        {/* <i class="fa-solid fa-trash fa-xl" style={{color: "#000000"}} onClick={()=>{
+                                deletewl(data.id)
+                            }}></i>
+                        */}
                       </CardFooter>
                     </Card>
                   </div>
@@ -101,12 +109,13 @@ function Women() {
             </div>
           </div>
         </div>
+
         <div>
           <Footer />
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Women;
+export default Wishliste

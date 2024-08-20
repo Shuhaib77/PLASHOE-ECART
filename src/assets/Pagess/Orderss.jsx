@@ -26,8 +26,8 @@ function Orderss() {
             <div className="flex justify-center items-center  w-[170vh] h-full  border-white-900 bg-white ml-5 mt-10 mb-5  ">
               <div className=" flex justify-center items-center w-[60vh] h-[30vh]  ">
                 <div className=" flex flex-col  justify-center  h-full w-[50vh] bg-white   ">
-                  <h1 className="text-2xl mb-5">ORDERDETAILS</h1>
-                  <div className="">
+                  <h1 className="text-2xl mb-5 border-b-2 text-center border-blue-800">ORDERDETAILS</h1>
+                  <div className="text-center">
                     <h1 className="">
                       <span className="text-red-900">NAME:</span>{" "}
                       <span className="text-blue-900">{item.name}</span>
@@ -58,16 +58,16 @@ function Orderss() {
               <div className="flex flex-col  justify-center items-center w-[100vh] h-full mt-5 mb-5  bg-white ">
                 {item.pyprdct.map((val) => {
                   return (
-                    <div className="w-[100vh] h-[25vh]  flex justify-between border-2 mb-3  border-blue-900 mr-5 ">
+                    <div className="w-[100vh] h-[25vh]  flex justify-between border-2 mb-3 bg-gray-300 border-gray-500 mr-5 ">
                       <div className="ml-4 mt-3">
                         <h1>{val.title}</h1>
                         <h1>{val.brand}</h1>
-                        <h1>{val.catogery}</h1>
+                        <h1>{val.catogery}</h1> 
                         <h1>{val.price}</h1>
-                        <h1>{val.title}</h1>
+                        {/* <h1>{val.title}</h1> */}
                       </div>
-                      <div className="h-[20vh w-[30vh]">
-                        <img src={val.image} alt="" />
+                      <div className="h-[20vh w-[30vh] bg-white mt-3 ml-5 mb-5 mr-5 ">
+                        <img src={val.image} alt="" className="" />
                       </div>
                     </div>
                   );

@@ -14,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Collection() {
-  const {  addtocarts,datas, setdata,fetchData } = useContext(contexts);
+  const {  addtocarts,datas, setdata,fetchData ,wishlists,wlitem} = useContext(contexts);
   const navigate = useNavigate();
 
   fetchData()
@@ -46,6 +46,18 @@ function Collection() {
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-x-2 gap-1   ">
                       <CardHeader color="" className="relative h-56">
+                      <i
+                        class="fa-solid fa-heart ml-4 "
+                        style={{
+                          color: wlitem.find((item) => item.id === data.id)
+                            ? "red"
+                            : "blue",
+                        }}
+                        onClick={() => {
+                          
+                          wishlists(data);
+                        }}
+                      ></i>
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>

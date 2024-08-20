@@ -22,6 +22,8 @@ function Editproducts() {
   const [size, setSize] = React.useState(null);
   const [editprdt, seteditprdt] = useState(null);
   const handleOpen = (value) => setSize(value);
+
+  
   const fn = async () => {
     const response = await axios.get("http://localhost:4000/datass");
     setprdt(response.data);

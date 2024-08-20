@@ -26,15 +26,27 @@ function Homecard() {
     cartitem,
     setcartitem,
     addtocarts,
-    datas, 
+    datas,
     setdata,
-    fetchData
+    fetchData,
+    wishlists,
+    wlitem,
+    deletewl,
+    wl,
+    setwl,
   } = useContext(contexts);
-  const [wishlist, setWishlist] = useState("red");
+  // const [wishlist, setWishlist] = useState("blue");
 
-  fetchData()
+  fetchData();
 
-  
+  //     const b=wlitem.find((item)=>item.id===id)
+  //     if(b){
+  //       setWishlist("red")
+  //     }
+  //     else{
+  //       setWishlist("blue")
+  //     }
+  // }
 
   return (
     <div>
@@ -45,7 +57,18 @@ function Homecard() {
               <div className="  ">
                 <Card className="h-[58vh] w-[50vh] mt-20 gap-1 ">
                   <CardHeader color="white" className="relative h-56">
-                    <i class="fa-regular fa-heart ml-2"></i>
+                  <i
+                        class="fa-solid fa-heart ml-4 "
+                        style={{
+                          color: wlitem.find((item) => item.id === data.id)
+                            ? "red"
+                            : "blue",
+                        }}
+                        onClick={() => {
+                          
+                          wishlists(data);
+                        }}
+                      ></i>
                     <img src={data.image} alt="card-image" />
                   </CardHeader>
                   <CardBody>
@@ -112,14 +135,21 @@ function Homecard() {
             return (
               <>
                 <Card className="h-[55vh] w-[50vh] mt-20">
-                  <CardHeader color="" className="h-[50vh]">
-                    <i
-                      class="fa-regular fa-heart ml-2   "
-                      style={{ color: wishlist }}
-                      onClick={() => {
-                        setWishlist("blue");
-                      }}
-                    ></i>
+                  <CardHeader color="w" className="h-[50vh]">
+                    <div>
+                      <i
+                        class="fa-solid fa-heart ml-4 "
+                        style={{
+                          color: wlitem.find((item) => item.id === data.id)
+                            ? "red"
+                            : "blue",
+                        }}
+                        onClick={() => {
+                          
+                          wishlists(data);
+                        }}
+                      ></i>
+                    </div>
 
                     <img src={data.image} alt="card-image" />
                   </CardHeader>

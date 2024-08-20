@@ -41,6 +41,7 @@ function Register() {
         const newUser = {
           ...values,
           cart: [],
+          wishlist:[],
           orders: [],
           block: true,
           detorder: [],

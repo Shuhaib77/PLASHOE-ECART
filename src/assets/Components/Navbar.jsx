@@ -90,7 +90,8 @@ function Navbar() {
               </Link>
             </div>
             <div className="text-l  ml-5 text-gray-700 font-medium md:block hidden  ">
-              SALE
+              
+             <Link to={"/wishlist"}>Sale</Link>
             </div>
             <div className=" ml-4 ">
               <Input

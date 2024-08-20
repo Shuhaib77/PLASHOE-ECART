@@ -31,32 +31,56 @@ import Orderss from "./assets/Pagess/Orderss";
 export const contexts = createContext();
 
 function App() {
-  // const [datas, setdata] = useState([]);
+
+  const [datas, setdata] = useState([]);
   const [search, setsearh] = useState(null);
   const [user, setuser] = useState([]);
   const [udatass, setudatass] = useState([]);
   const [shoeid, setshoeid] = useState([]);
-  const [cartitem, setcartitem] = useState([]);
-  // const [cartnew,setcartnew]=useState([])
-  const usersid = localStorage.getItem("id");
+  // const [cartitem, setcartitem] = useState([]);
+// const [cartnew,setcartnew]=useState([])
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
   //adminsssss
   const [asearchitem, asetsearchitem] = useState("");
   const [prdt, setprdt] = useState([]);
   const [lastasearch, setlastsearch] = useState(null);
-  //------------------------
-  const fn = async () => {
+
+
+ 
+//------------------------
+//datas fetchingg
+const usersid = localStorage.getItem("id");
+const fetchData = async () => {
+  try {
+    const response = await axios.get("http://localhost:4000/datass");
+    setdata(response.data);
+  } catch (error) {
+    console.log(error);
+  }
+};
+useEffect(() => {
+   fetchData();
+  }, []);
+//---------------------------
+ 
+
+// const usersid = localStorage.getItem("id");
+
+
+const fn = async () => {
     const res = await axios.get(`http://localhost:4000/user/${usersid}`);
     setcartitem(res.data.cart);
   };
   useEffect(() => {
     fn();
   }, []);
-
-  const addtocarts = async (data) => {
-    const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+  
+//addto cartt
+ const addtocarts = async (data) => {
+    
     try {
+      const res = await axios.get(`http://localhost:4000/user/${usersid}`);
       const cartss = res.data.cart;
       console.log(cartss);
 
@@ -72,16 +96,28 @@ function App() {
             cart: update,
           }
         );
-        setcartitem(reso.data);
+        // setcartitem(reso.data.cart);
         toast.success("product added tocart");
+      
+        
+        setRendder(!render)
       }
-    } catch (err) {
-      console.log(err);
+    } catch (error) {
+      console.log(error);
     }
   };
-  // useEffect(() => {
-  //   fn();
-  // }, []);
+  // console.log(cartitem);
+  //-----------------------
+
+
+useEffect(()=>{
+// addtocarts(cartitem);
+},[])
+
+
+
+
+
   return (
     <>
       <Toaster richColors position="bottom-right" />
@@ -97,8 +133,8 @@ function App() {
           setudatass,
           shoeid,
           setshoeid,
-          cartitem,
-          setcartitem,
+          // cartitem,
+          // setcartitem,
           addtocarts,
           handleOpen,
           asearchitem,
@@ -109,6 +145,11 @@ function App() {
           setlastsearch,
           size,
           setSize,
+          datas, 
+          setdata,
+          fetchData,
+          fn,
+         
         }}
       >
         <Routes>

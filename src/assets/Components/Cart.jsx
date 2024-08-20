@@ -15,6 +15,8 @@ import {
 import { toast } from "sonner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import filled from "@material-tailwind/react/theme/components/timeline/timelineIconColors/filled";
+import { data } from "autoprefixer";
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -39,81 +41,182 @@ const reducer = (state, action) => {
   }
 };
 function Cart() {
-  const { cartitem, setcartitems } = useContext(contexts);
+  
+  const {  setcartitems } = useContext(contexts);
+  const [cartitem, setcartitem] = useState([]);
+  // const [state,dispatch] = useReducer(reducer,cartitem);
   // const initialcart=cartitem[`${idss}`]?.cart
-  const [state, dispatch] = useReducer(reducer, cartitem.cart);
+
   const [dcart, setdeletedcart] = useState([]);
   const [cartnew, setcartnew] = useState([]);
   const [plaorder, setplaorder] = useState([]);
+  
   const navigate = useNavigate();
   const idss = localStorage.getItem("id");
 
-
-  useEffect(()=>{
-    const cart=async()=>{
-      const response=await axios.get(`http://localhost:4000/user/${idss}`)
-
-      setdeletedcart(response.data.cart)
-
-
-
-    }
-    cart()
-  },[])
-  console.log(dcart);
+// localStorage.removeItem("user")
+  // useEffect(()=>{
+  //   const cart=async()=>{
+  //     const response=await axios.get(`http://localhost:4000/user/${idss}`)
+  //     setdeletedcart(state)
+  //   }
+  //   cart()
+  // },[state])
+  // console.log(state);
   
   
   
   
   //updating deleted items in cart
-  useEffect(() => {
-    const cartupd = async () => {
-      try {
-        if (state) {
-          await axios.patch(`http://localhost:4000/user/${idss}`, {
-            cart: state,
-          });
-        }
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    cartupd();
-  }, []);
+  // useEffect(() => {
+  //   const cartupd = async () => {
+  //     try {
+  //  await axios.patch(`http://localhost:4000/user/${idss}`, {
+  //           cart: state,
+  //         });
+  //         toast.success("Product deleted success")
+  
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   cartupd();
+  // });
 
   //dispatch call for deleation
-  const cartdelete = (id) => {
-    dispatch({
-      type: "deletecart",
-      id,
-    });
-  };
+  // const cartdelete = (id) => {
+  //   dispatch({
+  //     type: "deletecart",
+  //     id,
+  //   });
+  // };
+
+  // console.log();
+  
 
   //using this the orderproducts are not go when refresh
 
   
-  useEffect(() => {
-    const lastorderss = async () => {
-      const response = await axios.get(`http://localhost:4000/user/${idss}`);
-      setcartnew(response.data.orders);
-    };
-    lastorderss(setcartnew);
-  }, []);
+  // useEffect(() => {
+  //   const lastorderss = async () => {
+  //     const response = await axios.get(`http://localhost:4000/user/${idss}`);
+  //     setcartnew(response.data.orders);
+  //   };
+  //   lastorderss(setcartnew);
+  // }, []);
 
 
 
-  //addtopricedetailsss
-  const fnsummer = async (data) => {
+  // //addtopricedetailsss
+  // const fnsummer = async (data) => {
+  //   const response = await axios.get(`http://localhost:4000/user/${idss}`);
+  //   try {
+  //     const orders = response.data.orders;
+  //     const userorder = state.find((item) => item.id == data.id);
+  //     if (!orders.find((order) => order?.id == userorder.id)) {
+  //       const updatedoredrs = [...orders, userorder];
+  //       const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
+  //         orders: updatedoredrs,
+  //       });
+  //       setcartnew(res.data.orders);
+  //     } else {
+  //       toast.warning("product alredy in orders");
+  //     }
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
+  // //updated delete orders in jsonserver
+  // useEffect(() => {
+  //   const orderupd = async () => {
+  //   await axios.patch(`http://localhost:4000/user/${idss}`, {
+  //       orders: cartnew ,
+  //     });
+  //   };
+  //   orderupd();
+  // }, [state]);
+  // //orderdelete
+  // const orderdelete = (i) => {
+  //   const newcart = cartnew.filter((item, k) => k != i);
+  //   setcartnew(newcart);
+  // };
+  
+ 
+ 
+//fetchorders
+
+  const fetchorders=async()=>{
+    const response=await axios.get(`http://localhost:4000/user/${idss}`)
+    setcartnew(response.data.orders)
+    console.log(response.data);
+   }
+useEffect(()=>{
+  fetchorders()
+  },[])
+console.log(cartnew);
+
+
+  //fetchcart
+
+  const fetchcart=async()=>{
+    const response=await axios.get(`http://localhost:4000/user/${idss}`)
+    setcartitem(response.data.cart)
+    console.log(response.data);
+   }
+useEffect(()=>{
+  
+  fetchcart()
+  },[])
+console.log(cartitem);
+
+//deletecart
+
+const cartdelete=async(id)=>{
+  const upcart=cartitem.filter((item)=>item.id!=id)
+  await axios.patch(`http://localhost:4000/user/${idss}`,{cart:upcart})
+  // setcartitem(upcart)
+  fetchcart()
+}
+
+//cartincrement
+
+const increment=async(id)=>{
+  const incrmcart=cartitem.map((item)=>item.id===id?{...item,quantity: item.quantity+1}:item)
+  await axios.patch(`http://localhost:4000/user/${idss}`,{cart:incrmcart})
+  fetchcart()
+
+}
+//cartdecrement
+const decrement=async(id)=>{
+  const decrement=cartitem.map((item)=>item.id===id&& item.quantity>1?{...item,quantity:item.quantity-1}:item)
+  await axios.patch(`http://localhost:4000/user/${idss}`,{cart:decrement})
+  fetchcart()
+}
+
+//addto all price details
+const alladd = async (data) => {
+  const response = await axios.get(`http://localhost:4000/user/${idss}`);
+  const topay = response.data.orders;
+  const upd = data
+  const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
+    orders: upd,
+  });
+  setcartnew(res.data.orders);
+  fetchorders()
+};
+//only one aad to price details
+   const fnsummer = async (data) => {
     const response = await axios.get(`http://localhost:4000/user/${idss}`);
     try {
       const orders = response.data.orders;
-      const userorder = state.find((item) => item.id == data.id);
+      const userorder = cartitem.find((item) => item.id == data.id);
       if (!orders.find((order) => order?.id == userorder.id)) {
         const updatedoredrs = [...orders, userorder];
         const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
           orders: updatedoredrs,
         });
         setcartnew(res.data.orders);
+        fetchorders()
       } else {
         toast.warning("product alredy in orders");
       }
@@ -121,35 +224,19 @@ function Cart() {
       console.log(error);
     }
   };
-  //updated delete orders in jsonserver
-  useEffect(() => {
-    const orderupd = async () => {
-    await axios.patch(`http://localhost:4000/user/${idss}`, {
-        orders: state,
-      });
-    };
-    orderupd();
-  }, [state]);
-  //orderdelete
-  const orderdelete = (i) => {
-    const newcart = cartnew.filter((item, k) => k != i);
-    setcartnew(newcart);
-  };
-  //tofind grand total
+//dleteinpricedetails
+  const pricedelete=async(i)=>{
+   const upproductprice= cartnew.filter((item,j)=>j!=i)
+   await axios.patch(`http://localhost:4000/user/${idss}`,{orders:upproductprice})
+   fetchorders()
+
+  }
+ //tofind grand total
   const grandtotal = cartnew.reduce(
     (total, item) => total + item.quantity * item.price,
     0
   );
-  //placeorder:cartitems addto pricedetail
-  const alladd = async (dat) => {
-    const response = await axios.get(`http://localhost:4000/user/${idss}`);
-    const topay = response.data.orders;
-    const upd = state;
-    const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
-      orders: upd,
-    });
-    setcartnew(res.data.orders);
-  };
+
   //delete cart when go to payment
   const fn = async () => {
     try {
@@ -174,20 +261,24 @@ function Cart() {
     }
   };
 
+
+
+
+
+
   return (
     <>
       <div>
         <Navbar />
-        <div className="flex justify-between">
+        <div className="flex justify-around ">
           <h1 className="text-center"></h1>
           <div>
-            <h1 className="ml-10 mr-9 mt-8 text-3xl text-blue-700 font-semibold border-b-2 border-red-500">
+            <h1 className="ml-10 mr-9 mt-8 text-3xl text-center text-blue-700 font-semibold border-b-2 border-red-500">
               CART
             </h1>
 
-            <div className="flex  flex-wrap justify-center gap-8 items-center ">
-              {state &&
-                state.map((data, i) => {
+            <div className="flex  flex-wrap justify-center gap-8 items-center  w-[115vh] ">
+              {cartitem.map((data, i) => {
                   return (
                     <div className="  ">
                       <Card className="h-[63vh] w-[50vh] mt-20 gap-1  ">
@@ -225,10 +316,11 @@ function Cart() {
                             <Button
                               className="text-black bg-white"
                               onClick={() =>
-                                dispatch({
-                                  type: "decrement",
-                                  id: data.id,
-                                })
+                                decrement(data.id)
+                                // dispatch({
+                                //   type: "decrement",
+                                //   id: data.id,
+                                // })
                               }
                             >
                               -
@@ -239,10 +331,11 @@ function Cart() {
                             <Button
                               className="text-black bg-white"
                               onClick={() =>
-                                dispatch({
-                                  type: "increment",
-                                  id: data.id,
-                                })
+                                increment(data.id)
+                                // dispatch({
+                                //   type: "increment",
+                                //   id: data.id,
+                                // })
                               }
                             >
                               +
@@ -275,19 +368,19 @@ function Cart() {
             <div className="text-center mt-5">
               <Button
                 onClick={() => {
-                  alladd(state);
+                  alladd(cartitem);
                 }}
               >
                 placeorder
               </Button>
             </div>
-          </div>
+          </div> 
           <div className="w-[150vh] ">
             <h1 className="text-center ml-10 mr-9 mt-8 text-3xl text-red-700 font-semibold border-b-2 border-blue-700 ">
               PRICE DETAILS
             </h1>
-
-            {cartnew.map((item, index) => {
+         <div className=" flex flex-col justify-center items-center w-[57vh]">
+         {cartnew.map((item, index) => {
               const total = 0;
               return (
                 <div
@@ -311,7 +404,7 @@ function Cart() {
                       <i
                         class="fa-solid fa-xmark hover:text-red-900 cursor-pointer"
                         onClick={() => {
-                          orderdelete(index);
+                          pricedelete(index);
                         }}
                       ></i>
                     </div>
@@ -319,7 +412,10 @@ function Cart() {
                 </div>
               );
             })}
-            <div className="text-center mt-10">
+
+
+         </div>
+                      <div className="text-center mt-10">
               <h1 className="text-blue-700">
                 Grand total: <span className="text-red-900">{grandtotal}</span>{" "}
               </h1>
@@ -329,7 +425,7 @@ function Cart() {
                 onClick={() => {
                   fn(),
                     navigate("/payment", {
-                      state: { grandtotal, state },
+                      state: { grandtotal, cartnew },
                     });
                 }}
               >

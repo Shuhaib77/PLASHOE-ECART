@@ -11,7 +11,7 @@ function Login() {
   const navigtate = useNavigate();
 
   const { user, setuser, udatass, setudatass } = useContext(contexts);
-  const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
+  const { values, errors, handleChange, handleBlur, handleSubmit,render,setRendder } = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -19,6 +19,8 @@ function Login() {
     validationSchema: logionschema,
     onSubmit: async (values) => {
       const response = await axios.get("http://localhost:4000/user");
+      
+      
       const user = response.data.find(
         (user) =>
           user.email === values.email && user.password === values.password
@@ -36,6 +38,7 @@ function Login() {
         localStorage.setItem("id", user.id);
         navigtate("/");
         toast.success("Login successful");
+       
       }
     },
   });

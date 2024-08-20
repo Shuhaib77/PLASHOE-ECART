@@ -16,28 +16,16 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 function Women() {
-  const { addtocarts } = useContext(contexts);
+  const { addtocarts,datas, setdata,fetchData } = useContext(contexts);
   // const [womendata, setwomendata] = useState([]);
   const navigate = useNavigate();
-  const [datas, setdata] = useState([]);
-useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/datass");
-        setdata(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
 
-  // useEffect(() => {
-  //   const res = datas.filter((wdata) => wdata.catogery == "women");
-  //   setwomendata(res);
-  // }, [datas]);
 
-  return (
+  fetchData()
+
+
+ return (
+  
     <div>
       <div>
         <div className="">

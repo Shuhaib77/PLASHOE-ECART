@@ -47,8 +47,9 @@ function Editproducts() {
           newuser
         );
 
-        fn();
+        // 
         toast.success("updataed ");
+        fn();
         setSize(null);
       } catch (error) {}
     },

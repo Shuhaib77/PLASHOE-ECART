@@ -19,27 +19,22 @@ import { toast } from "sonner";
 
 function Homecard() {
   const navigate = useNavigate();
-  const [datas, setdata] = useState([]);
+  // const [datas, setdata] = useState([]);
   const {
     setshoeid,
     shoeid,
     cartitem,
     setcartitem,
     addtocarts,
+    datas, 
+    setdata,
+    fetchData
   } = useContext(contexts);
   const [wishlist, setWishlist] = useState("red");
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/datass");
-        setdata(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+  fetchData()
+
+  
 
   return (
     <div>

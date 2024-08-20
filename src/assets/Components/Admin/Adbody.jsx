@@ -68,7 +68,7 @@ function Adbody() {
   const deleteprdt = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:4000/datass/${id}`);
-      fn();
+      // fn();
       console.log(response.data);
     } catch (error) {
       console.log(error);

@@ -8,7 +8,7 @@ function Payment() {
   const location = useLocation();
   const id = localStorage.getItem("id");
   const { grandtotal } = location.state;
-  const { state } = location.state;
+  const { cartnew } = location.state;
   // const {cartnew} =location.state;
   console.log(id);
   // console.log(cartnew,"jjjj");
@@ -20,7 +20,7 @@ function Payment() {
       phone: "",
       payment: "",
       total: grandtotal,
-      pyprdct: state,
+      pyprdct: cartnew,
     },
     onSubmit: async (values) => {
       const response = await axios.get(`http://localhost:4000/user/${id}`);

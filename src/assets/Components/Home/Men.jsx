@@ -15,32 +15,11 @@ import {
 import { useNavigate } from "react-router-dom";
 
 function Men() {
-  const [datas, setdata] = useState([]);
-  const { 
-    // datas, 
-    cartitem, setcartitem, addtocarts } = useContext(contexts);
-  // const [mendata, setmendata] = useState([]);
-  const navigate = useNavigate();
 
-  
+  const {  cartitem, setcartitem, addtocarts,datas, setdata,fetchData  } = useContext(contexts);
+    const navigate = useNavigate();
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/datass");
-        setdata(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-
-  // useEffect(() => {
-  //   const res = datas.filter((men) => men.catogery == "men");
-  //   setmendata(res);
-  // }, [datas]);
-
+  fetchData()
   return (
     <div>
       <div>

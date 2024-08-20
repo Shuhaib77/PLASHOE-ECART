@@ -147,29 +147,30 @@ function Navbar() {
             </div>
             <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
               {usersss ? (
-                <div className="mt-2 ">
+                <div className="mt-2 text-black   hover:text-pink-700 ">
                   <i
-                    class="fa-solid fa-user-minus fa-xl ml-2 text-black     hover:text-pink-700  "
+                    class="fa-solid fa-user-minus fa-xl ml-2     "
                     onClick={() => {
-                      localStorage.removeItem("id");
+                      localStorage.clear("id");
                       toast.warning("loged Out");
+                      window.location.reload();
                       navigate("/login");
                     }}
                   ></i>
-                  <h1 className=" text-black     hover:text-pink-700">
+                  <h1 className="      ">
                     logout
                   </h1>
                 </div>
               ) : (
-                <div className="mt-2 ">
+                <div className="mt-2 text-black  hover:text-pink-700">
                   {" "}
                   <i
-                    class="fa-solid fa-user fa-xl ml-2 text-black     hover:text-pink-700 "
+                    class="fa-solid fa-user fa-xl ml-2     hover:text-pink-700 "
                     onClick={() => {
                       navigate("/login");
                     }}
                   ></i>{" "}
-                  <h1 className="text-black     hover:text-pink-700">log-in</h1>
+                  <h1 className="   ">log-in</h1>
                 </div>
               )}
             </div>

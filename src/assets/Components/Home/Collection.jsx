@@ -14,23 +14,11 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 function Collection() {
-  const {  addtocarts } = useContext(contexts);
+  const {  addtocarts,datas, setdata,fetchData } = useContext(contexts);
   const navigate = useNavigate();
-  const [datasd, setdata] = useState([]);
 
- useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get("http://localhost:4000/datass");
-        setdata(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
-  
-  return (
+  fetchData()
+ return (
     <div>
       <div>
         <div className="">
@@ -53,7 +41,7 @@ function Collection() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
-              {datasd.map((data) => {
+              {datas.map((data) => {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-x-2 gap-1   ">

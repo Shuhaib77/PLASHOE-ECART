@@ -25,7 +25,7 @@ function Register() {
     fetchmail();
   }, []);
 
-  const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
+  const { values, errors, handleChange, handleBlur, handleSubmit,render,setRendder } = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -46,9 +46,10 @@ function Register() {
           detorder: [],
         };
         await axios.post("http://localhost:4000/user", newUser);
-
+        
         toast.success("User registration successful");
         navigate("/login");
+        
       }
     },
   });

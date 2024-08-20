@@ -88,9 +88,9 @@ function Admin() {
               }}
             ></i>
           </div>
-          <div className="mt-2 ">
+          <div className="mt-2 text-white    hover:text-green-300">
             <i
-              class="fa-solid fa-user-minus fa-xl ml-2 text-white    hover:text-green-200  "
+              class="fa-solid fa-user-minus fa-xl ml-2   "
               onClick={() => {
                 localStorage.removeItem("id");
 
@@ -98,7 +98,7 @@ function Admin() {
                 navigate("/login");
               }}
             ></i>
-            <h1 className=" text-white     hover:text-green-500">logout</h1>
+            <h1 className=" text-white     ">logout</h1>
           </div>
         </div>
       </div>

@@ -32,7 +32,7 @@ function Dashboard() {
   return (
     <>
       <div className="flex justify-around w-[150vh] mt-5 ">
-        <div className=" bg-gradient-to-r from-cyan-500 to-blue-500 w-[35vh] h-[15vh]">
+        <div className=" bg-gradient-to-r from-teal-400 to-yellow-200  w-[35vh] h-[15vh]">
           <div className="ml-3 mt-5">
             <i
               class="fa-brands fa-product-hunt fa-2xl"
@@ -53,7 +53,7 @@ function Dashboard() {
             </h1>
           </div>
         </div>
-        <div className="w-[35vh] h-[15vh] bg-gradient-to-r from-cyan-500 to-blue-500">
+        <div className="w-[35vh] h-[15vh] bg-gradient-to-r from-teal-400 to-yellow-200 ">
           <div className="ml-3 mt-5">
             <i
               class="fa-solid fa-cart-shopping fa-2xl"

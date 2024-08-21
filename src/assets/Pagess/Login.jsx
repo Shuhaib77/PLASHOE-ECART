@@ -55,7 +55,7 @@ function Login() {
         </div>
         <form
           action=""
-          className="w-96 bg-blue-gray-200 p-10 border-3 rounded-xl"
+          className="w-96 bg-[#1b7c7f] p-10 border-3 rounded-xl"
           onSubmit={handleSubmit}
         >
           <h1 className="text-4xl text-center mb-6">LOGIN</h1>
@@ -88,7 +88,7 @@ function Login() {
             )}
           </div>
           <div className="mt-6">
-            <Button type="submit" className="">
+            <Button type="submit" className="bg-white text-black">
               {" "}
               submit{" "}
             </Button>
@@ -96,11 +96,11 @@ function Login() {
           <div className="mt-5 flex justify-between">
             <Link
               to={"/register"}
-              className="border-b-2 text-blue-800 border-blue-900"
+              className="border-b-2 text-white border-blue-900"
             >
               Register
             </Link>
-            <Link to={"/"} className="border-b-2 text-blue-800 border-blue-900">
+            <Link to={"/"} className="border-b-2 text-white border-blue-900">
               back
             </Link>
           </div>

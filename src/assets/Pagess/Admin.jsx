@@ -63,7 +63,7 @@ function Admin() {
   };
   return (
     <>
-      <div className="flex  p-5  justify-between w-[176vh]  bg-blue-900 text-white  ">
+      <div className="flex  p-5  justify-between w-[176vh]  bg-[#38746f] text-white  ">
         <div className="flex ">
           <h1 className="mt-3  ml-6 font-semibold text-xl">PLASHOE</h1>
         </div>
@@ -104,13 +104,13 @@ function Admin() {
       </div>
 
       <div className="flex">
-        <div className="mt-1   bg-blue-900 w-[25vh] h-[90vh] ">
-          <div className=" flex flex-col justify-center h-[60vh]  text-white mb-20">
+        <div className="mt-1   bg-[#226c66] w-[25vh] h-[90vh] ">
+          <div className=" flex flex-col gap-10  justify-center h-[60vh]  text-white mb-20">
             {Data.map((item) => {
               return (
                 <Link
                   to={`/admin/${item.url}`}
-                  className="mt-10 ml-1 mr-1 hover:bg-white hover:p-2 hover:text-black hover:border rounded hover:pl-2"
+                  className=" ml-1  mr-1 hover:bg-white p-2 hover:text-black hover:border rounded hover:pl-2 "
                 >
                   {item.icon}
                   {item.title}

@@ -24,12 +24,12 @@ function Editproducts() {
   const handleOpen = (value) => setSize(value);
 
   
-  const fn = async () => {
+  const fnupd = async () => {
     const response = await axios.get("http://localhost:4000/datass");
     setprdt(response.data);
   };
   useEffect(() => {
-    fn();
+    fnupd();
   }, []);
   const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
     initialValues: {
@@ -48,11 +48,10 @@ function Editproducts() {
           `http://localhost:4000/datass/${values.id}`,
           newuser
         );
-
-        // 
-        toast.success("updataed ");
-        fn();
-        setSize(null);
+      
+       toast.success("updataed");
+        // setSize(null);
+        fnupd();
       } catch (error) {}
     },
   });
@@ -65,12 +64,12 @@ function Editproducts() {
   const deleteprdt = async (id) => {
     try {
       const response = await axios.delete(`http://localhost:4000/datass/${id}`);
-      fn();
+      fnupd();
       console.log(response.data);
     } catch (error) {
       console.log(error);
     }
-    fn();
+    // fn();
   };
   return (
     <>
@@ -97,6 +96,13 @@ function Editproducts() {
                   textGradient
                 >
                   {data.brand}
+                </Typography>
+                <Typography
+                  color="blue-gray"
+                  className="font-medium"
+                  textGradient
+                >
+                  {data.catogery}
                 </Typography>
               </CardBody>
               <CardFooter className="flex justify-between gap-7 pt-2">

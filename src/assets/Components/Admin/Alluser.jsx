@@ -74,7 +74,7 @@ function Alluser() {
     setorders(response.data.detorder);
   };
 
-  const payed = orderss.map((item) => item.pyprdct);
+  const payed = orderss.flatMap((item) => item.pyprdct);
   const neww = payed.map((item) => item);
   return (
     <>
@@ -100,7 +100,7 @@ function Alluser() {
           </thead>
           <tbody>
             {ausers.map((data, index) => (
-              <tr key={index} className=" even:bg-blue-400 ">
+              <tr key={index} className=" even:bg-[#2f8f88] ">
                 <td className="p-4 ">
                   <Typography
                     variant="small"
@@ -166,7 +166,7 @@ function Alluser() {
                     className="font-normal"
                   >
                     <Button
-                      className="bg-blue-900  ml-5 font-medium "
+                      className="bg-[#4db385]  ml-5 font-medium "
                       onClick={() => {
                         handleOpen("xl");
                         vieworders(data.id);
@@ -217,7 +217,7 @@ function Alluser() {
           }
           size={size || "xl"}
           handler={handleOpen}
-          className="h-[80vh]  overflow-auto   "
+          className="h-[80vh]  overflow-auto "
         >
           <DialogHeader className=" fixed top-0 text-white ">
             ORDERS
@@ -228,7 +228,7 @@ function Alluser() {
             </DialogHeader>
             <div className="flex flex-wrap justify-around gap-4 mt-3  ">
               {neww.length > 0 &&
-                neww[0].map((data) => {
+                neww.map((data) => {
                   return (
                     <Card className="w-96 h-[50vh] border-5 border-g ">
                       <CardHeader className="h-[30vh] mt-5">
@@ -261,14 +261,14 @@ function Alluser() {
             >
               <span>Cancel</span>
             </Button>
-            <Button
+            {/* <Button
               variant="gradient"
               color="green"
               onClick={() => handleOpen(null)}
               type="submit"
             >
               <span className="text-center">Confirm</span>
-            </Button>
+            </Button> */}
           </DialogFooter>
         </Dialog>
       </div>

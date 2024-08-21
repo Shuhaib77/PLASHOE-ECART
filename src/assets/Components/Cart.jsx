@@ -165,7 +165,16 @@ const alladd = async (data) => {
 
 
 
+if(cartitem.length===0){
+  return <div> 
+      <Navbar />
+      
+      <div className="">
+      not data
 
+      </div>
+    </div>
+}
 
 
   return (

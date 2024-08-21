@@ -25,7 +25,7 @@ function Orderss() {
           return (
             <div className="flex justify-center items-center  w-[170vh] h-full  border-white-900 bg-white ml-5 mt-10 mb-5  ">
               <div className=" flex justify-center items-center w-[60vh] h-[30vh]  ">
-                <div className=" flex flex-col  justify-center  h-full w-[50vh] bg-white   ">
+                <div className=" flex flex-col  justify-center  h-full w-[60vh] bg-white m-5">
                   <h1 className="text-2xl mb-5  ">ORDERDETAILS</h1>
                   <div className="">
                     <h1 className="">
@@ -48,7 +48,7 @@ function Orderss() {
                       <span className="">PAY METHOD:</span>{" "}
                       <span className="text-blue-900">{item.payment}</span>
                     </h1>
-                    <h1 className="mt-3">
+                    <h1 className="mt-3 ">
                       <span className="">TOTAL:</span>{" "}
                       <span className="text-blue-900">{item.total}</span>
                     </h1>

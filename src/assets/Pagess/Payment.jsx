@@ -11,7 +11,7 @@ function Payment() {
   const { cartnew } = location.state;
   const navigate=useNavigate()
   // const {cartnew} =location.state;
-  console.log(id);
+  // console.log(id);
   // console.log(cartnew,"jjjj");
 
   const { values, handleChange, handleBlur, handleSubmit } = useFormik({
@@ -118,12 +118,12 @@ function Payment() {
               </Button>
             </div>
           </form>
-          <div>
+          {/* <div>
             <h1>{values.address}</h1>
             <h1>{values.name}</h1>
             <h1>{values.phone}</h1>
             <h1>{values.payment}</h1>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>

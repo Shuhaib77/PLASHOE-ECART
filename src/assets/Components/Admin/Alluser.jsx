@@ -71,10 +71,12 @@ function Alluser() {
 
   const vieworders = async (id) => {
     const response = await axios.get(`http://localhost:4000/user/${id}`);
+    // console.log(response.data);
+    
     setorders(response.data.detorder);
   };
 
-  const payed = orderss.flatMap((item) => item.pyprdct);
+  const payed = orderss.map((item) => item.pyprdct);
   const neww = payed.map((item) => item);
   return (
     <>
@@ -226,33 +228,34 @@ function Alluser() {
             <DialogHeader className="border-b-4 border-green-900  ">
               ORDERS
             </DialogHeader>
-            <div className="flex flex-wrap justify-around gap-4 mt-3  ">
-              {neww.length > 0 &&
-                neww.map((data) => {
-                  return (
-                    <Card className="w-96 h-[50vh] border-5 border-g ">
-                      <CardHeader className="h-[30vh] mt-5">
-                        <img src={data.image} alt="profile-picture" />
-                      </CardHeader>
-                      <CardBody className="text-center">
-                        <Typography color="blue-gray" className="mb-2">
-                          {data.title}
-                        </Typography>
-                        <Typography
-                          color="blue-gray"
-                          className="font-medium"
-                          textGradient
-                        >
-                          {data.brand}
-                        </Typography>
-                      </CardBody>
-                      <CardFooter className="flex justify-between gap-7 pt-2"></CardFooter>
-                    </Card>
-                  );
-                })}
-            </div>
+            {orderss.map((item, index) => (
+  <div key={index} className="text-black  ">
+  <div className="mb-5 mt-5">
+    <h1 className="font-extrabold text-black">USER DETAILS</h1>
+    <h1 className="font-bold">Order {index + 1}</h1>
+    <h1 className="font-bold">Name: {item.name}</h1>
+    <h1 className="font-bold">Address: {item.address}</h1>
+    <h1 className="font-bold">Phone: {item.phone}</h1>
+    <h1 className="font-bold">Total: ${item.total}</h1>
+     <h2 className="font-bold">Products:</h2>
+  </div>
+   
+    {item.pyprdct && item.pyprdct.map((product, index) => (
+      <div key={index} className="border  ml-5">
+        <img src={product.image} alt={product.title} className="w[20vh] h-[20vh]" />
+        <h1 className="font-bold">Title: {product.title}</h1>
+        <h1>Brand: {product.brand}</h1>
+        <h1>Category: {product.catogery}</h1>
+        <h1>Price: ${product.price}</h1>
+        <h1>Quantity: {product.quantity}</h1>
+      </div>
+    ))}
+  </div>
+))}
           </DialogBody>
           <DialogFooter>
+
+
             <Button
               variant="text"
               color="red"
@@ -261,17 +264,19 @@ function Alluser() {
             >
               <span>Cancel</span>
             </Button>
-            {/* <Button
+            <Button
               variant="gradient"
               color="green"
               onClick={() => handleOpen(null)}
               type="submit"
             >
               <span className="text-center">Confirm</span>
-            </Button> */}
+            </Button>
           </DialogFooter>
         </Dialog>
       </div>
+
+      
     </>
   );
 }

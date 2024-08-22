@@ -39,7 +39,6 @@ function App() {
   const [user, setuser] = useState([]);
   const [udatass, setudatass] = useState([]);
   const [shoeid, setshoeid] = useState([]);
-  
   const [wlitem,setwlitem]=useState([])
   // const [cartitem, setcartitem] = useState([]);
 // const [cartnew,setcartnew]=useState([])
@@ -49,7 +48,7 @@ function App() {
   const [asearchitem, asetsearchitem] = useState("");
   const [prdt, setprdt] = useState([]);
   const [lastasearch, setlastsearch] = useState(null);
-
+  const [admin,setAdmin]=useState(false)
 
  
 //------------------------
@@ -86,10 +85,8 @@ const fn = async () => {
     try {
       const res = await axios.get(`http://localhost:4000/user/${usersid}`);
       const cartss = res.data.cart;
-      console.log(cartss);
 
       const check = cartss.find((itemid) => itemid.id === data.id);
-      console.log(check, "check");
       if (check) {
         toast.warning("product alredy exist");
       } else {
@@ -122,7 +119,7 @@ const wldata=async(id)=>{
 }
 useEffect(()=>{
 wldata()
-})
+},[])
 
 //addtowishlist
 
@@ -132,7 +129,6 @@ const wishlists=async(data)=>{
    const wlitems=wlist.find((item)=>item.id===data.id)
    if(wlitems ){
     const res=wlitem.filter((item)=>item.id!=wlitems.id)
-    console.log(res);
     await axios.patch(`http://localhost:4000/user/${usersid}`,{wishlist:res})
     wldata()
     toast.warning("removed from wishlist")
@@ -140,6 +136,7 @@ const wishlists=async(data)=>{
     const upd=[...wlist,data]
    await axios.patch(`http://localhost:4000/user/${usersid}`,{wishlist:upd})
    toast.success("product add to wishlist")
+   wldata()
    
    }
 
@@ -186,10 +183,23 @@ const wishlists=async(data)=>{
          
         }}
       >
+       {admin  ?
+       
+       <Routes>
+       <Route path="/admin/:url" element={<Admin  />}></Route>
+         <Route path="/addprdt" element={<Addproduct />}></Route>
+         <Route path="/editprdt" element={<Editproducts />}></Route>
+         <Route path="/allusers" element={<Alluser />}></Route>
+         <Route path="/trackorder" element={<Trackorder />}></Route>
+         <Route path="/dashboard" element={<Dashboard />}></Route>
+         <Route path="/adbody" element={<Adbody />}></Route>
+       </Routes>
+      :
+       
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home  setAdmin={setAdmin}/>}></Route>
           <Route path="/user" element={<User />}></Route>
-          <Route path="/admin/:url" element={<Admin />}></Route>
+         
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all" element={<AllProducts />}></Route>
@@ -198,21 +208,18 @@ const wishlists=async(data)=>{
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/lookbook" element={<Lookbook />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
-          <Route
-            path="/showcomponent/:dataid"
-            element={<ShowComponent />}
+          <Route path="/showcomponent/:dataid"element={<ShowComponent />}
           ></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/wishlist" element={<Wishliste />}></Route>
           <Route path="/orderss" element={<Orderss />}></Route>
-          <Route path="/addprdt" element={<Addproduct />}></Route>
-          <Route path="/editprdt" element={<Editproducts />}></Route>
-          <Route path="/allusers" element={<Alluser />}></Route>
-          <Route path="/trackorder" element={<Trackorder />}></Route>
-          <Route path="/dashboard" element={<Dashboard />}></Route>
-          <Route path="/adbody" element={<Adbody />}></Route>
+
+          
         </Routes>
+
+}
+     
       </contexts.Provider>
     </>
   );

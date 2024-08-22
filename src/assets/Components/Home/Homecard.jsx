@@ -47,6 +47,8 @@ function Homecard() {
   //       setWishlist("blue")
   //     }
   // }
+  
+  
 
   return (
     <div>
@@ -65,8 +67,9 @@ function Homecard() {
                             : "blue",
                         }}
                         onClick={() => {
-                          
+                         
                           wishlists(data);
+                         
                         }}
                       ></i>
                     <img src={data.image} alt="card-image" />

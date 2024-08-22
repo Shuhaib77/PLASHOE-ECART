@@ -59,7 +59,7 @@ function Adbody() {
 
   const handleclick = async (data) => {
     const res = await axios.get(`http://localhost:4000/datass/${data.id}`);
-    console.log(res.data, "dededed");
+    // console.log(res.data, "dededed");
     setValues(res.data);
   };
 
@@ -69,7 +69,7 @@ function Adbody() {
     try {
       const response = await axios.delete(`http://localhost:4000/datass/${id}`);
       // fn();
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }

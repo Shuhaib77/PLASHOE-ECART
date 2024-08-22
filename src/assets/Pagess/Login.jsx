@@ -27,16 +27,22 @@ function Login() {
       );
       if (!user) {
         toast.warning("invalid pass or mail");
-      } else if (user && user.admin == true) {
-        localStorage.setItem("id", user.id);
-        navigtate("/admin/dashboard");
-        toast.success(" admin Login successful");
-      } else if (user.block == false) {
+      }
+      //  else if (user && user.admin == true) {
+      //   localStorage.setItem("ids", user.id);
+      //   navigtate("/admin/dashboard");
+      //   toast.success(" admin Login successful");
+      // } 
+      else if (user.block == false) {
         toast.warning("User is blocked");
       } else {
         setuser(user);
+        if(user.admin == true){
+          localStorage.setItem("admin",true)
+        }
         localStorage.setItem("id", user.id);
         navigtate("/");
+        window.location.reload()
         toast.success("Login successful");
        
       }

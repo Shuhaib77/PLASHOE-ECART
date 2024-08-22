@@ -21,6 +21,17 @@ function Wishliste() {
 
     const navigate=useNavigate()
   wldata()
+
+  if(wlitem.length==0){
+  return(
+    <div>
+    <Navbar/>
+    <h1 className='text-center mt-5'>no data</h1>
+    <Footer/>
+    </div>
+
+  ) 
+  }
 return (
     <div>
         <div>
@@ -63,8 +74,7 @@ return (
                             : "blue",
                         }}
                         onClick={() => {
-                          
-                          wishlists(data);
+                        wishlists(data);
                         }}
                       ></i>
                         <img src={data.image} alt="card-image" />

@@ -65,11 +65,11 @@ function Editproducts() {
     try {
       const response = await axios.delete(`http://localhost:4000/datass/${id}`);
       fnupd();
-      console.log(response.data);
+      // console.log(response.data);
     } catch (error) {
       console.log(error);
     }
-    // fn();
+    fn();
   };
   return (
     <>

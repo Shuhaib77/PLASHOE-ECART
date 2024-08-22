@@ -15,11 +15,14 @@ import { useNavigate } from "react-router-dom";
 const AllProducts = () => {
   const { search, datas } = useContext(contexts);
   const navigate = useNavigate();
+  console.log(search);
   return (
     <div>
       <div>
         <Navbar />
       </div>
+     
+      
 
       <div className=" flex flex-wrap mt-10 mb-10 justify-center items-center">
         {search?.map((data) => {

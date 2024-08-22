@@ -1,22 +1,53 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { contexts } from "../../App";
-import { Input, Button } from "@material-tailwind/react";
+import { Input,Button,Badge } from "@material-tailwind/react";
 
 import axios from "axios";
 import { toast } from "sonner";
 import { Link as ScrollLink } from "react-scroll";
+import Admin from "../Pagess/Admin";
 
-function Navbar() {
+function Navbar({setAdmin}) {
   const navigate = useNavigate();
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
-  const { search, setsearh, user, cartitem, cartnew } = useContext(contexts);
+  const { search, setsearh, user, cartnew,datas } = useContext(contexts);
   const [menu, setmenu] = useState(false);
+  const [openAdmin,setOPenAdmin]=useState(false)
   const usersss = localStorage.getItem("id");
 
-  useEffect(() => {
+  // const[cartitem,setcartitem]=useState([])
+
+  function handleAdmin(){
+    setAdmin(true)
+    navigate("/admin/dashboard")
+  
+  
+  }
+  
+// useEffect(()=>{
+//   const fetchcart=async()=>{
+//     const response=await axios.get(`http://localhost:4000/user/${idss}`)
+//     setcartitem(response.data.cart)
+//     console.log(response.data);
+//    }
+  
+//   fetchcart()
+//   },[])
+// console.log(cartitem);
+
+
+  useEffect(() => {  
+
+    if(localStorage.getItem("admin")){
+      setOPenAdmin(true)
+    }
+
+
+
+
     const fdatass = async () => {
       const response = await axios.get("http://localhost:4000/datass");
       try {
@@ -46,6 +77,9 @@ function Navbar() {
         <div className="h-[4vh]  bg-gray-300"></div>
         <div className="mt-2 bg-red  flex justify-around ">
           <div className="flex items-center  ">
+
+
+
             <div className="text-2xl  font-semibold md:block hidden ">
               PLASHOE
             </div>
@@ -142,7 +176,11 @@ function Navbar() {
                 navigate("/cart");
               }}
             >
-              <i class="fa-solid fa-bag-shopping fa-xl  " style={{color: "#791a3e"}}></i>
+               {/* <Badge content={cartitem.length}>
+               </Badge> */}
+               <i class="fa-solid fa-bag-shopping fa-xl  " style={{color: "#791a3e"}}></i>
+              
+           
             </div>
             <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
               {usersss ? (
@@ -174,9 +212,14 @@ function Navbar() {
                   <h1 className="   ">log-in</h1>
                 </div>
               )}
+             
             </div>
+            {openAdmin && <Button cl onClick={()=>handleAdmin()} className=" bg-black w-25 ml-1">admin</Button>}
+           
+         
             <div className="sm:hidden">
-              <i
+           
+               <i
                 class="fa-regular fa-bars fa-2xl  "
                 onClick={() => {
                   if (menu) {
@@ -186,7 +229,11 @@ function Navbar() {
                   }
                 }}
                 ></i>
+          
+    
+            
             </div>
+            
           </div>
         </div>
       </div>

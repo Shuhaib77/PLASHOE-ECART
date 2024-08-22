@@ -23,7 +23,8 @@ function ShowComponent() {
       (specificdata) => specificdata.id === datatodescribe.dataid
     );
     setdedata(res);
-  }, [datas]);
+  }, []);
+// console.log(dedata);
 
   return (
     <>

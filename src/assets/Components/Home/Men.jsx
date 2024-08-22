@@ -17,9 +17,14 @@ import { useNavigate } from "react-router-dom";
 function Men() {
 
   const {  cartitem, setcartitem, addtocarts,datas, setdata,fetchData,wishlists,wlitem  } = useContext(contexts);
+  
     const navigate = useNavigate();
 
-  fetchData()
+    console.log(wlitem);
+   
+      fetchData();
+  
+
   return (
     <div>
       <div>
@@ -60,7 +65,6 @@ function Men() {
                             : "blue",
                         }}
                         onClick={() => {
-                          
                           wishlists(data);
                         }}
                       ></i>

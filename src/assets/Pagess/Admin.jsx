@@ -46,14 +46,14 @@ function Admin() {
       url: "dashboard",
     },
   ];
-  console.log(prdt, "dd");
+  // console.log(prdt, "dd");
 
   const fn = (e) => {
     let searchitems = prdt.filter((x) =>
       x.title.toLowerCase().includes(asearchitem.toLowerCase())
     );
     setlastsearch(searchitems);
-    console.log(searchitems);
+    // console.log(searchitems);
     if (searchitems.length > 0) {
       toast.success("finded");
       navigate("/adbody");
@@ -84,7 +84,9 @@ function Admin() {
             <i
               class="fa-solid fa-house fa-xl mt-4  ml-3 cursor-pointer mr-2 hover:text-green-200   "
               onClick={() => {
-                navigate("/");
+                localStorage.clear()
+                navigate("/")
+                window.location.reload()
               }}
             ></i>
           </div>
@@ -93,9 +95,11 @@ function Admin() {
               class="fa-solid fa-user-minus fa-xl ml-2   "
               onClick={() => {
                 localStorage.removeItem("id");
-
+                localStorage.clear()
+                navigate("/")
+                window.location.reload()
                 toast.warning("loged Out");
-                navigate("/login");
+                
               }}
             ></i>
             <h1 className=" text-white     ">logout</h1>

@@ -6,12 +6,12 @@ import Homecard from "../Components/Home/Homecard";
 import Footer from "../Components/Footer";
 import { Element } from "react-scroll";
 
-function Home() {
+function Home({setAdmin}) {
   return (
     <div className="">
       <div className=" ">
         <div className="">
-          <Navbar />
+          <Navbar setAdmin={setAdmin}/>
         </div>
         <div className="">
           <Homebanner />

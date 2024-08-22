@@ -17,7 +17,7 @@ function Register() {
       const response = await axios.get("http://localhost:4000/user");
       try {
         setemail(response.data);
-        console.log(emails);
+        // console.log(emails);
       } catch (error) {
         toast.error("not fetched");
       }

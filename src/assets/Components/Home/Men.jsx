@@ -22,7 +22,7 @@ function Men() {
 
     console.log(wlitem);
    
-      fetchData();
+      // fetchData();
   
 
   return (

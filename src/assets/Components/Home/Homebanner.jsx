@@ -7,7 +7,7 @@ function Homebanner() {
   return (
     <div>
       <div>
-        <div className="bg-home-bg bg-no-repeat h-[100vh] ml-8 mr-8 mt-7 flex  items-center">
+        <div className="bg-home-bg bg-no-repeat  h-[100vh] ml-8 mr-8 mt-7 flex  items-center">
           <div className="text-white font-medium   ml-20">
             <h1 className="font-semibold text-5xl mb-4 ">Love The Planet</h1>
             <h1 className="font-semibold text-5xl mb-3">We Walk On</h1>

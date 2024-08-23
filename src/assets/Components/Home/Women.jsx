@@ -21,7 +21,7 @@ function Women() {
   const navigate = useNavigate();
 
 
-  fetchData()
+  // fetchData()
 
 
  return (

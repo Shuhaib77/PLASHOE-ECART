@@ -72,7 +72,6 @@ function Alluser() {
   const vieworders = async (id) => {
     const response = await axios.get(`http://localhost:4000/user/${id}`);
     // console.log(response.data);
-    
     setorders(response.data.detorder);
   };
 
@@ -241,13 +240,18 @@ function Alluser() {
   </div>
    
     {item.pyprdct && item.pyprdct.map((product, index) => (
-      <div key={index} className="border  ml-5">
-        <img src={product.image} alt={product.title} className="w[20vh] h-[20vh]" />
-        <h1 className="font-bold">Title: {product.title}</h1>
+      <div key={index} className="border flex justify-around  ">
+      
+      <div>
+      <h1 className="font-bold">Title: {product.title}</h1>
         <h1>Brand: {product.brand}</h1>
         <h1>Category: {product.catogery}</h1>
         <h1>Price: ${product.price}</h1>
         <h1>Quantity: {product.quantity}</h1>
+      </div>
+      <div>
+       <img src={product.image} alt={product.title} className="w[20vh] h-[20vh]" />
+       </div>
       </div>
     ))}
   </div>

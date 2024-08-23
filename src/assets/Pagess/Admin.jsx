@@ -1,6 +1,9 @@
 import React, { useContext, useState } from "react";
 import Navbar from "../Components/Navbar";
-import { Button, Input } from "@material-tailwind/react";
+import { Button, Input,Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,Avatar } from "@material-tailwind/react";
 import { useNavigate, Link, useParams } from "react-router-dom";
 import Alluser from "../Components/Admin/Alluser";
 import Editproducts from "../Components/Admin/Editproducts";
@@ -63,11 +66,11 @@ function Admin() {
   };
   return (
     <>
-      <div className="flex  p-5  justify-between w-[176vh]  bg-[#38746f] text-white  ">
+      <div className="flex  p-5  justify-between w-[175vh]  bg-[#38746f] text-white  ">
         <div className="flex ">
           <h1 className="mt-3  ml-6 font-semibold text-xl">PLASHOE</h1>
         </div>
-        <div className="flex">
+        <div className="flex ">
           <Input
             className="bg-white"
             label="type here"
@@ -76,13 +79,15 @@ function Admin() {
             }}
           ></Input>
           <div>
-            <Button className=" mr-3" onClick={fn}>
+            <Button className=" mr-5" onClick={fn}>
               search
             </Button>
           </div>
-          <div>
+          <div className="mr-5">
+
+          
             <i
-              class="fa-solid fa-house fa-xl mt-4  ml-3 cursor-pointer mr-2 hover:text-green-200   "
+              class="fa-solid fa-house fa-xl mt-4  cursor-pointer  hover:text-green-200   "
               onClick={() => {
                 localStorage.clear()
                 navigate("/")
@@ -91,7 +96,30 @@ function Admin() {
             ></i>
           </div>
           <div className="mt-2 text-white    hover:text-green-300">
-            <i
+
+          <Menu placement="bottom-start"  >
+          <MenuHandler>
+            <div >
+            <i class="fa-solid fa-user fa-xl cursor-pointer" style={{color: "#ffffff"}}></i>
+
+
+            </div>
+         
+          </MenuHandler>
+          <MenuList onClick={() => {
+                localStorage.removeItem("id");
+                localStorage.clear()
+                navigate("/")
+                window.location.reload()
+                toast.warning("loged Out");
+                
+              }}>
+           
+            <MenuItem>Log Out</MenuItem>
+           
+          </MenuList>
+        </Menu>
+            {/* <i
               class="fa-solid fa-user-minus fa-xl ml-2   "
               onClick={() => {
                 localStorage.removeItem("id");
@@ -101,8 +129,8 @@ function Admin() {
                 toast.warning("loged Out");
                 
               }}
-            ></i>
-            <h1 className=" text-white     ">logout</h1>
+            ></i> */}
+            {/* <h1 className=" text-white     ">logout</h1> */}
           </div>
         </div>
       </div>

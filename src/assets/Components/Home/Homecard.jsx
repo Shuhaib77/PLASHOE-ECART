@@ -37,7 +37,7 @@ function Homecard() {
   } = useContext(contexts);
   // const [wishlist, setWishlist] = useState("blue");
 
-  fetchData();
+  // fetchData();
 
   //     const b=wlitem.find((item)=>item.id===id)
   //     if(b){

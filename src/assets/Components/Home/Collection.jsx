@@ -17,7 +17,7 @@ function Collection() {
   const {  addtocarts,datas, setdata,fetchData ,wishlists,wlitem} = useContext(contexts);
   const navigate = useNavigate();
 
-  fetchData()
+  // fetchData()
  return (
     <div>
       <div>

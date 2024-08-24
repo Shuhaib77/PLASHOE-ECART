@@ -161,17 +161,7 @@
       "password": "12345",
       "confirmpass": "12345",
       "admin": true,
-      "cart": [
-        {
-          "id": "2",
-          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
-          "brand": "nike",
-          "catogery": "men",
-          "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
-          "price": 3773,
-          "quantity": 1
-        }
-      ],
+      "cart": [],
       "wishlist": [
         {
           "id": "1",
@@ -190,11 +180,48 @@
           "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
           "price": 3773,
           "quantity": 1
+        },
+        {
+          "id": "3",
+          "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/r/d/6-5-dd9535-300-6-5-nike-mint-foam-cave-purple-ghost-green-white-original-imahfhvshdugeuce.jpeg?q=70&crop=false",
+          "brand": "nike",
+          "catogery": "men",
+          "title": "GEL-FujiSetsu 3 G-TX Running Shoes For Men  (Black , 11)",
+          "price": 7649,
+          "quantity": 1
+        },
+        {
+          "id": "6",
+          "image": "https://rukminim2.flixcart.com/image/612/612/xif0q/shoe/f/r/1/7-5-dd9304-300-7-5-nike-barely-green-cave-purple-barely-volt-original-imahfhvsmgzvg9nj.jpeg?q=70",
+          "brand": "nike",
+          "catogery": "men",
+          "title": "Crihase running or Cricket Shoes For Men  (White , 7)",
+          "price": 2192,
+          "quantity": 1
         }
       ],
       "orders": [],
       "block": true,
-      "detorder": []
+      "detorder": [
+        {
+          "name": "ewrewfwef",
+          "address": "wefwfwrf",
+          "phone": "888474824729",
+          "payment": "CARD",
+          "total": 3773,
+          "pyprdct": [
+            {
+              "id": "2",
+              "image": "https://rukminim2.flixcart.com/image/1800/1800/xif0q/shoe/d/2/f/11-fq0904-300-11-nike-jade-horizon-pale-ivory-bicoastal-original-imah26hcjnvnhf4c.jpeg?q=70&crop=false",
+              "brand": "nike",
+              "catogery": "men",
+              "title": "ASICS GEL-PHOENIX 7B Running Shoes For women  ",
+              "price": 3773,
+              "quantity": 1
+            }
+          ]
+        }
+      ]
     },
     {
       "id": "518e",

@@ -100,7 +100,7 @@ function Admin() {
           <Menu placement="bottom-start"  >
           <MenuHandler>
             <div >
-            <i class="fa-solid fa-user fa-xl cursor-pointer" style={{color: "#ffffff"}}></i>
+            <i class="fa-solid fa-user fa-xl cursor-pointer" style={{color: "#ffffff"}} ></i>
 
 
             </div>

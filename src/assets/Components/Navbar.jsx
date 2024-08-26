@@ -87,20 +87,20 @@ function Navbar({ setAdmin }) {
  
   
 
-  const handleSearch = (e) => {
-    let inputWord = sdata.filter((x) =>
-      x.title.toLowerCase().includes(searchval.toLowerCase())
-    );
-    setsearh(inputWord);
-    console.log(inputWord);
+  // const handleSearch = (e) => {
+  //   let inputWord = sdata.filter((x) =>
+  //     x.title.toLowerCase().includes(searchval.toLowerCase())
+  //   );
+  //   setsearh(inputWord);
+  //   console.log(inputWord);
     
-    if (inputWord.length >= 0) {
-      toast.success("finded");
-      navigate("/all");
-    } else {
-      toast.warning("not find");
-    }
-  };
+  //   if (inputWord.length >= 0) {
+  //     toast.success("finded");
+  //     navigate("/all");
+  //   } else {
+  //     toast.warning("not find");
+  //   }
+  // };
 
   return (
     <div className="bg-white w-full ">
@@ -171,10 +171,10 @@ function Navbar({ setAdmin }) {
               ></Input>
             </div>
             <div className=" ">
-              <Button className="" onClick={handleSearch}>
+              {/* <Button className="" onClick={handleSearch}>
                 {" "}
                 Search
-              </Button>
+              </Button> */}
             </div>
           </div>
           <div className="  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  md:block hidden   ">

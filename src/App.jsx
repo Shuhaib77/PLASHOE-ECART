@@ -41,7 +41,7 @@ function App() {
   const [udatass, setudatass] = useState([]);
   const [shoeid, setshoeid] = useState([]);
   const [wlitem,setwlitem]=useState([])
-  // const [cartitem, setcartitem] = useState([]);
+  const [cartitem, setcartitem] = useState([]);
 // const [cartnew,setcartnew]=useState([])
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
@@ -197,7 +197,7 @@ const wishlists=async(data)=>{
          <Route path="/allusers" element={<Alluser />}></Route>
          <Route path="/trackorder" element={<Trackorder />}></Route>
          <Route path="/dashboard" element={<Dashboard />}></Route>
-         <Route path="/adbody" element={<Adbody />}></Route>
+         <Route path="/adbody/:id" element={<Adbody />}></Route>
        </Routes>
 }
        

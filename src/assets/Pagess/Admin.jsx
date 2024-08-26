@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Navbar from "../Components/Navbar";
 import { Button, Input,Menu,
   MenuHandler,
@@ -12,6 +12,7 @@ import Trackorder from "../Components/Admin/Trackorder";
 import Dashboard from "../Components/Admin/Dashboard";
 import { toast } from "sonner";
 import { contexts } from "../../App";
+import axios from "axios";
 
 function Admin() {
   const {
@@ -49,21 +50,56 @@ function Admin() {
       url: "dashboard",
     },
   ];
+
+  const[vals,setval]=useState("")
+  const [servals,setservals]=useState([])
   // console.log(prdt, "dd");
 
-  const fn = (e) => {
-    let searchitems = prdt.filter((x) =>
-      x.title.toLowerCase().includes(asearchitem.toLowerCase())
-    );
-    setlastsearch(searchitems);
-    // console.log(searchitems);
-    if (searchitems.length > 0) {
-      toast.success("finded");
-      navigate("/adbody");
-    } else {
-      toast.warning("not finded");
-    }
-  };
+  // const fn = (e) => {
+  //   let searchitems = prdt.filter((x) =>
+  //     x.title.toLowerCase().includes(asearchitem.toLowerCase())
+  //   );
+  //   setlastsearch(searchitems);
+  //   // console.log(searchitems);
+  //   if (searchitems.length > 0) {
+  //     toast.success("finded");
+  //     navigate("/adbody");
+  //   } else {
+  //     toast.warning("not finded");
+  //   }
+  // };
+
+
+useEffect(()=>{
+  const fndatas=async()=>{
+    const res=await axios.get("http://localhost:4000/datass")
+    setprdt(res.data)
+  }
+  fndatas()
+
+},[])
+
+
+
+  const adminser=(e)=>{
+   const value=e.target.value
+    setval(value)
+    setservals(prdt.filter((x)=>x.title.toLowerCase().includes(value)))
+    
+    
+}
+console.log(prdt);
+console.log(servals);
+
+
+const handleaclick=()=>{
+
+}
+
+
+
+
+
   return (
     <>
       <div className="flex  p-5  justify-between w-[175vh]  bg-[#38746f] text-white  ">
@@ -74,14 +110,16 @@ function Admin() {
           <Input
             className="bg-white"
             label="type here"
-            onChange={(e) => {
-              asetsearchitem(e.target.value);
-            }}
+
+            onChange={adminser}
+            // onChange={(e) => {
+            //   asetsearchitem(e.target.value);
+            // }}
           ></Input>
           <div>
-            <Button className=" mr-5" onClick={fn}>
+            {/* <Button className=" mr-5" onClick={fn}>
               search
-            </Button>
+            </Button> */}
           </div>
           <div className="mr-5">
 
@@ -107,12 +145,7 @@ function Admin() {
          
           </MenuHandler>
           <MenuList onClick={() => {
-                
-             
                 navigate("/")
-                
-                
-                
               }}>
            
             <MenuItem>Log Out</MenuItem>
@@ -165,6 +198,21 @@ function Admin() {
           )}
         </div>
       </div>
+
+      { vals && <div className="bg-white absolute top-20  w-[100%] shadow overflow-auto max-h-[100%] rounded   ">
+       {servals.map((it)=>{
+        return(
+          
+          <Link to={`/adbody/${it.id}`} className="border border-shadow-lg roonded-4 p-2 flex justify-between  w-[100%] h-[8vh]     " onClick={()=>handleaclick(it.id)}>
+            <h1>{it.title}</h1>
+            <img src={it.image} alt="" className="object-cover mr-3 " />
+          
+          </Link>
+        )
+      })}
+        
+      </div>
+      }
     </>
   );
 }

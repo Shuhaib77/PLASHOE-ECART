@@ -17,20 +17,26 @@ import { useFormik } from "formik";
 import { data } from "autoprefixer";
 import { toast } from "sonner";
 import { contexts } from "../../../App";
+import { useParams } from "react-router-dom";
 
 function Adbody() {
-  const { prdt, setprdt, lastasearch, setlastsearch } = useContext(contexts);
+  const { prdt, setprdt, lastasearch, setlastsearch,datas } = useContext(contexts);
   const [size, setSize] = React.useState(null);
   const [editprdt, seteditprdt] = useState(null);
+  
+  const {id}=useParams()
+  const [sprdt,setsprdt] = useState([]);
 
   const handleOpen = (value) => setSize(value);
-  const fn = async () => {
-    const response = await axios.get("http://localhost:4000/datass");
-    setprdt(response.data);
-  };
-  useEffect(() => {
-    fn();
-  }, []);
+  
+
+ useEffect(()=>{
+  const res =datas.filter((it)=>it.id===id)
+  setsprdt(res);
+ },[datas,id])
+  console.log(sprdt);
+
+
   const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
     initialValues: {
       id: "",
@@ -82,10 +88,16 @@ function Adbody() {
         <h1 className="font-medium text-red-900 mb-3 text-2xl">
           EDIT PRODUCTS
         </h1>
+        {/* <h1>{sprdt.map((item)=>{
+          return(
+            // <h1>{item.title}</h1>
+          )
+        })}</h1> */}
       </div>
 
       <div className="flex flex-wrap justify-center items-center  gap-5 mt-20 w-[full] h-[70vh] overflow-auto ">
-        {lastasearch.map((data, index) => {
+      
+        {sprdt.map((data, index) => {
           return (
             <Card className="w-96 h-[50vh] border-5 border-g">
               <CardHeader className="h-[30vh] mt-5">

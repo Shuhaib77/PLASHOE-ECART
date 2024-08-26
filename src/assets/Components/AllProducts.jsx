@@ -22,6 +22,8 @@ const AllProducts = () => {
         <Navbar />
       </div>
      
+     
+     
       
 
       <div className=" flex flex-wrap mt-10 mb-10 justify-center items-center">

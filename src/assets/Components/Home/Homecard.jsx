@@ -16,7 +16,7 @@ import User from "../../Pagess/User";
 import Cart from "../Cart";
 import card from "@material-tailwind/react/theme/components/card";
 import { toast } from "sonner";
-
+import { FaHeartBroken } from "react-icons/fa";
 function Homecard() {
   const navigate = useNavigate();
   // const [datas, setdata] = useState([]);
@@ -64,7 +64,7 @@ function Homecard() {
                         style={{
                           color: wlitem.find((item) => item.id === data.id)
                             ? "red"
-                            : "blue",
+                            : "",
                         }}
                         onClick={() => {
                          

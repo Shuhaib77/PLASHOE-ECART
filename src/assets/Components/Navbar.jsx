@@ -29,13 +29,23 @@ function Navbar({ setAdmin }) {
   const [openAdmin, setOPenAdmin] = useState(false);
   const [userss, setusers] = useState([]);
   const users = localStorage.getItem("id");
-
+  const [qq,setQq]=useState("")
+  const [ser,setSer]=useState([])
   // const[cartitem,setcartitem]=useState([])
 
   function handleAdmin() {
     setAdmin(true);
     navigate("/admin/dashboard");
   }
+
+   const filterrrr =(e)=>{
+    const value = e.target.value.toLowerCase()
+    setQq(value)
+    setSer(sdata.filter((f)=>f.title.toLowerCase().includes(value)))
+    console.log(ser);
+    
+   }
+
 
   // useEffect(()=>{
   //   const fetchcart=async()=>{
@@ -53,16 +63,18 @@ function Navbar({ setAdmin }) {
       setOPenAdmin(true);
     }
 
-    // const fdatass = async () => {
-    //   const response = await axios.get("http://localhost:4000/datass");
-    //   try {
-    //     setsdata(response.data);
-    //   } catch (error) {
-    //     toast.warning("not fetched");
-    //   }
-    // };
-    // fdatass();
+    const fdatass = async () => {
+      const response = await axios.get("http://localhost:4000/datass");
+      try {
+        setsdata(response.data);
+      } catch (error) {
+        toast.warning("not fetched");
+      }
+    };
+    fdatass();
   }, []);
+
+  console.log(sdata);
 
   useEffect(() => {
     const Auserss = async () => {
@@ -72,11 +84,16 @@ function Navbar({ setAdmin }) {
     Auserss();
   }, []);
 
+ 
+  
+
   const handleSearch = (e) => {
     let inputWord = sdata.filter((x) =>
       x.title.toLowerCase().includes(searchval.toLowerCase())
     );
     setsearh(inputWord);
+    console.log(inputWord);
+    
     if (inputWord.length >= 0) {
       toast.success("finded");
       navigate("/all");
@@ -145,10 +162,11 @@ function Navbar({ setAdmin }) {
             <div className=" ml-4 ">
               <Input
                 label="type here..."
-                onChange={(e) => {
-                  setsearchval(e.target.value);
-                }}
-                value={searchval}
+                // onChange={(e) => {
+                //   setsearchval(e.target.value);
+                // }}
+                onChange={filterrrr}
+                // value={searchval}
                 className=""
               ></Input>
             </div>
@@ -315,6 +333,7 @@ function Navbar({ setAdmin }) {
                       className="mt-2 text-black  "
                       onClick={() => {
                         navigate("/login");
+                        localStorage.clear()
                       }}
                     >
                       <i
@@ -389,6 +408,19 @@ function Navbar({ setAdmin }) {
           </div>
         </div>
       </div>
+      {qq && <div className="max-h-[300px] z-[1000] absolute w-[100%] top-28 bg-white right-0  shadow overflow-auto">
+        {ser.map((e)=>{
+         
+          return(
+            <Link to={`/details/${e.id}`} 
+               onClick={()=>setQq("")}
+            key={e.id} className="flex w-[100%] bg-white text-black    ml-auto justify-between  rounded-md shadow-sm   items-center p-2 ">
+              <div>{e.title}</div>
+              <img src={e.image} alt=""  className="h-[60px] w-[60px] object-cover p-2 shadow-sm"/>
+            </Link>
+          )
+        })}
+        </div>}
       {menu}
     </div>
   );

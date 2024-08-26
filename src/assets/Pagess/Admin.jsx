@@ -89,9 +89,9 @@ function Admin() {
             <i
               class="fa-solid fa-house fa-xl mt-4  cursor-pointer  hover:text-green-200   "
               onClick={() => {
-                localStorage.clear()
+                
                 navigate("/")
-                window.location.reload()
+               
               }}
             ></i>
           </div>
@@ -107,11 +107,11 @@ function Admin() {
          
           </MenuHandler>
           <MenuList onClick={() => {
-                localStorage.removeItem("id");
-                localStorage.clear()
+                
+             
                 navigate("/")
-                window.location.reload()
-                toast.warning("loged Out");
+                
+                
                 
               }}>
            

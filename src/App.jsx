@@ -7,7 +7,7 @@ import User from "./assets/Pagess/User";
 import Admin from "./assets/Pagess/Admin";
 import Login from "./assets/Pagess/Login";
 import Register from "./assets/Pagess/Register";
-
+  
 import { Toaster } from "sonner";
 import AllProducts from "./assets/Components/AllProducts";
 import Men from "./assets/Components/Home/Men";
@@ -29,6 +29,7 @@ import Adbody from "./assets/Components/Admin/Adbody";
 import Orderss from "./assets/Pagess/Orderss";
 import card from "@material-tailwind/react/theme/components/card";
 import Wishliste from "./assets/Components/Wishliste";
+import ProductDetail from "./assets/Components/Home/ProductDetail";
 
 export const contexts = createContext();
 
@@ -50,7 +51,11 @@ function App() {
   const [lastasearch, setlastsearch] = useState(null);
   const [admin,setAdmin]=useState(false)
 
- 
+  useEffect(() => {
+    if (localStorage.getItem("admin")) {
+      setAdmin(true);
+    }
+  }, []);
 //------------------------
 //datas fetchingg
 const usersid = localStorage.getItem("id");
@@ -183,7 +188,7 @@ const wishlists=async(data)=>{
          
         }}
       >
-       {admin  ?
+       {admin  &&
        
        <Routes>
        <Route path="/admin/:url" element={<Admin  />}></Route>
@@ -194,12 +199,12 @@ const wishlists=async(data)=>{
          <Route path="/dashboard" element={<Dashboard />}></Route>
          <Route path="/adbody" element={<Adbody />}></Route>
        </Routes>
-      :
+}
        
         <Routes>
           <Route path="/" element={<Home  setAdmin={setAdmin}/>}></Route>
           <Route path="/user" element={<User />}></Route>
-         
+          <Route path="/details/:id" element={<ProductDetail/>}/>
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all" element={<AllProducts />}></Route>
@@ -218,7 +223,7 @@ const wishlists=async(data)=>{
           
         </Routes>
 
-}
+
      
       </contexts.Provider>
     </>

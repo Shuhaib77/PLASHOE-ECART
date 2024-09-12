@@ -263,7 +263,7 @@ function Cart() {
                             fnsummer(data);
                           }}
                         >
-                          BUy
+                          BUY
                         </Button>
                       </div>
                     </Card>

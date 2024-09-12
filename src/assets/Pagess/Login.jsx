@@ -39,6 +39,7 @@ function Login() {
         setuser(user);
         if(user.admin == true){
           localStorage.setItem("admin",true)
+          
         }
         localStorage.setItem("id", user.id);
         navigtate("/");
@@ -50,18 +51,20 @@ function Login() {
   });
 
   return (
-    <div className=" ">
-      <div className=" flex justify-center items-center h-[100vh] bg-white    ">
+    <div className="">
+      <div className=" bg-Login-bg bg-no-repeat bg-cover w-[100%] h-[100%]">
+
+      <div className=" flex justify-center items-center h-[100vh]    ">
         <div className="mr-10 border ">
-          <img
+          {/* <img
             src="https://i.ebayimg.com/images/g/TDoAAOSwvZxgYocm/s-l1600.jpg"
             alt=""
             className="w-[50vh] h-[60vh]"
-          />
+          /> */}
         </div>
         <form
           action=""
-          className="w-96 bg-[#1b7c7f] p-10 border-3 rounded-xl"
+          className="w-96 bg-[rgba(210,182,89,0.45)] p-10 border-3 rounded-xl"
           onSubmit={handleSubmit}
         >
           <h1 className="text-4xl text-center mb-6">LOGIN</h1>
@@ -102,16 +105,19 @@ function Login() {
           <div className="mt-5 flex justify-between">
             <Link
               to={"/register"}
-              className="border-b-2 text-white border-blue-900"
+              className="border-b-2 text-black border-blue-900"
             >
               Register
             </Link>
-            <Link to={"/"} className="border-b-2 text-white border-blue-900">
+            <Link to={"/"} className="border-b-2 text-black border-blue-900">
               back
             </Link>
           </div>
         </form>
       </div>
+
+      </div>
+     
     </div>
   );
 }

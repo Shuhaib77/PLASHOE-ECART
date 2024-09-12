@@ -231,7 +231,7 @@ function Navbar({ setAdmin }) {
               </MenuHandler>
 
               <MenuList >
-                {users ? (
+                {users && (
                   <Menu placement="left-bottom">
                     <MenuHandler>
                       <MenuItem className="flex items-center gap-2">
@@ -275,9 +275,7 @@ function Navbar({ setAdmin }) {
                       })}
                     </MenuList>
                   </Menu>
-                ) : (
-                  toast.warning("plss loginn")
-                )}
+                ) }
                 {openAdmin && (
                   <MenuItem className="flex items-center gap-2" onClick={handleAdmin}>
                     <svg

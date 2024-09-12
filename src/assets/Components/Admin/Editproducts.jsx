@@ -79,7 +79,7 @@ function Editproducts() {
         </h1>
       </div>
 
-      <div className="flex flex-wrap justify-center  gap-5 mt-20 w-[150vh] h-[70vh] overflow-auto ">
+      <div className="flex flex-wrap justify-center  gap-5 mt-20 w-[142vh] h-[70vh] overflow-auto ">
         {prdt.map((data, index) => {
           return (
             <Card className="w-96 h-[50vh] border-5 border-g">

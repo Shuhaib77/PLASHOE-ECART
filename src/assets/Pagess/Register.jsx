@@ -57,18 +57,18 @@ function Register() {
 
   return (
     <div>
-      <div>
-        <div className="flex justify-center h-[100vh] items-center">
-          <div className="mr-5">
+      <div className="bg-register-bg bg-no-repeat bg-cover w-[100%] h-[100%]">
+        <div className="flex justify-center ml-20  h-[100vh] items-center">
+          {/* <div className="mr-5">
             <img
               src="https://images.pexels.com/photos/15435913/pexels-photo-15435913/free-photo-of-person-wearing-white-sneakers.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
               alt=""
               className="h-[60vh] "
             />
-          </div>
+          </div> */}
           <form
             action=""
-            className="w-96 bg-green-900 p-10 border-3 rounded-xl "
+            className="w-96 bg-[rgba(29,67,65,0.45)] pt-5 pb-5 pl-10 pr-10 border-3 rounded-xl "
             onSubmit={handleSubmit}
           >
             <h1 className="text-4xl text-center text-white mb-6">REGISTER</h1>
@@ -121,7 +121,7 @@ function Register() {
             </div>
             <div className="mt-5">
               <Link
-                className="border-b-2 text-blue-200 border-blue-400"
+                className="border-b-2 text-white border-red-900"
                 to={"/login"}
               >
                 back

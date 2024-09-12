@@ -106,9 +106,9 @@ const handleaclick=()=>{
         <div className="flex ">
           <h1 className="mt-3  ml-6 font-semibold text-xl">PLASHOE</h1>
         </div>
-        <div className="flex ">
+        <div className="flex  ">
           <Input
-            className="bg-white"
+            className="bg-white "
             label="type here"
 
             onChange={adminser}
@@ -121,7 +121,7 @@ const handleaclick=()=>{
               search
             </Button> */}
           </div>
-          <div className="mr-5">
+          <div className="mr-5 ml-5">
 
           
             <i
@@ -169,13 +169,13 @@ const handleaclick=()=>{
       </div>
 
       <div className="flex">
-        <div className="mt-1   bg-[#226c66] w-[25vh] h-[90vh] ">
-          <div className=" flex flex-col gap-10  justify-center h-[60vh]  text-white mb-20">
+        <div className=" bg-[#226c66] w-[25vh] mt-1 h-[90vh] ">
+          <div className=" flex flex-col gap-10  justify-center w-[25] h-[60vh]  text-white mb-20">
             {Data.map((item) => {
               return (
                 <Link
                   to={`/admin/${item.url}`}
-                  className=" ml-1  mr-1 hover:bg-white p-2 hover:text-black hover:border rounded hover:pl-2 "
+                  className=" ml-1  mr-1 hover:bg-white p-2 hover:text-black hover:border rounded  "
                 >
                   {item.icon}
                   {item.title}
@@ -199,7 +199,7 @@ const handleaclick=()=>{
         </div>
       </div>
 
-      { vals && <div className="bg-white absolute top-20  w-[100%] shadow overflow-auto max-h-[100%] rounded   ">
+      { vals && <div className="bg-white absolute top-20  w-[100] shadow overflow-auto max-h-[100%] rounded   ">
        {servals.map((it)=>{
         return(
           

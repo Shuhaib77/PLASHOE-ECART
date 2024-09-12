@@ -18,28 +18,28 @@ import { useNavigate } from "react-router-dom";
 import filled from "@material-tailwind/react/theme/components/timeline/timelineIconColors/filled";
 import { data } from "autoprefixer";
 
-const reducer = (state, action) => {
-  switch (action.type) {
-    case "increment":
-      return state.map((item) =>
-        item.id == action.id ? { ...item, quantity: item.quantity + 1 } : item
-      );
-    case "decrement":
-      return state.map((item) =>
-        item.id == action.id && item.quantity > 1
-          ? { ...item, quantity: item.quantity - 1 }
-          : item
-      );
-    case "deletecart":
-      return state.filter((item, j) => item.id != action.id);
+// const reducer = (state, action) => {
+//   switch (action.type) {
+//     case "increment":
+//       return state.map((item) =>
+//         item.id == action.id ? { ...item, quantity: item.quantity + 1 } : item
+//       );
+//     case "decrement":
+//       return state.map((item) =>
+//         item.id == action.id && item.quantity > 1
+//           ? { ...item, quantity: item.quantity - 1 }
+//           : item
+//       );
+//     case "deletecart":
+//       return state.filter((item, j) => item.id != action.id);
 
-    case "clearcart":
-      return [];
+//     case "clearcart":
+//       return [];
 
-    default:
-      return state;
-  }
-};
+//     default:
+//       return state;
+//   }
+// };
 function Cart() {
   const { setcartitems } = useContext(contexts);
   const [cartitem, setcartitem] = useState([]);
@@ -195,15 +195,15 @@ function Cart() {
               {cartitem.map((data, i) => {
                 return (
                   <div className="  ">
-                    <Card className="h-[63vh] w-[50vh] mt-20 gap-1  ">
-                      <CardHeader color="" className=" ">
+                    <Card className="h-[65vh] w-[50vh] mt-20 gap-1  ">
+                     
                         <img src={data?.image} alt="card-image" />
-                      </CardHeader>
+                    
                       <CardBody>
                         <Typography
                           variant="h5"
                           color="blue-gray"
-                          className="mb-2"
+                          className=""
                         >
                           {data?.brand}
                         </Typography>
@@ -214,7 +214,7 @@ function Cart() {
                           Total:{data.price * data.quantity}
                         </Typography>
                       </CardBody>
-                      <CardFooter className="pt-0 flex justify-between mt-3">
+                      <CardFooter className="pt-0 flex justify-between ">
                         <div>
                           <Button
                             onClick={() => {
@@ -258,7 +258,7 @@ function Cart() {
                       </CardFooter>
                       <div className="text-end mr-5">
                         <Button
-                          className="bg-green-700 w-[21vh]"
+                          className="bg-blue-800 w-[25vw]"
                           onClick={() => {
                             fnsummer(data);
                           }}
@@ -271,18 +271,19 @@ function Cart() {
                 );
               })}
             </div>
-            <div className="text-center mt-5">
+            <div className="text-center  mt-5">
               <Button
                 onClick={() => {
                   alladd(cartitem);
                 }}
+                className="bg-blue-900"
               >
                 placeorder
               </Button>
             </div>
           </div>
           <div className="w-[150vh] ">
-            <h1 className="text-center ml-10 mr-9 mt-8 text-3xl text-black font-semibold border-b-2 border-blue-700 ">
+            <h1 className="text-center ml-10 mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2 border-black ">
               PRICE DETAILS
             </h1>
             <div className=" flex flex-col justify-center items-center w-[57vh]">

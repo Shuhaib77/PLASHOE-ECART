@@ -57,8 +57,8 @@ function Register() {
 
   return (
     <div>
-      <div className="bg-register-bg bg-no-repeat bg-cover w-[100%] h-[100%]">
-        <div className="flex justify-center ml-20  h-[100vh] items-center">
+      <div className="bg-register-bg bg-no-repeat bg-cover w-100% h-100%">
+        <div className="flex justify-center  md:mr-5  h-[100vh] items-center">
           {/* <div className="mr-5">
             <img
               src="https://images.pexels.com/photos/15435913/pexels-photo-15435913/free-photo-of-person-wearing-white-sneakers.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
@@ -68,7 +68,7 @@ function Register() {
           </div> */}
           <form
             action=""
-            className="w-96 bg-[rgba(29,67,65,0.45)] pt-5 pb-5 pl-10 pr-10 border-3 rounded-xl "
+            className=" mr-5 ml-5 w-full md:w-96 bg-[rgba(29,67,65,0.45)] p-10 md:p-8 border-3 rounded-xl "
             onSubmit={handleSubmit}
           >
             <h1 className="text-4xl text-center text-white mb-6">REGISTER</h1>

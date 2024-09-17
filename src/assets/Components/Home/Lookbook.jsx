@@ -18,9 +18,9 @@ function Lookbook() {
             src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-lookbook-cover-image-4.jpg"
             alt=""
           />
-          <div className="flex mt-20 justify-between">
+          <div className=" flex flex-col items-center md:flex-row mt-20 justify-between">
             <h1 className="ml-10">Fall/winter 2021</h1>
-            <p className="mr-10">
+            <p className="text-center md:mr-10">
               Elementum donec leo vulputate sit proin suspendisse <br />{" "}
               malesuada neque proin gravida ut platea vitae duis hac <br /> hac
               vel id ipsum ultricies ut faucibus ultrices
@@ -31,9 +31,9 @@ function Lookbook() {
               src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-lookbook-cover-image-3.jpg"
               alt=""
             />
-            <div className="flex mt-20 justify-between">
+            <div className="flex flex-col items-center md:flex-row mt-20 justify-between">
               <h1 className="ml-10">Spring/Summer 2021</h1>
-              <p className="mr-10">
+              <p className=" text-center md:mr-10">
                 Elementum donec leo vulputate sit proin suspendisse <br />{" "}
                 malesuada neque proin gravida ut platea vitae duis hac hac{" "}
                 <br /> vel id ipsum ultricies ut faucibus ultrices.
@@ -44,9 +44,9 @@ function Lookbook() {
                 src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-lookbook-cover-image-2.jpg"
                 alt=""
               />
-              <div className="flex mt-20 justify-between">
+              <div className="flex flex-col items-center md:flex-row mt-20 justify-between">
                 <h1 className="ml-10">Go & Play</h1>
-                <p className="mr-10">
+                <p className=" text-center  md:mr-10">
                   Elementum donec leo vulputate sit proin suspendisse <br />{" "}
                   malesuada neque proin gravida ut platea vitae duis hac hac{" "}
                   <br /> vel id ipsum ultricies ut faucibus ultrices.
@@ -58,9 +58,9 @@ function Lookbook() {
                 src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-lookbook-cover-image-1.jpg"
                 alt=""
               />
-              <div className="flex mt-20 justify-between">
+              <div className="flex flex-col items-center md:flex-row mt-20 justify-between">
                 <h1 className="ml-10">Adventurer Gear</h1>
-                <p className="mr-10">
+                <p className=" text-center md:mr-10">
                   Elementum donec leo vulputate sit proin suspendisse <br />{" "}
                   malesuada neque proin gravida ut platea vitae duis hac hac{" "}
                   <br /> vel id ipsum ultricies ut faucibus ultrices.

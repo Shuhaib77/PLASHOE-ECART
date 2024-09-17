@@ -31,12 +31,12 @@ function Collection() {
               TRENDINGS
             </h1>
 
-            <div className="flex justify-between mt-5">
-              <div className="ml-5">
-                <Button className="">Filter shoe</Button>
+            <div className="flex flex-col items-center md:flex-row justify-between mt-5">
+              <div className=" mr-5 md:ml-5">
+                <Button className=" mb-5">Filter shoe</Button>
               </div>
-              <div className="mr-5">
-                <span className="mr-5">Default sorting</span>
+              <div className=" mb-5 mr-5 flex flex-col md:flex-row">
+                <h1 className="mb-5">Default sorting</h1>
                 <Button className="bg-light-green-800">Show all</Button>
               </div>
             </div>

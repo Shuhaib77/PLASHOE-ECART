@@ -105,9 +105,9 @@ function Homecard() {
             );
           })}
         </div>
-        <div className="flex  mt-10 ">
-          <div className="bg-home-bg2 bg-no-repeat ml-5 mr-2 w-full h-[70vh] ">
-            <div className=" flex justify-center h-[70vh]  items-center">
+        <div className="flex flex-col md:flex-row  mt-10 ">
+          <div className="bg-home-bg2 bg-no-repeat  md:ml-5 mr-2 w-full h-[70vh] ">
+            <div className="  flex justify-center h-[70vh]   items-center">
               <Button
                 className="text-black bg-white border-black border-2"
                 onClick={() => {
@@ -119,8 +119,8 @@ function Homecard() {
               </Button>
             </div>
           </div>
-          <div className="bg-home-bg3 bg-no-repeat w-full mr-5 ml-2">
-            <div className=" flex justify-center  h-[70vh]  items-center">
+          <div className="bg-home-bg3 bg-no-repeat w-full h-[70vh] mt-5  md:ml-5 mr-2 ">
+            <div className=" flex justify-center  h-[70vh]    items-center">
               <Button
                 className="text-black bg-white  border-black border-2"
                 onClick={() => {
@@ -189,16 +189,16 @@ function Homecard() {
           })}
         </div>
 
-        <div className="w-100% h-[60vh] bg-blue-gray-100 flex justify-around items-center mt-10 ml-5 mr-5 ">
+        <div className="w-100% h-100%  mt-10 ml-5 mr-5  bg-blue-gray-100 flex flex-col   md:flex-row justify-around items-center ">
           <div className="">
-            <p>
+            <p className="m-5">
               Eu eget felis erat mauris aliquam mattis lacus, arcu <br />
               leo aliquam sapien pulvinar laoreet vulputate sem <br />
               aliquet phasellus egestas felis, est, vulputate <br />
               morbi massa mauris vestibulum dui odio.
             </p>
 
-            <div className="flex mt-10 ">
+            <div className=" flex  mt-10 ">
               <img
                 src=" https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-badge-3.svg"
                 alt=""
@@ -216,7 +216,7 @@ function Homecard() {
             </div>
           </div>
 
-          <div>
+          <div className="mt-10 mb-10">
             <img
               src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-recycled-circle-iamge.jpg"
               alt=""

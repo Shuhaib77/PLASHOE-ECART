@@ -34,12 +34,12 @@ function Women() {
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
           <div className="w-[160vh] h-full mt-8 mb-8 bg-white ">
             <h1 className="text-4xl mt-10 ml-10 text-light-green-800">WOMEN</h1>
-            <div className="flex justify-between mt-5">
-              <div className="ml-5">
+            <div className=" flex flex-col items-center md:flex-row justify-between mt-5">
+              <div className="mr-5 mb-5 md:ml-5">
                 <Button className="">Filter shoe</Button>
               </div>
-              <div className="mr-5">
-                <span className="mr-5">Default sorting</span>
+              <div className=" mb-5 mr-5 flex flex-col md:flex-row">
+                <h1 className="mb-5">Default sorting</h1>
                 <Button
                   className="bg-light-green-800"
                   onClick={() => {

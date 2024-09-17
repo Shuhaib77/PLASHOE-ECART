@@ -16,28 +16,30 @@ function Footer() {
               Ut eget at et aliquam sit quis nisl, pharetra et ac pharetra est
               dictum in vulputate
             </h6>
-            <Button
+           <div className=" flex flex-col md:flex-row justify-center">
+           <Button
               onClick={() => {
                 navigate("/women");
               }}
-              className="text-black bg-white border-black border-2 mr-4 mt-4"
+              className="text-black bg-white border-black border-2  md:mr-4 mt-4"
             >
               {" "}
               Shop women
             </Button>
             <Button
-              className="text-black bg-white border-black border-2 ml-4 mt-4"
+              className="text-black bg-white border-black border-2 md:ml-4 mt-4"
               onClick={() => {
                 navigate("/men");
               }}
             >
               Shop bymen
             </Button>
+           </div>
           </div>
         </div>
-        <div className=" flex justify-around mt-10 p-5 mb-10">
+        <div className=" flex flex-col items-center  md:flex-row justify-around mt-10 p-5 mb-10  ">
           <div>
-            <h1>
+            <h1 className="mb-5">
               {" "}
               <i
                 class="fa-solid fa-truck fa-lg"
@@ -57,23 +59,23 @@ function Footer() {
             </h1>
           </div>
           <div>
-            <h1>Secure Payment</h1>
+            <h1  className="mt-5">Secure Payment</h1>
             <p className="mt-5 "></p>
           </div>
         </div>
         <hr />
-        <div className=" flex justify-around mt-20 mb-20 ml-5 p-2  mr-5">
+        <div className=" flex flex-col items-center md:flex-row justify-around mt-20 mb-20 ml-5 p-2  mr-5">
           <div>
-            <h1 className="text-2xl font-semibold ">PLASHOE</h1>
-            <p className="mt-10">
+            <h1 className="text-2xl font-semibold text-center ">PLASHOE</h1>
+            <p className="mt-5  text-center">
               Praesent eget tortor sit <br /> risus egestas nulla pharetra{" "}
               <br /> ornare quis bibendum est <br /> bibendum sapien proin
               nascetur
             </p>
           </div>
           <div>
-            <h1 className="text-2xl font-semibold ">Shop</h1>
-            <div className="mt-10 ">
+            <h1 className="text-2xl font-semibold text-center  ">Shop</h1>
+            <div className="mt-5 text-center ">
               <span>Shop Men</span>
               <br />
               <span>Shop WoMen</span>
@@ -86,9 +88,9 @@ function Footer() {
             </div>
           </div>
           <div>
-            <h1 className="text-2xl font-semibold">About</h1>
+            <h1 className="text-2xl font-semibold text-center">About</h1>
 
-            <div className="mt-10 ">
+            <div className="mt-5 text-center ">
               <span>our story</span>
               <br />
               <span>Our Materials</span>
@@ -99,9 +101,9 @@ function Footer() {
             </div>
           </div>
           <div>
-            <h1 className="text-2xl font-semibold">Need Help?</h1>
+            <h1 className="text-2xl font-semibold text-center">Need Help?</h1>
 
-            <div className="mt-10 ">
+            <div className="mt-5 text-center ">
               <span>FAQs</span>
               <br />
               <span>Shipping & Returns</span>
@@ -114,7 +116,7 @@ function Footer() {
             </div>
           </div>
         </div>
-        <div className="w-100% h-[15vh] bg-blue-gray-100 flex justify-around">
+        <div className="w-100% h-100% bg-blue-gray-100 flex flex-col items-center md:flex-row justify-around">
           <div>
             <h1 className="p-10">
               © 2024 Recycled Shoe Store. Powered by Recycled Shoe Store

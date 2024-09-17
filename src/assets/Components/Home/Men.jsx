@@ -15,15 +15,22 @@ import {
 import { useNavigate } from "react-router-dom";
 
 function Men() {
+  const {
+    cartitem,
+    setcartitem,
+    addtocarts,
+    datas,
+    setdata,
+    fetchData,
+    wishlists,
+    wlitem,
+  } = useContext(contexts);
 
-  const {  cartitem, setcartitem, addtocarts,datas, setdata,fetchData,wishlists,wlitem  } = useContext(contexts);
-  
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    console.log(wlitem);
-   
-      // fetchData();
-  
+  console.log(wlitem);
+
+  // fetchData();
 
   return (
     <div>
@@ -31,16 +38,16 @@ function Men() {
         <div className="">
           <Navbar />
         </div>
-        <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
+        <div className="w-full h-full bg-gray-300  flex justify-center items-center mt-5  ">
           <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
-            <h1 className="text-4xl mt-10 ml-10 text-light-green-800">MEN</h1>
+            <h1 className="  text-4xl mt-10 ml-10 text-light-green-800 ">MEN</h1>
 
-            <div className="flex justify-between mt-5">
-              <div className="ml-5">
+            <div className=" flex flex-col items-center md:flex-row justify-between mt-5">
+              <div className="mr-5 mb-5 md:ml-5">
                 <Button className="">Filter shoe</Button>
               </div>
-              <div className="mr-5">
-                <span className="mr-5">Default sorting</span>
+              <div className=" mb-5 mr-5 flex flex-col md:flex-row">
+                <h1 className="mb-5  md:mr-5  ">Default sorting</h1>
                 <Button
                   className="bg-light-green-800"
                   onClick={() => {
@@ -52,56 +59,58 @@ function Men() {
               </div>
             </div>
             <div className="flex flex-wrap justify-center items-center ">
-              {datas.filter((men) => men.catogery == "men").map((data) => {
-                return (
-                  <div className=" ">
-                    <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
-                      <CardHeader color="" className="relative h-56">
-                      <i
-                        class="fa-solid fa-heart ml-4 "
-                        style={{
-                          color: wlitem.find((item) => item.id === data.id)
-                            ? "red"
-                            : "blue",
-                        }}
-                        onClick={() => {
-                          wishlists(data);
-                        }}
-                      ></i>
-                        <img src={data.image} alt="card-image" />
-                      </CardHeader>
-                      <CardBody>
-                        <Typography
-                          variant="h5"
-                          color="blue-gray"
-                          className="mb-2"
-                        >
-                          {data.brand}
-                        </Typography>
-                        <Typography>{data.title}</Typography>
-                        <Typography>{data.catogery}</Typography>
-                        <Typography>{data.price}</Typography>
-                      </CardBody>
-                      <CardFooter className="pt-0 flex justify-between">
-                        <Button
-                          onClick={() => {
-                            navigate(`/showcomponent/${data.id}`);
-                          }}
-                        >
-                          Read More
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            addtocarts(data);
-                          }}
-                        >
-                          Add to cart
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                );
-              })}
+              {datas
+                .filter((men) => men.catogery == "men")
+                .map((data) => {
+                  return (
+                    <div className=" ">
+                      <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
+                        <CardHeader color="" className="relative h-56">
+                          <i
+                            class="fa-solid fa-heart ml-4 "
+                            style={{
+                              color: wlitem.find((item) => item.id === data.id)
+                                ? "red"
+                                : "blue",
+                            }}
+                            onClick={() => {
+                              wishlists(data);
+                            }}
+                          ></i>
+                          <img src={data.image} alt="card-image" />
+                        </CardHeader>
+                        <CardBody>
+                          <Typography
+                            variant="h5"
+                            color="blue-gray"
+                            className="mb-2"
+                          >
+                            {data.brand}
+                          </Typography>
+                          <Typography>{data.title}</Typography>
+                          <Typography>{data.catogery}</Typography>
+                          <Typography>{data.price}</Typography>
+                        </CardBody>
+                        <CardFooter className="pt-0 flex justify-between">
+                          <Button
+                            onClick={() => {
+                              navigate(`/showcomponent/${data.id}`);
+                            }}
+                          >
+                            Read More
+                          </Button>
+                          <Button
+                            onClick={() => {
+                              addtocarts(data);
+                            }}
+                          >
+                            Add to cart
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

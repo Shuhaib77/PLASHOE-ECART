@@ -7,15 +7,19 @@ function Homebanner() {
   return (
     <div>
       <div>
-        <div className="bg-home-bg bg-no-repeat  h-[100vh] ml-8 mr-8 mt-7 flex  items-center">
-          <div className="text-white font-medium   ml-20">
-            <h1 className="font-semibold text-5xl mb-4 ">Love The Planet</h1>
-            <h1 className="font-semibold text-5xl mb-3">We Walk On</h1>
-            <p className="text-xl">
+        <div className="bg-home-bg bg-no-repeat  h-[100vh] ml-8 mr-8 mt-7 flex  flex-col md:flex-row items-center ">
+          <div className="text-white font-medium ml-5   md:ml-20  ">
+            <h1 className="font-semibold text-5xl sm:text-5xl mb-4 ">
+              Love The Planet
+            </h1>
+            <h1 className="font-semibold text-5xl sm:text-5xl mb-3">
+              We Walk On
+            </h1>
+            <p className="text-xl sm:text-lg">
               Bibendum fermentum, aenean donec pretium aliquam blandit <br />{" "}
               tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.
             </p>
-            <div className="mt-5 ">
+            <div className="mt-5    ">
               <Button
                 className="bg-white text-black  border-black border-2"
                 onClick={() => {
@@ -37,50 +41,55 @@ function Homebanner() {
             </div>
           </div>
         </div>
-        <div className=" flex justify-around">
-          <div>
-            <h1 className="font-light mt-10"> As seen in:</h1>
-          </div>
+        <div className=" flex flex-wrap justify-around py-10 ">
+          <h1 className="font-light w-full text-center mt-10"> As seen in:</h1>
+
           <div>
             <img
+              className="max-w-xs m-2"
               src=" https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-featured-in-logo-5.svg"
               alt=""
             />
           </div>
           <div>
             <img
+              className="max-w-xs m-2"
               src=" https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-featured-in-logo-4.svg"
               alt=""
             />
           </div>
           <div>
             <img
+              className="max-w-xs m-2"
               src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-featured-in-logo-3.svg"
               alt=""
             />
           </div>
           <div>
             <img
+              className="max-w-xs m-2"
               src=" https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-featured-in-logo-2.svg"
               alt=""
             />
           </div>
           <div>
             <img
+              className="max-w-xs m-2"
               src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-featured-in-logo-1.svg"
               alt=""
             />
           </div>
         </div>
         <hr />
-        <div className="flex justify-center mt-10 mb-10 ">
-          <div className="mr-10 mt-20">
+        <div className="flex flex-col md:flex-row justify-center items-center  mt-10 mb-10 px-6 ">
+          <div className="md:w-1/2 mb-6 md:mr-6  ">
             <img
+              className="w-full "
               src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-home-about-image.jpg"
               alt=""
             />
           </div>
-          <div className="mt-20 pt-20 ">
+          <div className="  text-center md:text-left  ">
             <h6 className="font-light text-red-800 mt-10 ">About me</h6>
             <h1 className="font-medium text-5xl mt-5">
               Selected materials <br /> desgined for comfort <br /> and
@@ -99,7 +108,7 @@ function Homebanner() {
             </Link>
           </div>
         </div>
-        <div className="h-[90vh] bg-gray-300 w-100% m-6">
+        <div className=" bg-gray-300 h-full w-100% m-6">
           <div className="p-10 text-center  ">
             <h1 className="font-semibold text-4xl mt-5  ">
               See how your shoes are made
@@ -110,9 +119,9 @@ function Homebanner() {
               integer risus leo volutpat nulla enim ultrices
             </h6>
           </div>
-          <div className="flex items-center justify-center m-6">
-            <div className="flex mt-10">
-              <div className=" ml-5 mt-5">
+          <div className=" ">
+            <div className=" flex flex-col md:flex-row  items-center justify-center m-6">
+              <div className="md:w-1/3 mb-10 md:mb-0">
                 <h1 className="mb-3">
                   01. <br /> Pet canvas <br />
                   Morbi eget bibendum sit adipiscing morbi ac nisl vitae
@@ -125,13 +134,14 @@ function Homebanner() {
                   Enim tincidunt donec vulputate magna pharetra mattis in
                 </h1>
               </div>
-              <div>
+              <div className="md:w-1/3">
                 <img
+                className="w-full"
                   src="https://websitedemos.net/recycled-shoe-store-04/wp-content/uploads/sites/983/2021/11/recycled-shoe-store-how-shoes-are-made-image.png"
                   alt=""
                 />
               </div>
-              <div className="ml-3 mt-5">
+              <div className="md:w-1/3 mt-10 md:mt-0">
                 <h1 className="mb-3">
                   01. <br /> Pet canvas <br />
                   Morbi eget bibendum sit adipiscing morbi ac nisl vitae
@@ -147,9 +157,9 @@ function Homebanner() {
             </div>
           </div>
         </div>
-        <div className="flex justify-between mb-5">
-          <h1 className="ml-5 text-2xl text-red-800">Our best seller</h1>
-          <h1 className="border-b-2 border-blue-800 text-2xl text-red-800 mr-5">
+        <div className="flex flex-col  items-center   md:flex-row justify-between ">
+          <h1 className=" text-2xl text-red-800 border-b-2 border-blue-800 mb-5 ">Our best seller</h1>
+          <h1 className="border-b-2 border-blue-800 text-2xl text-red-800">
             {" "}
             View all best seller
           </h1>

@@ -184,7 +184,7 @@ function Cart() {
     <>
       <div>
         <Navbar />
-        <div className="flex justify-around ">
+        <div className=" md:flex justify-around ">
           <h1 className="text-center"></h1>
           <div>
             <h1 className="ml-10 mr-9 mt-8 text-3xl text-center text-blue-700 font-semibold border-b-2 border-black">
@@ -286,7 +286,7 @@ function Cart() {
             <h1 className="text-center ml-10 mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2 border-black ">
               PRICE DETAILS
             </h1>
-            <div className=" flex flex-col justify-center items-center w-[57vh]">
+            <div className="flex  flex-col justify-center items-center w-[57vh]">
               {cartnew.map((item, index) => {
                 const total = 0;
                 return (

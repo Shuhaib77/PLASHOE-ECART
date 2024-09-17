@@ -52,19 +52,19 @@ function Login() {
 
   return (
     <div className="">
-      <div className=" bg-Login-bg bg-no-repeat bg-cover w-[100%] h-[100%]">
+      <div className=" bg-Login-bg bg-no-repeat bg-cover w-100% h-100%">
 
-      <div className=" flex justify-center items-center h-[100vh]    ">
-        <div className="mr-10 border ">
-          {/* <img
+      <div className=" flex justify-center  items-center h-[100vh]     ">
+        {/* <div className="mr-10 border ">
+          <img
             src="https://i.ebayimg.com/images/g/TDoAAOSwvZxgYocm/s-l1600.jpg"
             alt=""
             className="w-[50vh] h-[60vh]"
-          /> */}
-        </div>
+          />
+        </div> */}
         <form
           action=""
-          className="w-96 bg-[rgba(210,182,89,0.45)] p-10 border-3 rounded-xl"
+          className="  w-full md:w-96 bg-[rgba(210,182,89,0.45)] p-6 md:p-10 border-3 rounded-xl"
           onSubmit={handleSubmit}
         >
           <h1 className="text-4xl text-center mb-6">LOGIN</h1>

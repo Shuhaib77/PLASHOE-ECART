@@ -26,10 +26,10 @@ function Ourstory() {
             allowfullscreen
           ></iframe>
         </div>
-        <div className="flex justify-around">
+        <div className=" flex flex-col items-center md:flex-row justify-around">
           <div>
             <h1 className="text-2xl mb-4">Ethics and equality</h1>
-            <p>
+            <p >
               Pellentesque quam convallis massa enim,
               <br /> faucibus ornare sollicitudin gravida justo sit <br />{" "}
               suspendisse pellentesque.
@@ -38,8 +38,8 @@ function Ourstory() {
           <div>
             <h1 className="text-2xl mb-4">Eco-design</h1>
             <p>
-              Risus leo molestie a aliquam amet urna orci ,
-              <br /> nisl dignissim elementum nibh felis ultrices <br /> vitae
+              Risus leo molestie a aliquam amet urn orci,<br /> 
+               nisl dignissim elementum <br />  nibh  felis ultrices vitae
               consectetur.
             </p>
           </div>

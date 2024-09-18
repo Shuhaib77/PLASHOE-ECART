@@ -40,16 +40,16 @@ function Men() {
         </div>
         <div className="w-full h-full bg-gray-300  flex justify-center items-center mt-5  ">
           <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
-            <h1 className="  text-4xl mt-10 ml-10 text-light-green-800 ">MEN</h1>
+            <h1 className=" text-center md:text-left  text-4xl md:mt-10 md:ml-10 text-light-green-800 ">MEN</h1>
 
-            <div className=" flex flex-col items-center md:flex-row justify-between mt-5">
-              <div className="mr-5 mb-5 md:ml-5">
-                <Button className="">Filter shoe</Button>
+            <div className=" flex flex-col  md:flex-row justify-between mt-5">
+              <div className=" md:ml-5">
+                <Button className=" mb-5 w-full">Filter shoe</Button>
               </div>
-              <div className=" mb-5 mr-5 flex flex-col md:flex-row">
-                <h1 className="mb-5  md:mr-5  ">Default sorting</h1>
+              <div className=" mb-5 md:mr-5 flex flex-col items-center  md:flex-row ">
+                {/* <h1 className="mb-5">Default sorting</h1> */}
                 <Button
-                  className="bg-light-green-800"
+                  className="bg-light-green-800 w-full"
                   onClick={() => {
                     navigate("/collection");
                   }}

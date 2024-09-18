@@ -191,11 +191,11 @@ function Cart() {
               CART
             </h1>
 
-            <div className="flex  flex-wrap justify-center gap-8 items-center  w-[115vh] ">
+            <div className="flex  flex-wrap justify-center  gap-8 items-center  w-full ">
               {cartitem.map((data, i) => {
                 return (
                   <div className="  ">
-                    <Card className="h-[65vh] w-[50vh] mt-20 gap-1  ">
+                    <Card className="h-[65vh] w-[45vh] mt-20 gap-1  ">
                      
                         <img src={data?.image} alt="card-image" />
                     
@@ -217,6 +217,7 @@ function Cart() {
                       <CardFooter className="pt-0 flex justify-between ">
                         <div>
                           <Button
+                          className="w-full"
                             onClick={() => {
                               navigate(`/showcomponent/${data?.id}`);
                             }}
@@ -226,7 +227,7 @@ function Cart() {
                           </Button>
                         </div>
 
-                        <div className="flex justify-center">
+                        <div className="flex ml-2  ">
                           <Button
                             className="text-black bg-white"
                             onClick={
@@ -246,7 +247,7 @@ function Cart() {
                           >
                             +
                           </Button>
-                          <div className="mt-3 ml-2 cursor-pointer text-black hover:text-2xl hover:text-red-900">
+                          <div className="mt-3  ml-3 cursor-pointer text-black hover:text-2xl hover:text-red-900">
                             <i
                               class="fa-solid fa-trash fa-lg"
                               onClick={() => {
@@ -256,9 +257,9 @@ function Cart() {
                           </div>
                         </div>
                       </CardFooter>
-                      <div className="text-end mr-5">
+                      <div className="text-end ">
                         <Button
-                          className="bg-blue-800 w-[25vw]"
+                          className="bg-blue-800 w-full"
                           onClick={() => {
                             fnsummer(data);
                           }}
@@ -282,11 +283,11 @@ function Cart() {
               </Button>
             </div>
           </div>
-          <div className="w-[150vh] ">
-            <h1 className="text-center ml-10 mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2 border-black ">
+          <div className="w-full ">
+            <h1 className="text-center md:ml-10 md:mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2 border-black ">
               PRICE DETAILS
             </h1>
-            <div className="flex  flex-col justify-center items-center w-[57vh]">
+            <div className="flex  flex-col justify-center items-center w-full">
               {cartnew.map((item, index) => {
                 const total = 0;
                 return (

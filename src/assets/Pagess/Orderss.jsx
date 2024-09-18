@@ -17,15 +17,15 @@ function Orderss() {
 
   return (
     <>
-      <div className="bg-gray-200 h-full border-b-2   ">
-        <div className=" border-b-4 p-5">
+      <div className="bg-gray-200 w-full h-full border-b-2   ">
+        <div className=" border-b-4">
           <Navbar />
         </div>
         {detorders.map((item) => {
           return (
-            <div className="flex justify-center items-center  w-[170vh] h-full  border-white-900 bg-white ml-5 mt-10 mb-5  ">
-              <div className=" flex justify-center items-center w-[60vh] h-[30vh]  ">
-                <div className=" flex flex-col  justify-center  h-full w-[60vh] bg-white m-5">
+            <div className=" flex flex-col items-center md:flex-row justify-center  w-full h-full  border-white-900 bg-white  md:border border-black   mt-10 mb-5  md:ml-5   ">
+              <div className=" flex  items-center w-full h-full  ">
+                <div className="   flex items-center  md:flex flex-col justify-start md:float-start  border-2 p-2  h-full w-full  bg-white m-10">
                   <h1 className="text-2xl mb-5  ">ORDERDETAILS</h1>
                   <div className="">
                     <h1 className="">
@@ -55,11 +55,11 @@ function Orderss() {
                   </div>
                 </div>
               </div>
-              <div className="flex flex-col  justify-center items-center w-[100vh] h-full mt-5 mb-5  bg-white ">
+              <div className="flex flex-col  justify-center items-center w-full h-full mt-5 mb-5  bg-white ">
                 {item.pyprdct.map((val) => {
                   return (
-                    <div className="w-[100vh] h-[25vh]  flex justify-between border-2 mb-3 bg-white border-gray-900 mr-5 ">
-                      <div className="ml-4 mt-3">
+                    <div className="w-full h-full  flex justify-around border-2 mb-3 bg-white border-gray-900 m-5 md:mr-5 ml-10 mr-10 md:ml-5 ">
+                      <div className="md:ml-4 mt-3">
                         <h1>{val.title}</h1>
                         <h1>{val.brand}</h1>
                         <h1>{val.catogery}</h1> 

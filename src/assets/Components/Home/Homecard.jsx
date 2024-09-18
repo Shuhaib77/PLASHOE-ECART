@@ -138,14 +138,14 @@ function Homecard() {
             return (
               <>
                 <Card className="h-[55vh] w-[50vh] mt-20">
-                  <CardHeader color="w" className="h-[50vh]">
+                  <CardHeader className="h-[50vh]">
                     <div>
                       <i
                         class="fa-solid fa-heart ml-4 "
                         style={{
                           color: wlitem.find((item) => item.id === data.id)
                             ? "red"
-                            : "blue",
+                            : "",
                         }}
                         onClick={() => {
                           

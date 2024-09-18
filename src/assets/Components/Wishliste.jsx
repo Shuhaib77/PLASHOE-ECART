@@ -39,14 +39,18 @@ return (
           <Navbar />
         </div>
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
-          <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
-            <h1 className="text-4xl mt-10 ml-10 text-light-green-800 border-b-2 border-blue-600">WISHLIST</h1>
+          <div className="w-full h-full mb-8 mt-8 bg-white ">
+            <div className='border-b-2 pb-2 border-black'>
+            <h1 className=" text-center md:ml-5 md:text-left text-4xl mt-10  text-light-green-800 ">WISHLIST</h1>
 
-            <div className="flex justify-between mt-5 pb-5  ">
+            </div>
+         
+
+            <div className=" md:flex justify-between mt-5 pb-5  ">
                 
-              <div className="ml-10 ">
+              <div className=" md:ml-10 ">
               <Button
-                  className="bg-light-green-800"
+                  className="bg-light-green-800 w-full"
                   onClick={() => {
                     navigate("/collection");
                   }}

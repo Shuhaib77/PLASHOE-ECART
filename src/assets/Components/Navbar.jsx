@@ -17,13 +17,14 @@ import axios from "axios";
 import { toast } from "sonner";
 import { Link as ScrollLink } from "react-scroll";
 import Admin from "../Pagess/Admin";
+import Resposivenav from "../../Navbarresponsive/Resposivenav";
 
 function Navbar({ setAdmin }) {
   const navigate = useNavigate();
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
-  const { search, setsearh, user, cartnew, datas, wlitem } =
+  const { search, setsearh, user, cartnew, datas, wlitem,openDrawerRight } =
     useContext(contexts);
   const [menu, setmenu] = useState(false);
   const [openAdmin, setOPenAdmin] = useState(false);
@@ -111,7 +112,7 @@ function Navbar({ setAdmin }) {
             <div className="text-2xl  font-semibold md:block hidden ">
               PLASHOE
             </div>
-            <div className="text-l  ml-8 text-gray-700 font-medium md:block hidden ">
+            <div className="text-l  md:ml-8 text-gray-700 font-medium ">
               <Link
                 to={"/"}
                 className="hover:border-b-2 border-pink-500  hover:text-black "
@@ -352,14 +353,18 @@ function Navbar({ setAdmin }) {
                 </MenuItem>
               </MenuList>
             </Menu>
-            <div className="sm:hidden">
+            <div className="sm:hidden ">
               <i
                 class="fa-regular fa-bars fa-2xl  "
+              
                 onClick={() => {
                   if (menu) {
+                    
                     setmenu(false);
                   } else {
                     setmenu(true);
+                    
+                    
                   }
                 }}
               ></i>
@@ -419,7 +424,11 @@ function Navbar({ setAdmin }) {
           )
         })}
         </div>}
-      {menu}
+      {menu?
+      <Resposivenav/>:
+      alert("heloo")}
+
+      
     </div>
   );
 }

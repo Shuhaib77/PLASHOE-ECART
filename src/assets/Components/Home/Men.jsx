@@ -71,7 +71,7 @@ function Men() {
                             style={{
                               color: wlitem.find((item) => item.id === data.id)
                                 ? "red"
-                                : "blue",
+                                : "",
                             }}
                             onClick={() => {
                               wishlists(data);

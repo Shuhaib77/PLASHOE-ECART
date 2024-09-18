@@ -51,7 +51,7 @@ function Collection() {
                         style={{
                           color: wlitem.find((item) => item.id === data.id)
                             ? "red"
-                            : "blue",
+                            : "",
                         }}
                         onClick={() => {
                           

@@ -7,14 +7,13 @@ function Homebanner() {
   return (
     <div>
       <div>
-        <div className="bg-home-bg bg-no-repeat  h-[100vh] ml-8 mr-8 mt-7 flex  flex-col md:flex-row items-center ">
-          <div className="text-white font-medium ml-5   md:ml-20  ">
+        <div className="bg-home-bg bg-no-repeat  h-[100vh] ml-8 mr-8 mt-7 flex  flex-col items-center md:flex-row  ">
+          <div className="text-white font-medium   text-center md:text-left m-auto   md:ml-20  ">
             <h1 className="font-semibold text-5xl sm:text-5xl mb-4 ">
-              Love The Planet
-            </h1>
-            <h1 className="font-semibold text-5xl sm:text-5xl mb-3">
+              Love The Planet <br />
               We Walk On
             </h1>
+           
             <p className="text-xl sm:text-lg">
               Bibendum fermentum, aenean donec pretium aliquam blandit <br />{" "}
               tempor imperdiet arcu arcu ut nunc in dictum mauris at ut.

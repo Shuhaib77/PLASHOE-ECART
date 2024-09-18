@@ -50,6 +50,15 @@ function App() {
   const [prdt, setprdt] = useState([]);
   const [lastasearch, setlastsearch] = useState(null);
   const [admin,setAdmin]=useState(false)
+  //responsive menue
+  const [openRight, setOpenRight] = React.useState(false);
+  const openDrawerRight = () => setOpenRight(true);
+  const closeDrawerRight = () => setOpenRight(false);
+
+
+
+
+
 
   useEffect(() => {
     if (localStorage.getItem("admin")) {
@@ -184,6 +193,10 @@ const wishlists=async(data)=>{
           setwlitem,
           wldata,
           wlitem,
+          openRight,
+          setOpenRight,
+          openDrawerRight,
+          closeDrawerRight
          
          
         }}

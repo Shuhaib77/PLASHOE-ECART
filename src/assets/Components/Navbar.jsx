@@ -424,9 +424,10 @@ function Navbar({ setAdmin }) {
           )
         })}
         </div>}
-      {menu?
-      <Resposivenav/>:
-      alert("heloo")}
+      {menu &&
+      <Resposivenav/>
+      
+      }
 
       
     </div>

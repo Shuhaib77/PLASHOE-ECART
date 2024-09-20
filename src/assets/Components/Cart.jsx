@@ -195,7 +195,7 @@ function Cart() {
               {cartitem.map((data, i) => {
                 return (
                   <div className="  ">
-                    <Card className="h-full w-[45vh] mt-20   ">
+                    <Card className="h-full w-[50vh] mt-20   ">
                      
                         <img src={data?.image} alt="card-image" />
                     

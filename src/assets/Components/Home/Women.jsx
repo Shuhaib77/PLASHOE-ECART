@@ -55,7 +55,7 @@ function Women() {
                 return (
                   <div className=" ">
                     <Card className="h-full w-[50vh] mt-20  gap-x-10   ">
-                      <CardHeader color="" className="relative h-100%">
+                      <CardHeader color="" className="relative h-56">
                       <i
                         class="fa-solid fa-heart ml-4 "
                         style={{
@@ -78,7 +78,7 @@ function Women() {
                         <Typography>{data.catogery}</Typography>
                         <Typography>{data.price}</Typography>
                       </CardBody>
-                      <CardFooter className=" flex justify-between">
+                      <CardFooter className=" pt-0  flex justify-between">
                         <Button
                           onClick={() => {
                             navigate(`/showcomponent/${data.id}`);

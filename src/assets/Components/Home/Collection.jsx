@@ -40,11 +40,11 @@ function Collection() {
                 <Button className="bg-light-green-800 w-full ">Show all</Button>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center items-center mb-10">
+            <div className="flex flex-wrap justify-around items-center">
               {datas.map((data) => {
                 return (
                   <div className=" ">
-                    <Card className="h-[55vh] w-[50vh] mt-20 gap-x-2 gap-1   ">
+                    <Card className="h-full w-[50vh] mt-20  gap-x-10    ">
                       <CardHeader color="" className="relative h-56">
                       <i
                         class="fa-solid fa-heart ml-4 "

@@ -73,13 +73,14 @@ function Editproducts() {
   };
   return (
     <>
-      <div className="ml-10 mt-5 border-b-2 border-green-800 ">
+     <div className="w-100%">
+     <div className="ml-10 mt-5 border-b-2 border-green-800 ">
         <h1 className="font-medium text-red-900 mb-3 text-2xl">
           EDIT PRODUCTS
         </h1>
       </div>
 
-      <div className="flex flex-wrap justify-center  gap-5 mt-20 w-[142vh] h-[70vh] overflow-auto ">
+      <div className="flex flex-wrap justify-center   mt-20 w-[152vh] h-[70vh] overflow-auto ">
         {prdt.map((data, index) => {
           return (
             <Card className="h-full w-[50vh] mt-20  gap-x-10  ">
@@ -265,6 +266,7 @@ function Editproducts() {
           <DialogFooter></DialogFooter>
         </Dialog>
       </div>
+     </div>
     </>
   );
 }

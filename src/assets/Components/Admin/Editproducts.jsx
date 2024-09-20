@@ -80,7 +80,7 @@ function Editproducts() {
         </h1>
       </div>
 
-      <div className="flex flex-wrap justify-center   mt-20 w-[152vh] h-[70vh] overflow-auto ">
+      <div className="flex flex-wrap justify-center   mt-20 w-[152vh] h-[60vh] overflow-auto ">
         {prdt.map((data, index) => {
           return (
             <Card className="h-full w-[50vh] mt-20  gap-x-10  ">
@@ -106,7 +106,7 @@ function Editproducts() {
                   {data.catogery}
                 </Typography>
               </CardBody>
-              <CardFooter className="flex justify-between gap-7 pt-2">
+              <CardFooter className="flex justify-between  pt-2">
                 <Button
                   onClick={() => {
                     handleOpen("xl"), handleclick(data);

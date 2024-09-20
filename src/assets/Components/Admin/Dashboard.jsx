@@ -31,9 +31,9 @@ function Dashboard() {
 
   return (
     <>
-      <div className="flex justify-around m-5 w-full mt-5 ">
-        <div className=" bg-gradient-to-r from-teal-400 to-yellow-200  w-[35vh] h-[15vh]">
-          <div className="ml-3 mt-5">
+      <div className=" flex justify-center m-10  w-100% mt-5  ">
+        <div className="  bg-gradient-to-r from-teal-400 to-yellow-200  w-[35vh] h-[15vh] ">
+          <div className="ml-3 mt-5  ">
             <i
               class="fa-brands fa-product-hunt fa-2xl"
               style={{ color: "#ffffff" }}

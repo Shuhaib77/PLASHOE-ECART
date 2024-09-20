@@ -217,7 +217,7 @@ function Cart() {
                       <CardFooter className="pt-0 flex justify-between ">
                         <div>
                           <Button
-                          className="w-full"
+                          className="w-[100%]"
                             onClick={() => {
                               navigate(`/showcomponent/${data?.id}`);
                             }}
@@ -284,10 +284,10 @@ function Cart() {
             </div>
           </div>
           <div className="w-full ">
-            <h1 className="text-center md:ml-10 md:mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2 border-black ">
+            <h1 className="text-center md:ml-10 md:mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2  border-black ">
               PRICE DETAILS
             </h1>
-            <div className="flex  flex-col justify-center items-center w-full">
+            <div className="flex  flex-col justify-center items-center  w-full">
               {cartnew.map((item, index) => {
                 const total = 0;
                 return (
@@ -295,7 +295,7 @@ function Cart() {
                     key={index}
                     className=" w-[62vh]  h-[20vh] border-2 flex justify-center items-center mt-16  "
                   >
-                    <div className="w-[35vh] h-[15vh]">
+                    <div className="w-[100%] h-[15vh]">
                       <img src={item.image} alt="" />
                     </div>
                     <div className="w-[50vh] h-[15vh] ml-2 ">

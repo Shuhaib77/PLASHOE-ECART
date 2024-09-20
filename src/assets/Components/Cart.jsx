@@ -191,11 +191,11 @@ function Cart() {
               CART
             </h1>
 
-            <div className="flex  flex-wrap justify-center  gap-8 items-center  w-full ">
+            <div className="flex  flex-wrap justify-center gap-x-10  items-center  w-full ">
               {cartitem.map((data, i) => {
                 return (
                   <div className="  ">
-                    <Card className="h-[65vh] w-[45vh] mt-20 gap-1  ">
+                    <Card className="h-full w-[45vh] mt-20   ">
                      
                         <img src={data?.image} alt="card-image" />
                     

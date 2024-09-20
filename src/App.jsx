@@ -67,7 +67,7 @@ function App() {
 const usersid = localStorage.getItem("id");
 const fetchData = async () => {
   try {
-    const response = await axios.get("http://localhost:4000/datass");
+    const response = await axios.get("https://jsoneserver.onrender.com/datass");
     setdata(response.data);
   } catch (error) {
     console.log(error);
@@ -83,7 +83,7 @@ useEffect(() => {
 
 
 const fn = async () => {
-    const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+    const res = await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`);
     setcartitem(res.data.cart);
   };
   useEffect(() => {
@@ -94,7 +94,7 @@ const fn = async () => {
  const addtocarts = async (data) => {
     
     try {
-      const res = await axios.get(`http://localhost:4000/user/${usersid}`);
+      const res = await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`);
       const cartss = res.data.cart;
 
       const check = cartss.find((itemid) => itemid.id === data.id);
@@ -103,7 +103,7 @@ const fn = async () => {
       } else {
         const update = [...cartss, data];
         const reso = await axios.patch(
-          `http://localhost:4000/user/${usersid}`,
+          `https://jsoneserver.onrender.com/user/${usersid}`,
           {
             cart: update,
           }
@@ -125,7 +125,7 @@ const fn = async () => {
 
 //fetchwishlist
 const wldata=async(id)=>{
-  const response= await axios.get(`http://localhost:4000/user/${usersid}`)
+  const response= await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`)
    setwlitem(response.data.wishlist)
 }
 useEffect(()=>{
@@ -135,17 +135,17 @@ wldata()
 //addtowishlist
 
 const wishlists=async(data)=>{
-  const response= await axios.get(`http://localhost:4000/user/${usersid}`)
+  const response= await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`)
   const wlist=response.data.wishlist
    const wlitems=wlist.find((item)=>item.id===data.id)
    if(wlitems ){
     const res=wlitem.filter((item)=>item.id!=wlitems.id)
-    await axios.patch(`http://localhost:4000/user/${usersid}`,{wishlist:res})
+    await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`,{wishlist:res})
     wldata()
     toast.warning("removed from wishlist")
   }else{
     const upd=[...wlist,data]
-   await axios.patch(`http://localhost:4000/user/${usersid}`,{wishlist:upd})
+   await axios.patch(`https://jsoneserver.onrender.com/userr/${usersid}`,{wishlist:upd})
    toast.success("product add to wishlist")
    wldata()
    

@@ -104,16 +104,14 @@ const users=localStorage.getItem("id")
 
           </div>
           <div className="text-l   text-gray-700 font-medium hover:border-b-2 border-black   " onClick={()=>{
-            navigate(()=>{
-              if(users){
-                navigate("/wishlist");
+             if(users){
+              navigate("/wishlist");
 
-              }else{
-                toast.warning("plss login")
-              }
-            
-
-            })
+            }else{
+              toast.warning("plss login")
+            }
+          
+          
           }}>
               <Link >
                 <i

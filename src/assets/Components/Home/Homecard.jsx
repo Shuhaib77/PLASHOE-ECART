@@ -48,6 +48,7 @@ function Homecard() {
   //     }
   // }
   
+  const ids=localStorage.getItem("id")
   
 
   return (
@@ -67,8 +68,14 @@ function Homecard() {
                             : "",
                         }}
                         onClick={() => {
+                          if(ids){
+                            wishlists(data);
+          
+                          }else{
+                            toast.warning("Plss login")
+                          }
                          
-                          wishlists(data);
+                          
                          
                         }}
                       ></i>
@@ -94,7 +101,12 @@ function Homecard() {
                     </Button>
                     <Button
                       onClick={() => {
-                        addtocarts(data);
+                        if(ids){
+                          addtocarts(data);
+        
+                        }else{
+                          toast.warning("Plss login")
+                        }
                       }}
                     >
                       Add to cart
@@ -149,7 +161,13 @@ function Homecard() {
                         }}
                         onClick={() => {
                           
-                          wishlists(data);
+                          if(ids){
+                            wishlists(data);
+          
+                          }else{
+                            toast.warning("Plss login")
+                          }
+                         
                         }}
                       ></i>
                     </div>
@@ -176,7 +194,15 @@ function Homecard() {
                     </Button>
                     <Button
                       onClick={() => {
-                        console.log(cartitem);
+                        // console.log(cartitem);
+                        if(ids){
+                          addtocarts(dedata);
+        
+                        }else{
+                          toast.warning("Plss login")
+                        }
+                        
+                        
                         addtocarts(data);
                       }}
                     >

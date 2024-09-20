@@ -21,6 +21,8 @@ function Women() {
   const navigate = useNavigate();
 
 
+  const ids=localStorage.getItem("id")
+
   // fetchData()
 
 
@@ -64,8 +66,13 @@ function Women() {
                             : "",
                         }}
                         onClick={() => {
-                          
-                          wishlists(data);
+                          if(ids){
+                            wishlists(data);
+          
+                          }else{
+                            toast.warning("Plss login")
+                          }
+                         
                         }}
                       ></i>
                         <img src={data.image} alt="card-image" />
@@ -88,7 +95,13 @@ function Women() {
                         </Button>
                         <Button
                           onClick={() => {
-                            addtocarts(data);
+                            if(ids){
+                              addtocarts(data);
+            
+                            }else{
+                              toast.warning("Plss login")
+                            }
+                           
                           }}
                         >
                           Add to cart

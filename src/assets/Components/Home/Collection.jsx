@@ -12,10 +12,12 @@ import {
 import { contexts } from "../../../App";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { toast } from "sonner";
 
 function Collection() {
   const {  addtocarts,datas, setdata,fetchData ,wishlists,wlitem} = useContext(contexts);
   const navigate = useNavigate();
+  const ids=localStorage.getItem("id")
 
   // fetchData()
  return (
@@ -54,8 +56,14 @@ function Collection() {
                             : "",
                         }}
                         onClick={() => {
+                          if(ids){
+                            wishlists(data);
+
+                          }else{
+                            toast.warning("plss login")
+                          }
                           
-                          wishlists(data);
+                         
                         }}
                       ></i>
                         <img src={data.image} alt="card-image" />
@@ -83,7 +91,13 @@ function Collection() {
                         </Button>
                         <Button
                           onClick={() => {
-                            addtocarts(data);
+                            if(ids){
+                              addtocarts(data);
+            
+                            }else{
+                              toast.warning("Plss login")
+                            }
+                           
                           }}
                         >
                           Add to cart

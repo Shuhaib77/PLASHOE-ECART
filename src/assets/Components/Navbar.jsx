@@ -91,6 +91,8 @@ function Navbar({ setAdmin }) {
   
   }, []);
 
+  
+
  
   
 
@@ -158,11 +160,21 @@ function Navbar({ setAdmin }) {
                 LOOKBOOK
               </Link>
             </div>
-            <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   ">
-              <Link to={"/wishlist"}>
+            <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   "  
+            onClick={()=>{
+                    if(users){
+                      navigate("/wishlist")
+                    }else{
+                      toast.warning("plss login")
+                    }
+                  }}>
+              
+              <Link >
+              
                 <i
                   class="fa-solid fa-heart-circle-check fa-xl"
                   style={{ color: "#791a3e" }}
+                 
                 ></i>
               </Link>
             </div>
@@ -189,7 +201,13 @@ function Navbar({ setAdmin }) {
               class="fa-brands fa-opencart fa-xl cursor-pointer"
               style={{ color: "#791a3e" }}
               onClick={() => {
-                navigate("/orderss");
+                if(users){
+                  navigate("/orderss");
+
+                }else{
+                  toast.warning("plss login")
+                }
+             
               }}
             ></i>
           </div>
@@ -216,7 +234,13 @@ function Navbar({ setAdmin }) {
             <div
               className="  ml-5 mr-2 font-medium hover:border-b-2 border-black md:block hidden   "
               onClick={() => {
-                navigate("/cart");
+                if(users){
+                  navigate("/cart");
+
+                }else{
+                  toast.warning("plss login")
+                }
+                
               }}
             >
               {/* <Badge content={cartitem.length}>

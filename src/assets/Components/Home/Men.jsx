@@ -13,6 +13,7 @@ import {
   Button,
 } from "@material-tailwind/react";
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 function Men() {
   const {
@@ -27,6 +28,8 @@ function Men() {
   } = useContext(contexts);
 
   const navigate = useNavigate();
+
+  const ids=localStorage.getItem("id")
 
   console.log(wlitem);
 
@@ -74,7 +77,13 @@ function Men() {
                                 : "",
                             }}
                             onClick={() => {
-                              wishlists(data);
+                              if(ids){
+                                wishlists(data);
+              
+                              }else{
+                                toast.warning("Plss login")
+                              }
+                             
                             }}
                           ></i>
                           <img src={data.image} alt="card-image" />
@@ -101,7 +110,13 @@ function Men() {
                           </Button>
                           <Button
                             onClick={() => {
-                              addtocarts(data);
+                              if(ids){
+                                addtocarts(data);
+              
+                              }else{
+                                toast.warning("Plss login")
+                              }
+                             
                             }}
                           >
                             Add to cart

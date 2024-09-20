@@ -99,7 +99,7 @@ function Resposivenav({ openRight, setOpenRight }) {
             </Link>
 
           </div>
-          <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   ">
+          <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black   ">
               <Link to={"/wishlist"}>
                 <i
                   class="fa-solid fa-heart-circle-check fa-xl"
@@ -107,7 +107,7 @@ function Resposivenav({ openRight, setOpenRight }) {
                 ></i>
               </Link>
             </div>
-            <div className="  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  md:block hidden   ">
+            <div className="  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  ">
             <i
               class="fa-brands fa-opencart fa-xl cursor-pointer"
               style={{ color: "#791a3e" }}
@@ -116,7 +116,7 @@ function Resposivenav({ openRight, setOpenRight }) {
               }}
             ></i>
           </div>
-           <div className="text-l    text-gray-700 font-medium md:block hidden  ">
+           <div className="text-l    text-gray-700 font-medium   ">
               <Link
                 to={"/ourstory"}
                 className="hover:border-b-2 border-pink-500 hover:text-black"

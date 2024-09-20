@@ -3,11 +3,14 @@ import { useParams } from "react-router-dom";
 import Navbar from "../Navbar";
 import { contexts } from "../../../App";
 import { Button } from "react-scroll";
+import { toast } from "sonner";
 
 const ProductDetail = () => {
   const { id } = useParams();
   const { datas, addtocarts } = useContext(contexts);
   const [dedata, setdedata] = useState([]);
+
+  const ids=localStorage.getItem("id")
 
   useEffect(() => {
     const res = datas.filter((e) => e.id === id);
@@ -38,7 +41,13 @@ const ProductDetail = () => {
             <Button
               className="w-[100%] p-3 bg-blue-600 rounded-lg text-white font-bold"
               onClick={() => {
-                addtocarts(dedata);
+                if(ids){
+                  addtocarts(dedata);
+
+                }else{
+                  toast.warning("Plss login")
+                }
+              
               }}
             >
               Add to Cart

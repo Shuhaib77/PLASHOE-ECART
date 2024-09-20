@@ -416,7 +416,7 @@ function Navbar({ setAdmin }) {
                onClick={()=>setQq("")}
             key={e.id} className="flex w-[100%] bg-white text-black    ml-auto justify-between  rounded-md shadow-sm   items-center p-2 ">
               <div>{e.title}</div>
-              <img src={e.image} alt=""  className="h-[60px] w-[60px] object-cover p-2 shadow-sm"/>
+              <img src={e.image} alt=""  className="h-[100%] w-[100%] object-cover p-2 shadow-sm"/>
             </Link>
           )
         })}

@@ -32,7 +32,7 @@ function Women() {
           <Navbar />
         </div>
         <div className="w-full h-full bg-gray-300  flex justify-center items-center mt-5  ">
-          <div className="w-[160vh] h-full mt-8 mb-8 bg-white ">
+          <div className="w-full m-6 h-full mt-8 mb-8 bg-white ">
             <h1 className=" text-center md:text-left  text-4xl md:mt-10 md:ml-10 text-light-green-800">WOMEN</h1>
             <div className="  flex flex-col  md:flex-row justify-between mt-5">
               <div className="  md:ml-12">

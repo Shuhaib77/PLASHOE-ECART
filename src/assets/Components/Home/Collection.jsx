@@ -26,7 +26,7 @@ function Collection() {
         </div>
 
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
-          <div className="w-[160vh] h-full mb-8 mt-8 bg-white ">
+          <div className="w-full m-6 h-full mb-8 mt-8 bg-white ">
             <h1 className=" text-center md:text-left   text-4xl mt-10 md:ml-10 text-light-green-800">
               TRENDINGS
             </h1>

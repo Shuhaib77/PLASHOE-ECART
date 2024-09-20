@@ -55,7 +55,7 @@ function Women() {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
-                      <CardHeader color="" className="relative h-56">
+                      {/* <CardHeader color="" className="relative h-56"> */}
                       <i
                         class="fa-solid fa-heart ml-4 "
                         style={{
@@ -69,7 +69,7 @@ function Women() {
                         }}
                       ></i>
                         <img src={data.image} alt="card-image" />
-                      </CardHeader>
+                      {/* </CardHeader> */}
                       <CardBody>
                         <Typography variant="h5" color="" className="mb-2">
                           {data.brand}

@@ -72,7 +72,7 @@ function Admin() {
 
 useEffect(()=>{
   const fndatas=async()=>{
-    const res=await axios.get("http://localhost:4000/datass")
+    const res=await axios.get("https://jsoneserver.onrender.com/datass")
     setprdt(res.data)
   }
   fndatas()

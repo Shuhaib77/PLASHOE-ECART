@@ -74,6 +74,7 @@ useEffect(()=>{
   const fndatas=async()=>{
     const res=await axios.get("https://jsoneserver.onrender.com/datass")
     setprdt(res.data)
+    set
   }
   fndatas()
 
@@ -83,7 +84,7 @@ useEffect(()=>{
 
   const adminser=(e)=>{
    const value=e.target.value
-    setval(value)
+    setval("value")
     setservals(prdt.filter((x)=>x.title.toLowerCase().includes(value)))
     
     
@@ -199,11 +200,12 @@ const handleaclick=()=>{
         </div>
       </div>
 
-      { vals && <div className="bg-white absolute top-20  w-[100] shadow overflow-auto max-h-[100%] rounded   ">
+      { vals && <div className="bg-white absolute top-20 right-0  w-[100] m-auto shadow overflow-auto max-h-[100%] rounded   ">
        {servals.map((it)=>{
         return(
           
-          <Link to={`/adbody/${it.id}`} className="border border-shadow-lg roonded-4 p-2 flex justify-between  w-[100%] h-[8vh]     " onClick={()=>handleaclick(it.id)}>
+          <Link to={`/adbody/${it.id}`} className="border border-shadow-lg roonded-4 p-2 flex justify-between  w-[100%] h-[8vh]     " onClick={()=>{handleaclick(it.id),setval("")}}>
+            
             <h1>{it.title}</h1>
             <img src={it.image} alt="" className="object-cover mr-3 " />
           

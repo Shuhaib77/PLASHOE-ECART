@@ -384,11 +384,13 @@ function Navbar({ setAdmin }) {
               </MenuList>
             </Menu>
             <div className="sm:hidden ">
-              <i
+            <i class="fa-solid fa-bars fa-2xl" 
+            onClick={()=>setOpenRight(true)}></i>
+              {/* <i
                 class="fa-regular fa-bars fa-2xl  "
               
-                onClick={()=>setOpenRight(true)}
-              ></i>
+                
+              ></i> */}
             </div>
 
             {/* 

@@ -6,7 +6,7 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { contexts } from "../App";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 function Resposivenav({ openRight, setOpenRight }) {
   // const { openRight, setOpenRight, openDrawerRight, closeDrawerRight } =
@@ -16,6 +16,7 @@ function Resposivenav({ openRight, setOpenRight }) {
 
   const openDrawerRight = () => setOpenRight(true);
   const closeDrawerRight = () => setOpenRight(false);
+  const navigate=useNavigate()
 
   return (
     <div className="">

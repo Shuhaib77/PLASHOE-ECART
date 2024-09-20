@@ -6,32 +6,26 @@ import {
   IconButton,
 } from "@material-tailwind/react";
 import { contexts } from "../App";
+import { Link } from "react-router-dom";
 
-function Resposivenav() {
-  const { openRight, setOpenRight, openDrawerRight, closeDrawerRight } =
-    useContext(contexts);
+function Resposivenav({ openRight, setOpenRight }) {
+  // const { openRight, setOpenRight, openDrawerRight, closeDrawerRight } =
+  //   useContext(contexts);
 
   //   const [openRight, setOpenRight] = React.useState(false);
 
-  // const openDrawerRight = () => setOpenRight(true);
-  // const closeDrawerRight = () => setOpenRight(false);
+  const openDrawerRight = () => setOpenRight(true);
+  const closeDrawerRight = () => setOpenRight(false);
 
   return (
     <div className="">
-      <div className="flex flex-wrap gap-4">
-        <Button onClick={openDrawerRight}>Open Drawer Right</Button>
-      </div>
       <Drawer
         placement="right"
-        open={openRight}
+        open={openDrawerRight}
         onClose={closeDrawerRight}
         className="p-4"
-        
       >
-        <div className="mb-6 flex items-center justify-between">
-          <Typography variant="h5" color="blue-gray">
-            Material Tailwind
-          </Typography>
+        <div className="  flex flex-col justify-between items-stretch  ">
           <IconButton
             variant="text"
             color="blue-gray"
@@ -52,8 +46,60 @@ function Resposivenav() {
               />
             </svg>
           </IconButton>
+          <div className="text-2xl mb-5  font-semibold ">PLASHOE</div>
+          <div className="text-l mb-3  text-gray-700 font-medium ">
+            <Link
+              to={"/"}
+              className="hover:border-b-2 border-pink-500  hover:text-black "
+            >
+              PLASHOE
+            </Link>
+          </div>
+          <div className="text-l mb-3     text-gray-700  font-medium  ">
+            <Link
+              to={"/men"}
+              className="hover:border-b-2 border-pink-500  hover:text-black"
+            >
+              MEN
+            </Link>
+          </div>
+          <div className="text-l mb-3  text-gray-700 font-medium  ">
+            <Link
+              to={"/women"}
+              className="hover:border-b-2 border-pink-500  hover:text-black"
+            >
+              WOMEN
+            </Link>
+          </div>
+          <div className="text-l mb-3    text-gray-700 font-medium  ">
+            <Link
+              to={"/collection"}
+              className="hover:border-b-2 border-pink-500  hover:text-black"
+            >
+              COLLECTION
+            </Link>
+          </div>
+          <div className="text-l  mb-3   text-gray-700 font-medium   ">
+            <Link
+              to={"/lookbook"}
+              className="hover:border-b-2 border-pink-500  hover:text-black"
+            >
+              LOOKBOOK
+            </Link>
+          </div>
+
+          {/* <Typography variant="h5" color="blue-gray"> */}
+          <div className="text-l mb-3    text-gray-700 font-medium  ">
+            <Link
+              to={"/lookbook"}
+              className="hover:border-b-2 border-pink-500  hover:text-black"
+            >
+              LOOKBOOK
+            </Link>
+          </div>
+          {/* </Typography> */}
         </div>
-        <Typography color="gray" className="mb-8 pr-4 font-normal">
+        {/* <Typography color="gray" className="mb-8 pr-4 font-normal">
           Material Tailwind features multiple React and HTML components, all
           written with Tailwind CSS classes and Material Design guidelines.
         </Typography>
@@ -62,7 +108,7 @@ function Resposivenav() {
             Documentation
           </Button>
           <Button size="sm">Get Started</Button>
-        </div>
+        </div> */}
       </Drawer>
     </div>
   );

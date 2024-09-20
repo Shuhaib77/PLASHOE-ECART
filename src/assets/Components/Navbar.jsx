@@ -34,6 +34,10 @@ function Navbar({ setAdmin }) {
   const [ser,setSer]=useState([])
   // const[cartitem,setcartitem]=useState([])
 
+
+
+  const [openRight, setOpenRight] = React.useState(false);
+
   function handleAdmin() {
     setAdmin(true);
     navigate("/admin/dashboard");
@@ -357,16 +361,7 @@ function Navbar({ setAdmin }) {
               <i
                 class="fa-regular fa-bars fa-2xl  "
               
-                onClick={() => {
-                  if (menu) {
-                    
-                    setmenu(false);
-                  } else {
-                    setmenu(true);
-                    
-                    
-                  }
-                }}
+                onClick={()=>setOpenRight(true)}
               ></i>
             </div>
 
@@ -424,8 +419,8 @@ function Navbar({ setAdmin }) {
           )
         })}
         </div>}
-      {menu &&
-      <Resposivenav/>
+      {openRight &&
+      <Resposivenav setOpenRight={setOpenRight} openRight={openRight}/>
       
       }
 

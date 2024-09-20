@@ -14,7 +14,7 @@ function Register() {
 
   useEffect(() => {
     const fetchmail = async () => {
-      const response = await axios.get("http://localhost:4000/user");
+      const response = await axios.get("https://jsoneserver.onrender.com/user/");
       try {
         setemail(response.data);
         // console.log(emails);
@@ -46,7 +46,7 @@ function Register() {
           block: true,
           detorder: [],
         };
-        await axios.post("http://localhost:4000/user", newUser);
+        await axios.post("https://jsoneserver.onrender.com/user/", newUser);
         
         toast.success("User registration successful");
         navigate("/login");

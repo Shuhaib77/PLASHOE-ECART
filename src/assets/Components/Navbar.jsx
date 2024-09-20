@@ -45,9 +45,10 @@ function Navbar({ setAdmin }) {
 
    const filterrrr =(e)=>{
     const value = e.target.value.toLowerCase()
-    setQq(value)
+   
     setSer(sdata.filter((f)=>f.title.toLowerCase().includes(value)))
-    console.log(ser);
+    console.log("kh",ser);
+    setQq("jhhb")
     
    }
 
@@ -69,7 +70,7 @@ function Navbar({ setAdmin }) {
     }
 
     const fdatass = async () => {
-      const response = await axios.get("http://localhost:4000/datass");
+      const response = await axios.get("https://jsoneserver.onrender.com/datass");
       try {
         setsdata(response.data);
       } catch (error) {
@@ -77,16 +78,17 @@ function Navbar({ setAdmin }) {
       }
     };
     fdatass();
-  }, []);
+  }, [ser,qq]);
 
   console.log(sdata);
 
   useEffect(() => {
     const Auserss = async () => {
-      const response = await axios.get(`http://localhost:4000/user/${users}`);
+      const response = await axios.get(`https://jsoneserver.onrender.com/user/${users}`);
       setusers([response.data]);
     };
     Auserss();
+  
   }, []);
 
  

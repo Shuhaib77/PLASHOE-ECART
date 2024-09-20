@@ -17,14 +17,14 @@ function ShowComponent() {
   const { datas, addtocarts, wishlists, wlitem } = useContext(contexts);
   const [dedata, setdedata] = useState([]);
   const datatodescribe = useParams();
-
+ 
   useEffect(() => {
     const res = datas.filter(
       (specificdata) => specificdata.id === datatodescribe.dataid
     );
     setdedata(res);
   }, []);
-  // console.log(dedata);
+  console.log(dedata,"dd");
 
   return (
     <>

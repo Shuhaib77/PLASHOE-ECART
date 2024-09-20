@@ -76,6 +76,9 @@ const fetchData = async () => {
 useEffect(() => {
    fetchData();
   }, []);
+
+  console.log("kb",datas);
+  
 //---------------------------
  
 

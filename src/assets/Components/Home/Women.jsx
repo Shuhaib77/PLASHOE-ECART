@@ -54,7 +54,7 @@ function Women() {
               {datas.filter((wdata) => wdata.catogery == "women").map((data) => {
                 return (
                   <div className=" ">
-                    <Card className="h-full w-[50vh] mt-20 gap-10 gap-x-10   ">
+                    <Card className="h-full w-[50vh] mt-20  gap-x-10   ">
                       <CardHeader color="" className="relative h-100%">
                       <i
                         class="fa-solid fa-heart ml-4 "
@@ -71,14 +71,14 @@ function Women() {
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>
-                        <Typography variant="h5" color="" className="mb-2">
+                        <Typography variant="h5" color="" className="">
                           {data.brand}
                         </Typography>
                         <Typography>{data.title}</Typography>
                         <Typography>{data.catogery}</Typography>
                         <Typography>{data.price}</Typography>
                       </CardBody>
-                      <CardFooter className="pt-0 flex justify-between">
+                      <CardFooter className=" flex justify-between">
                         <Button
                           onClick={() => {
                             navigate(`/showcomponent/${data.id}`);

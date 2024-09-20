@@ -7,6 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { contexts } from "../App";
 import { Link, useNavigate } from "react-router-dom";
+import { toast } from "sonner";
 
 function Resposivenav({ openRight, setOpenRight }) {
   // const { openRight, setOpenRight, openDrawerRight, closeDrawerRight } =
@@ -14,6 +15,8 @@ function Resposivenav({ openRight, setOpenRight }) {
 
   //   const [openRight, setOpenRight] = React.useState(false);
 
+  
+const users=localStorage.getItem("id")
   const openDrawerRight = () => setOpenRight(true);
   const closeDrawerRight = () => setOpenRight(false);
   const navigate=useNavigate()
@@ -100,8 +103,19 @@ function Resposivenav({ openRight, setOpenRight }) {
             </Link>
 
           </div>
-          <div className="text-l   text-gray-700 font-medium hover:border-b-2 border-black   ">
-              <Link to={"/wishlist"}>
+          <div className="text-l   text-gray-700 font-medium hover:border-b-2 border-black   " onClick={()=>{
+            navigate(()=>{
+              if(users){
+                navigate("/wishlist");
+
+              }else{
+                toast.warning("plss login")
+              }
+            
+
+            })
+          }}>
+              <Link >
                 <i
                   class="fa-solid fa-heart-circle-check fa-xl"
                   style={{ color: "#791a3e" }}
@@ -113,7 +127,14 @@ function Resposivenav({ openRight, setOpenRight }) {
               class="fa-brands fa-opencart fa-xl cursor-pointer"
               style={{ color: "#791a3e" }}
               onClick={() => {
-                navigate("/orderss");
+                if(users){
+                  navigate("/orderss");
+
+                }else{
+                  toast.warning("plss login")
+                }
+              
+              
               }}
             ></i>
           </div>
@@ -139,7 +160,13 @@ function Resposivenav({ openRight, setOpenRight }) {
             <div
               className="   font-medium hover:border-b-2 border-black   "
               onClick={() => {
-                navigate("/cart");
+                if(users){
+                  navigate("/cart");
+
+                }else{
+                  toast.warning("plss login")
+                }
+              
               }}
             >
               {/* <Badge content={cartitem.length}>

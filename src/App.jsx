@@ -145,7 +145,7 @@ const wishlists=async(data)=>{
     toast.warning("removed from wishlist")
   }else{
     const upd=[...wlist,data]
-   await axios.patch(`https://jsoneserver.onrender.com/userr/${usersid}`,{wishlist:upd})
+   await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`,{wishlist:upd})
    toast.success("product add to wishlist")
    wldata()
    

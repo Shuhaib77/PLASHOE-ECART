@@ -107,7 +107,7 @@ function Resposivenav({ openRight, setOpenRight }) {
                 ></i>
               </Link>
             </div>
-            <div className="  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  ">
+            <div className=" mb-3  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  ">
             <i
               class="fa-brands fa-opencart fa-xl cursor-pointer"
               style={{ color: "#791a3e" }}

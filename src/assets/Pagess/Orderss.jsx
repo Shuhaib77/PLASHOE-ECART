@@ -9,7 +9,7 @@ function Orderss() {
   const id = localStorage.getItem("id");
   useEffect(() => {
     const orders = async () => {
-      const response = await axios.get(`http://localhost:4000/user/${id}`);
+      const response = await axios.get(`https://jsoneserver.onrender.com/user/${id}`);
       setdetorder(response.data.detorder);
     };
     orders();

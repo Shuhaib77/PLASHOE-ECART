@@ -82,8 +82,8 @@ function Editproducts() {
       <div className="flex flex-wrap justify-center  gap-5 mt-20 w-[142vh] h-[70vh] overflow-auto ">
         {prdt.map((data, index) => {
           return (
-            <Card className="w-96 h-[50vh] border-5 border-g">
-              <CardHeader className="h-[30vh] mt-5">
+            <Card className="h-full w-[50vh] mt-20  gap-x-10  ">
+              <CardHeader className="relative h-56">
                 <img src={data.image} alt="profile-picture" />
               </CardHeader>
               <CardBody className="text-center">

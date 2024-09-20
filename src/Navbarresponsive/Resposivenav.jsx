@@ -88,6 +88,7 @@ function Resposivenav({ openRight, setOpenRight }) {
             </Link>
           </div>
 
+
           {/* <Typography variant="h5" color="blue-gray"> */}
           <div className="text-l mb-3    text-gray-700 font-medium  ">
             <Link
@@ -96,7 +97,60 @@ function Resposivenav({ openRight, setOpenRight }) {
             >
               LOOKBOOK
             </Link>
+
           </div>
+          <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   ">
+              <Link to={"/wishlist"}>
+                <i
+                  class="fa-solid fa-heart-circle-check fa-xl"
+                  style={{ color: "#791a3e" }}
+                ></i>
+              </Link>
+            </div>
+            <div className="  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  md:block hidden   ">
+            <i
+              class="fa-brands fa-opencart fa-xl cursor-pointer"
+              style={{ color: "#791a3e" }}
+              onClick={() => {
+                navigate("/orderss");
+              }}
+            ></i>
+          </div>
+          <div className="text-l    text-gray-700 font-medium md:block hidden  ">
+              <Link
+                to={"/ourstory"}
+                className="hover:border-b-2 border-pink-500 hover:text-black"
+              >
+                OURSTORY
+              </Link>
+            </div>
+            <div className="text-l ml-5 text-gray-700  font-medium md:block hidden    ">
+              <ScrollLink
+                to="contact"
+                smooth={true}
+                duration={800}
+                className="cursor-pointer hover:border-b-2 border-pink-500 hover:text-black"
+              >
+                CONTACT
+              </ScrollLink>
+            </div>
+            {/* <span>{cartitem.length}</span> */}
+            <div
+              className="  ml-5 mr-2 font-medium hover:border-b-2 border-black md:block hidden   "
+              onClick={() => {
+                navigate("/cart");
+              }}
+            >
+              {/* <Badge content={cartitem.length}>
+               </Badge> */}
+              <i
+                class="fa-solid fa-bag-shopping fa-xl  "
+                style={{ color: "#791a3e" }}
+              ></i>
+            </div>
+
+            
+            
           {/* </Typography> */}
         </div>
         {/* <Typography color="gray" className="mb-8 pr-4 font-normal">

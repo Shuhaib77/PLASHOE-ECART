@@ -24,11 +24,11 @@ function Payment() {
       pyprdct: cartnew,
     },
     onSubmit: async (values) => {
-      const response = await axios.get(`http://localhost:4000/user/${id}`);
+      const response = await axios.get(`https://jsoneserver.onrender.com/user/${id}`);
       const detail = response.data.detorder;
       const upd = [...detail, values];
       if (upd) {
-        await axios.patch(`http://localhost:4000/user/${id}`, {
+        await axios.patch(`https://jsoneserver.onrender.com/user/${id}`, {
           detorder: upd,
         });
         toast.success("payment successfull");

@@ -50,11 +50,11 @@ function Women() {
                 </Button>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center items-center ">
+            <div className="flex flex-wrap justify-around items-center ">
               {datas.filter((wdata) => wdata.catogery == "women").map((data) => {
                 return (
                   <div className=" ">
-                    <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
+                    <Card className="h-full w-[50vh] mt-20 gap-10 gap-x-10   ">
                       <CardHeader color="" className="relative h-100%">
                       <i
                         class="fa-solid fa-heart ml-4 "

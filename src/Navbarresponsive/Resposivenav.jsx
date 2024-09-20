@@ -124,7 +124,7 @@ function Resposivenav({ openRight, setOpenRight }) {
                 OURSTORY
               </Link>
             </div>
-            <div className="text-l ml-5 text-gray-700  font-medium md:block hidden    ">
+            {/* <div className="text-l ml-5 text-gray-700  font-medium md:block hidden    ">
               <ScrollLink
                 to="contact"
                 smooth={true}
@@ -132,7 +132,7 @@ function Resposivenav({ openRight, setOpenRight }) {
                 className="cursor-pointer hover:border-b-2 border-pink-500 hover:text-black"
               >
                 CONTACT
-              </ScrollLink>
+              </ScrollLink> */}
             </div>
             {/* <span>{cartitem.length}</span> */}
             <div

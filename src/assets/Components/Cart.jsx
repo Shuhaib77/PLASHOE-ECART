@@ -51,7 +51,7 @@ function Cart() {
 
   //fetchorders
   const fetchorders = async () => {
-    const response = await axios.get(`http://localhost:4000/user/${idss}`);
+    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
     setcartnew(response.data.orders);
     // console.log(response.data);
   };
@@ -62,7 +62,7 @@ function Cart() {
 
   //fetchcart
   const fetchcart = async () => {
-    const response = await axios.get(`http://localhost:4000/user/${idss}`);
+    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
     setcartitem(response.data.cart);
     // console.log(response.data);
   };
@@ -75,7 +75,7 @@ function Cart() {
 
   const cartdelete = async (id) => {
     const upcart = cartitem.filter((item) => item.id != id);
-    await axios.patch(`http://localhost:4000/user/${idss}`, { cart: upcart });
+    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, { cart: upcart });
     // setcartitem(upcart)
 
     fetchcart();
@@ -87,7 +87,7 @@ function Cart() {
     const incrmcart = cartitem.map((item) =>
       item.id === id ? { ...item, quantity: item.quantity + 1 } : item
     );
-    await axios.patch(`http://localhost:4000/user/${idss}`, {
+    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
       cart: incrmcart,
     });
 
@@ -100,7 +100,7 @@ function Cart() {
         ? { ...item, quantity: item.quantity - 1 }
         : item
     );
-    await axios.patch(`http://localhost:4000/user/${idss}`, {
+    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
       cart: decrement,
     });
 
@@ -109,10 +109,10 @@ function Cart() {
 
   //addto all price details
   const alladd = async (data) => {
-    const response = await axios.get(`http://localhost:4000/user/${idss}`);
+    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
     const topay = response.data.orders;
     const upd = data;
-    const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
+    const res = await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
       orders: upd,
     });
     setcartnew(res.data.orders);
@@ -120,13 +120,13 @@ function Cart() {
   };
   //only one aad to price details
   const fnsummer = async (data) => {
-    const response = await axios.get(`http://localhost:4000/user/${idss}`);
+    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
     try {
       const orders = response.data.orders;
       const userorder = cartitem.find((item) => item.id == data.id);
       if (!orders.find((order) => order?.id == userorder.id)) {
         const updatedoredrs = [...orders, userorder];
-        const res = await axios.patch(`http://localhost:4000/user/${idss}`, {
+        const res = await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
           orders: updatedoredrs,
         });
         setcartnew(res.data.orders);
@@ -141,7 +141,7 @@ function Cart() {
   //dleteinpricedetails
   const pricedelete = async (i) => {
     const upproductprice = cartnew.filter((item, j) => j != i);
-    await axios.patch(`http://localhost:4000/user/${idss}`, {
+    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
       orders: upproductprice,
     });
     fetchorders();
@@ -154,14 +154,14 @@ function Cart() {
   //delete cart when go to payment
   const fn = async () => {
     try {
-      await axios.patch(`http://localhost:4000/user/${idss}`, { cart: [] });
+      await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, { cart: [] });
       toast.success("cart cleard");
     } catch (error) {
       toast.warning("cart not cleard!!!!");
     }
     //for pricedetail clearing
     try {
-      await axios.patch(`http://localhost:4000/user/${idss}`, { orders: [] });
+      await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, { orders: [] });
       toast.success("pricecleard");
     } catch (error) {
       console.log(error);

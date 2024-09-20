@@ -99,7 +99,7 @@ function Resposivenav({ openRight, setOpenRight }) {
             </Link>
 
           </div>
-          <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black   ">
+          <div className="text-l   text-gray-700 font-medium hover:border-b-2 border-black   ">
               <Link to={"/wishlist"}>
                 <i
                   class="fa-solid fa-heart-circle-check fa-xl"
@@ -116,7 +116,7 @@ function Resposivenav({ openRight, setOpenRight }) {
               }}
             ></i>
           </div>
-           <div className="text-l    text-gray-700 font-medium   ">
+           <div className="text-l  mb-3   text-gray-700 font-medium   ">
               <Link
                 to={"/ourstory"}
                 className="hover:border-b-2 border-pink-500 hover:text-black"
@@ -136,7 +136,7 @@ function Resposivenav({ openRight, setOpenRight }) {
             </div> */}
             {/* <span>{cartitem.length}</span> */}
             <div
-              className="  ml-5 mr-2 font-medium hover:border-b-2 border-black md:block hidden   "
+              className="   font-medium hover:border-b-2 border-black   "
               onClick={() => {
                 navigate("/cart");
               }}

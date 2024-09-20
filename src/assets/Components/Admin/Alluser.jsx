@@ -34,7 +34,7 @@ function Alluser() {
   ];
 
   const fn = async () => {
-    const response = await axios.get("http://localhost:4000/user");
+    const response = await axios.get("https://jsoneserver.onrender.com/user");
     try {
       setausers(response.data);
     } catch (error) {
@@ -46,18 +46,18 @@ function Alluser() {
   }, []);
 //blocking user
   const handleuser = async (id) => {
-    const response = await axios.get(`http://localhost:4000/user/${id}`);
+    const response = await axios.get(`https://jsoneserver.onrender.com/user/${id}`);
     const blocks = response.data.block;
     setblockusers(response.data.block);
     try {
       if (blocks === true && response.data.admin == true) {
         toast.warning("this is a pro admin");
       } else if (blocks === true) {
-        (await axios.patch(`http://localhost:4000/user/${id}`, {
+        (await axios.patch(`https://jsoneserver.onrender.com/user/${id}`, {
           block: false,
         })) && toast.success("user blocked");
       } else {
-        (await axios.patch(`http://localhost:4000/user/${id}`, {
+        (await axios.patch(`https://jsoneserver.onrender.com/user/${id}`, {
           block: true,
         })) && toast.warning("user Unblocked");
       }
@@ -70,7 +70,7 @@ function Alluser() {
   //vieworders
 
   const vieworders = async (id) => {
-    const response = await axios.get(`http://localhost:4000/user/${id}`);
+    const response = await axios.get(`https://jsoneserver.onrender.com/user/${id}`);
     // console.log(response.data);
     setorders(response.data.detorder);
   };

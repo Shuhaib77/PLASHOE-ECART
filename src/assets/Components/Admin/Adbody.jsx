@@ -51,7 +51,7 @@ function Adbody() {
       try {
         const newuser = { ...values };
         const response = await axios.put(
-          `http://localhost:4000/datass/${values.id}`,
+          `https://jsoneserver.onrender.com/datass/${values.id}`,
           newuser
         );
         fn();
@@ -64,7 +64,7 @@ function Adbody() {
   });
 
   const handleclick = async (data) => {
-    const res = await axios.get(`http://localhost:4000/datass/${data.id}`);
+    const res = await axios.get(`https://jsoneserver.onrender.com/datass/${data.id}`);
     // console.log(res.data, "dededed");
     setValues(res.data);
   };
@@ -73,7 +73,7 @@ function Adbody() {
 
   const deleteprdt = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:4000/datass/${id}`);
+      const response = await axios.delete(`https://jsoneserver.onrender.com/datass/${id}`);
       // fn();
       // console.log(response.data);
     } catch (error) {

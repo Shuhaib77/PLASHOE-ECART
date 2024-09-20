@@ -102,7 +102,7 @@ const handleaclick=()=>{
 
   return (
     <>
-      <div className="flex  p-5  justify-between w-[175vh]  bg-[#38746f] text-white  ">
+      <div className="flex  p-5  justify-between w-100% bg-[#38746f] text-white  ">
         <div className="flex ">
           <h1 className="mt-3  ml-6 font-semibold text-xl">PLASHOE</h1>
         </div>

@@ -24,13 +24,13 @@ function Addproduct() {
       quantity: 1,
     },
     onSubmit: async (values) => {
-      const reponse = await axios.get("http://localhost:4000/datass");
+      const reponse = await axios.get("https://jsoneserver.onrender.com/datass");
       const datas = reponse.data.find((item) => item.id == values.id);
       if (datas) {
         toast.warning("the product id alredy exists");
       } else {
         const newprdt = { ...values };
-        await axios.post("http://localhost:4000/datass", newprdt);
+        await axios.post("https://jsoneserver.onrender.com/datass", newprdt);
         toast.success("product added successfully");
       }
     },

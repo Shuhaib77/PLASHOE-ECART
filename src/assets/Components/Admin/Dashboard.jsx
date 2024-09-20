@@ -13,9 +13,9 @@ function Dashboard() {
   useEffect(() => {
     const fn = async () => {
       try {
-        const response = await axios.get("http://localhost:4000/datass");
+        const response = await axios.get("https://jsoneserver.onrender.com/datass");
         setaprdt(response.data);
-        const res = await axios.get("http://localhost:4000/user");
+        const res = await axios.get("https://jsoneserver.onrender.com/user");
         setauser(res.data);
         const allorders = res.data.flatMap((item) => item.detorder);
         const b = allorders.map((item) => item.pyprdct);

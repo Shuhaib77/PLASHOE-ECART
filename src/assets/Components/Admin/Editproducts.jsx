@@ -25,7 +25,7 @@ function Editproducts() {
 
   
   const fnupd = async () => {
-    const response = await axios.get("http://localhost:4000/datass");
+    const response = await axios.get("https://jsoneserver.onrender.com/datass");
     setprdt(response.data);
   };
   useEffect(() => {

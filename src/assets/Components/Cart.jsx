@@ -195,9 +195,13 @@ function Cart() {
               {cartitem.map((data, i) => {
                 return (
                   <div className="  ">
-                    <Card className="h-full w-[50vh] mt-20   ">
+                    <Card className="h-full w-[45vh] mt-20   ">
+                      <CardHeader className="relative 56 w-100vh">
+                      <img src={data?.image} alt="card-image"  />
+
+                      </CardHeader>
                      
-                        <img src={data?.image} alt="card-image" />
+                      
                     
                       <CardBody>
                         <Typography

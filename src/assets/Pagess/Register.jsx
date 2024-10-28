@@ -12,20 +12,29 @@ function Register() {
   const [emails, setemail] = useState([]);
   // const [emas, seteil] = useState();
 
-  useEffect(() => {
-    const fetchmail = async () => {
-      const response = await axios.get("https://jsoneserver.onrender.com/user/");
-      try {
-        setemail(response.data);
-        // console.log(emails);
-      } catch (error) {
-        toast.error("not fetched");
-      }
-    };
-    fetchmail();
-  }, []);
+  // useEffect(() => {
+  //   const fetchmail = async () => {
+  //     // const response = await axios.get("https://jsoneserver.onrender.com/user/");
+  //     const response = await axios.get(" http://localhost:5000/api/register");
+  //     try {
+  //       setemail(response.data);
+  //       // console.log(emails);
+  //     } catch (error) {
+  //       toast.error("not fetched");
+  //     }
+  //   };
+  //   fetchmail();
+  // }, []);
 
-  const { values, errors, handleChange, handleBlur, handleSubmit,render,setRendder } = useFormik({
+  const {
+    values,
+    errors,
+    handleChange,
+    handleBlur,
+    handleSubmit,
+    render,
+    setRendder,
+  } = useFormik({
     initialValues: {
       email: "",
       password: "",
@@ -34,23 +43,20 @@ function Register() {
     validationSchema: registerSchema,
 
     onSubmit: async (values) => {
-      const finduser = emails.find((user) => user.email === values.email);
-      if (finduser) {
-        toast.warning("User already exists");
-      } else {
-        const newUser = {
-          ...values,
-          cart: [],
-          wishlist:[],
-          orders: [],
-          block: true,
-          detorder: [],
-        };
-        await axios.post("https://jsoneserver.onrender.com/user/", newUser);
-        
+      try {
+        console.log(values, "et");
+        const response = await axios.post(
+          "http://localhost:5000/api/register",
+          { email: values.email, password: values.password }
+        );
+
         toast.success("User registration successful");
         navigate("/login");
-        
+
+        // console.log(response.data.message,'imdfghsg');
+        // alert(response?.data?.message)
+      } catch (error) {
+        toast.warning("User already exists");
       }
     },
   });

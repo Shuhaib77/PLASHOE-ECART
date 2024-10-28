@@ -27,9 +27,10 @@ import Trackorder from "./assets/Components/Admin/Trackorder";
 import Dashboard from "./assets/Components/Admin/Dashboard";
 import Adbody from "./assets/Components/Admin/Adbody";
 import Orderss from "./assets/Pagess/Orderss";
-import card from "@material-tailwind/react/theme/components/card";
+// import card from "@material-tailwind/react/theme/components/card";
 import Wishliste from "./assets/Components/Wishliste";
 import ProductDetail from "./assets/Components/Home/ProductDetail";
+import { adminConfig } from "./hederconfig/config";
 
 export const contexts = createContext();
 
@@ -67,7 +68,13 @@ function App() {
 const usersid = localStorage.getItem("id");
 const fetchData = async () => {
   try {
-    const response = await axios.get("https://jsoneserver.onrender.com/datass");
+    
+    
+    // const response = await axios.get("https://jsoneserver.onrender.com/datass");
+    const response = await axios.get("http://localhost:5000/api/admin/products",adminConfig)
+    
+    console.log(adminConfig,"mkldkmweldf");
+    
     setdata(response.data);
   } catch (error) {
     console.log(error);

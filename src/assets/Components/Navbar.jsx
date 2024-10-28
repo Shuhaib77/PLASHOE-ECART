@@ -30,6 +30,7 @@ function Navbar({ setAdmin }) {
   const [openAdmin, setOPenAdmin] = useState(false);
   const [userss, setusers] = useState([]);
   const users = localStorage.getItem("id");
+  const admin= localStorage.getItem("admin");
   const [qq,setQq]=useState("")
   const [ser,setSer]=useState([])
   // const[cartitem,setcartitem]=useState([])
@@ -371,7 +372,7 @@ function Navbar({ setAdmin }) {
                       ></i>
                     </div>
                   )}
-                  {users ? (
+                  {users || admin ? (
                     <Typography variant="small" className="font-bold mt-2">
                       Sign Out
                     </Typography>

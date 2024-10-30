@@ -7,7 +7,7 @@ import User from "./assets/Pagess/User";
 import Admin from "./assets/Pagess/Admin";
 import Login from "./assets/Pagess/Login";
 import Register from "./assets/Pagess/Register";
-  
+
 import { Toaster } from "sonner";
 import AllProducts from "./assets/Components/AllProducts";
 import Men from "./assets/Components/Home/Men";
@@ -35,137 +35,123 @@ import { adminConfig } from "./hederconfig/config";
 export const contexts = createContext();
 
 function App() {
-
   const [datas, setdata] = useState([]);
   const [search, setsearh] = useState(null);
   const [user, setuser] = useState([]);
   const [udatass, setudatass] = useState([]);
   const [shoeid, setshoeid] = useState([]);
-  const [wlitem,setwlitem]=useState([])
+  const [wlitem, setwlitem] = useState([]);
   const [cartitem, setcartitem] = useState([]);
-// const [cartnew,setcartnew]=useState([])
+  // const [cartnew,setcartnew]=useState([])
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
   //adminsssss
   const [asearchitem, asetsearchitem] = useState("");
   const [prdt, setprdt] = useState([]);
   const [lastasearch, setlastsearch] = useState(null);
-  const [admin,setAdmin]=useState(false)
-
-
-
-
-
-
+  const [admin, setAdmin] = useState(false);
 
   useEffect(() => {
     if (localStorage.getItem("admin")) {
       setAdmin(true);
     }
   }, []);
-//------------------------
-//datas fetchingg
-const usersid = localStorage.getItem("id");
-const fetchData = async () => {
-  try {
-    
-    
-    // const response = await axios.get("https://jsoneserver.onrender.com/datass");
-    const response = await axios.get("http://localhost:5000/api/admin/products",adminConfig)
-    
-    console.log(adminConfig,"mkldkmweldf");
-    
-    setdata(response.data);
-  } catch (error) {
-    console.log(error);
-  }
-};
-useEffect(() => {
-   fetchData();
+  //------------------------
+  //datas fetchingg
+  const usersid = localStorage.getItem("id");
+  const fetchData = async () => {
+    try {
+      const response = await axios.get("http://localhost:5000/api/products");
+      setdata(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
   }, []);
 
-  console.log("kb",datas);
-  
-//---------------------------
- 
+  console.log("kb", datas.message);
 
-// const usersid = localStorage.getItem("id");
+  //---------------------------
 
+  // const usersid = localStorage.getItem("id");
 
-const fn = async () => {
-    const res = await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`);
+  const fn = async () => {
+    const res = await axios.get(
+      `https://jsoneserver.onrender.com/ser/${usersid}`
+    );
     setcartitem(res.data.cart);
   };
   useEffect(() => {
     fn();
   }, []);
-  
-//addto cartt
- const addtocarts = async (data) => {
-    
-    try {
-      const res = await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`);
-      const cartss = res.data.cart;
 
-      const check = cartss.find((itemid) => itemid.id === data.id);
-      if (check) {
-        toast.warning("product alredy exist");
-      } else {
-        const update = [...cartss, data];
-        const reso = await axios.patch(
-          `https://jsoneserver.onrender.com/user/${usersid}`,
-          {
-            cart: update,
-          }
-        );
-        // setcartitem(reso.data.cart);
-        toast.success("product added tocart");
-        setRendder(!render)
-      }
+  //addto cartt
+  const addtocarts = async (data) => {
+    try {
+      const usertoken = localStorage.getItem("utoken");
+
+      console.log(usertoken);
+
+      const reso = await axios.post(
+        ` http://localhost:5000/api/cart/${data._id}/${usersid}`,
+        {},
+        {
+          headers: {
+            Authorization: usertoken,
+          },
+        }
+      );
+      toast.success("product added tocart");
+      setcartitem(reso.data.cart);
     } catch (error) {
       console.log(error);
     }
   };
- 
+
   //-----------------------
-// useEffect(()=>{
-// // addtocarts(cartitem);
-// },[])
+  // useEffect(()=>{
+  // addtocarts(cartitem);
+  // },[])
 
+  // console.log(cartitem);
 
-//fetchwishlist
-const wldata=async(id)=>{
-  const response= await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`)
-   setwlitem(response.data.wishlist)
-}
-useEffect(()=>{
-wldata()
-},[])
+  //fetchwishlist
+  const wldata = async (id) => {
+    const response = await axios.get(
+      `https://jsoneserver.onrender.com/user/${usersid}`
+    );
+    setwlitem(response.data.wishlist);
+  };
+  useEffect(() => {
+    wldata();
+  }, []);
 
-//addtowishlist
+  //addtowishlist
 
-const wishlists=async(data)=>{
-  const response= await axios.get(`https://jsoneserver.onrender.com/user/${usersid}`)
-  const wlist=response.data.wishlist
-   const wlitems=wlist.find((item)=>item.id===data.id)
-   if(wlitems ){
-    const res=wlitem.filter((item)=>item.id!=wlitems.id)
-    await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`,{wishlist:res})
-    wldata()
-    toast.warning("removed from wishlist")
-  }else{
-    const upd=[...wlist,data]
-   await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`,{wishlist:upd})
-   toast.success("product add to wishlist")
-   wldata()
-   
-   }
-
-}
-
-
-
-
+  const wishlists = async (data) => {
+    const response = await axios.get(
+      `https://jsoneserver.onrender.com/user/${usersid}`
+    );
+    const wlist = response.data.wishlist;
+    const wlitems = wlist.find((item) => item.id === data.id);
+    if (wlitems) {
+      const res = wlitem.filter((item) => item.id != wlitems.id);
+      await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`, {
+        wishlist: res,
+      });
+      wldata();
+      toast.warning("removed from wishlist");
+    } else {
+      const upd = [...wlist, data];
+      await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`, {
+        wishlist: upd,
+      });
+      toast.success("product add to wishlist");
+      wldata();
+    }
+  };
 
   return (
     <>
@@ -192,7 +178,7 @@ const wishlists=async(data)=>{
           setlastsearch,
           size,
           setSize,
-          datas, 
+          datas,
           setdata,
           fetchData,
           fn,
@@ -202,23 +188,22 @@ const wishlists=async(data)=>{
           wlitem,
         }}
       >
-       {admin  &&
-       
-       <Routes>
-       <Route path="/admin/:url" element={<Admin  />}></Route>
-         <Route path="/addprdt" element={<Addproduct />}></Route>
-         <Route path="/editprdt" element={<Editproducts />}></Route>
-         <Route path="/allusers" element={<Alluser />}></Route>
-         <Route path="/trackorder" element={<Trackorder />}></Route>
-         <Route path="/dashboard" element={<Dashboard />}></Route>
-         <Route path="/adbody/:id" element={<Adbody />}></Route>
-       </Routes>
-}
-       
+        {admin && (
+          <Routes>
+            <Route path="/admin/:url" element={<Admin />}></Route>
+            <Route path="/addprdt" element={<Addproduct />}></Route>
+            <Route path="/editprdt" element={<Editproducts />}></Route>
+            <Route path="/allusers" element={<Alluser />}></Route>
+            <Route path="/trackorder" element={<Trackorder />}></Route>
+            <Route path="/dashboard" element={<Dashboard />}></Route>
+            <Route path="/adbody/:id" element={<Adbody />}></Route>
+          </Routes>
+        )}
+
         <Routes>
-          <Route path="/" element={<Home  setAdmin={setAdmin}/>}></Route>
+          <Route path="/" element={<Home setAdmin={setAdmin} />}></Route>
           <Route path="/user" element={<User />}></Route>
-          <Route path="/details/:id" element={<ProductDetail/>}/>
+          <Route path="/details/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>
           <Route path="/all" element={<AllProducts />}></Route>
@@ -227,18 +212,15 @@ const wishlists=async(data)=>{
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/lookbook" element={<Lookbook />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
-          <Route path="/showcomponent/:dataid"element={<ShowComponent />}
+          <Route
+            path="/showcomponent/:dataid"
+            element={<ShowComponent />}
           ></Route>
           <Route path="/ourstory" element={<Ourstory />}></Route>
           <Route path="/cart" element={<Cart />}></Route>
           <Route path="/wishlist" element={<Wishliste />}></Route>
           <Route path="/orderss" element={<Orderss />}></Route>
-
-          
         </Routes>
-
-
-     
       </contexts.Provider>
     </>
   );

@@ -24,18 +24,16 @@ function Navbar({ setAdmin }) {
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
   const [searchval, setsearchval] = useState("");
-  const { search, setsearh, user, cartnew, datas, wlitem,openDrawerRight } =
+  const { search, setsearh, user, cartnew, datas, wlitem, openDrawerRight } =
     useContext(contexts);
   const [menu, setmenu] = useState(false);
   const [openAdmin, setOPenAdmin] = useState(false);
   const [userss, setusers] = useState([]);
   const users = localStorage.getItem("id");
-  const admin= localStorage.getItem("admin");
-  const [qq,setQq]=useState("")
-  const [ser,setSer]=useState([])
+  const admin = localStorage.getItem("admin");
+  const [qq, setQq] = useState("");
+  const [ser, setSer] = useState([]);
   // const[cartitem,setcartitem]=useState([])
-
-
 
   const [openRight, setOpenRight] = React.useState(false);
 
@@ -44,15 +42,13 @@ function Navbar({ setAdmin }) {
     navigate("/admin/dashboard");
   }
 
-   const filterrrr =(e)=>{
-    const value = e.target.value.toLowerCase()
-   
-    setSer(sdata.filter((f)=>f.title.toLowerCase().includes(value)))
-    console.log("kh",ser);
-    setQq("ddd")
-    
-   }
+  const filterrrr = (e) => {
+    const value = e.target.value.toLowerCase();
 
+    setSer(sdata.filter((f) => f.title.toLowerCase().includes(value)));
+    console.log("kh", ser);
+    setQq("ddd");
+  };
 
   // useEffect(()=>{
   //   const fetchcart=async()=>{
@@ -71,31 +67,29 @@ function Navbar({ setAdmin }) {
     }
 
     const fdatass = async () => {
-      const response = await axios.get("https://jsoneserver.onrender.com/datass");
+      const response = await axios.get("http://localhost:5000/api/products");
       try {
-        setsdata(response.data);
+        setsdata(response.data.products);
       } catch (error) {
         toast.warning("not fetched");
       }
     };
     fdatass();
-  }, [ser,qq]);
+  }, [ser, qq]);
 
   console.log(sdata);
 
   useEffect(() => {
     const Auserss = async () => {
-      const response = await axios.get(`https://jsoneserver.onrender.com/user/${users}`);
+      const response = await axios.get(
+        ` http://localhost:5000/api/user/${users}`
+      );
       setusers([response.data]);
     };
     Auserss();
-  
   }, []);
 
-  
-
- 
-  
+  console.log(userss);
 
   // const handleSearch = (e) => {
   //   let inputWord = sdata.filter((x) =>
@@ -103,7 +97,7 @@ function Navbar({ setAdmin }) {
   //   );
   //   setsearh(inputWord);
   //   console.log(inputWord);
-    
+
   //   if (inputWord.length >= 0) {
   //     toast.success("finded");
   //     navigate("/all");
@@ -161,21 +155,20 @@ function Navbar({ setAdmin }) {
                 LOOKBOOK
               </Link>
             </div>
-            <div className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   "  
-            onClick={()=>{
-                    if(users){
-                      navigate("/wishlist")
-                    }else{
-                      toast.warning("plss login")
-                    }
-                  }}>
-              
-              <Link >
-              
+            <div
+              className="text-l  ml-5 text-gray-700 font-medium hover:border-b-2 border-black  md:block hidden   "
+              onClick={() => {
+                if (users) {
+                  navigate("/wishlist");
+                } else {
+                  toast.warning("plss login");
+                }
+              }}
+            >
+              <Link>
                 <i
                   class="fa-solid fa-heart-circle-check fa-xl"
                   style={{ color: "#791a3e" }}
-                 
                 ></i>
               </Link>
             </div>
@@ -202,13 +195,11 @@ function Navbar({ setAdmin }) {
               class="fa-brands fa-opencart fa-xl cursor-pointer"
               style={{ color: "#791a3e" }}
               onClick={() => {
-                if(users){
+                if (users) {
                   navigate("/orderss");
-
-                }else{
-                  toast.warning("plss login")
+                } else {
+                  toast.warning("plss login");
                 }
-             
               }}
             ></i>
           </div>
@@ -235,13 +226,11 @@ function Navbar({ setAdmin }) {
             <div
               className="  ml-5 mr-2 font-medium hover:border-b-2 border-black md:block hidden   "
               onClick={() => {
-                if(users){
+                if (users) {
                   navigate("/cart");
-
-                }else{
-                  toast.warning("plss login")
+                } else {
+                  toast.warning("plss login");
                 }
-                
               }}
             >
               {/* <Badge content={cartitem.length}>
@@ -262,7 +251,7 @@ function Navbar({ setAdmin }) {
                 />
               </MenuHandler>
 
-              <MenuList >
+              <MenuList>
                 {users && (
                   <Menu placement="left-bottom">
                     <MenuHandler>
@@ -296,7 +285,7 @@ function Navbar({ setAdmin }) {
 
                             <MenuItem> CART:{item.cart.length}</MenuItem>
 
-                            <MenuItem> ORDERS:{item.detorder.length}</MenuItem>
+                            {/* <MenuItem> ORDERS:{item.detorder.length}</MenuItem> */}
 
                             <MenuItem>
                               {" "}
@@ -307,16 +296,18 @@ function Navbar({ setAdmin }) {
                       })}
                     </MenuList>
                   </Menu>
-                ) }
+                )}
                 {openAdmin && (
-                  <MenuItem className="flex items-center gap-2" onClick={handleAdmin}>
+                  <MenuItem
+                    className="flex items-center gap-2"
+                    onClick={handleAdmin}
+                  >
                     <svg
                       width="16"
                       height="16"
                       viewBox="0 0 16 16"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
-                      
                     >
                       <path
                         fill-rule="evenodd"
@@ -328,13 +319,11 @@ function Navbar({ setAdmin }) {
                     <Typography variant="small" className="font-medium">
                       Go To Admin
                     </Typography>
-                    
                   </MenuItem>
                 )}
                 <hr className="my-2 border-blue-gray-50" />
 
                 <MenuItem className="flex items-center gap-2 ">
-                  
                   {users ? (
                     <div className="mt-2 text-black   ">
                       <svg
@@ -363,7 +352,7 @@ function Navbar({ setAdmin }) {
                       className="mt-2 text-black  "
                       onClick={() => {
                         navigate("/login");
-                        localStorage.clear()
+                        localStorage.clear();
                       }}
                     >
                       <i
@@ -385,8 +374,10 @@ function Navbar({ setAdmin }) {
               </MenuList>
             </Menu>
             <div className="sm:hidden ">
-            <i class="fa-solid fa-bars fa-2xl" 
-            onClick={()=>setOpenRight(true)}></i>
+              <i
+                class="fa-solid fa-bars fa-2xl"
+                onClick={() => setOpenRight(true)}
+              ></i>
               {/* <i
                 class="fa-regular fa-bars fa-2xl  "
               
@@ -435,25 +426,30 @@ function Navbar({ setAdmin }) {
           </div>
         </div>
       </div>
-      {qq && <div className="max-h-[300px] z-[1000] absolute w-[100%] top-28 bg-white right-0  shadow overflow-auto">
-        {ser.map((e)=>{
-         
-          return(
-            <Link to={`/details/${e.id}`} 
-               onClick={()=>setQq("")}
-            key={e.id} className="flex w-[100%] bg-white text-black    ml-auto justify-between  rounded-md shadow-sm   items-center p-2 ">
-              <div>{e.title}</div>
-              <img src={e.image} alt=""  className="h-[100%] w-[50px] object-cover p-2 shadow-sm"/>
-            </Link>
-          )
-        })}
-        </div>}
-      {openRight &&
-      <Resposivenav setOpenRight={setOpenRight} openRight={openRight}/>
-      
-      }
-
-      
+      {qq && (
+        <div className="max-h-[300px] z-[1000] absolute w-[100%] top-28 bg-white right-0  shadow overflow-auto">
+          {ser.map((e) => {
+            return (
+              <Link
+                to={`/details/${e._id}`}
+                onClick={() => setQq("")}
+                key={e._id}
+                className="flex w-[100%] bg-white text-black    ml-auto justify-between  rounded-md shadow-sm   items-center p-2 "
+              >
+                <div>{e.title}</div>
+                <img
+                  src={e.image}
+                  alt=""
+                  className="h-[100%] w-[50px] object-cover p-2 shadow-sm"
+                />
+              </Link>
+            );
+          })}
+        </div>
+      )}
+      {openRight && (
+        <Resposivenav setOpenRight={setOpenRight} openRight={openRight} />
+      )}
     </div>
   );
 }

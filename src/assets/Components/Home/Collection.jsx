@@ -83,7 +83,7 @@ function Collection() {
                       <CardFooter className="pt-0 flex justify-between">
                         <Button
                           onClick={() => {
-                            navigate(`/showcomponent/${data.id}`);
+                            navigate(`/showcomponent/${data._id}`);
                           }}
                         >
                           {" "}

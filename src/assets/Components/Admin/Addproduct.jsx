@@ -10,16 +10,16 @@ import {
   DialogFooter,
 } from "@material-tailwind/react";
 import { contexts } from "../../../App";
-import { adminConfig } from "../../../hederconfig/config";
 import { object, string } from "yup";
 
 function Addproduct() {
   const { size, setSize, handleOpen } = useContext(contexts);
-  const [imagePreview, setImagePreview] = useState(null); // Corrected variable name
-  const { handleChange, handleSubmit, values, setFieldValue } = useFormik({
+  const [imagePreview, setImagePreview] = useState(null);
+
+  const formik = useFormik({
     initialValues: {
       description: "",
-      image: null, // Change this to null to correctly handle file input
+      image: "", // Set as null for proper file handling
       brand: "",
       title: "",
       catogery: "",
@@ -27,47 +27,43 @@ function Addproduct() {
       quantity: 1,
     },
     onSubmit: async (values) => {
-      const formDatas = new FormData();
+      const formData = new FormData();
 
-      // Append all form values to FormData
-      formDatas.append("description", values.description);
-      console.log(values.img);
-      
-      formDatas.append("image", values.img); // This should still be a File object
-      formDatas.append("brand", values.brand);
-      formDatas.append("title", values.title);
-      formDatas.append("catogery", values.catogery);
-      formDatas.append("price", values.price);
-      formDatas.append("quantity", values.quantity);
-        console.log(values.image);
-        
+      formData.append("description", values.description);
+      formData.append("image", values.image); // Append the file itself
+      formData.append("brand", values.brand);
+      formData.append("title", values.title);
+      formData.append("catogery", values.catogery);
+      formData.append("price", values.price);
+      formData.append("quantity", values.quantity);
+
       try {
-        console.log(formDatas);
+        const atokens = localStorage.getItem("atoken");
         const res = await axios.post(
           "http://localhost:5000/api/admin/products",
-          {...formDatas,image:values.img},
-          adminConfig,
+          formData,
           {
             headers: {
               "Content-Type": "multipart/form-data",
+              Authorization: atokens,
             },
           }
         );
-        console.log(res, "rrrr");
-
-        toast.success("product added successfully");
+        console.log(res, "Response from server");
+        toast.success("Product added successfully");
       } catch (error) {
-        console.log(error);
+        console.log("Error uploading product:", error);
       }
     },
   });
 
   const handleImageChange = (event) => {
-    const file = event.target.files[0]; // Get the file
-    setFieldValue("img",file);
-    console.log(typeof file);
-    
-     // Set the file in Formik's state
+    const file = event.target.files[0];
+    if (file) {
+      formik.setFieldValue("image", file); // Set the file in Formik's state
+      setImagePreview(URL.createObjectURL(file)); // Set preview URL
+      console.log("Image Name:", file.name); // Log file name
+    }
   };
 
   return (
@@ -84,7 +80,7 @@ function Addproduct() {
         <DialogBody>
           <div className="flex">
             <div className="h-[35vh] ml-20 mt-10">
-              <form className="w-[40vh]" onSubmit={handleSubmit}>
+              <form className="w-[40vh]" onSubmit={formik.handleSubmit}>
                 <div className="w-100 ">
                   <Input
                     type="file"
@@ -96,8 +92,8 @@ function Addproduct() {
                 <div className="mt-7">
                   <Input
                     label="Description"
-                    value={values.description}
-                    onChange={handleChange}
+                    value={formik.values.description}
+                    onChange={formik.handleChange}
                     name="description"
                     required
                   />
@@ -106,8 +102,8 @@ function Addproduct() {
                   <Input
                     label="Title"
                     className="w-[60vh]"
-                    value={values.title}
-                    onChange={handleChange}
+                    value={formik.values.title}
+                    onChange={formik.handleChange}
                     name="title"
                     required
                   />
@@ -115,8 +111,8 @@ function Addproduct() {
                 <div className="mt-7">
                   <Input
                     label="Brand"
-                    value={values.brand}
-                    onChange={handleChange}
+                    value={formik.values.brand}
+                    onChange={formik.handleChange}
                     name="brand"
                     required
                   />
@@ -125,8 +121,8 @@ function Addproduct() {
                   <Input
                     label="Category"
                     className="w-[60vh]"
-                    value={values.catogery}
-                    onChange={handleChange}
+                    value={formik.values.catogery}
+                    onChange={formik.handleChange}
                     name="catogery"
                   />
                 </div>
@@ -134,8 +130,8 @@ function Addproduct() {
                   <Input
                     label="Quantity"
                     className="w-[60vh]"
-                    value={values.quantity}
-                    onChange={handleChange}
+                    value={formik.values.quantity}
+                    onChange={formik.handleChange}
                     name="quantity"
                   />
                 </div>
@@ -143,18 +139,14 @@ function Addproduct() {
                   <Input
                     label="Price"
                     className="w-[60vh]"
-                    value={values.price}
-                    onChange={handleChange}
+                    value={formik.values.price}
+                    onChange={formik.handleChange}
                     name="price"
                     required
                   />
                 </div>
                 <div className="text-end mt-5">
-                  <Button
-                    variant="gradient"
-                    color="green"
-                    type="submit"
-                  >
+                  <Button variant="gradient" color="green" type="submit">
                     Confirm
                   </Button>
                 </div>
@@ -174,28 +166,22 @@ function Addproduct() {
               </div>
               <div className="w-[65vh] ml-10 mt-5 h-[40vh] ">
                 <h1 className="ml-10 pt-5 ">
-                  <span className="text-red-900 font-medium">ID:</span>{" "}
-                  {values.id}
+                  <span className="text-red-900 font-medium">ID:</span> {formik.values.id}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">TITLE:</span>{" "}
-                  {values.title}
+                  <span className="text-red-900 font-medium">TITLE:</span> {formik.values.title}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">BRAND:</span>{" "}
-                  {values.brand}
+                  <span className="text-red-900 font-medium">BRAND:</span> {formik.values.brand}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">CATEGORY:</span>{" "}
-                  {values.catogery}
+                  <span className="text-red-900 font-medium">CATEGORY:</span> {formik.values.catogery}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">QUANTITY:</span>{" "}
-                  {values.quantity}
+                  <span className="text-red-900 font-medium">QUANTITY:</span> {formik.values.quantity}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">PRICE:</span>{" "}
-                  {values.price}
+                  <span className="text-red-900 font-medium">PRICE:</span> {formik.values.price}
                 </h1>
               </div>
             </div>

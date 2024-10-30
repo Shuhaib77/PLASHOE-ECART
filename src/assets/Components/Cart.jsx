@@ -15,157 +15,83 @@ import {
 import { toast } from "sonner";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import filled from "@material-tailwind/react/theme/components/timeline/timelineIconColors/filled";
-import { data } from "autoprefixer";
 
-// const reducer = (state, action) => {
-//   switch (action.type) {
-//     case "increment":
-//       return state.map((item) =>
-//         item.id == action.id ? { ...item, quantity: item.quantity + 1 } : item
-//       );
-//     case "decrement":
-//       return state.map((item) =>
-//         item.id == action.id && item.quantity > 1
-//           ? { ...item, quantity: item.quantity - 1 }
-//           : item
-//       );
-//     case "deletecart":
-//       return state.filter((item, j) => item.id != action.id);
-
-//     case "clearcart":
-//       return [];
-
-//     default:
-//       return state;
-//   }
-// };
 function Cart() {
   const { setcartitems } = useContext(contexts);
   const [cartitem, setcartitem] = useState([]);
-  const [dcart, setdeletedcart] = useState([]);
+  const [price, setprice] = useState(false);
   const [cartnew, setcartnew] = useState([]);
   const [plaorder, setplaorder] = useState([]);
   const navigate = useNavigate();
   const idss = localStorage.getItem("id");
+  const utokens = localStorage.getItem("utoken");
 
-  //fetchorders
-  const fetchorders = async () => {
-    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
-    setcartnew(response.data.orders);
-    // console.log(response.data);
-  };
-  useEffect(() => {
-    fetchorders();
-  }, []);
-  // console.log(cartnew);
-
-  //fetchcart
+  //cart fetch
   const fetchcart = async () => {
-    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
-    setcartitem(response.data.cart);
-    // console.log(response.data);
+    const res = await axios.get(`http://localhost:5000/api/cart/${idss}`, {
+      headers: {
+        Authorization: utokens,
+      },
+    });
+
+    setcartitem(res.data.data);
   };
   useEffect(() => {
     fetchcart();
   }, []);
-  // console.log(cartitem);
 
   //deletecart
-
   const cartdelete = async (id) => {
-    const upcart = cartitem.filter((item) => item.id != id);
-    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, { cart: upcart });
-    // setcartitem(upcart)
-
+    await axios.delete(`http://localhost:5000/api/cart/delete/${id}/${idss}`);
     fetchcart();
   };
 
   //cartincrement
-
   const increment = async (id) => {
-    const incrmcart = cartitem.map((item) =>
-      item.id === id ? { ...item, quantity: item.quantity + 1 } : item
-    );
-    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
-      cart: incrmcart,
-    });
-
+    await axios.post(`http://localhost:5000/api/cart/incr/${id}/${idss}`);
     fetchcart();
   };
+
   //cartdecrement
   const decrement = async (id) => {
-    const decrement = cartitem.map((item) =>
-      item.id === id && item.quantity > 1
-        ? { ...item, quantity: item.quantity - 1 }
-        : item
-    );
-    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
+    await axios.post(`http://localhost:5000/api/cart/decr/${id}/${idss}`, {
       cart: decrement,
     });
-
     fetchcart();
   };
 
   //addto all price details
-  const alladd = async (data) => {
-    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
-    const topay = response.data.orders;
-    const upd = data;
-    const res = await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
-      orders: upd,
+  const alladd = async () => {
+    const res = await axios.get(`http://localhost:5000/api/cart/${idss}`, {
+      headers: {
+        Authorization: utokens,
+      },
     });
-    setcartnew(res.data.orders);
-    fetchorders();
+    setcartnew(res.data.data);
   };
-  //only one aad to price details
-  const fnsummer = async (data) => {
-    const response = await axios.get(`https://jsoneserver.onrender.com/user/${idss}`);
+  useEffect(() => {
+    alladd();
+  }, []);
+
+  //grand total
+  const grandtotal = cartnew.reduce(
+    (total, item) => total + item.quantity * item.productid.price,
+    0
+  );
+
+  //payment
+  const fn = async () => {
     try {
-      const orders = response.data.orders;
-      const userorder = cartitem.find((item) => item.id == data.id);
-      if (!orders.find((order) => order?.id == userorder.id)) {
-        const updatedoredrs = [...orders, userorder];
-        const res = await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
-          orders: updatedoredrs,
-        });
-        setcartnew(res.data.orders);
-        fetchorders();
-      } else {
-        toast.warning("product alredy in orders");
+      const response = await axios.post(
+        `http://localhost:5000/api/pay/${idss}`
+      );
+      toast.success("payment successfull");
+      const approvalUrl = response.data.approval_url;
+      if (approvalUrl) {
+        window.location.href = approvalUrl;
       }
     } catch (error) {
       console.log(error);
-    }
-  };
-  //dleteinpricedetails
-  const pricedelete = async (i) => {
-    const upproductprice = cartnew.filter((item, j) => j != i);
-    await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, {
-      orders: upproductprice,
-    });
-    fetchorders();
-  };
-  //tofind grand total
-  const grandtotal = cartnew.reduce(
-    (total, item) => total + item.quantity * item.price,
-    0
-  );
-  //delete cart when go to payment
-  const fn = async () => {
-    try {
-      await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, { cart: [] });
-      toast.success("cart cleard");
-    } catch (error) {
-      toast.warning("cart not cleard!!!!");
-    }
-    //for pricedetail clearing
-    try {
-      await axios.patch(`https://jsoneserver.onrender.com/user/${idss}`, { orders: [] });
-      toast.success("pricecleard");
-    } catch (error) {
-      console.log(error);
-      toast.warning(" not pricecleard");
     }
   };
 
@@ -173,9 +99,8 @@ function Cart() {
     return (
       <div>
         <Navbar />
-
         <div className="text-center mt-5">not data</div>
-        <Footer/>
+        <Footer />
       </div>
     );
   }
@@ -184,93 +109,77 @@ function Cart() {
     <>
       <div>
         <Navbar />
-        <div className=" md:flex justify-around ">
+        <div className=" flex justify-center ">
           <h1 className="text-center"></h1>
           <div>
-            <h1 className="ml-10 mr-9 mt-8 text-3xl text-center text-blue-700 font-semibold border-b-2 border-black">
+            <h1 className="mt-8 text-3xl text-center text-blue-700 font-semibold border-b-2 border-black">
               CART
             </h1>
 
-            <div className="flex  flex-wrap justify-center gap-x-10  items-center  w-full ">
+            <div className="flex  flex-wrap  gap-x-5 mt-5 gap-y-5  justify-center  items-center  w-full ">
               {cartitem.map((data, i) => {
                 return (
-                  <div className="  ">
-                    <Card className="h-full w-[45vh] mt-20   ">
-                      <CardHeader className="relative 56 w-100vh">
-                      <img src={data?.image} alt="card-image"  />
-
-                      </CardHeader>
-                     
-                      
-                    
-                      <CardBody>
-                        <Typography
-                          variant="h5"
-                          color="blue-gray"
-                          className=""
+                  <div className="">
+                    <Card className="w-[100vh] h-full ">
+                      <CardBody className="flex">
+                        <CardHeader
+                          shadow={false}
+                          floated={false}
+                          className="m-0 w-[400px] shrink-0 rounded-r-none object-cover"
                         >
-                          {data?.brand}
-                        </Typography>
-                        <Typography>{data?.title}</Typography>
-                        <Typography>{data?.price}</Typography>
-                        <Typography>{data?.catogery}</Typography>
-                        <Typography className="text-red-900 font-medium">
-                          Total:{data.price * data.quantity}
-                        </Typography>
-                      </CardBody>
-                      <CardFooter className="pt-0 flex justify-between ">
-                        <div>
-                          <Button
-                          className="w-[100%]"
-                            onClick={() => {
-                              navigate(`/showcomponent/${data?.id}`);
-                            }}
+                          <img src={data.productid.image} alt="card-image" />
+                        </CardHeader>
+                        <div className="text-pretty">
+                          <Typography
+                            variant="h6"
+                            color="gray"
+                            className="mb-4 uppercase"
                           >
-                            {" "}
-                            Read More{" "}
-                          </Button>
-                        </div>
-
-                        <div className="flex ml-2  ">
-                          <Button
-                            className="text-black bg-white"
-                            onClick={
-                              () => decrement(data.id)
-                         
-                            }
+                            {data.productid.title}
+                          </Typography>
+                          <Typography
+                            variant="h4"
+                            color="blue-gray"
+                            className="mb-2"
                           >
-                            -
-                          </Button>
-                          <h1 className="mt-3 ml-3 mr-3">{data?.quantity} </h1>
-                          <Button
-                            className="text-black bg-white"
-                            onClick={
-                              () => increment(data.id)
-                            
-                            }
-                          >
-                            +
-                          </Button>
-                          <div className="mt-3  ml-3 cursor-pointer text-black hover:text-2xl hover:text-red-900">
-                            <i
-                              class="fa-solid fa-trash fa-lg"
-                              onClick={() => {
-                                cartdelete(data.id);
-                              }}
-                            ></i>
+                            {data.productid.description}
+                          </Typography>
+                          <Typography color="gray" className=" font-normal">
+                            {data.productid.price}
+                          </Typography>
+                          <Typography>{data?.productid.catogery}</Typography>
+                          <Typography className="text-red-900 font-medium">
+                            total:{data.productid.price * data.quantity}
+                          </Typography>
+                          <div className="flex ml-2 justify-between  ">
+                            <div className="mt-3  ml-3 cursor-pointer text-black hover:text-2xl hover:text-red-900">
+                              <i
+                                class="fa-solid fa-trash fa-lg"
+                                onClick={() => {
+                                  cartdelete(data?.productid._id);
+                                }}
+                              ></i>
+                            </div>
+                            <div className="flex ">
+                              <Button
+                                className="text-black bg-white"
+                                onClick={() => decrement(data?.productid._id)}
+                              >
+                                -
+                              </Button>
+                              <h1 className="mt-3 ml-3 mr-3">
+                                {data?.quantity}{" "}
+                              </h1>
+                              <Button
+                                className="text-black bg-white"
+                                onClick={() => increment(data?.productid._id)}
+                              >
+                                +
+                              </Button>
+                            </div>
                           </div>
                         </div>
-                      </CardFooter>
-                      <div className="text-end ">
-                        <Button
-                          className="bg-blue-800 w-full"
-                          onClick={() => {
-                            fnsummer(data);
-                          }}
-                        >
-                          BUY
-                        </Button>
-                      </div>
+                      </CardBody>
                     </Card>
                   </div>
                 );
@@ -279,7 +188,8 @@ function Cart() {
             <div className="text-center  mt-5">
               <Button
                 onClick={() => {
-                  alladd(cartitem);
+                  alladd();
+                  setprice(true);
                 }}
                 className="bg-blue-900"
               >
@@ -287,62 +197,57 @@ function Cart() {
               </Button>
             </div>
           </div>
-          <div className="w-full ">
-            <h1 className="text-center md:ml-10 md:mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2  border-black ">
-              PRICE DETAILS
-            </h1>
-            <div className="flex  flex-col justify-center items-center  w-full">
-              {cartnew.map((item, index) => {
-                const total = 0;
-                return (
-                  <div
-                    key={index}
-                    className=" w-[62vh]  h-[20vh] border-2 flex justify-center items-center mt-16  "
-                  >
-                    <div className="w-[100%] h-[15vh]">
-                      <img src={item.image} alt="" />
-                    </div>
-                    <div className="w-[50vh] h-[15vh] ml-2 ">
-                      <h1>{item.title}</h1>
-                      <h1>{item.quantity}</h1>
-                      <h1 className="text-red-800">Price:{item.price}</h1>
-                      <h1 className="text-red-800">
-                        {" "}
-                        <h1 className="text-red-900">
-                          Total: {item.price * item.quantity}
+          {price === true && (
+            <div className="w-full ">
+              <h1 className="text-center md:ml-10 md:mr-9 mt-8 text-3xl text-blue-700  font-semibold border-b-2  border-black ">
+                PRICE DETAILS
+              </h1>
+              <div className="flex  flex-col justify-center items-center  w-full">
+                {cartnew.map((item, index) => {
+                  const total = 0;
+                  return (
+                    <div
+                      key={index}
+                      className=" w-[62vh]  h-[20vh] border-2 flex justify-center items-center mt-16  "
+                    >
+                      <div className="w-[100%] h-[15vh]">
+                        <img src={item.productid.image} alt="" />
+                      </div>
+                      <div className="w-[50vh] h-[15vh] ml-2 ">
+                        <h1>{item.productid.title}</h1>
+                        <h1>{item.quantity}</h1>
+                        <h1 className="text-red-800">Price:{item.price}</h1>
+                        <h1 className="text-red-800">
+                          {" "}
+                          <h1 className="text-red-900">
+                            Total: {item.productid.price * item.quantity}
+                          </h1>
                         </h1>
-                      </h1>
-                      <div>
-                        <i
-                          class="fa-solid fa-xmark hover:text-red-900 cursor-pointer"
-                          onClick={() => {
-                            pricedelete(index);
-                          }}
-                        ></i>
                       </div>
                     </div>
-                  </div>
-                );
-              })}
-            </div>
-            <div className="text-center mt-10">
-              <h1 className="text-blue-700">
-                Grand total: <span className="text-red-900">{grandtotal}</span>{" "}
-              </h1>
+                  );
+                })}
+              </div>
+              <div className="text-center mt-10">
+                <h1 className="text-blue-700">
+                  Grand total:{" "}
+                  <span className="text-red-900">{grandtotal}</span>{" "}
+                </h1>
 
-              <Button
-                className="bg-green-800 mt-5"
-                onClick={() => {
-                  fn(),
-                    navigate("/payment", {
-                      state: { grandtotal, cartnew },
-                    });
-                }}
-              >
-                PAY
-              </Button>
+                <Button
+                  className="bg-green-800 mt-5"
+                  onClick={
+                    fn
+                    // navigate("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7PY957092E321040X", {
+                    //   state: { grandtotal, cartnew },
+                    // });
+                  }
+                >
+                  PAY
+                </Button>
+              </div>
             </div>
-          </div>
+          )}
         </div>
         <Footer />
       </div>

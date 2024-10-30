@@ -40,7 +40,7 @@ function Login() {
           navigtate("/admin/dashboard");
           toast.success("admin Login successful");
         } else {
-          localStorage.setItem("id", user.id);
+          localStorage.setItem("id", response.data.user._id);
           localStorage.setItem("utoken",response.data.token)
           navigtate("/");
           // window.location.reload();

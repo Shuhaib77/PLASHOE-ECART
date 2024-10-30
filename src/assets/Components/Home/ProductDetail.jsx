@@ -13,7 +13,7 @@ const ProductDetail = () => {
   const ids=localStorage.getItem("id")
 
   useEffect(() => {
-    const res = datas.filter((e) => e.id === id);
+    const res = datas.filter((e) => e._id === id);
     setdedata(...res);
     //   console.log("dd",dedata.id)
   }, [id, datas]);

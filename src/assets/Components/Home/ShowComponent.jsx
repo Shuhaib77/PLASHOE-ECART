@@ -20,7 +20,7 @@ function ShowComponent() {
  
   useEffect(() => {
     const res = datas.filter(
-      (specificdata) => specificdata.id === datatodescribe.dataid
+      (specificdata) => specificdata._id === datatodescribe.dataid
     );
     setdedata(res);
   }, []);

@@ -93,7 +93,7 @@ function Homecard() {
                   <CardFooter className="pt-0 flex justify-between">
                     <Button
                       onClick={() => {
-                        navigate(`/showcomponent/${data.id}`);
+                        navigate(`/showcomponent/${data._id}`);
                       }}
                     >
                       {" "}
@@ -146,7 +146,7 @@ function Homecard() {
           </div>
         </div>
         <div className="flex flex-wrap justify-center gap-10">
-          {datas.slice(6, 12).map((data) => {
+          {datas.slice(0, 6).map((data) => {
             return (
               <>
                 <Card className="h-[55vh] w-[50vh] mt-20">
@@ -187,7 +187,7 @@ function Homecard() {
                   <CardFooter className="pt-0 flex justify-between">
                     <Button
                       onClick={() => {
-                        navigate(`/showcomponent/${data.id}`);
+                        navigate(`/showcomponent/${data._id}`);
                       }}
                     >
                       Read More

@@ -23,10 +23,10 @@ function Navbar({ setAdmin }) {
   const navigate = useNavigate();
   // const [filterdata,setfilterdata]=useState([])
   const [sdata, setsdata] = useState([]);
-  const [searchval, setsearchval] = useState("");
-  const { search, setsearh, user, cartnew, datas, wlitem, openDrawerRight } =
-    useContext(contexts);
-  const [menu, setmenu] = useState(false);
+  // const [searchval, setsearchval] = useState("");
+  // const { search, setsearh, user, cartnew, datas, wlitem, openDrawerRight } =
+  //   useContext(contexts);
+  // const [menu, setmenu] = useState(false);
   const [openAdmin, setOPenAdmin] = useState(false);
   const [userss, setusers] = useState([]);
   const users = localStorage.getItem("id");

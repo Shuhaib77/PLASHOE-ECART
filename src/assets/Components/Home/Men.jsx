@@ -17,12 +17,8 @@ import { toast } from "sonner";
 
 function Men() {
   const {
-    cartitem,
-    setcartitem,
     addtocarts,
     datas,
-    setdata,
-    fetchData,
     wishlists,
     wlitem,
   } = useContext(contexts);
@@ -69,23 +65,22 @@ function Men() {
                     <div className=" ">
                       <Card className="h-full w-[50vh] mt-20  gap-x-10    ">
                         <CardHeader color="" className="relative h-56">
-                          <i
-                            class="fa-solid fa-heart ml-4 "
-                            style={{
-                              color: wlitem.find((item) => item.id === data.id)
-                                ? "red"
-                                : "",
-                            }}
-                            onClick={() => {
-                              if(ids){
-                                wishlists(data);
-              
-                              }else{
-                                toast.warning("Plss login")
-                              }
-                             
-                            }}
-                          ></i>
+                        <i
+                        class="fa-solid fa-heart ml-4 "
+                        style={{
+                          color: wlitem.find((item) => item.productid._id === data._id)
+                            ? "red"
+                            : "blue",
+                        }}
+                        onClick={() => {
+                        
+                         
+                           wishlists(data)
+                         
+                          
+                         
+                        }}
+                      ></i>
                           <img src={data.image} alt="card-image" />
                         </CardHeader>
                         <CardBody>

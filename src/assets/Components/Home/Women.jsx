@@ -16,16 +16,9 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 function Women() {
-  const { addtocarts,datas, setdata,fetchData,wishlists,wlitem } = useContext(contexts);
-  // const [womendata, setwomendata] = useState([]);
+  const { addtocarts,datas,wishlists,wlitem } = useContext(contexts);
   const navigate = useNavigate();
-
-
   const ids=localStorage.getItem("id")
-
-  // fetchData()
-
-
  return (
   
     <div>
@@ -61,17 +54,14 @@ function Women() {
                       <i
                         class="fa-solid fa-heart ml-4 "
                         style={{
-                          color: wlitem.find((item) => item.id === data.id)
+                          color: wlitem.find((item) => item.productid._id === data._id)
                             ? "red"
-                            : "",
+                            : "blue",
                         }}
                         onClick={() => {
-                          if(ids){
-                            wishlists(data);
-          
-                          }else{
-                            toast.warning("Plss login")
-                          }
+                        
+                        
+                           wishlists(data)
                          
                         }}
                       ></i>

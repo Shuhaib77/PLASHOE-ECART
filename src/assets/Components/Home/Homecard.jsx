@@ -17,39 +17,19 @@ import Cart from "../Cart";
 import card from "@material-tailwind/react/theme/components/card";
 import { toast } from "sonner";
 import { FaHeartBroken } from "react-icons/fa";
+import { data } from "autoprefixer";
 function Homecard() {
   const navigate = useNavigate();
-  // const [datas, setdata] = useState([]);
   const {
-    setshoeid,
-    shoeid,
-    cartitem,
-    setcartitem,
     addtocarts,
     datas,
-    setdata,
-    fetchData,
     wishlists,
     wlitem,
-    deletewl,
-    wl,
-    setwl,
+  
   } = useContext(contexts);
-  // const [wishlist, setWishlist] = useState("blue");
+  const ids = localStorage.getItem("id");
 
-  // fetchData();
-
-  //     const b=wlitem.find((item)=>item.id===id)
-  //     if(b){
-  //       setWishlist("red")
-  //     }
-  //     else{
-  //       setWishlist("blue")
-  //     }
-  // }
-  
-  const ids=localStorage.getItem("id")
-  
+  console.log(wlitem, "jefj");
 
   return (
     <div>
@@ -60,25 +40,19 @@ function Homecard() {
               <div className="  ">
                 <Card className="h-[58vh] w-[50vh] mt-20 gap-1 ">
                   <CardHeader color="white" className="relative h-56">
-                  <i
-                        class="fa-solid fa-heart ml-4 "
-                        style={{
-                          color: wlitem.find((item) => item.id === data.id)
-                            ? "red"
-                            : "",
-                        }}
-                        onClick={() => {
-                          if(ids){
-                            wishlists(data);
-          
-                          }else{
-                            toast.warning("Plss login")
-                          }
-                         
-                          
-                         
-                        }}
-                      ></i>
+                    <i
+                      class="fa-solid fa-heart ml-4 "
+                      style={{
+                        color: wlitem.some(
+                          (item) => item.productid?._id === data?._id
+                        )
+                          ? "red"
+                          : "blue",
+                      }}
+                      onClick={() => {
+                       wishlists(data)
+                    }}
+                    ></i>
                     <img src={data.image} alt="card-image" />
                   </CardHeader>
                   <CardBody>
@@ -101,11 +75,10 @@ function Homecard() {
                     </Button>
                     <Button
                       onClick={() => {
-                        if(ids){
+                        if (ids) {
                           addtocarts(data);
-        
-                        }else{
-                          toast.warning("Plss login")
+                        } else {
+                          toast.warning("Plss login");
                         }
                       }}
                     >
@@ -155,19 +128,14 @@ function Homecard() {
                       <i
                         class="fa-solid fa-heart ml-4 "
                         style={{
-                          color: wlitem.find((item) => item.id === data.id)
+                          color: wlitem.find(
+                            (item) => item.productid._id === data._id
+                          )
                             ? "red"
-                            : "",
+                            : "blue",
                         }}
                         onClick={() => {
-                          
-                          if(ids){
-                            wishlists(data);
-          
-                          }else{
-                            toast.warning("Plss login")
-                          }
-                         
+                            wishlists(data)
                         }}
                       ></i>
                     </div>
@@ -195,14 +163,12 @@ function Homecard() {
                     <Button
                       onClick={() => {
                         // console.log(cartitem);
-                        if(ids){
+                        if (ids) {
                           addtocarts(dedata);
-        
-                        }else{
-                          toast.warning("Plss login")
+                        } else {
+                          toast.warning("Plss login");
                         }
-                        
-                        
+
                         addtocarts(data);
                       }}
                     >

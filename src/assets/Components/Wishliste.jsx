@@ -17,10 +17,12 @@ function Wishliste() {
 
     const idu=localStorage.getItem("id")
     // const [wlitem,setwlitem]=useState([])
-    const {wldata,wlitem,addtocarts,wishlists}=useContext(contexts)
+    const {wldata,wlitem,addtocarts,wishlists,datas}=useContext(contexts)
 
     const navigate=useNavigate()
-  wldata()
+   const alldata=datas.map((item)=>item)
+   console.log(alldata,);
+   
 
   if(wlitem.length==0){
   return(
@@ -71,17 +73,19 @@ return (
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
                       <CardHeader color="" className="relative h-56">
                       <i
-                        class="fa-solid fa-heart ml-4 "
-                        style={{
-                          color: wlitem.find((item) => item.id === data.id)
-                            ? "red"
-                            : "blue",
-                        }}
-                        onClick={() => {
-                        wishlists(data);
-                        }}
-                      ></i>
-                        <img src={data.image} alt="card-image" />
+                      class="fa-solid fa-heart ml-4 "
+                      style={{
+                        color: datas.some(
+                          (item) => item?._id === data.productid._id
+                        )
+                          ? "red"
+                          : "blue",
+                      }}
+                      onClick={() => {
+                       wishlists(data.productid)
+                    }}
+                    ></i>
+                        <img src={data.productid.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>
                         <Typography
@@ -91,14 +95,14 @@ return (
                         >
                           {data.brand}
                         </Typography>
-                        <Typography>{data.title}</Typography>
-                        <Typography>{data.catogery}</Typography>
-                        <Typography>{data.price}</Typography>
+                        <Typography>{data.productid.title}</Typography>
+                        <Typography>{data.productid.catogery}</Typography>
+                        <Typography>{data.productid.price}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
                       <Button
                           onClick={() => {
-                            addtocarts(data);
+                            addtocarts(data.productid);
                           }}
                         >
                           Add to cart

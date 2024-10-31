@@ -17,12 +17,10 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
-  const { setcartitems } = useContext(contexts);
+  
   const [cartitem, setcartitem] = useState([]);
   const [price, setprice] = useState(false);
   const [cartnew, setcartnew] = useState([]);
-  const [plaorder, setplaorder] = useState([]);
-  const navigate = useNavigate();
   const idss = localStorage.getItem("id");
   const utokens = localStorage.getItem("utoken");
 

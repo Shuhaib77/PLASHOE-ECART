@@ -13,7 +13,7 @@ import Navbar from "./Navbar";
 import { useNavigate } from "react-router-dom";
 
 const AllProducts = () => {
-  const { search, datas } = useContext(contexts);
+  const { search } = useContext(contexts);
   const navigate = useNavigate();
   console.log(search);
   return (
@@ -23,9 +23,6 @@ const AllProducts = () => {
       </div>
      
      
-     
-      
-
       <div className=" flex flex-wrap mt-10 mb-10 justify-center items-center">
         {search?.map((data) => {
           return (

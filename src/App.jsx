@@ -36,13 +36,14 @@ export const contexts = createContext();
 
 function App() {
   const [datas, setdata] = useState([]);
-  const [search, setsearh] = useState(null);
-  const [user, setuser] = useState([]);
-  const [udatass, setudatass] = useState([]);
-  const [shoeid, setshoeid] = useState([]);
   const [wlitem, setwlitem] = useState([]);
+  const [search, setsearh] = useState(null);
+  // const [user, setuser] = useState([]);
+  // const [udatass, setudatass] = useState([]);
+  // const [shoeid, setshoeid] = useState([]);
+ 
   const [cartitem, setcartitem] = useState([]);
-  // const [cartnew,setcartnew]=useState([])
+  const [cartnew,setcartnew]=useState([])
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
   //adminsssss
@@ -50,15 +51,17 @@ function App() {
   const [prdt, setprdt] = useState([]);
   const [lastasearch, setlastsearch] = useState(null);
   const [admin, setAdmin] = useState(false);
+  const usertoken = localStorage.getItem("utoken");
+  const usersid = localStorage.getItem("id");
 
+  //admin route protecting
   useEffect(() => {
     if (localStorage.getItem("admin")) {
       setAdmin(true);
     }
   }, []);
-  //------------------------
+
   //datas fetchingg
-  const usersid = localStorage.getItem("id");
   const fetchData = async () => {
     try {
       const response = await axios.get("http://localhost:5000/api/products");
@@ -71,29 +74,11 @@ function App() {
     fetchData();
   }, []);
 
-  console.log("kb", datas.message);
-
-  //---------------------------
-
-  // const usersid = localStorage.getItem("id");
-
-  const fn = async () => {
-    const res = await axios.get(
-      `https://jsoneserver.onrender.com/ser/${usersid}`
-    );
-    setcartitem(res.data.cart);
-  };
-  useEffect(() => {
-    fn();
-  }, []);
 
   //addto cartt
   const addtocarts = async (data) => {
     try {
-      const usertoken = localStorage.getItem("utoken");
-
       console.log(usertoken);
-
       const reso = await axios.post(
         ` http://localhost:5000/api/cart/${data._id}/${usersid}`,
         {},
@@ -104,54 +89,48 @@ function App() {
         }
       );
       toast.success("product added tocart");
-      setcartitem(reso.data.cart);
+
     } catch (error) {
       console.log(error);
     }
   };
 
-  //-----------------------
-  // useEffect(()=>{
-  // addtocarts(cartitem);
-  // },[])
-
-  // console.log(cartitem);
 
   //fetchwishlist
   const wldata = async (id) => {
     const response = await axios.get(
-      `https://jsoneserver.onrender.com/user/${usersid}`
+      `http://localhost:5000/api/wishlist/${usersid}`
     );
-    setwlitem(response.data.wishlist);
+    setwlitem(response?.data?.wishlist);
   };
   useEffect(() => {
     wldata();
   }, []);
 
-  //addtowishlist
 
-  const wishlists = async (data) => {
-    const response = await axios.get(
-      `https://jsoneserver.onrender.com/user/${usersid}`
-    );
-    const wlist = response.data.wishlist;
-    const wlitems = wlist.find((item) => item.id === data.id);
-    if (wlitems) {
-      const res = wlitem.filter((item) => item.id != wlitems.id);
-      await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`, {
-        wishlist: res,
-      });
-      wldata();
-      toast.warning("removed from wishlist");
-    } else {
-      const upd = [...wlist, data];
-      await axios.patch(`https://jsoneserver.onrender.com/user/${usersid}`, {
-        wishlist: upd,
-      });
-      toast.success("product add to wishlist");
-      wldata();
+  //addtowishlist || delete wishlist
+  const wishlists = async (id) => {
+    try {
+      const c = wlitem.some((item) => item.productid?._id === id._id);
+      if (!c) {
+        await axios.post(
+          ` http://localhost:5000/api/wishlist/${id._id}/${usersid}`
+        );
+        toast.success("item added in wishlist");
+        wldata();
+      } else {
+        await axios.delete(
+          ` http://localhost:5000/api/wishlist/delete/${id._id}/${usersid}`
+        );
+        wldata();
+        toast.warning("item deleted in wishlist");
+      }
+    } catch (error) {
+      console.log(error);
     }
   };
+
+  
 
   return (
     <>
@@ -160,12 +139,12 @@ function App() {
         value={{
           search,
           setsearh,
-          user,
-          setuser,
-          udatass,
-          setudatass,
-          shoeid,
-          setshoeid,
+          // user,
+          // setuser,
+          // udatass,
+          // setudatass,
+          // shoeid,
+          // setshoeid,
           // cartitem,
           // setcartitem,
           addtocarts,
@@ -181,7 +160,7 @@ function App() {
           datas,
           setdata,
           fetchData,
-          fn,
+          // fn,
           wishlists,
           setwlitem,
           wldata,

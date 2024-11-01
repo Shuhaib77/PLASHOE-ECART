@@ -1,139 +1,104 @@
-import axios from "axios";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect } from 'react'
 import {
-  Card,
-  CardHeader,
-  CardBody,
-  CardFooter,
-  Typography,
-  Input,
-  Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
-} from "@material-tailwind/react";
-// import { useFormik } from "formik";
-import { data } from "autoprefixer";
-// import { toast } from "sonner";
-import { contexts } from "../../../App";
-import Editproduct from "./Editproduct";
-function Editproducts() {
-  const { prdt, setprdt, data, datas, fetchData } = useContext(contexts);
-
-  const [editprdt, seteditprdt] = useState(null);
-  // const handleOpen = (value) => setSize(value);
-  const token = localStorage.getItem("atoken");
-  // const [datas, setdata] = useState([]);
-  const [click, setclick] = useState(false);
-  const [collectdata, setcollectdata] = useState(null);
-
-  const [size, setSize] = React.useState(null);
-  const handleOpen = (value) => setSize(value);
-
-  console.log(collectdata, "imsuiab ");
+    Input,
+    Button,
+    Dialog,
+    DialogHeader,
+    DialogBody,
+    DialogFooter,
+  } from "@material-tailwind/react";
+import axios from "axios";
+import { useFormik } from "formik";
+import { useState } from 'react';
+import { contexts } from '../../../App';
 
 
-  //delete product
+function Editproduct({collectdata,size,handleOpen,setcollectdata,setclick}) {
+   const {fetchData}=useContext(contexts)
+    // const [editprdt, seteditprdt] = useState(null);
+const token=localStorage.getItem("atoken")
+console.log(collectdata._,'hguu');
 
-  const deleteprdt = async (id) => {
-    try {
-      const response = await axios.delete(
-        `http://localhost:5000/api/admin/products/delete/${id}`,
-        {
-          headers: {
-            Authorization: token,
-          },
-        }
-      );
-      toast.success("product deleted")
-      // fnupd();
-      // console.log(response.data);
-    } catch (error) {
-      console.log(error);
-    }
-    fetchData();
-  };
 
-  console.log(size, "im suhiuid");
 
-  return (
-    <>
-      <div className="w-100%">
-        <div className="ml-10 mt-5 border-b-2 border-green-800 ">
-          <h1 className="font-medium text-red-900 mb-3 text-2xl">
-            EDIT PRODUCTS
-          </h1>
-        </div>
 
-        <div className="flex flex-wrap justify-center   mt-20 w-[152vh] h-[60vh] overflow-auto ">
-          {datas.map((data, index) => {
-            return (
-              <Card className="h-full w-[50vh] mt-20  gap-x-10  ">
-                <CardHeader className="relative h-56">
-                  <img src={data.image} alt="profile-picture" />
-                </CardHeader>
-                <CardBody className="text-center">
-                  <Typography color="blue-gray" className="mb-2">
-                    {data.title}
-                  </Typography>
-                  <Typography
-                    color="blue-gray"
-                    className="font-medium"
-                    textGradient
-                  >
-                    {data.brand}
-                  </Typography>
-                  <Typography
-                    color="blue-gray"
-                    className="font-medium"
-                    textGradient
-                  >
-                    {data.catogery}
-                  </Typography>
-                </CardBody>
-                <CardFooter className="flex justify-between  pt-2">
-                  <Button
-                    onClick={() => {
-                      setcollectdata(data);
-                      setclick(true);
-                      handleOpen("xl");
-                    }}
-                    className="bg-blue-900"
-                  >
-                    Edit
-                  </Button>
-                  <div className="mt-3 hover:text-xl">
-                    <i
-                      class="fa-solid fa-trash fa-xl text-black hover:text-red-900 "
-                      onClick={() => {
-                        deleteprdt(data._id);
-                      }}
-                    ></i>
-                  </div>
-                </CardFooter>
-              </Card>
+  const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
+        initialValues: {
+          id: collectdata._id,
+          image: collectdata.image,
+          brand: collectdata.brand,
+          title: collectdata.title,
+          catogery: collectdata.catogery,
+          price: collectdata.price,
+          quantity: 1,
+        },
+        onSubmit: async (values) => {
+    
+          const formDta = new FormData();
+    
+          formDta.append("id", values._id);
+          formDta.append("image", values.image);
+          formDta.append("brand", values.brand);
+          formDta.append("category", values.catogery);  
+          formDta.append("price", values.price);
+          formDta.append("quantity", values.quantity);
+          formDta.append("title", values.title);
+          
+          // Log the FormData contents for debugging
+          // for (let pair of formDta.entries()) {
+          //   console.log(`${pair[0]}: ${pair[1]}`);
+          // }
+          
+          try {
+            const response = await axios.put(
+              `http://localhost:5000/api/admin/products/${collectdata._id}`,
+              formDta, 
+              {
+                headers: {
+                  Authorization: token,
+                  'Content-Type': 'multipart/form-data' 
+                }
+              }
             );
-          })}
+          
+            console.log(response, 'response');
+            toast.success("Updated");
+           
+          } catch (error) {}finally{
+            setcollectdata(null)
+            handleOpen(null)
+            setclick(false)
+            
+           }
+       
+            fetchData()
+         
+        },
+      });
+      
 
-          {click && (
-            <Editproduct
-              collectdata={collectdata}
-              size={size}
-              handleOpen={handleOpen}
-              setcollectdata={setcollectdata}
-              setclick={setclick}
-            />
-          )}
 
-          <div>
-            {/* {
-    click && <Editproduct  collectdata={collectdata} setcollectdata={setcollectdata} setclick={setclick} handleOpen={handleOpen}/>
-  }
-   */}
-          </div>
+    //   const handleclick = async (data) => {
+    //     const res = await axios.get(`http://localhost:5000/api/products/${collectdata._id}`,{},
+    //       {
+    //         headers:{
+    //           Authorization:token
+    //         }
+    //       }
+    
+    //     );
+    //     console.log(res.data, "dededed");
+    //     setValues(res.data.product);
+    //   };
 
-          {/* <Dialog
+      const canselfn =()=>{
+        setcollectdata(null)
+        handleOpen(null)
+        setclick(false)
+      }
+  return (
+    <div>
+          <Dialog
           open={
             size === "xs" ||
             size === "sm" ||
@@ -143,7 +108,7 @@ function Editproducts() {
             size === "xxl"
           }
           size={size || "xl"}
-          handler={handleOpen}
+        //   handler={handleOpen}
           className="h-[80vh]"
         >
           <DialogHeader>edit product</DialogHeader>
@@ -220,14 +185,15 @@ function Editproducts() {
                 <div className="text-end mt-5">
                   <Button
                     className="bg-green-800"
-                    onClick={() => handleOpen(null)}
-                    type="submit"
+                     type="submit"
+                     onClick={()=>fe}
+                   
                   >
                     <span className="text-center">Confirm</span>
                   </Button>
                   <Button
                     className="bg-red-900"
-                    onClick={() => handleOpen(null)}
+                    onClick={() => canselfn()}
                   >
                     <span>Cancel</span>
                   </Button>
@@ -269,11 +235,9 @@ function Editproducts() {
             </div>
           </DialogBody>
           <DialogFooter></DialogFooter>
-        </Dialog> */}
-        </div>
-      </div>
-    </>
-  );
+        </Dialog>
+    </div>
+  )
 }
 
-export default Editproducts;
+export default Editproduct

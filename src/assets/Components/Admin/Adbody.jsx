@@ -6,81 +6,69 @@ import {
   CardBody,
   CardFooter,
   Typography,
-  Input,
+
   Button,
-  Dialog,
-  DialogHeader,
-  DialogBody,
-  DialogFooter,
+
 } from "@material-tailwind/react";
 import { useFormik } from "formik";
 import { data } from "autoprefixer";
 import { toast } from "sonner";
 import { contexts } from "../../../App";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Editproduct from "./Editproduct";
 
 function Adbody() {
-  const { prdt, setprdt, lastasearch, setlastsearch,datas } = useContext(contexts);
+  const {  datas,fetchData } = useContext(contexts);
+  // const [editprdt, seteditprdt] = useState(null);
+const navigate=useNavigate()
+  const { id } = useParams();
+  const [sprdt, setsprdt] = useState([]);
+
+  const [click, setclick] = useState(false);
+  const [collectdata, setcollectdata] = useState(null);
+
   const [size, setSize] = React.useState(null);
-  const [editprdt, seteditprdt] = useState(null);
-  
-  const {id}=useParams()
-  const [sprdt,setsprdt] = useState([]);
-
   const handleOpen = (value) => setSize(value);
+
+
+  useEffect(() => {
+    const res = datas.filter((it) => it._id === id);
+    setsprdt(res);
+  }, [datas, id]);
+  console.log(sprdt);
+  const token=localStorage.getItem("atoken")
+
   
 
- useEffect(()=>{
-  const res =datas.filter((it)=>it.id===id)
-  setsprdt(res);
- },[datas,id])
-  console.log(sprdt);
-
-
-  const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
-    initialValues: {
-      id: "",
-      image: "",
-      brand: "",
-      title: "",
-      catogery: "",
-      price: null,
-      quantity: 1,
-    },
-    onSubmit: async (values) => {
-      try {
-        const newuser = { ...values };
-        const response = await axios.put(
-          `https://jsoneserver.onrender.com/datass/${values.id}`,
-          newuser
-        );
-        fn();
-        toast.success("updataed ");
-        setSize(null);
-      } catch (error) {
-        console.log(error);
-      }
-    },
-  });
-
-  const handleclick = async (data) => {
-    const res = await axios.get(`https://jsoneserver.onrender.com/datass/${data.id}`);
-    // console.log(res.data, "dededed");
-    setValues(res.data);
-  };
+  // const handleclick = async (data) => {
+  //   const res = await axios.get(
+  //     `https://jsoneserver.onrender.com/datass/${data.id}`
+  //   );
+  //   // console.log(res.data, "dededed");
+  //   setValues(res.data);
+  // };
 
   //delete products
 
   const deleteprdt = async (id) => {
     try {
-      const response = await axios.delete(`https://jsoneserver.onrender.com/datass/${id}`);
-      // fn();
-      // console.log(response.data);
+      const response = await axios.delete(
+        `http://localhost:5000/api/admin/products/delete/${id}`,
+        {
+          headers: {
+            Authorization: token,
+          },
+        }
+      );
+      navigate("/admin/editprdt")
+      toast.success("product deleted")
+      
     } catch (error) {
       console.log(error);
     }
-    fn();
+    fetchData();
   };
+
 
   return (
     <>
@@ -96,7 +84,6 @@ function Adbody() {
       </div>
 
       <div className="flex flex-wrap justify-center items-center  gap-5 mt-20 w-[full] h-[70vh] overflow-auto ">
-      
         {sprdt.map((data, index) => {
           return (
             <Card className="w-96 h-[50vh] border-5 border-g">
@@ -118,18 +105,23 @@ function Adbody() {
               <CardFooter className="flex justify-between gap-7 pt-2">
                 <Button
                   onClick={() => {
-                    handleOpen("xl"), handleclick(data);
+                    setcollectdata(data)
+                    handleOpen("xl"),
+                    // handleclick(data);
+                    setclick(true)
+                    // navigate(`/editprdts/${data._id}`)
+                    
                   }}
                   className="bg-blue-900"
                 >
-                  Edit
+                  Go TO Edit 
                 </Button>
                 <div className="mt-3 hover:text-xl">
                   <i
                     class="fa-solid fa-trash fa-xl text-black hover:text-red-900 "
                     onClick={() => {
-                      deleteprdt(data.id);
-                    }}
+                      deleteprdt(data._id);
+                }}
                   ></i>
                 </div>
               </CardFooter>
@@ -137,7 +129,7 @@ function Adbody() {
           );
         })}
 
-        <Dialog
+        {/* <Dialog
           open={
             size === "xs" ||
             size === "sm" ||
@@ -273,7 +265,9 @@ function Adbody() {
             </div>
           </DialogBody>
           <DialogFooter></DialogFooter>
-        </Dialog>
+        </Dialog> */}
+
+{click && <Editproduct collectdata={collectdata} size={size} handleOpen={handleOpen} setcollectdata={setcollectdata} setclick={setclick}/>}
       </div>
     </>
   );

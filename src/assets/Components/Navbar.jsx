@@ -66,30 +66,41 @@ function Navbar({ setAdmin }) {
       setOPenAdmin(true);
     }
 
-    const fdatass = async () => {
-      const response = await axios.get("http://localhost:5000/api/products");
-      try {
-        setsdata(response.data.products);
-      } catch (error) {
-        toast.warning("not fetched");
-      }
-    };
-    fdatass();
-  }, [ser, qq]);
+    // const fdatass = async () => {
+    //   const response = await axios.get("http://localhost:5000/api/products");
+    //   try {
+    //     setsdata(response.data.products);
+    //   } catch (error) {
+    //     toast.warning("not fetched");
+    //   }
+    // };
+    // fdatass();
+  }, []);
 
   console.log(sdata);
 
+  const Auserss = async () => {
+    
+  
+    try {
+      if(users){
+        const response = await axios.get(
+          ` http://localhost:5000/api/user/${users}`
+        );
+        setusers([response.data]);
+      }else{
+        setusers([]);
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
   useEffect(() => {
-    const Auserss = async () => {
-      const response = await axios.get(
-        ` http://localhost:5000/api/user/${users}`
-      );
-      setusers([response.data]);
-    };
     Auserss();
   }, []);
 
-  console.log(userss);
+  // console.log(userss);
 
   // const handleSearch = (e) => {
   //   let inputWord = sdata.filter((x) =>
@@ -334,9 +345,9 @@ function Navbar({ setAdmin }) {
                         xmlns="http://www.w3.org/2000/svg"
                         onClick={() => {
                           localStorage.clear("id");
-                          toast.warning("loged Out");
-                          window.location.reload();
                           navigate("/login");
+                          toast.warning("loged Out");
+                          // window.location.reload();
                         }}
                       >
                         <path
@@ -351,8 +362,8 @@ function Navbar({ setAdmin }) {
                     <div
                       className="mt-2 text-black  "
                       onClick={() => {
-                        navigate("/login");
                         localStorage.clear();
+                        navigate("/login");
                       }}
                     >
                       <i

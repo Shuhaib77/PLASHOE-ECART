@@ -3,7 +3,7 @@ import React, { createContext, useEffect, useState } from "react";
 import "./App.css";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import Home from "./assets/Pagess/Home";
-import User from "./assets/Pagess/User";
+// import User from "./assets/Pagess/User";
 import Admin from "./assets/Pagess/Admin";
 import Login from "./assets/Pagess/Login";
 import Register from "./assets/Pagess/Register";
@@ -27,10 +27,11 @@ import Trackorder from "./assets/Components/Admin/Trackorder";
 import Dashboard from "./assets/Components/Admin/Dashboard";
 import Adbody from "./assets/Components/Admin/Adbody";
 import Orderss from "./assets/Pagess/Orderss";
-// import card from "@material-tailwind/react/theme/components/card";
+import card from "@material-tailwind/react/theme/components/card";
 import Wishliste from "./assets/Components/Wishliste";
 import ProductDetail from "./assets/Components/Home/ProductDetail";
 import { adminConfig } from "./hederconfig/config";
+import Editproduct from "./assets/Components/Admin/Editproduct";
 
 export const contexts = createContext();
 
@@ -38,9 +39,9 @@ function App() {
   const [datas, setdata] = useState([]);
   const [wlitem, setwlitem] = useState([]);
   const [search, setsearh] = useState(null);
-  // const [user, setuser] = useState([]);
-  // const [udatass, setudatass] = useState([]);
-  // const [shoeid, setshoeid] = useState([]);
+  const [user, setuser] = useState([]);
+  const [udatass, setudatass] = useState([]);
+  const [shoeid, setshoeid] = useState([]);
  
   const [cartitem, setcartitem] = useState([]);
   const [cartnew,setcartnew]=useState([])
@@ -64,6 +65,8 @@ function App() {
   //datas fetchingg
   const fetchData = async () => {
     try {
+      console.log('hello ');
+      
       const response = await axios.get("http://localhost:5000/api/products");
       setdata(response.data.products);
     } catch (error) {
@@ -139,12 +142,12 @@ function App() {
         value={{
           search,
           setsearh,
-          // user,
-          // setuser,
-          // udatass,
-          // setudatass,
-          // shoeid,
-          // setshoeid,
+          user,
+          setuser,
+          udatass,
+          setudatass,
+          shoeid,
+          setshoeid,
           // cartitem,
           // setcartitem,
           addtocarts,
@@ -172,6 +175,7 @@ function App() {
             <Route path="/admin/:url" element={<Admin />}></Route>
             <Route path="/addprdt" element={<Addproduct />}></Route>
             <Route path="/editprdt" element={<Editproducts />}></Route>
+            {/* <Route path="/editprdts" element={<Editproduct />}></Route> */}
             <Route path="/allusers" element={<Alluser />}></Route>
             <Route path="/trackorder" element={<Trackorder />}></Route>
             <Route path="/dashboard" element={<Dashboard />}></Route>
@@ -181,7 +185,7 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home setAdmin={setAdmin} />}></Route>
-          <Route path="/user" element={<User />}></Route>
+          {/* <Route path="/user" element={<User />}></Route> */}
           <Route path="/details/:id" element={<ProductDetail />} />
           <Route path="/login" element={<Login />}></Route>
           <Route path="/register" element={<Register />}></Route>

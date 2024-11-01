@@ -34,8 +34,6 @@ function Login() {
         console.log(response.data.token);
         if (response.status === 203) {
           localStorage.setItem("admin",true)
-         
-          
           localStorage.setItem("atoken",response.data.token)
           navigtate("/admin/dashboard");
           toast.success("admin Login successful");

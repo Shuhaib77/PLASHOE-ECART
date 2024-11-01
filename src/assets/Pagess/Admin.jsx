@@ -22,6 +22,7 @@ function Admin() {
     setprdt,
     lastasearch,
     setlastsearch,
+    datas
   } = useContext(contexts);
   const navigate = useNavigate();
   const { url } = useParams();
@@ -55,19 +56,19 @@ function Admin() {
   const [servals,setservals]=useState([])
   // console.log(prdt, "dd");
 
-  // const fn = (e) => {
-  //   let searchitems = prdt.filter((x) =>
-  //     x.title.toLowerCase().includes(asearchitem.toLowerCase())
-  //   );
-  //   setlastsearch(searchitems);
-  //   // console.log(searchitems);
-  //   if (searchitems.length > 0) {
-  //     toast.success("finded");
-  //     navigate("/adbody");
-  //   } else {
-  //     toast.warning("not finded");
-  //   }
-  // };
+  const fn = (e) => {
+    let searchitems = prdt.filter((x) =>
+      x.title.toLowerCase().includes(asearchitem.toLowerCase())
+    );
+    setlastsearch(searchitems);
+    // console.log(searchitems);
+    if (searchitems.length > 0) {
+      toast.success("finded");
+      navigate("/adbody");
+    } else {
+      toast.warning("not finded");
+    }
+  };
 
 
 useEffect(()=>{
@@ -82,10 +83,10 @@ useEffect(()=>{
 
 
 
-  const adminser=(e)=>{
-   const value=e.target.value
-    setval("value")
-    setservals(prdt.filter((x)=>x.title.toLowerCase().includes(value)))
+const adminser=(e)=>{
+    const value=e.target.value
+     setval("value")
+     setservals(datas.filter((x)=>x.title.toLowerCase().includes(value)))
     
     
 }
@@ -146,6 +147,7 @@ const handleaclick=()=>{
          
           </MenuHandler>
           <MenuList onClick={() => {
+                localStorage.clear("admin")
                 navigate("/")
               }}>
            
@@ -204,7 +206,7 @@ const handleaclick=()=>{
        {servals.map((it)=>{
         return(
           
-          <Link to={`/adbody/${it.id}`} className="border border-shadow-lg roonded-4 p-2 flex justify-between  w-[100%] h-[8vh]     " onClick={()=>{handleaclick(it.id),setval("")}}>
+          <Link to={`/adbody/${it._id}`} className="border border-shadow-lg roonded-4 p-2 flex justify-between  w-[100%] h-[8vh]     " onClick={()=>{handleaclick(it.id),setval("")}}>
             
             <h1>{it.title}</h1>
             <img src={it.image} alt="" className="object-cover mr-3 " />

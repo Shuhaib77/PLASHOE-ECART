@@ -23,7 +23,7 @@ function Addproduct() {
       brand: "",
       title: "",
       catogery: "",
-      price: null,
+      price:null,
       quantity: 1,
     },
     onSubmit: async (values) => {

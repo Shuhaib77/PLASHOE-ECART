@@ -12,7 +12,7 @@ import { contexts } from "../../../App";
 
 import { Link, useNavigate } from "react-router-dom";
 
-import User from "../../Pagess/User";
+// import User from "../../Pagess/User";
 import Cart from "../Cart";
 import card from "@material-tailwind/react/theme/components/card";
 import { toast } from "sonner";

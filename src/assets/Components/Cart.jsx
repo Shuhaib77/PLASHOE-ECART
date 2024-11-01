@@ -123,7 +123,7 @@ function Cart() {
                         <CardHeader
                           shadow={false}
                           floated={false}
-                          className="m-0 w-[400px] shrink-0 rounded-r-none object-cover"
+                          className="m-0 w-[400px]  rounded-r-none object-cover"
                         >
                           <img src={data.productid.image} alt="card-image" />
                         </CardHeader>

@@ -17,6 +17,7 @@ import { toast } from "sonner";
 
 function Women() {
   const { addtocarts,datas,wishlists,wlitem } = useContext(contexts);
+  
   const navigate = useNavigate();
   const ids=localStorage.getItem("id")
  return (
@@ -52,19 +53,18 @@ function Women() {
                     <Card className="h-full w-[50vh] mt-20  gap-x-10   ">
                       <CardHeader color="" className="relative h-56">
                       <i
-                        class="fa-solid fa-heart ml-4 "
-                        style={{
-                          color: wlitem.find((item) => item.productid._id === data._id)
-                            ? "red"
-                            : "blue",
-                        }}
-                        onClick={() => {
-                        
-                        
-                           wishlists(data)
-                         
-                        }}
-                      ></i>
+                      class="fa-solid fa-heart ml-4 "
+                      style={{
+                        color: wlitem.some(
+                          (item) => item.productid?._id === data?._id
+                        )
+                          ? "red"
+                          : "blue",
+                      }}
+                      onClick={() => {
+                       wishlists(data)
+                    }}
+                    ></i>
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>

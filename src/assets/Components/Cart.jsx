@@ -97,7 +97,8 @@ function Cart() {
     return (
       <div>
         <Navbar />
-        <div className="text-center mt-5">not data</div>
+        {toast.warning("no item found")}
+        <div className="text-center mt-5">not item found</div>
         <Footer />
       </div>
     );

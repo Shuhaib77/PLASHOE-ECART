@@ -125,19 +125,19 @@ function Homecard() {
                 <Card className="h-[55vh] w-[50vh] mt-20">
                   <CardHeader className="h-[50vh]">
                     <div>
-                      <i
-                        class="fa-solid fa-heart ml-4 "
-                        style={{
-                          color: wlitem.find(
-                            (item) => item.productid._id === data._id
-                          )
-                            ? "red"
-                            : "blue",
-                        }}
-                        onClick={() => {
-                            wishlists(data)
-                        }}
-                      ></i>
+                    <i
+                      class="fa-solid fa-heart ml-4 "
+                      style={{
+                        color: wlitem.some(
+                          (item) => item.productid?._id === data?._id
+                        )
+                          ? "red"
+                          : "blue",
+                      }}
+                      onClick={() => {
+                       wishlists(data)
+                    }}
+                    ></i>
                     </div>
 
                     <img src={data.image} alt="card-image" />

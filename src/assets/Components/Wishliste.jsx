@@ -9,6 +9,7 @@ import { Button ,Card,
 import axios from 'axios';
 import { contexts } from '../../App';
 import { useNavigate } from 'react-router-dom';
+import { toast } from 'sonner';
 
 
 function Wishliste() {
@@ -17,18 +18,24 @@ function Wishliste() {
 
     const idu=localStorage.getItem("id")
     // const [wlitem,setwlitem]=useState([])
-    const {wldata,wlitem,addtocarts,wishlists,datas}=useContext(contexts)
+    const {wldata,wlitem,addtocarts,wishlists,datas}=useContext(contexts);
+
+    console.log(wlitem,'ffffhhh');
+    
 
     const navigate=useNavigate()
    const alldata=datas.map((item)=>item)
    console.log(alldata,);
    
 
-  if(wlitem.length==0){
+  if(wlitem?.length==0){
   return(
     <div>
     <Navbar/>
-    <h1 className='text-center mt-5'>no data</h1>
+   <div>
+     {toast.warning("no item found")}
+     <h1 className='text-center mt-5'>no item found</h1>
+   </div>
     <Footer/>
     </div>
 
@@ -66,7 +73,7 @@ return (
               
               </div>
             </div>
-            <div className="flex flex-wrap justify-center items-center mb-10 gap-10 ">
+            <div className="flex flex-wrap justify-around items-center mb-10 gap-10 ">
               {wlitem.map((data) => {
                 return (
                   <div className=" ">
@@ -76,7 +83,7 @@ return (
                       class="fa-solid fa-heart ml-4 "
                       style={{
                         color: datas.some(
-                          (item) => item?._id === data.productid._id
+                          (item) => item?._id === data?.productid?._id
                         )
                           ? "red"
                           : "blue",
@@ -85,7 +92,7 @@ return (
                        wishlists(data.productid)
                     }}
                     ></i>
-                        <img src={data.productid.image} alt="card-image" />
+                        <img src={data?.productid?.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>
                         <Typography
@@ -93,23 +100,23 @@ return (
                           color="blue-gray"
                           className="mb-2"
                         >
-                          {data.brand}
+                          {data?.productid?.brand}
                         </Typography>
-                        <Typography>{data.productid.title}</Typography>
-                        <Typography>{data.productid.catogery}</Typography>
-                        <Typography>{data.productid.price}</Typography>
+                        <Typography>{data.productid?.title}</Typography>
+                        <Typography>{data.productid?.catogery}</Typography>
+                        <Typography>{data.productid?.price}</Typography>
                       </CardBody>
                       <CardFooter className="pt-0 flex justify-between">
                       <Button
                           onClick={() => {
-                            addtocarts(data.productid);
+                            addtocarts(data?.productid);
                           }}
                         >
                           Add to cart
                         </Button>
                         <Button
                           onClick={() => {
-                            navigate(`/showcomponent/${data.id}`);
+                            navigate(`/showcomponent/${data?.productid?._id}`);
                             // deletewl(data.id)
 
                           }}

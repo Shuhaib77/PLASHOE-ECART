@@ -104,11 +104,14 @@ function App() {
     const response = await axios.get(
       `http://localhost:5000/api/wishlist/${usersid}`
     );
-    setwlitem(response?.data?.wishlist);
+    setwlitem(response.data.wishlist);
   };
   useEffect(() => {
     wldata();
   }, []);
+
+  console.log(wlitem,"sedeeqd");
+  
 
 
   //addtowishlist || delete wishlist

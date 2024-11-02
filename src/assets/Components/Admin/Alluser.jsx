@@ -19,7 +19,7 @@ import { toast } from "sonner";
 function Alluser() {
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
-  const [ausers, setausers] = useState([]);
+  
   const [blockusers, setblockusers] = useState([]);
   const [orderss, setorders] = useState([]);
   const [payedprdct, setpayedprdct] = useState([]);
@@ -30,13 +30,9 @@ function Alluser() {
     "EMAIL",
     "BLOCK",
     "ORDERS",
-
-    // "ORDERDETAILS",
-    // "BLOCK",
   ];
-
+  const [ausers, setausers] = useState([]);
   //fetch userss
-
   const fn = async () => {
     const response = await axios.get("http://localhost:5000/api/admin/users", {
       headers: {
@@ -141,46 +137,6 @@ const vieworders = async (id) => {
                     {data.email}
                   </Typography>
                 </td>
-                {/* <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="black"
-                    className="font-normal"
-                  >
-                    {data.orders.length}
-                  </Typography>
-                </td> */}
-                {/* <td className="p-4">
-                  <Typography
-                    variant="small"
-                    color="black"
-                    className="font-normal"
-                  >
-                    {data.confirmpass}
-                  </Typography>
-                </td> */}
-                {/* <td className="p-4">
-                  <Typography
-                    as="a"
-                    href="#"
-                    variant="small"
-                    color="black"
-                    className="font-medium"
-                  >
-                    {data.admin ? (
-                      <i
-                        class="fa-solid fa-thumbs-up fa-xl"
-                        style={{ color: "#002e7a" }}
-                      ></i>
-                    ) : (
-                      <i
-                        class="fa-solid fa-thumbs-down fa-lg"
-                        style={{ color: "#831100" }}
-                      ></i>
-                    )}
-                  </Typography>
-                </td> */}
-
                 <td>
                   <Typography
                     as="a"
@@ -205,7 +161,6 @@ const vieworders = async (id) => {
                     )}
                   </Typography>
                 </td>
-
                 <td className="">
                   <Typography
                     variant="small"
@@ -224,9 +179,7 @@ const vieworders = async (id) => {
                           return vieworders(data._id);
                      
                         }
-                    
-                       
-                      }}
+                     }}
                     >
                       orders
                     </Button>

@@ -44,7 +44,6 @@ function Navbar({ setAdmin }) {
 
   const filterrrr = (e) => {
     const value = e.target.value.toLowerCase();
-
     setSer(sdata.filter((f) => f.title.toLowerCase().includes(value)));
     console.log("kh", ser);
     setQq("ddd");
@@ -66,15 +65,15 @@ function Navbar({ setAdmin }) {
       setOPenAdmin(true);
     }
 
-    // const fdatass = async () => {
-    //   const response = await axios.get("http://localhost:5000/api/products");
-    //   try {
-    //     setsdata(response.data.products);
-    //   } catch (error) {
-    //     toast.warning("not fetched");
-    //   }
-    // };
-    // fdatass();
+    const fdatass = async () => {
+      const response = await axios.get("http://localhost:5000/api/products");
+      try {
+        setsdata(response.data.products);
+      } catch (error) {
+        toast.warning("not fetched");
+      }
+    };
+    fdatass();
   }, []);
 
   console.log(sdata);

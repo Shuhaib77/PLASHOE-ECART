@@ -20,26 +20,29 @@ const ProductDetail = () => {
   // console.log("dd",dedata.id);
 
   return (
-    <div className="h-[200px]">
+    <div className="bg-blue-gray-50 h-full">
       <Navbar />
-      <div className="bg-blue-gray-50 gap-5 justify-center items-center flex h-[100vh] w-[100%]">
+      <div className=" gap-5 flex justify-center items-center  h-[90vh] w-full">
         {dedata && (
-          <div className="flex flex-col bg-white p-3 rounded-lg shadow-lg">
+          <div className=" bg-white p-3 w-full ml-5 mr-5 flex justify-between h-[60vh]     rounded-lg shadow-lg ">
+            <div className="mt-10">
             <img
               src={dedata.image}
               alt=""
-              className="min-h-[300px] w-[500px] object-cover p-3 border border-black rounded-lg"
+              className=" w-[100vh] object-cover p-3 border rounded-lg"
             />
-            <div className="mt-3 p-3">
+            </div>
+            <div className="mt-10 p-3">
               <div className=" text-gray-700">{dedata.title}</div>
               <div className="font-bold">{dedata.brand}</div>
-              <div className="flex justify-between">
+              <div className="flex justify-between items-end">
                 <div>{dedata.catogery}</div>
-                <div className="text-blue-600">${dedata.price}</div>
+               
               </div>
-            </div>
-            <Button
-              className="w-[100%] p-3 bg-blue-600 rounded-lg text-white font-bold"
+              <div>
+              <div className="text-blue-600 mt-5">${dedata.price}</div>
+              <Button
+              className=" bg-blue-600 p-3 rounded-lg text-white font-bold mt-5"
               onClick={() => {
                 if(ids){
                   addtocarts(dedata);
@@ -52,6 +55,9 @@ const ProductDetail = () => {
             >
               Add to Cart
             </Button>
+              </div>
+            </div>
+          
           </div>
         )}
       </div>

@@ -4,16 +4,34 @@ import { contexts } from "../../../App";
 
 function Dashboard() {
   const [aprdt, setaprdt] = useState([]);
-  const [auser, setauser] = useState([]);
+  // const [auser, setauser] = useState([]);
   const [aorders, setaorders] = useState([]);
   const [profit, setprofit] = useState([]);
-  const [atotal, setatotal] = useState([]);
+  // const [atotal, setatotal] = useState([]);
   const {datas}=useContext(contexts)
 
   const token =localStorage.getItem("atoken")
 
   const sum = profit.reduce((acc, val) => acc + val.total, 0);
 
+
+  const [ausers, setausers] = useState([]);
+  //fetch userss
+  const userss = async () => {
+    const response = await axios.get("http://localhost:5000/api/admin/users", {
+      headers: {
+        Authorization: token,
+      },
+    });
+    try {
+      setausers(response.data.user);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    userss();
+  }, []);
 
     const fn = async () => {
       try {
@@ -25,14 +43,7 @@ function Dashboard() {
         }
         );
         setaprdt(response.data.data);
-        // // 
-        // setauser(res.data);
-        // const allorders = res.data.flatMap((item) => item.detorder);
-        // const b = allorders.map((item) => item.pyprdct);
-        // setaorders(b, "edede");
-        // const profits = res.data.flatMap((item) => item.detorder);
-        // setprofit(profits);
-      } catch (error) {
+       } catch (error) {
         console.log(error);
       }
     };
@@ -74,7 +85,7 @@ function Dashboard() {
             ></i>
             <h1 className="mt-4">PRODUCT SOLD</h1>
             <h1>
-              All sold: <span className="text-2xl"> {aprdt.totalproduct}</span>
+              All sold: <span className="text-2xl"> {ausers.length}</span>
             </h1>
           </div>
         </div>

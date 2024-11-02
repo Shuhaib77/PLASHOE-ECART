@@ -13,30 +13,23 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-// import { useFormik } from "formik";
+
 import { data } from "autoprefixer";
-// import { toast } from "sonner";
+import { toast } from "sonner";
 import { contexts } from "../../../App";
 import Editproduct from "./Editproduct";
 function Editproducts() {
   const { prdt, setprdt, data, datas, fetchData } = useContext(contexts);
-
-  const [editprdt, seteditprdt] = useState(null);
-  // const handleOpen = (value) => setSize(value);
   const token = localStorage.getItem("atoken");
-  // const [datas, setdata] = useState([]);
   const [click, setclick] = useState(false);
   const [collectdata, setcollectdata] = useState(null);
-
   const [size, setSize] = React.useState(null);
   const handleOpen = (value) => setSize(value);
 
-  console.log(collectdata, "imsuiab ");
-
+ 
 
   //delete product
-
-  const deleteprdt = async (id) => {
+ const deleteprdt = async (id) => {
     try {
       const response = await axios.delete(
         `http://localhost:5000/api/admin/products/delete/${id}`,

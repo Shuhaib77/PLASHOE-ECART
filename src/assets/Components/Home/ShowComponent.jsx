@@ -39,21 +39,18 @@ function ShowComponent() {
                 <Card className="h-[55vh] w-[50vh] mt-20 gap-1 ">
                   <CardHeader color="" className="relative h-56">
                   <i
-                        class="fa-solid fa-heart ml-4 "
-                        style={{
-                          color: wlitem.find((item) => item.productid._id === data._id)
-                            ? "red"
-                            : "blue",
-                        }}
-                        onClick={() => {
-                        
-                    
-                          wishlists(data)
-                         
-                          
-                         
-                        }}
-                      ></i>
+                      class="fa-solid fa-heart ml-4 "
+                      style={{
+                        color: wlitem.some(
+                          (item) => item.productid?._id === data?._id
+                        )
+                          ? "red"
+                          : "blue",
+                      }}
+                      onClick={() => {
+                       wishlists(data)
+                    }}
+                    ></i>
 
                     <img src={data.image} alt="card-image" />
                   </CardHeader>

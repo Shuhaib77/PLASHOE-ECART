@@ -19,7 +19,7 @@ import Editproduct from "./Editproduct";
 
 function Adbody() {
   const {  datas,fetchData } = useContext(contexts);
-  // const [editprdt, seteditprdt] = useState(null);
+  
 const navigate=useNavigate()
   const { id } = useParams();
   const [sprdt, setsprdt] = useState([]);
@@ -40,15 +40,7 @@ const navigate=useNavigate()
 
   
 
-  // const handleclick = async (data) => {
-  //   const res = await axios.get(
-  //     `https://jsoneserver.onrender.com/datass/${data.id}`
-  //   );
-  //   // console.log(res.data, "dededed");
-  //   setValues(res.data);
-  // };
-
-  //delete products
+  
 
   const deleteprdt = async (id) => {
     try {

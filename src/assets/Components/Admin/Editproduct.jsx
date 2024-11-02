@@ -70,12 +70,11 @@ console.log(collectdata._,'hguu');
             setclick(false)
             
            }
-       
-            fetchData()
-         
+           fetchData()
         },
+       
+
       });
-      
 
 
     //   const handleclick = async (data) => {

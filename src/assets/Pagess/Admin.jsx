@@ -22,10 +22,11 @@ function Admin() {
     setprdt,
     lastasearch,
     setlastsearch,
-    datas
+    
   } = useContext(contexts);
   const navigate = useNavigate();
   const { url } = useParams();
+  
 
   const id = localStorage.getItem("id");
   const Data = [
@@ -55,6 +56,24 @@ function Admin() {
   const[vals,setval]=useState("")
   const [servals,setservals]=useState([])
   // console.log(prdt, "dd");
+
+  const [datas, setdata] = useState([]);
+//fetch data
+  const fetchData = async () => {
+    try {
+      console.log('hello ');
+      
+      const response = await axios.get("http://localhost:5000/api/products");
+      setdata(response.data.products);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+
 
   const fn = (e) => {
     let searchitems = prdt.filter((x) =>

@@ -16,7 +16,7 @@ function Addproduct() {
   const { size, setSize, handleOpen } = useContext(contexts);
   const [imagePreview, setImagePreview] = useState(null);
 
-  const formik = useFormik({
+const formik = useFormik({
     initialValues: {
       description: "",
       image: "", // Set as null for proper file handling

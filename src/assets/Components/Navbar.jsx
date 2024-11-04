@@ -49,17 +49,6 @@ function Navbar({ setAdmin }) {
     setQq("ddd");
   };
 
-  // useEffect(()=>{
-  //   const fetchcart=async()=>{
-  //     const response=await axios.get(`http://localhost:4000/user/${idss}`)
-  //     setcartitem(response.data.cart)
-  //     console.log(response.data);
-  //    }
-
-  //   fetchcart()
-  //   },[])
-  // console.log(cartitem);
-
   useEffect(() => {
     if (localStorage.getItem("admin")) {
       setOPenAdmin(true);
@@ -79,18 +68,15 @@ function Navbar({ setAdmin }) {
   console.log(sdata);
 
   const Auserss = async () => {
-    
-  
     try {
-      if(users){
+      if (users) {
         const response = await axios.get(
           ` http://localhost:5000/api/user/${users}`
         );
         setusers([response.data]);
-      }else{
+      } else {
         setusers([]);
       }
-      
     } catch (error) {
       console.log(error);
     }
@@ -98,23 +84,6 @@ function Navbar({ setAdmin }) {
   useEffect(() => {
     Auserss();
   }, []);
-
-  // console.log(userss);
-
-  // const handleSearch = (e) => {
-  //   let inputWord = sdata.filter((x) =>
-  //     x.title.toLowerCase().includes(searchval.toLowerCase())
-  //   );
-  //   setsearh(inputWord);
-  //   console.log(inputWord);
-
-  //   if (inputWord.length >= 0) {
-  //     toast.success("finded");
-  //     navigate("/all");
-  //   } else {
-  //     toast.warning("not find");
-  //   }
-  // };
 
   return (
     <div className="bg-white w-full ">
@@ -185,19 +154,9 @@ function Navbar({ setAdmin }) {
             <div className=" ml-4 ">
               <Input
                 label="type here..."
-                // onChange={(e) => {
-                //   setsearchval(e.target.value);
-                // }}
                 onChange={filterrrr}
-                // value={searchval}
                 className=""
               ></Input>
-            </div>
-            <div className=" ">
-              {/* <Button className="" onClick={handleSearch}>
-                {" "}
-                Search
-              </Button> */}
             </div>
           </div>
           <div className="  mt-4 text-gray-700 hover:border-b-2 border-black  font-medium  md:block hidden   ">
@@ -388,51 +347,7 @@ function Navbar({ setAdmin }) {
                 class="fa-solid fa-bars fa-2xl"
                 onClick={() => setOpenRight(true)}
               ></i>
-              {/* <i
-                class="fa-regular fa-bars fa-2xl  "
-              
-                
-              ></i> */}
             </div>
-
-            {/* 
-
-            <div className="text-l ml-5 text-gray-700 font-medium hover:border-b-2 border-black md:block hidden   ">
-              {usersss ? (
-                <div className="mt-2 text-black   ">
-                  <i
-                    class="fa-solid fa-user-minus fa-xl ml-2     "
-                    style={{color: "#791a3e"}}
-                    onClick={() => {
-                      localStorage.clear("id");
-                      toast.warning("loged Out");
-                      window.location.reload();
-                      navigate("/login");
-                    }}
-                  ></i>
-                  <h1 className="      ">
-                    logout
-                  </h1>
-                </div>
-              ) : (
-                <div className="mt-2 text-black  ">
-                  {" "}
-                  <i
-                    class="fa-solid fa-user fa-xl ml-2      "
-                    style={{color: "#791a3e"}}
-                    onClick={() => {
-                      navigate("/login");
-                    }}
-                  ></i>{" "}
-                  <h1 className="   ">log-in</h1>
-                </div>
-              )}
-             
-            </div>
-            {openAdmin && <Button cl onClick={()=>handleAdmin()} className=" bg-black w-25 ml-1">admin</Button>}
-           
-         
-            */}
           </div>
         </div>
       </div>

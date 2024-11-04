@@ -33,47 +33,19 @@ function Login() {
         });
         console.log(response.data.token);
         if (response.status === 203) {
-          localStorage.setItem("admin",true)
-          localStorage.setItem("atoken",response.data.token)
           navigtate("/admin/dashboard");
+          localStorage.setItem("admin", true);
+          localStorage.setItem("atoken", response.data.token);
+         
           toast.success("admin Login successful");
         } else {
           localStorage.setItem("id", response.data.user._id);
-          localStorage.setItem("utoken",response.data.token)
+          localStorage.setItem("utoken", response.data.token);
           navigtate("/");
           // window.location.reload();
           toast.success("Login successful");
         }
       } catch (error) {}
-
-
-
-      // const user = response.data.find(
-      //   (user) =>
-      //     user.email === values.email && user.password === values.password
-      // );
-      // if (!user) {
-      //   toast.warning("invalid pass or mail");
-      // }
-      // //  else if (user && user.admin == true) {
-      // //   localStorage.setItem("ids", user.id);
-      // //   navigtate("/admin/dashboard");
-      // //   toast.success(" admin Login successful");
-      // // }
-      // else if (user.block == false) {
-      //   toast.warning("User is blocked");
-      // } else {
-      //   setuser(user);
-      //   if(user.admin == true){
-      //     localStorage.setItem("admin",true)
-
-      //   }
-      //   localStorage.setItem("id", user.id);
-      //   navigtate("/");
-      //   window.location.reload()
-      //   toast.success("Login successful");
-
-      // }
     },
   });
 
@@ -81,13 +53,6 @@ function Login() {
     <div className="">
       <div className=" bg-Login-bg bg-no-repeat bg-cover w-100% h-100%">
         <div className=" flex justify-center  items-center h-[100vh]     ">
-          {/* <div className="mr-10 border ">
-          <img
-            src="https://i.ebayimg.com/images/g/TDoAAOSwvZxgYocm/s-l1600.jpg"
-            alt=""
-            className="w-[50vh] h-[60vh]"
-          />
-        </div> */}
           <form
             action=""
             className="  w-full md:w-96 bg-[rgba(210,182,89,0.45)] p-6 md:p-10 border-3 rounded-xl"

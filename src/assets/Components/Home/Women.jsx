@@ -16,12 +16,11 @@ import { useNavigate } from "react-router-dom";
 import { toast } from "sonner";
 
 function Women() {
-  const { addtocarts,datas,wishlists,wlitem } = useContext(contexts);
-  
+  const { addtocarts, datas, wishlists, wlitem } = useContext(contexts);
+
   const navigate = useNavigate();
-  const ids=localStorage.getItem("id")
- return (
-  
+  const ids = localStorage.getItem("id");
+  return (
     <div>
       <div>
         <div className="">
@@ -29,7 +28,9 @@ function Women() {
         </div>
         <div className="w-full h-full bg-gray-300  flex justify-center items-center mt-5  ">
           <div className="w-full m-6 h-full mt-8 mb-8 bg-white ">
-            <h1 className=" text-center md:text-left  text-4xl md:mt-10 md:ml-10 text-light-green-800">WOMEN</h1>
+            <h1 className=" text-center md:text-left  text-4xl md:mt-10 md:ml-10 text-light-green-800">
+              WOMEN
+            </h1>
             <div className="  flex flex-col  md:flex-row justify-between mt-5">
               <div className="  md:ml-12">
                 <Button className=" mb-5 w-full">Filter shoe</Button>
@@ -47,60 +48,60 @@ function Women() {
               </div>
             </div>
             <div className="flex flex-wrap justify-around items-center ">
-              {datas.filter((wdata) => wdata.catogery == "women").map((data) => {
-                return (
-                  <div className=" ">
-                    <Card className="h-full w-[50vh] mt-20  gap-x-10   ">
-                      <CardHeader color="" className="relative h-56">
-                      <i
-                      class="fa-solid fa-heart ml-4 "
-                      style={{
-                        color: wlitem.some(
-                          (item) => item.productid?._id === data?._id
-                        )
-                          ? "red"
-                          : "blue",
-                      }}
-                      onClick={() => {
-                       wishlists(data)
-                    }}
-                    ></i>
-                        <img src={data.image} alt="card-image" />
-                      </CardHeader>
-                      <CardBody>
-                        <Typography variant="h5" color="" className="">
-                          {data.brand}
-                        </Typography>
-                        <Typography>{data.title}</Typography>
-                        <Typography>{data.catogery}</Typography>
-                        <Typography>{data.price}</Typography>
-                      </CardBody>
-                      <CardFooter className=" pt-0  flex justify-between">
-                        <Button
-                          onClick={() => {
-                            navigate(`/showcomponent/${data._id}`);
-                          }}
-                        >
-                          Read More
-                        </Button>
-                        <Button
-                          onClick={() => {
-                            if(ids){
-                              addtocarts(data);
-            
-                            }else{
-                              toast.warning("Plss login")
-                            }
-                           
-                          }}
-                        >
-                          Add to cart
-                        </Button>
-                      </CardFooter>
-                    </Card>
-                  </div>
-                );
-              })}
+              {datas
+                .filter((wdata) => wdata.catogery == "women")
+                .map((data) => {
+                  return (
+                    <div className=" ">
+                      <Card className="h-full w-[50vh] mt-20  gap-x-10   ">
+                        <CardHeader color="" className="relative h-56">
+                          <i
+                            class="fa-solid fa-heart ml-4 "
+                            style={{
+                              color: wlitem.some(
+                                (item) => item.productid?._id === data?._id
+                              )
+                                ? "red"
+                                : "blue",
+                            }}
+                            onClick={() => {
+                              wishlists(data);
+                            }}
+                          ></i>
+                          <img src={data.image} alt="card-image" />
+                        </CardHeader>
+                        <CardBody>
+                          <Typography variant="h5" color="" className="">
+                            {data.brand}
+                          </Typography>
+                          <Typography>{data.title}</Typography>
+                          <Typography>{data.catogery}</Typography>
+                          <Typography>{data.price}</Typography>
+                        </CardBody>
+                        <CardFooter className=" pt-0  flex justify-between">
+                          <Button
+                            onClick={() => {
+                              navigate(`/showcomponent/${data._id}`);
+                            }}
+                          >
+                            Read More
+                          </Button>
+                          <Button
+                            onClick={() => {
+                              if (ids) {
+                                addtocarts(data);
+                              } else {
+                                toast.warning("Plss login");
+                              }
+                            }}
+                          >
+                            Add to cart
+                          </Button>
+                        </CardFooter>
+                      </Card>
+                    </div>
+                  );
+                })}
             </div>
           </div>
         </div>

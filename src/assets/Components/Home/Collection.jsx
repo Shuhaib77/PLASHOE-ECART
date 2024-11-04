@@ -11,23 +11,18 @@ import {
 } from "@material-tailwind/react";
 import { contexts } from "../../../App";
 import { useNavigate } from "react-router-dom";
-import axios from "axios";
 import { toast } from "sonner";
 
 function Collection() {
-  const { addtocarts, datas,wishlists, wlitem } =
-  useContext(contexts);
+  const { addtocarts, datas, wishlists, wlitem } = useContext(contexts);
   const navigate = useNavigate();
   const ids = localStorage.getItem("id");
-
-  // fetchData()
   return (
     <div>
       <div>
         <div className="">
           <Navbar />
         </div>
-
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5  ">
           <div className="w-full m-6 h-full mb-8 mt-8 bg-white ">
             <h1 className=" text-center md:text-left   text-4xl mt-10 md:ml-10 text-light-green-800">
@@ -40,7 +35,7 @@ function Collection() {
               </div>
               <div className=" mb-5 md:mr-5 flex flex-col items-center  md:flex-row">
                 {/* <h1 className="mb-5">Default sorting</h1> */}
-                <Button className="bg-light-green-800 w-full ">Show all</Button>
+                {/* <Button className="bg-light-green-800 w-full ">Show all</Button> */}
               </div>
             </div>
             <div className="flex flex-wrap justify-around items-center">
@@ -49,19 +44,19 @@ function Collection() {
                   <div className=" ">
                     <Card className="h-full w-[50vh] mt-20  gap-x-10    ">
                       <CardHeader color="" className="relative h-56">
-                      <i
-                      class="fa-solid fa-heart ml-4 "
-                      style={{
-                        color: wlitem.some(
-                          (item) => item.productid?._id === data?._id
-                        )
-                          ? "red"
-                          : "blue",
-                      }}
-                      onClick={() => {
-                       wishlists(data)
-                    }}
-                    ></i>
+                        <i
+                          class="fa-solid fa-heart ml-4 "
+                          style={{
+                            color: wlitem.some(
+                              (item) => item.productid?._id === data?._id
+                            )
+                              ? "red"
+                              : "blue",
+                          }}
+                          onClick={() => {
+                            wishlists(data);
+                          }}
+                        ></i>
                         <img src={data.image} alt="card-image" />
                       </CardHeader>
                       <CardBody>

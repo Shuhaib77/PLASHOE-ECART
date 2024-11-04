@@ -19,7 +19,7 @@ function Addproduct() {
 const formik = useFormik({
     initialValues: {
       description: "",
-      image: "", // Set as null for proper file handling
+      image: null, 
       brand: "",
       title: "",
       catogery: "",

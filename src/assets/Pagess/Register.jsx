@@ -10,21 +10,6 @@ function Register() {
   // const [udata, setudata] = useState([]);
   const navigate = useNavigate();
   const [emails, setemail] = useState([]);
-  // const [emas, seteil] = useState();
-
-  // useEffect(() => {
-  //   const fetchmail = async () => {
-  //     // const response = await axios.get("https://jsoneserver.onrender.com/user/");
-  //     const response = await axios.get(" http://localhost:5000/api/register");
-  //     try {
-  //       setemail(response.data);
-  //       // console.log(emails);
-  //     } catch (error) {
-  //       toast.error("not fetched");
-  //     }
-  //   };
-  //   fetchmail();
-  // }, []);
 
   const {
     values,
@@ -65,13 +50,6 @@ function Register() {
     <div>
       <div className="bg-register-bg bg-no-repeat bg-cover w-100% h-100%">
         <div className="flex justify-center  md:mr-5  h-[100vh] items-center">
-          {/* <div className="mr-5">
-            <img
-              src="https://images.pexels.com/photos/15435913/pexels-photo-15435913/free-photo-of-person-wearing-white-sneakers.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
-              alt=""
-              className="h-[60vh] "
-            />
-          </div> */}
           <form
             action=""
             className=" mr-5 ml-5 w-full md:w-96 bg-[rgba(29,67,65,0.45)] p-10 md:p-8 border-3 rounded-xl "

@@ -19,18 +19,13 @@ import { toast } from "sonner";
 function Alluser() {
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
-  
+
   const [blockusers, setblockusers] = useState([]);
   const [orderss, setorders] = useState([]);
   const [payedprdct, setpayedprdct] = useState([]);
   const token = localStorage.getItem("atoken");
-  
-  const TABLE_HEAD = [
-    "ID",
-    "EMAIL",
-    "BLOCK",
-    "ORDERS",
-  ];
+
+  const TABLE_HEAD = ["ID", "EMAIL", "BLOCK", "ORDERS"];
   const [ausers, setausers] = useState([]);
   //fetch userss
   const fn = async () => {
@@ -75,22 +70,20 @@ function Alluser() {
     }
   };
 
-//vieworders
-const vieworders = async (id) => {
+  //vieworders
+  const vieworders = async (id) => {
     const response = await axios.get(
       `  http://localhost:5000/api/orders/${id}`,
       {
-        headers:{
-          Authorization:token
-        }
-
+        headers: {
+          Authorization: token,
+        },
       }
     );
-    
+
     setorders(response.data.data.orders);
   };
-  console.log(orderss,"llssqs");
-  
+  console.log(orderss, "llssqs");
 
   const payed = orderss.map((item) => item.pyprdct);
   const neww = payed.map((item) => item);
@@ -169,17 +162,14 @@ const vieworders = async (id) => {
                   >
                     <Button
                       className="bg-[#4db385]   font-medium "
-                      
                       onClick={() => {
-                        if(orderss.message==="order is empty"){
-                          return toast.warning("no ordersss")
-
-                        }else{
+                        if (orderss.message === "order is empty") {
+                          return toast.warning("no ordersss");
+                        } else {
                           handleOpen("xl");
                           return vieworders(data._id);
-                     
                         }
-                     }}
+                      }}
                     >
                       orders
                     </Button>
@@ -223,12 +213,9 @@ const vieworders = async (id) => {
                   <h2 className="font-bold">Products:</h2>
                 </div>
 
-                {
-                item.productId &&
+                {item.productId &&
                   item.productId.map((product, index) => (
-                    
                     <div key={index} className="border flex justify-around  ">
-                      
                       <div>
                         <h1 className="font-bold">Title: {product.title}</h1>
                         <h1>Brand: {product.brand}</h1>

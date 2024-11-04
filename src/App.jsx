@@ -32,6 +32,7 @@ import Wishliste from "./assets/Components/Wishliste";
 import ProductDetail from "./assets/Components/Home/ProductDetail";
 import { adminConfig } from "./hederconfig/config";
 import Editproduct from "./assets/Components/Admin/Editproduct";
+import PaymentStatus from "./assets/Components/Home/Paymentstatus";
 
 export const contexts = createContext();
 
@@ -42,9 +43,9 @@ function App() {
   const [user, setuser] = useState([]);
   const [udatass, setudatass] = useState([]);
   const [shoeid, setshoeid] = useState([]);
- 
+
   const [cartitem, setcartitem] = useState([]);
-  const [cartnew,setcartnew]=useState([])
+  const [cartnew, setcartnew] = useState([]);
   const handleOpen = (value) => setSize(value);
   const [size, setSize] = React.useState(null);
   //adminsssss
@@ -65,8 +66,8 @@ function App() {
   //datas fetchingg
   const fetchData = async () => {
     try {
-      console.log('hello ');
-      
+      console.log("hello ");
+
       const response = await axios.get("http://localhost:5000/api/products");
       setdata(response.data.products);
     } catch (error) {
@@ -76,7 +77,6 @@ function App() {
   useEffect(() => {
     fetchData();
   }, []);
-
 
   //addto cartt
   const addtocarts = async (data) => {
@@ -92,12 +92,10 @@ function App() {
         }
       );
       toast.success("product added tocart");
-
     } catch (error) {
       console.log(error);
     }
   };
-
 
   //fetchwishlist
   const wldata = async (id) => {
@@ -110,9 +108,7 @@ function App() {
     wldata();
   }, []);
 
-  console.log(wlitem,"sedeeqd");
-  
-
+  console.log(wlitem, "sedeeqd");
 
   //addtowishlist || delete wishlist
   const wishlists = async (id) => {
@@ -135,8 +131,6 @@ function App() {
       console.log(error);
     }
   };
-
-  
 
   return (
     <>
@@ -198,6 +192,8 @@ function App() {
           <Route path="/collection" element={<Collection />}></Route>
           <Route path="/lookbook" element={<Lookbook />}></Route>
           <Route path="/payment" element={<Payment />}></Route>
+          <Route path="/paymentstatus" element={<PaymentStatus />}></Route>
+
           <Route
             path="/showcomponent/:dataid"
             element={<ShowComponent />}

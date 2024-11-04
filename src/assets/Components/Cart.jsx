@@ -17,7 +17,6 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function Cart() {
-  
   const [cartitem, setcartitem] = useState([]);
   const [price, setprice] = useState(false);
   const [cartnew, setcartnew] = useState([]);
@@ -83,7 +82,7 @@ function Cart() {
       const response = await axios.post(
         `http://localhost:5000/api/pay/${idss}`
       );
-      toast.success("payment successfull");
+      
       const approvalUrl = response.data.approval_url;
       if (approvalUrl) {
         window.location.href = approvalUrl;
@@ -97,8 +96,9 @@ function Cart() {
     return (
       <div>
         <Navbar />
-        {toast.warning("no item found")}
         <div className="text-center mt-5">not item found</div>
+
+     
         <Footer />
       </div>
     );
@@ -233,15 +233,7 @@ function Cart() {
                   <span className="text-red-900">{grandtotal}</span>{" "}
                 </h1>
 
-                <Button
-                  className="bg-green-800 mt-5"
-                  onClick={
-                    fn
-                    // navigate("https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_express-checkout&token=EC-7PY957092E321040X", {
-                    //   state: { grandtotal, cartnew },
-                    // });
-                  }
-                >
+                <Button className="bg-green-800 mt-5" onClick={fn}>
                   PAY
                 </Button>
               </div>

@@ -11,13 +11,7 @@ import axios from "axios";
 import { contexts } from "../../../App";
 
 import { Link, useNavigate } from "react-router-dom";
-
-// import User from "../../Pagess/User";
-import Cart from "../Cart";
-import card from "@material-tailwind/react/theme/components/card";
 import { toast } from "sonner";
-import { FaHeartBroken } from "react-icons/fa";
-import { data } from "autoprefixer";
 function Homecard() {
   const navigate = useNavigate();
   const {
@@ -164,7 +158,7 @@ function Homecard() {
                       onClick={() => {
                         // console.log(cartitem);
                         if (ids) {
-                          addtocarts(dedata);
+                          addtocarts(data);
                         } else {
                           toast.warning("Plss login");
                         }

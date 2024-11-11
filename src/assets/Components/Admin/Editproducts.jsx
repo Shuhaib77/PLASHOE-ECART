@@ -65,6 +65,37 @@ function Editproducts() {
   useEffect(()=>{
     fetchData()
   },[])
+  //pagination
+
+  //set item at 1 page
+  const pageitem = 3;
+  //set page num
+  const [page, setPage] = useState(1);
+
+
+  const totalpage=Math.ceil(datas.length/pageitem)
+
+  const onepagedata=datas.slice((page-1)*pageitem,page*pageitem)
+
+  const paginate=(pagenum)=>{
+    if(pagenum>=1 && pagenum<=totalpage){
+      setPage(pagenum)
+    }
+
+  }
+  // _______-
+
+
+
+
+
+
+
+
+
+
+
+
   return (
     <>
       <div className="w-100%">
@@ -75,7 +106,7 @@ function Editproducts() {
         </div>
 
         <div className="flex flex-wrap justify-center gap-10   mt-20 w-full h-[60vh] overflow-auto ">
-          {datas?.map((data, index) => {
+          {onepagedata?.map((data, index) => {
             return (
               <Card className="h-full w-[50vh] mt-20  gap-x-10  ">
                 <CardHeader className="relative h-56">
@@ -134,8 +165,27 @@ function Editproducts() {
             />
           )}
 
-          <div></div>
+          <div>
+         
+          </div>
         </div>
+       <div className=" text-center">
+       <Button onClick={()=>{
+          paginate(page+1)
+          
+
+        }}
+        disabled={page === totalpage}
+        >+</Button>
+        <Button onClick={()=>{
+          paginate(page-1)
+
+        }}
+        disabled={page === 1}
+        >-</Button>
+       
+
+       </div>
       </div>
     </>
   );

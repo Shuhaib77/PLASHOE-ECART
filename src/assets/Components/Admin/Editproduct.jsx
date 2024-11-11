@@ -24,6 +24,7 @@ function Editproduct({
   // const [editprdt, seteditprdt] = useState(null);
   const token = localStorage.getItem("atoken");
   console.log(collectdata, "hguu");
+// -------------
 
 
   const fetchDatas = async () => {
@@ -36,10 +37,9 @@ function Editproduct({
       console.log(error);
     }
   };
-  useEffect(()=>{
-    fetchDatas()
-  })
- 
+  useEffect(() => {
+    fetchDatas();
+  });
 
   const { handleChange, handleSubmit, values, errors, setValues } = useFormik({
     initialValues: {
@@ -79,21 +79,18 @@ function Editproduct({
             },
           }
         );
-     
 
         console.log(response, "response");
         toast.success("Updated");
-       
       } catch (error) {
       } finally {
-       setcollectdata(null);
+        setcollectdata(null);
         handleOpen(null);
         setclick(false);
       }
-    
-      fetchData()
+
+      fetchData();
     },
-   
   });
 
   const canselfn = () => {
@@ -101,6 +98,9 @@ function Editproduct({
     handleOpen(null);
     setclick(false);
   };
+
+
+
   return (
     <div>
       <Dialog
@@ -188,10 +188,7 @@ function Editproduct({
                 ></Input>
               </div>
               <div className="text-end mt-5">
-                <Button
-                  className="bg-green-800"
-                  type="submit"
-                 >
+                <Button className="bg-green-800" type="submit">
                   <span className="text-center">Confirm</span>
                 </Button>
                 <Button className="bg-red-900" onClick={() => canselfn()}>

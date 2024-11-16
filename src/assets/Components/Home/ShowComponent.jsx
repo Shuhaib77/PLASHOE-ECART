@@ -28,7 +28,7 @@ function ShowComponent() {
 
   return (
     <>
-      <div>
+      <div className="">
         <Navbar />
       </div>
       <div>

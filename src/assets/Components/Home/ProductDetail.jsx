@@ -22,20 +22,20 @@ const ProductDetail = () => {
       <Navbar />
       <div className=" gap-5 flex justify-center items-center  h-[90vh] w-full">
         {dedata && (
-          <div className=" bg-white p-3 w-full ml-5 mr-5 flex justify-between h-[60vh]     rounded-lg shadow-lg ">
-            <div className="mt-10">
+          <div className=" bg-white p-3 w-[150vh] ml-5 mr-5 lg:flex-row justify-around items-center sm:flex flex-col h-[70vh]     rounded-lg shadow-lg ">
+            <div className="mt-10 w-full">
               <img
                 src={dedata.image}
                 alt=""
-                className=" w-[100vh] object-cover p-3 border rounded-lg"
+                className=" w-[500px] object-cover p-3  rounded-lg"
               />
             </div>
-            <div className="mt-10 p-3">
+            <div className="mt-10 w-full p-3 border-l-2 text-center">
               <div className=" text-gray-700">{dedata.title}</div>
               <div className="font-bold">{dedata.brand}</div>
-              <div className="flex justify-between items-end">
+              {/* <div className="flex justify-between items-end"> */}
                 <div>{dedata.catogery}</div>
-              </div>
+              {/* </div> */}
               <div>
                 <div className="text-blue-600 mt-5">${dedata.price}</div>
                 <Button

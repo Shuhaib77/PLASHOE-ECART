@@ -23,11 +23,11 @@ const ids = localStorage.getItem("id");
   return (
     <div>
       <div>
-        <div className="">
+        <div className=" sticky z-20 top-0">
           <Navbar />
         </div>
         <div className="w-full h-full bg-gray-300  flex justify-center items-center mt-5  ">
-          <div className="w-full m-6 h-full mb-8 mt-8 bg-white ">
+          <div className="w-full m-6 h-full mb-8 mt-8 p-5 bg-white ">
             <h1 className=" text-center md:text-left  text-4xl md:mt-10 md:ml-10 text-light-green-800 ">
               MEN
             </h1>
@@ -69,7 +69,7 @@ const ids = localStorage.getItem("id");
                               wishlists(data);
                             }}
                           ></i>
-                          <img src={data.image} alt="card-image" />
+                          <img src={data.image} alt="card-image" className="w-[400px]" />
                         </CardHeader>
                         <CardBody>
                           <Typography

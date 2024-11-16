@@ -108,12 +108,12 @@ function Editproducts() {
         <div className="flex flex-wrap justify-center gap-10   mt-20 w-full h-[60vh] overflow-auto ">
           {onepagedata?.map((data, index) => {
             return (
-              <Card className="h-full w-[50vh] mt-20  gap-x-10  ">
-                <CardHeader className="relative h-56">
-                  <img src={data.image} alt="profile-picture" />
+              <Card className="h-[40vh] w-[40vh] mt-20  gap-x-10  ">
+                <CardHeader className="">
+                  <img src={data.image} alt="profile-picture" className="w-[400px]"  />
                 </CardHeader>
                 <CardBody className="text-center">
-                  <Typography color="blue-gray" className="mb-2">
+                  <Typography color="blue-gray" className="mb-2" >
                     {data.title}
                   </Typography>
                   <Typography
@@ -169,20 +169,22 @@ function Editproducts() {
          
           </div>
         </div>
-       <div className=" text-center">
-       <Button onClick={()=>{
-          paginate(page+1)
-          
-
-        }}
-        disabled={page === totalpage}
-        >+</Button>
+       <div className=" text-center shadow-md p-5">
+       
         <Button onClick={()=>{
           paginate(page-1)
 
         }}
         disabled={page === 1}
         >-</Button>
+        <Button onClick={()=>{
+          paginate(page+1)
+          
+
+        }}
+        disabled={page === totalpage}
+        className="ml-5"
+        >+</Button>
        
 
        </div>

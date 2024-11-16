@@ -41,7 +41,7 @@ function Collection() {
   return (
     <div>
       <div>
-        <div className="">
+        <div className=" sticky z-20 top-0">
           <Navbar />
         </div>
         <div className="w-full h-full bg-gray-300 flex justify-center items-center mt-5">
@@ -50,7 +50,7 @@ function Collection() {
               TRENDINGS
             </h1>
 
-            <div className="flex flex-wrap justify-around items-center">
+            <div className="flex flex-wrap justify-around mb-5 items-center">
               {paginatedData.map((data) => (
                 <div key={data._id} className="mt-5">
                   <Card className="h-full w-[50vh] mt-20 gap-x-10">
@@ -66,7 +66,7 @@ function Collection() {
                         }}
                         onClick={() => wishlists(data)}
                       ></i>
-                      <img src={data.image} alt="card-image" />
+                      <img src={data.image} alt="card-image" className="w-[400px]" />
                     </CardHeader>
                     <CardBody>
                       <Typography
@@ -104,22 +104,22 @@ function Collection() {
             </div>
 
             {/* Pagination Controls */}
-            <div className="flex justify-center mt-8">
-              <button
-                className="px-4 py-2 bg-gray-300 mr-2"
+            <div className="flex justify-center mt-10 mb-10">
+              <Button
+                className=""
                 onClick={() => changePage(currentPage - 1)}
                 disabled={currentPage === 1}
               >
                 Previous
-              </button>
+              </Button>
               <span className="px-4 py-2">{`Page ${currentPage} of ${totalPages}`}</span>
-              <button
-                className="px-4 py-2 bg-gray-300 ml-2"
+              <Button
+                className=""
                 onClick={() => changePage(currentPage + 1)}
                 disabled={currentPage === totalPages}
               >
                 Next
-              </button>
+              </Button>
             </div>
           </div>
         </div>

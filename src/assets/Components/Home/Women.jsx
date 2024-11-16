@@ -23,7 +23,7 @@ function Women() {
   return (
     <div>
       <div>
-        <div className="">
+        <div className=" sticky z-20 top-0">
           <Navbar />
         </div>
         <div className="w-full h-full bg-gray-300  flex justify-center items-center mt-5  ">
@@ -68,7 +68,7 @@ function Women() {
                               wishlists(data);
                             }}
                           ></i>
-                          <img src={data.image} alt="card-image" />
+                          <img src={data.image} alt="card-image" className="w-[400px]" />
                         </CardHeader>
                         <CardBody>
                           <Typography variant="h5" color="" className="">

@@ -29,7 +29,7 @@ function Alluser() {
   const [ausers, setausers] = useState([]);
   //fetch userss
   const fn = async () => {
-    const response = await axios.get("http://localhost:5000/api/admin/users", {
+    const response = await axios.get("https://plashoeserver.onrender.com/api/admin/users", {
       headers: {
         Authorization: token,
       },
@@ -49,7 +49,7 @@ function Alluser() {
   //blocking user
   const handleuser = async (id) => {
     const response = await axios.post(
-      ` http://localhost:5000/api/admin/block/${id}`,
+      ` https://plashoeserver.onrender.com/api/admin/block/${id}`,
       {
         headers: {
           Authorization: token,
@@ -73,7 +73,7 @@ function Alluser() {
   //vieworders
   const vieworders = async (id) => {
     const response = await axios.get(
-      `  http://localhost:5000/api/orders/${id}`,
+      `  https://plashoeserver.onrender.com/api/orders/${id}`,
       {
         headers: {
           Authorization: token,

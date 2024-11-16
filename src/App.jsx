@@ -68,7 +68,7 @@ function App() {
     try {
       console.log("hello ");
 
-      const response = await axios.get("http://localhost:5000/api/products");
+      const response = await axios.get("https://plashoeserver.onrender.com/api/products");
       setdata(response.data.products);
     } catch (error) {
       console.log(error);
@@ -83,7 +83,7 @@ function App() {
     try {
       console.log(usertoken);
       const reso = await axios.post(
-        ` http://localhost:5000/api/cart/${data._id}/${usersid}`,
+        ` https://plashoeserver.onrender.com/api/cart/${data._id}/${usersid}`,
         {},
         {
           headers: {
@@ -100,7 +100,7 @@ function App() {
   //fetchwishlist
   const wldata = async (id) => {
     const response = await axios.get(
-      `http://localhost:5000/api/wishlist/${usersid}`
+      `https://plashoeserver.onrender.com/api/wishlist/${usersid}`
     );
     setwlitem(response.data.wishlist);
   };
@@ -116,13 +116,13 @@ function App() {
       const c = wlitem.some((item) => item.productid?._id === id._id);
       if (!c) {
         await axios.post(
-          ` http://localhost:5000/api/wishlist/${id._id}/${usersid}`
+          ` https://plashoeserver.onrender.com/api/wishlist/${id._id}/${usersid}`
         );
         toast.success("item added in wishlist");
         wldata();
       } else {
         await axios.delete(
-          ` http://localhost:5000/api/wishlist/delete/${id._id}/${usersid}`
+          ` https://plashoeserver.onrender.com/api/wishlist/delete/${id._id}/${usersid}`
         );
         wldata();
         toast.warning("item deleted in wishlist");

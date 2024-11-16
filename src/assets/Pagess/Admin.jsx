@@ -66,7 +66,7 @@ function Admin() {
     try {
       console.log("hello ");
 
-      const response = await axios.get("http://localhost:5000/api/products");
+      const response = await axios.get("https://plashoeserver.onrender.com/api/products");
       setdata(response.data.products);
     } catch (error) {
       console.log(error);

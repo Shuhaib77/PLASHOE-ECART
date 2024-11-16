@@ -10,7 +10,7 @@ function Orderss() {
   console.log(id);
 
   const orders = async () => {
-    const response = await axios.get(`http://localhost:5000/api/orders/${id}`);
+    const response = await axios.get(`https://plashoeserver.onrender.com/api/orders/${id}`);
     setdetorder(response.data.data.orders);
   };
   useEffect(() => {

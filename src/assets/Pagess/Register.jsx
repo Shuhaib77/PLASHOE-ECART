@@ -31,7 +31,7 @@ function Register() {
       try {
         console.log(values, "et");
         const response = await axios.post(
-          "http://localhost:5000/api/register",
+          "https://plashoeserver.onrender.com/api/register",
           { email: values.email, password: values.password }
         );
 

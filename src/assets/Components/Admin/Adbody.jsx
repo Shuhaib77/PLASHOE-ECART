@@ -38,7 +38,7 @@ function Adbody() {
   const deleteprdt = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/admin/products/delete/${id}`,
+        `https://plashoeserver.onrender.com/api/admin/products/delete/${id}`,
         {
           headers: {
             Authorization: token,

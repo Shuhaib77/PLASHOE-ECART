@@ -55,7 +55,7 @@ function Navbar({ setAdmin }) {
     }
 
     const fdatass = async () => {
-      const response = await axios.get("http://localhost:5000/api/products");
+      const response = await axios.get("https://plashoeserver.onrender.com/api/products");
       try {
         setsdata(response.data.products);
       } catch (error) {
@@ -71,7 +71,7 @@ function Navbar({ setAdmin }) {
     try {
       if (users) {
         const response = await axios.get(
-          ` http://localhost:5000/api/user/${users}`
+          ` https://plashoeserver.onrender.com/api/user/${users}`
         );
         setusers([response.data]);
       } else {

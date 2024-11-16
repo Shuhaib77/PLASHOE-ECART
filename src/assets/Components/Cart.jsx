@@ -25,7 +25,7 @@ function Cart() {
 
   //cart fetch
   const fetchcart = async () => {
-    const res = await axios.get(`http://localhost:5000/api/cart/${idss}`, {
+    const res = await axios.get(`https://plashoeserver.onrender.com/api/cart/${idss}`, {
       headers: {
         Authorization: utokens,
       },
@@ -39,19 +39,19 @@ function Cart() {
 
   //deletecart
   const cartdelete = async (id) => {
-    await axios.delete(`http://localhost:5000/api/cart/delete/${id}/${idss}`);
+    await axios.delete(`https://plashoeserver.onrender.com/api/cart/delete/${id}/${idss}`);
     fetchcart();
   };
 
   //cartincrement
   const increment = async (id) => {
-    await axios.post(`http://localhost:5000/api/cart/incr/${id}/${idss}`);
+    await axios.post(`https://plashoeserver.onrender.com/api/cart/incr/${id}/${idss}`);
     fetchcart();
   };
 
   //cartdecrement
   const decrement = async (id) => {
-    await axios.post(`http://localhost:5000/api/cart/decr/${id}/${idss}`, {
+    await axios.post(`https://plashoeserver.onrender.com/api/cart/decr/${id}/${idss}`, {
       cart: decrement,
     });
     fetchcart();
@@ -59,7 +59,7 @@ function Cart() {
 
   //addto all price details
   const alladd = async () => {
-    const res = await axios.get(`http://localhost:5000/api/cart/${idss}`, {
+    const res = await axios.get(`https://plashoeserver.onrender.com/api/cart/${idss}`, {
       headers: {
         Authorization: utokens,
       },
@@ -80,7 +80,7 @@ function Cart() {
   const fn = async () => {
     try {
       const response = await axios.post(
-        `http://localhost:5000/api/pay/${idss}`
+        `https://plashoeserver.onrender.com/api/pay/${idss}`
       );
 
       const approvalUrl = response.data.approval_url;

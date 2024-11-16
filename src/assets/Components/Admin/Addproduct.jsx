@@ -40,7 +40,7 @@ const formik = useFormik({
       try {
         const atokens = localStorage.getItem("atoken");
         const res = await axios.post(
-          "http://localhost:5000/api/admin/products",
+          "https://plashoeserver.onrender.com/api/admin/products",
           formData,
           {
             headers: {

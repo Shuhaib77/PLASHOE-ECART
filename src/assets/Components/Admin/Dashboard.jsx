@@ -15,7 +15,7 @@ function Dashboard() {
   // Fetch users data
   const userss = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/users", {
+      const response = await axios.get("https://plashoeserver.onrender.com/api/admin/users", {
         headers: { Authorization: token },
       });
       setausers(response.data.user);
@@ -27,7 +27,7 @@ function Dashboard() {
   // Fetch revenue data
   const fn = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/revanue", {
+      const response = await axios.get("https://plashoeserver.onrender.com/api/admin/revanue", {
         headers: { Authorization: token }
       });
       setaprdt(response.data.data);
@@ -39,7 +39,7 @@ function Dashboard() {
   // Fetch orders data
   const ordersss = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/admin/orders", {
+      const res = await axios.get("https://plashoeserver.onrender.com/api/admin/orders", {
         headers: { Authorization: token }
       });
       setaorders(res.data.allorders);

@@ -32,7 +32,7 @@ function Editproducts() {
   //   try {
   //     console.log("hello ");
 
-  //     const response = await axios.get("http://localhost:5000/api/products");
+  //     const response = await axios.get("https://plashoeserver.onrender.com/api/products");
   //     setdata(response.data.products);
   //   } catch (error) {
   //     console.log(error);
@@ -46,7 +46,7 @@ function Editproducts() {
   const deleteprdt = async (id) => {
     try {
       const response = await axios.delete(
-        `http://localhost:5000/api/admin/products/delete/${id}`,
+        `https://plashoeserver.onrender.com/api/admin/products/delete/${id}`,
         {
           headers: {
             Authorization: token,

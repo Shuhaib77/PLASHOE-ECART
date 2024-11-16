@@ -27,7 +27,7 @@ function Login() {
     validationSchema: logionschema,
     onSubmit: async (values) => {
       try {
-        const response = await axios.post(" http://localhost:5000/api/login", {
+        const response = await axios.post(" https://plashoeserver.onrender.com/api/login", {
           email: values.email,
           password: values.password,
         });

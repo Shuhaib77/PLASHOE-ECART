@@ -31,7 +31,7 @@ function Editproduct({
     try {
       console.log("hello ");
 
-      const response = await axios.get("http://localhost:5000/api/products");
+      const response = await axios.get("https://plashoeserver.onrender.com/api/products");
       setdata(response.data.products);
     } catch (error) {
       console.log(error);
@@ -70,7 +70,7 @@ function Editproduct({
 
       try {
         const response = await axios.put(
-          `http://localhost:5000/api/admin/products/${collectdata._id}`,
+          `https://plashoeserver.onrender.com/api/admin/products/${collectdata._id}`,
           formDta,
           {
             headers: {

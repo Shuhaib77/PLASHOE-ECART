@@ -110,7 +110,7 @@ function Alluser() {
             </tr>
           </thead>
           <tbody className=" w-full  ">
-            {ausers.map((data, index) => (
+            {ausers?.map((data, index) => (
               <tr key={index} className=" even:bg-[#2f8f88] ">
                 <td className="p-4 ">
                   <Typography
@@ -201,7 +201,7 @@ function Alluser() {
             <DialogHeader className="border-b-4 border-green-900  ">
               ORDERS
             </DialogHeader>
-            {orderss.map((item, index) => (
+            {orderss?.map((item, index) => (
               <div key={index} className="text-black  ">
                 <div className="mb-5 mt-5">
                   <h1 className="font-extrabold text-black">USER DETAILS</h1>

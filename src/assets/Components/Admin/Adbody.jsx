@@ -67,7 +67,7 @@ function Adbody() {
       </div>
 
       <div className="flex flex-wrap justify-center items-center  gap-5 mt-20 w-[full] h-[70vh] overflow-auto ">
-        {sprdt.map((data, index) => {
+        {sprdt?.map((data, index) => {
           return (
             <Card className="w-96 h-[50vh] border-5 border-g">
               <CardHeader className="h-[30vh] mt-5">

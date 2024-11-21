@@ -37,23 +37,23 @@ function Dashboard() {
   };
 
   // Fetch orders data
-  const ordersss = async () => {
-    try {
-      const res = await axios.get("https://plashoeserver.onrender.com/api/admin/orders", {
-        headers: { Authorization: token }
-      });
-      setaorders(res.data.allorders);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const ordersss = async () => {
+  //   try {
+  //     const res = await axios.get("https://plashoeserver.onrender.com/api/admin/orders", {
+  //       headers: { Authorization: token }
+  //     });
+  //     setaorders(res.data.allorders);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  // Fetch data on mount
-  useEffect(() => {
-    userss();
-    fn();
-    ordersss();
-  }, []);
+  // // Fetch data on mount
+  // useEffect(() => {
+  //   userss();
+  //   fn();
+  //   ordersss();
+  // }, []);
 
   // Set up Chart.js
   // useEffect(() => {

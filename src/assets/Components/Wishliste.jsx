@@ -25,7 +25,7 @@ function Wishliste() {
   const alldata = datas.map((item) => item);
   console.log(alldata);
 
-  if (wlitem?.length == 0) {
+  if (wlitem.length == 0) {
     return (
       <div>
         <Navbar />
@@ -68,7 +68,7 @@ function Wishliste() {
               </div>
             </div>
             <div className="flex flex-wrap justify-around items-center mb-10 gap-10 ">
-              {wlitem.map((data) => {
+              { wlitem && wlitem?.map((data) => {
                 return (
                   <div className=" ">
                     <Card className="h-[55vh] w-[50vh] mt-20 gap-1   ">
@@ -76,7 +76,7 @@ function Wishliste() {
                         <i
                           class="fa-solid fa-heart ml-4 "
                           style={{
-                            color: datas.some(
+                            color: datas?.some(
                               (item) => item?._id === data?.productid?._id
                             )
                               ? "red"

@@ -55,6 +55,9 @@ function Dashboard() {
     ordersss();
   }, []);
 
+  console.log(ausers.length);
+  
+
   // Set up Chart.js
   // useEffect(() => {
   //   if (chartRef.current) {
@@ -91,7 +94,7 @@ function Dashboard() {
             <i className="fa-brands fa-product-hunt fa-2xl" style={{ color: "#ffffff" }}></i>
             <h1 className="mt-4">ALL USERS </h1>
             <h1>
-              All users: <span className="text-2xl"> {ausers.length}</span>
+              All users: <span className="text-2xl"> {ausers?.length}</span>
             </h1>
           </div>
         </div>
@@ -101,7 +104,7 @@ function Dashboard() {
             <i className="fa-solid fa-user fa-2xl" style={{ color: "#ffffff" }}></i>
             <h1 className="mt-4">PRODUCTS</h1>
             <h1>
-              Products: <span className="text-2xl">{datas.length}</span>
+              Products: <span className="text-2xl">{datas?.length}</span>
             </h1>
           </div>
         </div>
@@ -111,7 +114,7 @@ function Dashboard() {
             <i className="fa-solid fa-cart-shopping fa-2xl" style={{ color: "#ffffff" }}></i>
             <h1 className="mt-4">ORDERS</h1>
             <h1>
-              All orders: <span className="text-2xl">{aorders.length}</span>
+              All orders: <span className="text-2xl">{aorders?.length}</span>
             </h1>
           </div>
         </div>
@@ -121,7 +124,7 @@ function Dashboard() {
             <i className="fa-solid fa-chart-simple fa-2xl" style={{ color: "#ffffff" }}></i>
             <h1 className="mt-4">PROFIT</h1>
             <h1>
-              All profit: <span className="text-2xl">{aprdt.totalrevanue}</span>
+              All profit: <span className="text-2xl">{aprdt?.totalrevanue}</span>
             </h1>
           </div>
         </div>

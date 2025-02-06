@@ -16,14 +16,14 @@ function Addproduct() {
   const { size, setSize, handleOpen } = useContext(contexts);
   const [imagePreview, setImagePreview] = useState(null);
 
-const formik = useFormik({
+  const formik = useFormik({
     initialValues: {
       description: "",
-      image: null, 
+      image: null,
       brand: "",
       title: "",
       catogery: "",
-      price:null,
+      price: null,
       quantity: 1,
     },
     onSubmit: async (values) => {
@@ -166,22 +166,28 @@ const formik = useFormik({
               </div>
               <div className="w-[65vh] ml-10 mt-5 h-[40vh] ">
                 <h1 className="ml-10 pt-5 ">
-                  <span className="text-red-900 font-medium">ID:</span> {formik.values.id}
+                  <span className="text-red-900 font-medium">ID:</span>{" "}
+                  {formik.values.id}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">TITLE:</span> {formik.values.title}
+                  <span className="text-red-900 font-medium">TITLE:</span>{" "}
+                  {formik.values.title}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">BRAND:</span> {formik.values.brand}
+                  <span className="text-red-900 font-medium">BRAND:</span>{" "}
+                  {formik.values.brand}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">CATEGORY:</span> {formik.values.catogery}
+                  <span className="text-red-900 font-medium">CATEGORY:</span>{" "}
+                  {formik.values.catogery}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">QUANTITY:</span> {formik.values.quantity}
+                  <span className="text-red-900 font-medium">QUANTITY:</span>{" "}
+                  {formik.values.quantity}
                 </h1>
                 <h1 className="ml-10 mt-6">
-                  <span className="text-red-900 font-medium">PRICE:</span> {formik.values.price}
+                  <span className="text-red-900 font-medium">PRICE:</span>{" "}
+                  {formik.values.price}
                 </h1>
               </div>
             </div>

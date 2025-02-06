@@ -30,10 +30,13 @@ function Register() {
     onSubmit: async (values) => {
       try {
         console.log(values, "et");
-        const response = await axios.post(
+        await axios.post(
           "https://plashoeserver.onrender.com/api/register",
           { email: values.email, password: values.password }
+
         );
+        {console.log(values.email,values.password)
+        }
 
         toast.success("User registration successful");
         navigate("/login");
@@ -41,7 +44,7 @@ function Register() {
         // console.log(response.data.message,'imdfghsg');
         // alert(response?.data?.message)
       } catch (error) {
-        toast.warning("User already exists");
+        toast.warning("error occurdd");
       }
     },
   });
